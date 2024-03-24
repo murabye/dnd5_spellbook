@@ -1,0 +1,170 @@
+[
+    {
+        "id": "ritual",
+        "text": "Ритуал",
+        "emoji": "⏳",
+        "isCustom": false,
+        "color": "lightCyan"
+    },
+    {
+        "id": "damage",
+        "text": "Урон",
+        "emoji": "🔪",
+        "isCustom": false,
+        "color": "orange"
+    },
+    {
+        "id": "massDamage",
+        "text": "Массовый урон",
+        "emoji": "💣",
+        "isCustom": false,
+        "color": "red"
+    },
+    {
+        "id": "baff",
+        "text": "Баф",
+        "emoji": "🛡️",
+        "isCustom": false,
+        "color": "purple"
+    },
+    {
+        "id": "hiding",
+        "text": "Скрытность",
+        "emoji": "😶‍🌫️",
+        "isCustom": false,
+        "color": "inverted"
+    },
+    {
+        "id": "investigation",
+        "text": "Исследование",
+        "emoji": "👀",
+        "isCustom": false,
+        "color": "lightBlue"
+    },
+    {
+        "id": "talking",
+        "text": "Общение",
+        "emoji": "👅",
+        "isCustom": false,
+        "color": "mint"
+    },
+    {
+        "id": "heal",
+        "text": "Лечение",
+        "emoji": "❤️‍🩹",
+        "isCustom": false,
+        "color": "green"
+    },
+    {
+        "id": "effectRemoval",
+        "text": "Снятие эффектов",
+        "emoji": "🧽",
+        "isCustom": false,
+        "color": "cyan"
+    },
+    {
+        "id": "debaff",
+        "text": "Дебафф",
+        "emoji": "🪬",
+        "isCustom": false,
+        "color": "yellow"
+    },
+    {
+        "id": "piercing",
+        "text": "Колющий",
+        "emoji": "🪡",
+        "isCustom": false,
+        "color": "darkPurple"
+    },
+    {
+        "id": "slashing",
+        "text": "Рубящий",
+        "emoji": "🪓",
+        "isCustom": false,
+        "color": "lightOrange"
+    },
+    {
+        "id": "bludgeoning",
+        "text": "Дробящий",
+        "emoji": "🔨",
+        "isCustom": false,
+        "color": "lightRed"
+    },
+    {
+        "id": "blueberry",
+        "text": "Черничный",
+        "emoji": "🫐",
+        "isCustom": false,
+        "color": "lightPurple"
+    },
+    {
+        "id": "acid",
+        "text": "Кислотный",
+        "emoji": "🛢️",
+        "isCustom": false,
+        "color": "lightGreen"
+    },
+    {
+        "id": "cold",
+        "text": "Холод",
+        "emoji": "❄️",
+        "isCustom": false,
+        "color": "blue"
+    },
+    {
+        "id": "fire",
+        "text": "Огненный",
+        "emoji": "🔥",
+        "isCustom": false,
+        "color": "darkRed"
+    },
+    {
+        "id": "force",
+        "text": "Силовой",
+        "emoji": "💥",
+        "isCustom": false,
+        "color": "darkRed"
+    },
+    {
+        "id": "lightning",
+        "text": "Молнией",
+        "emoji": "⚡️",
+        "isCustom": false,
+        "color": "lightYellow"
+    },
+    {
+        "id": "necrotic",
+        "text": "Некротический",
+        "emoji": "💀",
+        "isCustom": false,
+        "color": "darkBlue"
+    },
+    {
+        "id": "poison",
+        "text": "Ядовитый",
+        "emoji": "🤢",
+        "isCustom": false,
+        "color": "darkMint"
+    },
+    {
+        "id": "psychic",
+        "text": "Психический",
+        "emoji": "🧠",
+        "isCustom": false,
+        "color": "indigo"
+    },
+    {
+        "id": "radiant",
+        "text": "Лучистый",
+        "emoji": "✨",
+        "isCustom": false,
+        "color": "darkYellow"
+    },
+    {
+        "id": "thunder",
+        "text": "Громовой",
+        "emoji": "⛈️",
+        "isCustom": false,
+        "color": "gray"
+    },
+]

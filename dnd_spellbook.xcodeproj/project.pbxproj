@@ -1,0 +1,1101 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF10CA1C2B438E1A00D9348F /* SpellCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */; };
+		FF10CA212B44BF2C00D9348F /* TagCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA202B44BF2C00D9348F /* TagCreationView.swift */; };
+		FF10CA262B44C1A700D9348F /* DurationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA252B44C1A700D9348F /* DurationPickerView.swift */; };
+		FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */; };
+		FF10CA2A2B44C5C400D9348F /* ComponentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */; };
+		FF10CA2C2B44CA5B00D9348F /* CharacterClassPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA2B2B44CA5B00D9348F /* CharacterClassPickerView.swift */; };
+		FF10CA2E2B44CCB900D9348F /* TypeOfActionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA2D2B44CCB900D9348F /* TypeOfActionPickerView.swift */; };
+		FF10CA302B44CD8A00D9348F /* SchoolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA2F2B44CD8A00D9348F /* SchoolPickerView.swift */; };
+		FF10CA322B44CE8900D9348F /* SourcesPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA312B44CE8900D9348F /* SourcesPickerView.swift */; };
+		FF10CA342B44CECE00D9348F /* LevelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA332B44CECE00D9348F /* LevelPickerView.swift */; };
+		FF2CBC5F2B2D9EE6004D062C /* dnd_spellbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC5E2B2D9EE6004D062C /* dnd_spellbookApp.swift */; };
+		FF2CBC632B2D9EE8004D062C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2CBC622B2D9EE8004D062C /* Assets.xcassets */; };
+		FF2CBC672B2D9EE8004D062C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2CBC662B2D9EE8004D062C /* Preview Assets.xcassets */; };
+		FF2CBC712B2D9EE8004D062C /* dnd_spellbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC702B2D9EE8004D062C /* dnd_spellbookTests.swift */; };
+		FF2CBC7B2B2D9EE8004D062C /* dnd_spellbookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC7A2B2D9EE8004D062C /* dnd_spellbookUITests.swift */; };
+		FF2CBC7D2B2D9EE8004D062C /* dnd_spellbookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC7C2B2D9EE8004D062C /* dnd_spellbookUITestsLaunchTests.swift */; };
+		FF2CBC8C2B2D9FD9004D062C /* CharacterCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC8B2B2D9FD9004D062C /* CharacterCreation.swift */; };
+		FF2CBC932B2DFD82004D062C /* GenericProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC922B2DFD82004D062C /* GenericProtocol.swift */; };
+		FF2CBCA12B2E4531004D062C /* SpellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBCA02B2E4531004D062C /* SpellView.swift */; };
+		FF2CBCA32B2E4E47004D062C /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBCA22B2E4E47004D062C /* TagView.swift */; };
+		FF2CBCA52B2E55B1004D062C /* TagLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBCA42B2E55B1004D062C /* TagLine.swift */; };
+		FF48BCA72B94B77000E3E3DF /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF48BCA62B94B77000E3E3DF /* MailView.swift */; };
+		FF48BCA92B94FCFD00E3E3DF /* CharacterImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF48BCA82B94FCFD00E3E3DF /* CharacterImagePickerView.swift */; };
+		FF48BCAB2B95164F00E3E3DF /* FileManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */; };
+		FF48BCAD2B9519DE00E3E3DF /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */; };
+		FF70ECE32B701FA3000B3A8F /* MCEmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = FF70ECE22B701FA3000B3A8F /* MCEmojiPicker */; };
+		FF779A4F2B34C50100F7B654 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF779A4E2B34C50100F7B654 /* MainView.swift */; };
+		FF779A542B34F74500F7B654 /* AuthorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF779A532B34F74500F7B654 /* AuthorPage.swift */; };
+		FF8325BB2B30C84A00820438 /* CharacterClassCreationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325BA2B30C84A00820438 /* CharacterClassCreationPicker.swift */; };
+		FF8325C12B30E41400820438 /* DynamicIslandMergingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */; };
+		FF8325C32B30E60A00820438 /* ObservedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C22B30E60A00820438 /* ObservedScrollView.swift */; };
+		FF8325C62B30F68600820438 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C52B30F68600820438 /* WaterfallLayout.swift */; };
+		FF8325C82B30F69A00820438 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C72B30F69A00820438 /* FlowLayout.swift */; };
+		FF8325CA2B30F6F900820438 /* CharacterCreationBigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C92B30F6F900820438 /* CharacterCreationBigView.swift */; };
+		FF8325CC2B30FFE600820438 /* FilterSetupBigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325CB2B30FFE600820438 /* FilterSetupBigView.swift */; };
+		FF8325D02B31011F00820438 /* SpellListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325CF2B31011F00820438 /* SpellListView.swift */; };
+		FF8325D22B31058400820438 /* SpellEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325D12B31058400820438 /* SpellEditView.swift */; };
+		FFB7500D2B76A26E0099508F /* TagColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7500C2B76A26E0099508F /* TagColor.swift */; };
+		FFB750112B77F8090099508F /* DatabaseSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750102B77F8090099508F /* DatabaseSetupView.swift */; };
+		FFB750172B78FAE30099508F /* DurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750162B78FAE30099508F /* DurationModel.swift */; };
+		FFB750192B78FE060099508F /* ComponentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750182B78FE060099508F /* ComponentModel.swift */; };
+		FFB7501B2B78FE140099508F /* DistantionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7501A2B78FE140099508F /* DistantionModel.swift */; };
+		FFB7501D2B78FE260099508F /* TypeOfActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7501C2B78FE260099508F /* TypeOfActionModel.swift */; };
+		FFB750212B79308D0099508F /* DatabaseSetupIfNeededView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750202B79308D0099508F /* DatabaseSetupIfNeededView.swift */; };
+		FFCF4BCD2B700C7F00D38414 /* materials.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCA2B700C7F00D38414 /* materials.json */; };
+		FFCF4BCE2B700C7F00D38414 /* tags.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCB2B700C7F00D38414 /* tags.json */; };
+		FFCF4BCF2B700C7F00D38414 /* skills.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCC2B700C7F00D38414 /* skills.json */; };
+		FFCF4BD12B70168500D38414 /* TagColorsGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF4BD02B70168500D38414 /* TagColorsGallery.swift */; };
+		FFDF84EE2B2E84B2004916F3 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF84ED2B2E84B2004916F3 /* UIPickerView.swift */; };
+		FFDF84F32B2E89CB004916F3 /* FilterSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF84F22B2E89CB004916F3 /* FilterSetupView.swift */; };
+		FFDF84FB2B2F99EE004916F3 /* UniversalTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF84FA2B2F99EE004916F3 /* UniversalTagView.swift */; };
+		FFDF84FD2B2F9AD4004916F3 /* UniversalTagLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF84FC2B2F9AD4004916F3 /* UniversalTagLine.swift */; };
+		FFDF84FF2B2FB081004916F3 /* FilterExpandableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF84FE2B2FB081004916F3 /* FilterExpandableHeader.swift */; };
+		FFDF85012B2FB0C1004916F3 /* FilterExpandableContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF85002B2FB0C1004916F3 /* FilterExpandableContent.swift */; };
+		FFDF85032B2FBA0D004916F3 /* FilterExpandableTagContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF85022B2FBA0D004916F3 /* FilterExpandableTagContent.swift */; };
+		FFE792542B3A1186004F6BF4 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792532B3A1186004F6BF4 /* Spell.swift */; };
+		FFE792572B3A13E1004F6BF4 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792562B3A13E1004F6BF4 /* Duration.swift */; };
+		FFE792592B3A17A3004F6BF4 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792582B3A17A3004F6BF4 /* Component.swift */; };
+		FFE7925B2B3A1879004F6BF4 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7925A2B3A1879004F6BF4 /* Material.swift */; };
+		FFE7925D2B3A1A4B004F6BF4 /* Distantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7925C2B3A1A4B004F6BF4 /* Distantion.swift */; };
+		FFE7925F2B3A1B43004F6BF4 /* TypeOfAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7925E2B3A1B43004F6BF4 /* TypeOfAction.swift */; };
+		FFE792612B3A1BC6004F6BF4 /* SpellSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792602B3A1BC6004F6BF4 /* SpellSchool.swift */; };
+		FFE792632B3A1C13004F6BF4 /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792622B3A1C13004F6BF4 /* Sources.swift */; };
+		FFE792662B3A1CD1004F6BF4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792652B3A1CD1004F6BF4 /* Tag.swift */; };
+		FFE792682B3A1E56004F6BF4 /* TagAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792672B3A1E56004F6BF4 /* TagAction.swift */; };
+		FFE7926B2B3B7583004F6BF4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926A2B3B7583004F6BF4 /* Character.swift */; };
+		FFE7926D2B3B766E004F6BF4 /* CharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926C2B3B766E004F6BF4 /* CharacterClass.swift */; };
+		FFE7926F2B3B76CD004F6BF4 /* CharacterArchetype.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926E2B3B76CD004F6BF4 /* CharacterArchetype.swift */; };
+		FFE792712B3B770D004F6BF4 /* BardCollegy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792702B3B770D004F6BF4 /* BardCollegy.swift */; };
+		FFE792732B3B773C004F6BF4 /* WizardSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792722B3B773C004F6BF4 /* WizardSchool.swift */; };
+		FFE792752B3B7751004F6BF4 /* DruidCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792742B3B7751004F6BF4 /* DruidCircle.swift */; };
+		FFE792772B3B778E004F6BF4 /* ClericDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792762B3B778E004F6BF4 /* ClericDomain.swift */; };
+		FFE792792B3B77A9004F6BF4 /* ArtificerSpeciality.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792782B3B77A9004F6BF4 /* ArtificerSpeciality.swift */; };
+		FFE7927B2B3B77C7004F6BF4 /* PaladinOath.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7927A2B3B77C7004F6BF4 /* PaladinOath.swift */; };
+		FFE7927D2B3B77DE004F6BF4 /* RangerArchetype.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7927C2B3B77DE004F6BF4 /* RangerArchetype.swift */; };
+		FFE7927F2B3B7800004F6BF4 /* SorcererOrigin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7927E2B3B7800004F6BF4 /* SorcererOrigin.swift */; };
+		FFE792812B3B7813004F6BF4 /* WarlockPatron.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792802B3B7813004F6BF4 /* WarlockPatron.swift */; };
+		FFE792842B3B8FAB004F6BF4 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792832B3B8FAB004F6BF4 /* String+.swift */; };
+		FFE792872B3B9170004F6BF4 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792862B3B9170004F6BF4 /* Filter.swift */; };
+		FFF90A772B338FB500569628 /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF90A762B338FB500569628 /* CharacterList.swift */; };
+		FFF90A792B338FDE00569628 /* CharacterListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF90A782B338FDE00569628 /* CharacterListItem.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF2CBC6D2B2D9EE8004D062C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF2CBC532B2D9EE6004D062C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF2CBC5A2B2D9EE6004D062C;
+			remoteInfo = dnd_spellbook;
+		};
+		FF2CBC772B2D9EE8004D062C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF2CBC532B2D9EE6004D062C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF2CBC5A2B2D9EE6004D062C;
+			remoteInfo = dnd_spellbook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellCreationView.swift; sourceTree = "<group>"; };
+		FF10CA202B44BF2C00D9348F /* TagCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCreationView.swift; sourceTree = "<group>"; };
+		FF10CA252B44C1A700D9348F /* DurationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerView.swift; sourceTree = "<group>"; };
+		FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistantionPickerView.swift; sourceTree = "<group>"; };
+		FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCreationView.swift; sourceTree = "<group>"; };
+		FF10CA2B2B44CA5B00D9348F /* CharacterClassPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClassPickerView.swift; sourceTree = "<group>"; };
+		FF10CA2D2B44CCB900D9348F /* TypeOfActionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfActionPickerView.swift; sourceTree = "<group>"; };
+		FF10CA2F2B44CD8A00D9348F /* SchoolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolPickerView.swift; sourceTree = "<group>"; };
+		FF10CA312B44CE8900D9348F /* SourcesPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesPickerView.swift; sourceTree = "<group>"; };
+		FF10CA332B44CECE00D9348F /* LevelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPickerView.swift; sourceTree = "<group>"; };
+		FF2CBC5B2B2D9EE6004D062C /* dnd_spellbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dnd_spellbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2CBC5E2B2D9EE6004D062C /* dnd_spellbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dnd_spellbookApp.swift; sourceTree = "<group>"; };
+		FF2CBC622B2D9EE8004D062C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF2CBC642B2D9EE8004D062C /* dnd_spellbook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dnd_spellbook.entitlements; sourceTree = "<group>"; };
+		FF2CBC662B2D9EE8004D062C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FF2CBC6C2B2D9EE8004D062C /* dnd_spellbookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dnd_spellbookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2CBC702B2D9EE8004D062C /* dnd_spellbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dnd_spellbookTests.swift; sourceTree = "<group>"; };
+		FF2CBC762B2D9EE8004D062C /* dnd_spellbookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dnd_spellbookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2CBC7A2B2D9EE8004D062C /* dnd_spellbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dnd_spellbookUITests.swift; sourceTree = "<group>"; };
+		FF2CBC7C2B2D9EE8004D062C /* dnd_spellbookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dnd_spellbookUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FF2CBC8B2B2D9FD9004D062C /* CharacterCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreation.swift; sourceTree = "<group>"; };
+		FF2CBC922B2DFD82004D062C /* GenericProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericProtocol.swift; sourceTree = "<group>"; };
+		FF2CBCA02B2E4531004D062C /* SpellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellView.swift; sourceTree = "<group>"; };
+		FF2CBCA22B2E4E47004D062C /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		FF2CBCA42B2E55B1004D062C /* TagLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLine.swift; sourceTree = "<group>"; };
+		FF48BCA62B94B77000E3E3DF /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		FF48BCA82B94FCFD00E3E3DF /* CharacterImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImagePickerView.swift; sourceTree = "<group>"; };
+		FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+.swift"; sourceTree = "<group>"; };
+		FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		FF779A4E2B34C50100F7B654 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FF779A532B34F74500F7B654 /* AuthorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPage.swift; sourceTree = "<group>"; };
+		FF8325BA2B30C84A00820438 /* CharacterClassCreationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClassCreationPicker.swift; sourceTree = "<group>"; };
+		FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicIslandMergingView.swift; sourceTree = "<group>"; };
+		FF8325C22B30E60A00820438 /* ObservedScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedScrollView.swift; sourceTree = "<group>"; };
+		FF8325C52B30F68600820438 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
+		FF8325C72B30F69A00820438 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		FF8325C92B30F6F900820438 /* CharacterCreationBigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationBigView.swift; sourceTree = "<group>"; };
+		FF8325CB2B30FFE600820438 /* FilterSetupBigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSetupBigView.swift; sourceTree = "<group>"; };
+		FF8325CF2B31011F00820438 /* SpellListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellListView.swift; sourceTree = "<group>"; };
+		FF8325D12B31058400820438 /* SpellEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellEditView.swift; sourceTree = "<group>"; };
+		FFB7500C2B76A26E0099508F /* TagColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagColor.swift; sourceTree = "<group>"; };
+		FFB750102B77F8090099508F /* DatabaseSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSetupView.swift; sourceTree = "<group>"; };
+		FFB750162B78FAE30099508F /* DurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationModel.swift; sourceTree = "<group>"; };
+		FFB750182B78FE060099508F /* ComponentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentModel.swift; sourceTree = "<group>"; };
+		FFB7501A2B78FE140099508F /* DistantionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistantionModel.swift; sourceTree = "<group>"; };
+		FFB7501C2B78FE260099508F /* TypeOfActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfActionModel.swift; sourceTree = "<group>"; };
+		FFB750202B79308D0099508F /* DatabaseSetupIfNeededView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSetupIfNeededView.swift; sourceTree = "<group>"; };
+		FFCF4BCA2B700C7F00D38414 /* materials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = materials.json; sourceTree = "<group>"; };
+		FFCF4BCB2B700C7F00D38414 /* tags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tags.json; sourceTree = "<group>"; };
+		FFCF4BCC2B700C7F00D38414 /* skills.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skills.json; sourceTree = "<group>"; };
+		FFCF4BD02B70168500D38414 /* TagColorsGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagColorsGallery.swift; sourceTree = "<group>"; };
+		FFDF84ED2B2E84B2004916F3 /* UIPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerView.swift; sourceTree = "<group>"; };
+		FFDF84F22B2E89CB004916F3 /* FilterSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSetupView.swift; sourceTree = "<group>"; };
+		FFDF84FA2B2F99EE004916F3 /* UniversalTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalTagView.swift; sourceTree = "<group>"; };
+		FFDF84FC2B2F9AD4004916F3 /* UniversalTagLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalTagLine.swift; sourceTree = "<group>"; };
+		FFDF84FE2B2FB081004916F3 /* FilterExpandableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterExpandableHeader.swift; sourceTree = "<group>"; };
+		FFDF85002B2FB0C1004916F3 /* FilterExpandableContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterExpandableContent.swift; sourceTree = "<group>"; };
+		FFDF85022B2FBA0D004916F3 /* FilterExpandableTagContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterExpandableTagContent.swift; sourceTree = "<group>"; };
+		FFE792532B3A1186004F6BF4 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
+		FFE792562B3A13E1004F6BF4 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		FFE792582B3A17A3004F6BF4 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		FFE7925A2B3A1879004F6BF4 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		FFE7925C2B3A1A4B004F6BF4 /* Distantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distantion.swift; sourceTree = "<group>"; };
+		FFE7925E2B3A1B43004F6BF4 /* TypeOfAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfAction.swift; sourceTree = "<group>"; };
+		FFE792602B3A1BC6004F6BF4 /* SpellSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellSchool.swift; sourceTree = "<group>"; };
+		FFE792622B3A1C13004F6BF4 /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
+		FFE792652B3A1CD1004F6BF4 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		FFE792672B3A1E56004F6BF4 /* TagAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAction.swift; sourceTree = "<group>"; };
+		FFE7926A2B3B7583004F6BF4 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		FFE7926C2B3B766E004F6BF4 /* CharacterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClass.swift; sourceTree = "<group>"; };
+		FFE7926E2B3B76CD004F6BF4 /* CharacterArchetype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterArchetype.swift; sourceTree = "<group>"; };
+		FFE792702B3B770D004F6BF4 /* BardCollegy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BardCollegy.swift; sourceTree = "<group>"; };
+		FFE792722B3B773C004F6BF4 /* WizardSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardSchool.swift; sourceTree = "<group>"; };
+		FFE792742B3B7751004F6BF4 /* DruidCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DruidCircle.swift; sourceTree = "<group>"; };
+		FFE792762B3B778E004F6BF4 /* ClericDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClericDomain.swift; sourceTree = "<group>"; };
+		FFE792782B3B77A9004F6BF4 /* ArtificerSpeciality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtificerSpeciality.swift; sourceTree = "<group>"; };
+		FFE7927A2B3B77C7004F6BF4 /* PaladinOath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaladinOath.swift; sourceTree = "<group>"; };
+		FFE7927C2B3B77DE004F6BF4 /* RangerArchetype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangerArchetype.swift; sourceTree = "<group>"; };
+		FFE7927E2B3B7800004F6BF4 /* SorcererOrigin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SorcererOrigin.swift; sourceTree = "<group>"; };
+		FFE792802B3B7813004F6BF4 /* WarlockPatron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarlockPatron.swift; sourceTree = "<group>"; };
+		FFE792832B3B8FAB004F6BF4 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		FFE792862B3B9170004F6BF4 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		FFF90A762B338FB500569628 /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
+		FFF90A782B338FDE00569628 /* CharacterListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListItem.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF2CBC582B2D9EE6004D062C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF70ECE32B701FA3000B3A8F /* MCEmojiPicker in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2CBC692B2D9EE8004D062C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2CBC732B2D9EE8004D062C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF0532272B701C4E00DA42DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF10CA1D2B44AF1E00D9348F /* SpellCreation */ = {
+			isa = PBXGroup;
+			children = (
+				FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */,
+				FF10CA202B44BF2C00D9348F /* TagCreationView.swift */,
+				FF10CA252B44C1A700D9348F /* DurationPickerView.swift */,
+				FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */,
+				FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */,
+				FF10CA2B2B44CA5B00D9348F /* CharacterClassPickerView.swift */,
+				FF10CA2D2B44CCB900D9348F /* TypeOfActionPickerView.swift */,
+				FF10CA2F2B44CD8A00D9348F /* SchoolPickerView.swift */,
+				FF10CA312B44CE8900D9348F /* SourcesPickerView.swift */,
+				FF10CA332B44CECE00D9348F /* LevelPickerView.swift */,
+			);
+			path = SpellCreation;
+			sourceTree = "<group>";
+		};
+		FF2CBC522B2D9EE6004D062C = {
+			isa = PBXGroup;
+			children = (
+				FF2CBC5D2B2D9EE6004D062C /* dnd_spellbook */,
+				FF2CBC6F2B2D9EE8004D062C /* dnd_spellbookTests */,
+				FF2CBC792B2D9EE8004D062C /* dnd_spellbookUITests */,
+				FF2CBC5C2B2D9EE6004D062C /* Products */,
+				FF0532272B701C4E00DA42DB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FF2CBC5C2B2D9EE6004D062C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CBC5B2B2D9EE6004D062C /* dnd_spellbook.app */,
+				FF2CBC6C2B2D9EE8004D062C /* dnd_spellbookTests.xctest */,
+				FF2CBC762B2D9EE8004D062C /* dnd_spellbookUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF2CBC5D2B2D9EE6004D062C /* dnd_spellbook */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CBC5E2B2D9EE6004D062C /* dnd_spellbookApp.swift */,
+				FFE792822B3B8FA2004F6BF4 /* Extension */,
+				FF2CBC9F2B2E4518004D062C /* Views */,
+				FF2CBC9C2B2E3C99004D062C /* Library */,
+				FF2CBC8D2B2DE96F004D062C /* Types */,
+				FF2CBC622B2D9EE8004D062C /* Assets.xcassets */,
+				FF2CBC642B2D9EE8004D062C /* dnd_spellbook.entitlements */,
+				FF2CBC652B2D9EE8004D062C /* Preview Content */,
+			);
+			path = dnd_spellbook;
+			sourceTree = "<group>";
+		};
+		FF2CBC652B2D9EE8004D062C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CBC662B2D9EE8004D062C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF2CBC6F2B2D9EE8004D062C /* dnd_spellbookTests */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CBC702B2D9EE8004D062C /* dnd_spellbookTests.swift */,
+			);
+			path = dnd_spellbookTests;
+			sourceTree = "<group>";
+		};
+		FF2CBC792B2D9EE8004D062C /* dnd_spellbookUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CBC7A2B2D9EE8004D062C /* dnd_spellbookUITests.swift */,
+				FF2CBC7C2B2D9EE8004D062C /* dnd_spellbookUITestsLaunchTests.swift */,
+			);
+			path = dnd_spellbookUITests;
+			sourceTree = "<group>";
+		};
+		FF2CBC8D2B2DE96F004D062C /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				FFE792852B3B912A004F6BF4 /* FilterTypes */,
+				FFE792692B3B7538004F6BF4 /* CharacterTypes */,
+				FFE792642B3A1CBD004F6BF4 /* TagTypes */,
+				FFE792552B3A1391004F6BF4 /* SpellTypes */,
+				FF2CBC922B2DFD82004D062C /* GenericProtocol.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		FF2CBC9C2B2E3C99004D062C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				FFCF4BC92B700C7F00D38414 /* DndSu */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		FF2CBC9F2B2E4518004D062C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FFB750142B78FAA80099508F /* DatabaseSetup */,
+				FF779A522B34F72900F7B654 /* AuthorPage */,
+				FF779A4D2B34C4F800F7B654 /* MainView */,
+				FF8325C42B30F67C00820438 /* Layouts */,
+				FFDF84F12B2E89C0004916F3 /* Filter */,
+				FFDF84F02B2E89B7004916F3 /* Character */,
+				FFDF84EF2B2E89AE004916F3 /* Spells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FF779A4D2B34C4F800F7B654 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				FF779A4E2B34C50100F7B654 /* MainView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		FF779A522B34F72900F7B654 /* AuthorPage */ = {
+			isa = PBXGroup;
+			children = (
+				FF779A532B34F74500F7B654 /* AuthorPage.swift */,
+				FF48BCA62B94B77000E3E3DF /* MailView.swift */,
+			);
+			path = AuthorPage;
+			sourceTree = "<group>";
+		};
+		FF8325C42B30F67C00820438 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				FF8325C52B30F68600820438 /* WaterfallLayout.swift */,
+				FF8325C72B30F69A00820438 /* FlowLayout.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		FFB750142B78FAA80099508F /* DatabaseSetup */ = {
+			isa = PBXGroup;
+			children = (
+				FFB750102B77F8090099508F /* DatabaseSetupView.swift */,
+				FFB750202B79308D0099508F /* DatabaseSetupIfNeededView.swift */,
+			);
+			path = DatabaseSetup;
+			sourceTree = "<group>";
+		};
+		FFB750152B78FACA0099508F /* SpellModels */ = {
+			isa = PBXGroup;
+			children = (
+				FFB750162B78FAE30099508F /* DurationModel.swift */,
+				FFB7501A2B78FE140099508F /* DistantionModel.swift */,
+				FFB7501C2B78FE260099508F /* TypeOfActionModel.swift */,
+				FFB750182B78FE060099508F /* ComponentModel.swift */,
+			);
+			path = SpellModels;
+			sourceTree = "<group>";
+		};
+		FFCF4BC92B700C7F00D38414 /* DndSu */ = {
+			isa = PBXGroup;
+			children = (
+				FFCF4BCA2B700C7F00D38414 /* materials.json */,
+				FFCF4BCB2B700C7F00D38414 /* tags.json */,
+				FFCF4BCC2B700C7F00D38414 /* skills.json */,
+			);
+			path = DndSu;
+			sourceTree = "<group>";
+		};
+		FFDF84EF2B2E89AE004916F3 /* Spells */ = {
+			isa = PBXGroup;
+			children = (
+				FF10CA1D2B44AF1E00D9348F /* SpellCreation */,
+				FF8325CF2B31011F00820438 /* SpellListView.swift */,
+				FF8325D12B31058400820438 /* SpellEditView.swift */,
+				FF2CBCA02B2E4531004D062C /* SpellView.swift */,
+				FF2CBCA42B2E55B1004D062C /* TagLine.swift */,
+				FF2CBCA22B2E4E47004D062C /* TagView.swift */,
+				FFCF4BD02B70168500D38414 /* TagColorsGallery.swift */,
+			);
+			path = Spells;
+			sourceTree = "<group>";
+		};
+		FFDF84F02B2E89B7004916F3 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				FF48BCA82B94FCFD00E3E3DF /* CharacterImagePickerView.swift */,
+				FF2CBC8B2B2D9FD9004D062C /* CharacterCreation.swift */,
+				FF8325C92B30F6F900820438 /* CharacterCreationBigView.swift */,
+				FF8325C22B30E60A00820438 /* ObservedScrollView.swift */,
+				FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */,
+				FF8325BA2B30C84A00820438 /* CharacterClassCreationPicker.swift */,
+				FFDF84ED2B2E84B2004916F3 /* UIPickerView.swift */,
+				FFF90A762B338FB500569628 /* CharacterList.swift */,
+				FFF90A782B338FDE00569628 /* CharacterListItem.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		FFDF84F12B2E89C0004916F3 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				FFDF84F22B2E89CB004916F3 /* FilterSetupView.swift */,
+				FF8325CB2B30FFE600820438 /* FilterSetupBigView.swift */,
+				FFDF84FE2B2FB081004916F3 /* FilterExpandableHeader.swift */,
+				FFDF85002B2FB0C1004916F3 /* FilterExpandableContent.swift */,
+				FFDF85022B2FBA0D004916F3 /* FilterExpandableTagContent.swift */,
+				FFDF84FA2B2F99EE004916F3 /* UniversalTagView.swift */,
+				FFDF84FC2B2F9AD4004916F3 /* UniversalTagLine.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		FFE792552B3A1391004F6BF4 /* SpellTypes */ = {
+			isa = PBXGroup;
+			children = (
+				FFE792532B3A1186004F6BF4 /* Spell.swift */,
+				FFB750152B78FACA0099508F /* SpellModels */,
+				FFE792562B3A13E1004F6BF4 /* Duration.swift */,
+				FFE792582B3A17A3004F6BF4 /* Component.swift */,
+				FFE7925A2B3A1879004F6BF4 /* Material.swift */,
+				FFE7925C2B3A1A4B004F6BF4 /* Distantion.swift */,
+				FFE7925E2B3A1B43004F6BF4 /* TypeOfAction.swift */,
+				FFE792602B3A1BC6004F6BF4 /* SpellSchool.swift */,
+				FFE792622B3A1C13004F6BF4 /* Sources.swift */,
+			);
+			path = SpellTypes;
+			sourceTree = "<group>";
+		};
+		FFE792642B3A1CBD004F6BF4 /* TagTypes */ = {
+			isa = PBXGroup;
+			children = (
+				FFE792652B3A1CD1004F6BF4 /* Tag.swift */,
+				FFE792672B3A1E56004F6BF4 /* TagAction.swift */,
+				FFB7500C2B76A26E0099508F /* TagColor.swift */,
+			);
+			path = TagTypes;
+			sourceTree = "<group>";
+		};
+		FFE792692B3B7538004F6BF4 /* CharacterTypes */ = {
+			isa = PBXGroup;
+			children = (
+				FFE7926A2B3B7583004F6BF4 /* Character.swift */,
+				FFE7926C2B3B766E004F6BF4 /* CharacterClass.swift */,
+				FFE7926E2B3B76CD004F6BF4 /* CharacterArchetype.swift */,
+				FFE792702B3B770D004F6BF4 /* BardCollegy.swift */,
+				FFE792722B3B773C004F6BF4 /* WizardSchool.swift */,
+				FFE792742B3B7751004F6BF4 /* DruidCircle.swift */,
+				FFE792762B3B778E004F6BF4 /* ClericDomain.swift */,
+				FFE792782B3B77A9004F6BF4 /* ArtificerSpeciality.swift */,
+				FFE7927A2B3B77C7004F6BF4 /* PaladinOath.swift */,
+				FFE7927C2B3B77DE004F6BF4 /* RangerArchetype.swift */,
+				FFE7927E2B3B7800004F6BF4 /* SorcererOrigin.swift */,
+				FFE792802B3B7813004F6BF4 /* WarlockPatron.swift */,
+			);
+			path = CharacterTypes;
+			sourceTree = "<group>";
+		};
+		FFE792822B3B8FA2004F6BF4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FFE792832B3B8FAB004F6BF4 /* String+.swift */,
+				FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */,
+				FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FFE792852B3B912A004F6BF4 /* FilterTypes */ = {
+			isa = PBXGroup;
+			children = (
+				FFE792862B3B9170004F6BF4 /* Filter.swift */,
+			);
+			path = FilterTypes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF2CBC5A2B2D9EE6004D062C /* dnd_spellbook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF2CBC802B2D9EE8004D062C /* Build configuration list for PBXNativeTarget "dnd_spellbook" */;
+			buildPhases = (
+				FF2CBC572B2D9EE6004D062C /* Sources */,
+				FF2CBC582B2D9EE6004D062C /* Frameworks */,
+				FF2CBC592B2D9EE6004D062C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dnd_spellbook;
+			packageProductDependencies = (
+				FF70ECE22B701FA3000B3A8F /* MCEmojiPicker */,
+			);
+			productName = dnd_spellbook;
+			productReference = FF2CBC5B2B2D9EE6004D062C /* dnd_spellbook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FF2CBC6B2B2D9EE8004D062C /* dnd_spellbookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF2CBC832B2D9EE8004D062C /* Build configuration list for PBXNativeTarget "dnd_spellbookTests" */;
+			buildPhases = (
+				FF2CBC682B2D9EE8004D062C /* Sources */,
+				FF2CBC692B2D9EE8004D062C /* Frameworks */,
+				FF2CBC6A2B2D9EE8004D062C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF2CBC6E2B2D9EE8004D062C /* PBXTargetDependency */,
+			);
+			name = dnd_spellbookTests;
+			productName = dnd_spellbookTests;
+			productReference = FF2CBC6C2B2D9EE8004D062C /* dnd_spellbookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FF2CBC752B2D9EE8004D062C /* dnd_spellbookUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF2CBC862B2D9EE8004D062C /* Build configuration list for PBXNativeTarget "dnd_spellbookUITests" */;
+			buildPhases = (
+				FF2CBC722B2D9EE8004D062C /* Sources */,
+				FF2CBC732B2D9EE8004D062C /* Frameworks */,
+				FF2CBC742B2D9EE8004D062C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF2CBC782B2D9EE8004D062C /* PBXTargetDependency */,
+			);
+			name = dnd_spellbookUITests;
+			productName = dnd_spellbookUITests;
+			productReference = FF2CBC762B2D9EE8004D062C /* dnd_spellbookUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF2CBC532B2D9EE6004D062C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					FF2CBC5A2B2D9EE6004D062C = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					FF2CBC6B2B2D9EE8004D062C = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = FF2CBC5A2B2D9EE6004D062C;
+					};
+					FF2CBC752B2D9EE8004D062C = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = FF2CBC5A2B2D9EE6004D062C;
+					};
+				};
+			};
+			buildConfigurationList = FF2CBC562B2D9EE6004D062C /* Build configuration list for PBXProject "dnd_spellbook" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF2CBC522B2D9EE6004D062C;
+			packageReferences = (
+				FF70ECE12B701FA3000B3A8F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */,
+			);
+			productRefGroup = FF2CBC5C2B2D9EE6004D062C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF2CBC5A2B2D9EE6004D062C /* dnd_spellbook */,
+				FF2CBC6B2B2D9EE8004D062C /* dnd_spellbookTests */,
+				FF2CBC752B2D9EE8004D062C /* dnd_spellbookUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF2CBC592B2D9EE6004D062C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCF4BCE2B700C7F00D38414 /* tags.json in Resources */,
+				FF2CBC672B2D9EE8004D062C /* Preview Assets.xcassets in Resources */,
+				FFCF4BCD2B700C7F00D38414 /* materials.json in Resources */,
+				FF2CBC632B2D9EE8004D062C /* Assets.xcassets in Resources */,
+				FFCF4BCF2B700C7F00D38414 /* skills.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2CBC6A2B2D9EE8004D062C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2CBC742B2D9EE8004D062C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF2CBC572B2D9EE6004D062C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFE7926B2B3B7583004F6BF4 /* Character.swift in Sources */,
+				FFDF84F32B2E89CB004916F3 /* FilterSetupView.swift in Sources */,
+				FF8325D02B31011F00820438 /* SpellListView.swift in Sources */,
+				FFE792592B3A17A3004F6BF4 /* Component.swift in Sources */,
+				FFB750192B78FE060099508F /* ComponentModel.swift in Sources */,
+				FFB7500D2B76A26E0099508F /* TagColor.swift in Sources */,
+				FFDF85012B2FB0C1004916F3 /* FilterExpandableContent.swift in Sources */,
+				FF48BCAD2B9519DE00E3E3DF /* UserDefaults+.swift in Sources */,
+				FF8325C82B30F69A00820438 /* FlowLayout.swift in Sources */,
+				FF10CA212B44BF2C00D9348F /* TagCreationView.swift in Sources */,
+				FFE792632B3A1C13004F6BF4 /* Sources.swift in Sources */,
+				FF8325D22B31058400820438 /* SpellEditView.swift in Sources */,
+				FF8325C32B30E60A00820438 /* ObservedScrollView.swift in Sources */,
+				FF10CA1C2B438E1A00D9348F /* SpellCreationView.swift in Sources */,
+				FF779A542B34F74500F7B654 /* AuthorPage.swift in Sources */,
+				FF10CA262B44C1A700D9348F /* DurationPickerView.swift in Sources */,
+				FFE7925D2B3A1A4B004F6BF4 /* Distantion.swift in Sources */,
+				FF2CBC8C2B2D9FD9004D062C /* CharacterCreation.swift in Sources */,
+				FF779A4F2B34C50100F7B654 /* MainView.swift in Sources */,
+				FFF90A792B338FDE00569628 /* CharacterListItem.swift in Sources */,
+				FF48BCA72B94B77000E3E3DF /* MailView.swift in Sources */,
+				FF2CBCA12B2E4531004D062C /* SpellView.swift in Sources */,
+				FFE792812B3B7813004F6BF4 /* WarlockPatron.swift in Sources */,
+				FFE7926D2B3B766E004F6BF4 /* CharacterClass.swift in Sources */,
+				FF10CA2A2B44C5C400D9348F /* ComponentCreationView.swift in Sources */,
+				FF2CBC932B2DFD82004D062C /* GenericProtocol.swift in Sources */,
+				FFE7927B2B3B77C7004F6BF4 /* PaladinOath.swift in Sources */,
+				FFE792842B3B8FAB004F6BF4 /* String+.swift in Sources */,
+				FF48BCAB2B95164F00E3E3DF /* FileManager+.swift in Sources */,
+				FFE7927F2B3B7800004F6BF4 /* SorcererOrigin.swift in Sources */,
+				FF2CBCA32B2E4E47004D062C /* TagView.swift in Sources */,
+				FFB7501B2B78FE140099508F /* DistantionModel.swift in Sources */,
+				FF2CBCA52B2E55B1004D062C /* TagLine.swift in Sources */,
+				FFE792872B3B9170004F6BF4 /* Filter.swift in Sources */,
+				FF8325BB2B30C84A00820438 /* CharacterClassCreationPicker.swift in Sources */,
+				FF8325CA2B30F6F900820438 /* CharacterCreationBigView.swift in Sources */,
+				FFDF85032B2FBA0D004916F3 /* FilterExpandableTagContent.swift in Sources */,
+				FFE792682B3A1E56004F6BF4 /* TagAction.swift in Sources */,
+				FF48BCA92B94FCFD00E3E3DF /* CharacterImagePickerView.swift in Sources */,
+				FFB750212B79308D0099508F /* DatabaseSetupIfNeededView.swift in Sources */,
+				FFE7926F2B3B76CD004F6BF4 /* CharacterArchetype.swift in Sources */,
+				FFE792662B3A1CD1004F6BF4 /* Tag.swift in Sources */,
+				FF8325C12B30E41400820438 /* DynamicIslandMergingView.swift in Sources */,
+				FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */,
+				FF10CA2C2B44CA5B00D9348F /* CharacterClassPickerView.swift in Sources */,
+				FF10CA302B44CD8A00D9348F /* SchoolPickerView.swift in Sources */,
+				FF8325C62B30F68600820438 /* WaterfallLayout.swift in Sources */,
+				FFE792572B3A13E1004F6BF4 /* Duration.swift in Sources */,
+				FFE7925F2B3A1B43004F6BF4 /* TypeOfAction.swift in Sources */,
+				FF8325CC2B30FFE600820438 /* FilterSetupBigView.swift in Sources */,
+				FFE792752B3B7751004F6BF4 /* DruidCircle.swift in Sources */,
+				FFB750172B78FAE30099508F /* DurationModel.swift in Sources */,
+				FFDF84FB2B2F99EE004916F3 /* UniversalTagView.swift in Sources */,
+				FFDF84EE2B2E84B2004916F3 /* UIPickerView.swift in Sources */,
+				FFCF4BD12B70168500D38414 /* TagColorsGallery.swift in Sources */,
+				FFDF84FD2B2F9AD4004916F3 /* UniversalTagLine.swift in Sources */,
+				FFE792772B3B778E004F6BF4 /* ClericDomain.swift in Sources */,
+				FFE792732B3B773C004F6BF4 /* WizardSchool.swift in Sources */,
+				FFB750112B77F8090099508F /* DatabaseSetupView.swift in Sources */,
+				FFF90A772B338FB500569628 /* CharacterList.swift in Sources */,
+				FFE792792B3B77A9004F6BF4 /* ArtificerSpeciality.swift in Sources */,
+				FFE7927D2B3B77DE004F6BF4 /* RangerArchetype.swift in Sources */,
+				FFB7501D2B78FE260099508F /* TypeOfActionModel.swift in Sources */,
+				FF10CA322B44CE8900D9348F /* SourcesPickerView.swift in Sources */,
+				FFE792712B3B770D004F6BF4 /* BardCollegy.swift in Sources */,
+				FF2CBC5F2B2D9EE6004D062C /* dnd_spellbookApp.swift in Sources */,
+				FF10CA2E2B44CCB900D9348F /* TypeOfActionPickerView.swift in Sources */,
+				FFE792612B3A1BC6004F6BF4 /* SpellSchool.swift in Sources */,
+				FFDF84FF2B2FB081004916F3 /* FilterExpandableHeader.swift in Sources */,
+				FFE7925B2B3A1879004F6BF4 /* Material.swift in Sources */,
+				FFE792542B3A1186004F6BF4 /* Spell.swift in Sources */,
+				FF10CA342B44CECE00D9348F /* LevelPickerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2CBC682B2D9EE8004D062C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF2CBC712B2D9EE8004D062C /* dnd_spellbookTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2CBC722B2D9EE8004D062C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF2CBC7B2B2D9EE8004D062C /* dnd_spellbookUITests.swift in Sources */,
+				FF2CBC7D2B2D9EE8004D062C /* dnd_spellbookUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FF2CBC6E2B2D9EE8004D062C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF2CBC5A2B2D9EE6004D062C /* dnd_spellbook */;
+			targetProxy = FF2CBC6D2B2D9EE8004D062C /* PBXContainerItemProxy */;
+		};
+		FF2CBC782B2D9EE8004D062C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF2CBC5A2B2D9EE6004D062C /* dnd_spellbook */;
+			targetProxy = FF2CBC772B2D9EE8004D062C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FF2CBC7E2B2D9EE8004D062C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FF2CBC7F2B2D9EE8004D062C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		FF2CBC812B2D9EE8004D062C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dnd_spellbook/dnd_spellbook.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"dnd_spellbook/Preview Content\"";
+				DEVELOPMENT_TEAM = 4F39V7T93L;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "varvar.dnd-spellbook";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF2CBC822B2D9EE8004D062C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dnd_spellbook/dnd_spellbook.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"dnd_spellbook/Preview Content\"";
+				DEVELOPMENT_TEAM = 4F39V7T93L;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "varvar.dnd-spellbook";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FF2CBC842B2D9EE8004D062C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "varvar.dnd-spellbookTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dnd_spellbook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/dnd_spellbook";
+			};
+			name = Debug;
+		};
+		FF2CBC852B2D9EE8004D062C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "varvar.dnd-spellbookTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dnd_spellbook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/dnd_spellbook";
+			};
+			name = Release;
+		};
+		FF2CBC872B2D9EE8004D062C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "varvar.dnd-spellbookUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = dnd_spellbook;
+			};
+			name = Debug;
+		};
+		FF2CBC882B2D9EE8004D062C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "varvar.dnd-spellbookUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = dnd_spellbook;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF2CBC562B2D9EE6004D062C /* Build configuration list for PBXProject "dnd_spellbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF2CBC7E2B2D9EE8004D062C /* Debug */,
+				FF2CBC7F2B2D9EE8004D062C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF2CBC802B2D9EE8004D062C /* Build configuration list for PBXNativeTarget "dnd_spellbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF2CBC812B2D9EE8004D062C /* Debug */,
+				FF2CBC822B2D9EE8004D062C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF2CBC832B2D9EE8004D062C /* Build configuration list for PBXNativeTarget "dnd_spellbookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF2CBC842B2D9EE8004D062C /* Debug */,
+				FF2CBC852B2D9EE8004D062C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF2CBC862B2D9EE8004D062C /* Build configuration list for PBXNativeTarget "dnd_spellbookUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF2CBC872B2D9EE8004D062C /* Debug */,
+				FF2CBC882B2D9EE8004D062C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FF70ECE12B701FA3000B3A8F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/izyumkin/MCEmojiPicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FF70ECE22B701FA3000B3A8F /* MCEmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF70ECE12B701FA3000B3A8F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */;
+			productName = MCEmojiPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FF2CBC532B2D9EE6004D062C /* Project object */;
+}
