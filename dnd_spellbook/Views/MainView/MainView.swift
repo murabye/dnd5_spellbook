@@ -17,29 +17,30 @@ enum NavWay: Int, Hashable {
 
 struct MainView: View {
 
+    private var idiom: UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    @Environment(\.modelContext) var modelContext
+
     @Query(sort: \Filter.name) var filters: [Filter] = []
     @AppStorage(UserDefaults.Constants.selectedFilterName) var selectedFilterName: String?
+
     var selectedFilter: Filter? {
         filters.first { $0.name == selectedFilterName }
     }
-    
-    let prepared: [Spell] = []
-    let known: [Spell] = []
-    private var idiom: UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
 
     @Query(filter: #Predicate<Spell> { spell in
         !spell.isHidden
     }, sort: \Spell.id) var other: [Spell]
+    
     @Query(filter: #Predicate<Spell> { spell in
         spell.isHidden
     }, sort: \Spell.id) var hidden: [Spell]
     
-    @Environment(\.modelContext) var modelContext
     @AppStorage(UserDefaults.Constants.selectedId) static var selectedId: String?
     @Query(filter: #Predicate<Character> {
         $0.id == selectedId ?? ""
-    }) var character: [Character]
-    
+    }) var characters: [Character]
+    var character: Character? { characters.first }
+
     @Query var materials: [Material]
     @Query var tags: [Tag]
 
@@ -51,27 +52,37 @@ struct MainView: View {
                         ZStack {
                             ScrollView {
                                 header("Подготовленные")
-                                spellList(
-                                    selectedFilter?.satisfying(spells: prepared, allMaterials: materials, allTags: tags) ?? prepared,
+                                SpellListView(
+                                    spells: selectedFilter?.satisfying(
+                                        spells: character?.preparedSpells ?? [],
+                                        allMaterials: materials,
+                                        allTags: tags
+                                    ) ?? character?.preparedSpells ?? [],
                                     columns: max(Int(proxy.size.width / 300), 1)
-                                )
-                                                                
+                                ).padding(.horizontal)
+
                                 header("Известные")
-                                spellList(
-                                    selectedFilter?.satisfying(spells: known, allMaterials: materials, allTags: tags) ?? known,
+                                SpellListView(
+                                    spells: selectedFilter?.satisfying(
+                                        spells: character?.knownSpells ?? [],
+                                        allMaterials: materials,
+                                        allTags: tags
+                                    ) ?? character?.knownSpells ?? [],
                                     columns: max(Int(proxy.size.width / 300), 1)
-                                )
+                                ).padding(.horizontal)
+
                                 header("Прочие")
-                                spellList(
-                                    selectedFilter?.satisfying(spells: other, allMaterials: materials, allTags: tags) ?? other,
+                                SpellListView(
+                                    spells: selectedFilter?.satisfying(spells: other, allMaterials: materials, allTags: tags) ?? other,
                                     columns: max(Int(proxy.size.width / 300), 1)
-                                )
-                                header("Сокрытые")
-                                spellList(
-                                    selectedFilter?.satisfying(spells: hidden, allMaterials: materials, allTags: tags) ?? hidden,
-                                    columns: max(Int(proxy.size.width / 300), 1)
-                                )
+                                ).padding(.horizontal)
                                 
+                                header("Сокрытые")
+                                SpellListView(
+                                    spells: selectedFilter?.satisfying(spells: hidden, allMaterials: materials, allTags: tags) ?? hidden,
+                                    columns: max(Int(proxy.size.width / 300), 1)
+                                ).padding(.horizontal)
+
                                 Spacer(minLength: 16)
                             }
                             sectionIndexTitles(proxy: scrollProxy)
@@ -88,7 +99,7 @@ struct MainView: View {
             .toolbar(content: {
                 NavigationLink(value: NavWay.characterList) {
                     CharacterListItem(
-                        character: character.first,
+                        character: character,
                         isCompact: true
                     )
                 }
@@ -153,11 +164,6 @@ struct MainView: View {
         .padding(.top, 16)
         .padding(.bottom, -16)
         .id(name)
-    }
-    
-    private func spellList(_ spells: [Spell], columns: Int) -> some View {
-        SpellListView(spells: spells, columns: columns)
-            .padding(.horizontal)
     }
     
     func sectionIndexTitles(proxy: ScrollViewProxy) -> some View {
@@ -233,8 +239,4 @@ struct SectionIndexTitle: View {
                 image.foregroundColor(.blue)
             )
     }
-}
-
-#Preview {
-    MainView()
 }

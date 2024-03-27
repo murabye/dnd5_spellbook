@@ -16,8 +16,8 @@ class Character {
     let characterSubclass: CharacterArchetype?
     let name: String
     let tagActions: [Int: TagAction]
-    @Relationship(deleteRule: .nullify) let knownSpells: [Spell]
-    @Relationship(deleteRule: .nullify) let preparedSpells: [Spell]
+    @Relationship(deleteRule: .nullify) var knownSpells: [Spell]
+    @Relationship(deleteRule: .nullify) var preparedSpells: [Spell]
     
     init(
         id: String,

@@ -20,8 +20,7 @@ struct DatabaseSetupIfNeededView: View {
     }()
     
     var needLoad: Bool {
-        if let res = try? modelContext.fetch(descr),
-           !res.isEmpty {
+        if let res = try? modelContext.fetchCount(descr), res > 0 {
             return true
         } else {
             return false

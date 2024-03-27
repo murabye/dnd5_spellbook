@@ -60,7 +60,12 @@ class Filter: Hashable, Identifiable {
 
 extension Filter {
     
-    func isSatisfy(spell: Spell, allMaterials: [Material], allTags: [Tag]) -> Bool {
+    func isSatisfy(
+        spell: Spell,
+        allMaterials: [Material],
+        allTags: [Tag]
+    ) -> Bool {
+
         guard levels.isEmpty || levels.contains(spell.level) else { return false }
         guard !noMaterials || !spell.haveMaterials else { return false }
         
@@ -102,8 +107,16 @@ extension Filter {
 
 extension Filter {
     
-    func satisfying(spells: [Spell], allMaterials: [Material], allTags: [Tag]) -> [Spell] {
-        spells.filter { isSatisfy(spell: $0, allMaterials: allMaterials, allTags: allTags) }
+    func satisfying(
+        spells: [Spell],
+        allMaterials: [Material],
+        allTags: [Tag]
+    ) -> [Spell] {
+        spells.filter { isSatisfy(
+            spell: $0,
+            allMaterials: allMaterials,
+            allTags: allTags
+        ) }
     }
 }
 

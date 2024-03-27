@@ -122,23 +122,7 @@ extension Spell: Hashable {
 extension Spell: Equatable {
     
     static func == (lhs: Spell, rhs: Spell) -> Bool {
-        lhs.id == rhs.id &&
-        lhs.name == rhs.name &&
-        lhs.labelling == rhs.labelling &&
-        lhs.duration == rhs.duration &&
-        lhs.concentration == rhs.concentration &&
-        lhs.level == rhs.level &&
-        lhs.components == rhs.components &&
-        lhs.distantion == rhs.distantion &&
-        lhs.typeOfAction == rhs.typeOfAction &&
-        lhs.school == rhs.school &&
-        lhs.sources == rhs.sources &&
-        lhs.userDescription == rhs.userDescription &&
-        lhs.initialTags == rhs.initialTags &&
-        lhs.userTagsActions == rhs.userTagsActions &&
-        lhs.classes == rhs.classes &&
-        lhs.isCustom == rhs.isCustom &&
-        lhs.isHidden == rhs.isHidden
+        lhs.id == rhs.id
     }
 }
 
