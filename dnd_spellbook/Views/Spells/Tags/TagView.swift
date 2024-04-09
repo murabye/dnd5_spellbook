@@ -45,10 +45,6 @@ struct TagView: View {
     }
 }
 
-//#Preview {
-//    TagView(compact: false, edit: false, tagType: .heal)
-//}
-
 struct TagType: Identifiable {
 
     let id: String
@@ -76,14 +72,14 @@ struct TagType: Identifiable {
     
     init(
         tag: Tag,
-        removable: Bool
+        removable: Bool,
+        muted: Bool = false
     ) {
         self.id = tag.id
         self.removable = removable
         self.name = tag.text
-        self.color = tag.color.backgroundColor
+        self.color = muted ? .blend(color1: tag.color.backgroundColor, intensity: 0.6, color2: .white) : tag.color.backgroundColor
         self.textColor = tag.color.foregroundColor
         self.emoji = tag.emoji
     }
-
 }

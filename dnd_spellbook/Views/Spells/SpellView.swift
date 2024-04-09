@@ -24,7 +24,7 @@ struct SpellView: View {
                     .rotationEffect(.degrees(!collapsed ? 0 : 180))
             }
             
-            TagLine(compact: collapsed, edit: false, tags: spell.tags(allTags: allTags))
+            TagLine(compact: collapsed, edit: false, tags: .constant(spell.tags(allTags: allTags)))
             Text(spell.components.name(allMaterials: allMaterials))
 
             HStack {
@@ -39,7 +39,7 @@ struct SpellView: View {
                     Text(spell.sources.map(\.name).joined(separator: ", "))
                         .foregroundStyle(Color.secondary)
                     
-                    Text(spell.labelling)
+                    Text(spell.descrText)
                         .foregroundStyle(Color.secondary)
                     
                     HStack {

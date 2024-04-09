@@ -18,7 +18,7 @@ class Spell: HaveName {
     var level: Int
     var school: SpellSchool
     var sources: [Sources]
-    var userDescription: String
+    var userDescription: String?
     var classes: [CharacterClass]
     var isCustom: Bool
     var isHidden: Bool
@@ -57,6 +57,15 @@ class Spell: HaveName {
     
     func tags(allTags: [Tag]) -> [Tag] {
         Array(userTagsActions.applied(to: initialTags, fullList: allTags))
+    }
+    
+    var descrText: String {
+        if let userText = userDescription,
+           !userText.isEmpty {
+            userText
+        } else {
+            labelling
+        }
     }
     
     init(

@@ -11,7 +11,7 @@ import SwiftUI
 struct SpellListView: View {
     let spells: [Spell]
     let columns: Int
-//    @State var editingSpell: Spell?
+    @State var editingSpell: Spell?
     @Environment(\.modelContext) var modelContext
     @Binding var character: CharacterModel?
 
@@ -52,7 +52,7 @@ struct SpellListView: View {
                             Button("Спрятать", action: { [weak spell] in hide(spell: spell) })
                         }
                         
-                        Button("Править", action: { [weak spell] in edit(spell: spell) })
+                        Button("Править", action: { [weak spell] in self.editingSpell = spell })
                     }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
@@ -61,9 +61,9 @@ struct SpellListView: View {
                 .padding(.vertical, 2)
             }
         }
-//        .sheet(item: $editingSpell) { spell in
-//            SpellEditView(spell: spell)
-//        }
+        .sheet(item: $editingSpell) { spell in
+            SpellEditView(spell: spell)
+        }
     }
 
     func prepare(spell: Spell?) {
@@ -130,15 +130,7 @@ struct SpellListView: View {
         try? modelContext.save()
         CharacterUpdateService.send()
     }
-    
-    func edit(spell: Spell?) {
-        guard let spell else {
-            return
-        }
-
         
-    }
-    
     func hide(spell: Spell?) {
         guard let spell,
               !spell.isHidden else {

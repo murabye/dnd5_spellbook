@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FF10CA1C2B438E1A00D9348F /* SpellCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */; };
-		FF10CA212B44BF2C00D9348F /* TagCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA202B44BF2C00D9348F /* TagCreationView.swift */; };
 		FF10CA262B44C1A700D9348F /* DurationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA252B44C1A700D9348F /* DurationPickerView.swift */; };
 		FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */; };
 		FF10CA2A2B44C5C400D9348F /* ComponentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */; };
@@ -87,6 +86,7 @@
 		FFE792812B3B7813004F6BF4 /* WarlockPatron.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792802B3B7813004F6BF4 /* WarlockPatron.swift */; };
 		FFE792842B3B8FAB004F6BF4 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792832B3B8FAB004F6BF4 /* String+.swift */; };
 		FFE792872B3B9170004F6BF4 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792862B3B9170004F6BF4 /* Filter.swift */; };
+		FFF28C622BC58C9A0032E605 /* TagSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF28C612BC58C9A0032E605 /* TagSelectView.swift */; };
 		FFF90A772B338FB500569628 /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF90A762B338FB500569628 /* CharacterList.swift */; };
 		FFF90A792B338FDE00569628 /* CharacterListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF90A782B338FDE00569628 /* CharacterListItem.swift */; };
 /* End PBXBuildFile section */
@@ -110,7 +110,6 @@
 
 /* Begin PBXFileReference section */
 		FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellCreationView.swift; sourceTree = "<group>"; };
-		FF10CA202B44BF2C00D9348F /* TagCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCreationView.swift; sourceTree = "<group>"; };
 		FF10CA252B44C1A700D9348F /* DurationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerView.swift; sourceTree = "<group>"; };
 		FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistantionPickerView.swift; sourceTree = "<group>"; };
 		FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCreationView.swift; sourceTree = "<group>"; };
@@ -192,6 +191,7 @@
 		FFE792802B3B7813004F6BF4 /* WarlockPatron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarlockPatron.swift; sourceTree = "<group>"; };
 		FFE792832B3B8FAB004F6BF4 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		FFE792862B3B9170004F6BF4 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		FFF28C612BC58C9A0032E605 /* TagSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectView.swift; sourceTree = "<group>"; };
 		FFF90A762B338FB500569628 /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 		FFF90A782B338FDE00569628 /* CharacterListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */,
-				FF10CA202B44BF2C00D9348F /* TagCreationView.swift */,
 				FF10CA252B44C1A700D9348F /* DurationPickerView.swift */,
 				FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */,
 				FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */,
@@ -409,13 +408,11 @@
 		FFDF84EF2B2E89AE004916F3 /* Spells */ = {
 			isa = PBXGroup;
 			children = (
+				FFF28C602BC58C870032E605 /* Tags */,
 				FF10CA1D2B44AF1E00D9348F /* SpellCreation */,
 				FF8325CF2B31011F00820438 /* SpellListView.swift */,
 				FF8325D12B31058400820438 /* SpellEditView.swift */,
 				FF2CBCA02B2E4531004D062C /* SpellView.swift */,
-				FF2CBCA42B2E55B1004D062C /* TagLine.swift */,
-				FF2CBCA22B2E4E47004D062C /* TagView.swift */,
-				FFCF4BD02B70168500D38414 /* TagColorsGallery.swift */,
 			);
 			path = Spells;
 			sourceTree = "<group>";
@@ -511,6 +508,17 @@
 				FFE792862B3B9170004F6BF4 /* Filter.swift */,
 			);
 			path = FilterTypes;
+			sourceTree = "<group>";
+		};
+		FFF28C602BC58C870032E605 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CBCA42B2E55B1004D062C /* TagLine.swift */,
+				FF2CBCA22B2E4E47004D062C /* TagView.swift */,
+				FFF28C612BC58C9A0032E605 /* TagSelectView.swift */,
+				FFCF4BD02B70168500D38414 /* TagColorsGallery.swift */,
+			);
+			path = Tags;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -661,7 +669,6 @@
 				FFDF85012B2FB0C1004916F3 /* FilterExpandableContent.swift in Sources */,
 				FF48BCAD2B9519DE00E3E3DF /* UserDefaults+.swift in Sources */,
 				FF8325C82B30F69A00820438 /* FlowLayout.swift in Sources */,
-				FF10CA212B44BF2C00D9348F /* TagCreationView.swift in Sources */,
 				FFE792632B3A1C13004F6BF4 /* Sources.swift in Sources */,
 				FF8325D22B31058400820438 /* SpellEditView.swift in Sources */,
 				FF8325C32B30E60A00820438 /* ObservedScrollView.swift in Sources */,
@@ -713,6 +720,7 @@
 				FFE792732B3B773C004F6BF4 /* WizardSchool.swift in Sources */,
 				FFB750112B77F8090099508F /* DatabaseSetupView.swift in Sources */,
 				FFF90A772B338FB500569628 /* CharacterList.swift in Sources */,
+				FFF28C622BC58C9A0032E605 /* TagSelectView.swift in Sources */,
 				FFE792792B3B77A9004F6BF4 /* ArtificerSpeciality.swift in Sources */,
 				FFE7927D2B3B77DE004F6BF4 /* RangerArchetype.swift in Sources */,
 				FFB7501D2B78FE260099508F /* TypeOfActionModel.swift in Sources */,

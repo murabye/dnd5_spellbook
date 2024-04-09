@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TagColorsGallery: View {
-    @Binding var selected: TagColor?
+    @Binding var selected: TagColor
     
     private let columns = [
         
@@ -44,6 +44,9 @@ struct TagColorsGallery: View {
                 }
             }
         }
+        .padding()
+        .background(.thinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
@@ -58,7 +61,3 @@ extension View {
             )
     }
 }
-
-//#Preview {
-//    TagColorsGallery()
-//}

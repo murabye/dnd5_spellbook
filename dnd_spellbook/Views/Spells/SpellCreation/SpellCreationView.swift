@@ -22,14 +22,16 @@ struct SpellCreationView: View {
     @State var distantion: Distantion = .onlyYou
     @State var concentration: Bool = false
 
+    @State var tags: [Tag] = []
     @Query(sort: \Tag.text) var allTags: [Tag]
+
     @Query(sort: \MaterialModel.name) var allMaterials: [MaterialModel]
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 TextField("Название", text: $name, axis: .vertical)
-                TagLine(compact: false, edit: true, tags: allTags)
+                TagLine(compact: false, edit: true, tags: $tags)
                 
                 HStack {
                     Button(duration.name) {
