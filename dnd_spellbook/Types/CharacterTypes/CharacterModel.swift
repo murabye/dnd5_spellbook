@@ -9,9 +9,9 @@ import Foundation
 import SwiftData
 
 @Model
-class Character {
+class CharacterModel {
 
-    @Attribute(.unique) let id: String
+    let id: String
     let imageUrl: URL?
     let characterSubclass: CharacterArchetype?
     let name: String
@@ -38,16 +38,16 @@ class Character {
     }
 }
 
-extension Character: Hashable {
+extension CharacterModel: Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 }
 
-extension Character: Identifiable {
+extension CharacterModel: Identifiable {
     
-    static func == (lhs: Character, rhs: Character) -> Bool {
+    static func == (lhs: CharacterModel, rhs: CharacterModel) -> Bool {
         lhs.imageUrl == rhs.imageUrl
         && lhs.id == rhs.id
         && lhs.characterSubclass == rhs.characterSubclass

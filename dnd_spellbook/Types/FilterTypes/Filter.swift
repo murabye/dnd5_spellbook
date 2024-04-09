@@ -62,7 +62,7 @@ extension Filter {
     
     func isSatisfy(
         spell: Spell,
-        allMaterials: [Material],
+        allMaterials: [MaterialModel],
         allTags: [Tag]
     ) -> Bool {
 
@@ -109,7 +109,7 @@ extension Filter {
     
     func satisfying(
         spells: [Spell],
-        allMaterials: [Material],
+        allMaterials: [MaterialModel],
         allTags: [Tag]
     ) -> [Spell] {
         spells.filter { isSatisfy(
@@ -133,7 +133,7 @@ extension Spell {
         return false
     }
     
-    func materialPrice(allMaterials: [Material]) -> Int {
+    func materialPrice(allMaterials: [MaterialModel]) -> Int {
         var price: Int = 0
         
         for component in self.components {

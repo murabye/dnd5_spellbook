@@ -11,13 +11,9 @@ import SwiftUI
 struct SpellListView: View {
     let spells: [Spell]
     let columns: Int
+//    @State var editingSpell: Spell?
     @Environment(\.modelContext) var modelContext
-    
-    @AppStorage(UserDefaults.Constants.selectedId) static var selectedId: String?
-    @Query(filter: #Predicate<Character> {
-        $0.id == selectedId ?? ""
-    }) var characters: [Character]
-    var character: Character? { characters.first }
+    @Binding var character: CharacterModel?
 
     var body: some View {
         VerticalWaterfallLayout(
@@ -56,7 +52,7 @@ struct SpellListView: View {
                             Button("Спрятать", action: { [weak spell] in hide(spell: spell) })
                         }
                         
-                        Button("Править", action: {})
+                        Button("Править", action: { [weak spell] in edit(spell: spell) })
                     }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
@@ -65,6 +61,9 @@ struct SpellListView: View {
                 .padding(.vertical, 2)
             }
         }
+//        .sheet(item: $editingSpell) { spell in
+//            SpellEditView(spell: spell)
+//        }
     }
 
     func prepare(spell: Spell?) {
@@ -82,6 +81,7 @@ struct SpellListView: View {
         }
 
         try? modelContext.save()
+        CharacterUpdateService.send()
     }
     
     func unpare(spell: Spell?) {
@@ -96,6 +96,7 @@ struct SpellListView: View {
         }
 
         try? modelContext.save()
+        CharacterUpdateService.send()
     }
 
     func know(spell: Spell?) {
@@ -109,6 +110,7 @@ struct SpellListView: View {
         }
 
         try? modelContext.save()
+        CharacterUpdateService.send()
     }
     
     func unknow(spell: Spell?) {
@@ -126,6 +128,15 @@ struct SpellListView: View {
         }
 
         try? modelContext.save()
+        CharacterUpdateService.send()
+    }
+    
+    func edit(spell: Spell?) {
+        guard let spell else {
+            return
+        }
+
+        
     }
     
     func hide(spell: Spell?) {

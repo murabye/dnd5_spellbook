@@ -92,17 +92,17 @@ struct DatabaseSetupView: View {
         }
     }
 
-    func parseMaterials() throws -> [Material]  {
+    func parseMaterials() throws -> [MaterialModel]  {
         self.stage = .parseMaterials
         if let bundlePath = Bundle.main.path(forResource: "materials", ofType: "json"),
            let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-            return try JSONDecoder().decode([Material].self, from: jsonData)
+            return try JSONDecoder().decode([MaterialModel].self, from: jsonData)
         } else {
             throw AnyError.anyError
         }
     }
     
-    func save(materials: [Material]) throws {
+    func save(materials: [MaterialModel]) throws {
         self.stage = .writeMaterials
         try modelContext.transaction {
             for material in materials {

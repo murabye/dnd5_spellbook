@@ -51,6 +51,7 @@
 		FFB7501B2B78FE140099508F /* DistantionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7501A2B78FE140099508F /* DistantionModel.swift */; };
 		FFB7501D2B78FE260099508F /* TypeOfActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7501C2B78FE260099508F /* TypeOfActionModel.swift */; };
 		FFB750212B79308D0099508F /* DatabaseSetupIfNeededView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750202B79308D0099508F /* DatabaseSetupIfNeededView.swift */; };
+		FFB873C92BC53E4B00528394 /* CharacterUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB873C82BC53E4B00528394 /* CharacterUpdateService.swift */; };
 		FFCF4BCD2B700C7F00D38414 /* materials.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCA2B700C7F00D38414 /* materials.json */; };
 		FFCF4BCE2B700C7F00D38414 /* tags.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCB2B700C7F00D38414 /* tags.json */; };
 		FFCF4BCF2B700C7F00D38414 /* skills.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCC2B700C7F00D38414 /* skills.json */; };
@@ -65,14 +66,14 @@
 		FFE792542B3A1186004F6BF4 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792532B3A1186004F6BF4 /* Spell.swift */; };
 		FFE792572B3A13E1004F6BF4 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792562B3A13E1004F6BF4 /* Duration.swift */; };
 		FFE792592B3A17A3004F6BF4 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792582B3A17A3004F6BF4 /* Component.swift */; };
-		FFE7925B2B3A1879004F6BF4 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7925A2B3A1879004F6BF4 /* Material.swift */; };
+		FFE7925B2B3A1879004F6BF4 /* MaterialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7925A2B3A1879004F6BF4 /* MaterialModel.swift */; };
 		FFE7925D2B3A1A4B004F6BF4 /* Distantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7925C2B3A1A4B004F6BF4 /* Distantion.swift */; };
 		FFE7925F2B3A1B43004F6BF4 /* TypeOfAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7925E2B3A1B43004F6BF4 /* TypeOfAction.swift */; };
 		FFE792612B3A1BC6004F6BF4 /* SpellSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792602B3A1BC6004F6BF4 /* SpellSchool.swift */; };
 		FFE792632B3A1C13004F6BF4 /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792622B3A1C13004F6BF4 /* Sources.swift */; };
 		FFE792662B3A1CD1004F6BF4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792652B3A1CD1004F6BF4 /* Tag.swift */; };
 		FFE792682B3A1E56004F6BF4 /* TagAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792672B3A1E56004F6BF4 /* TagAction.swift */; };
-		FFE7926B2B3B7583004F6BF4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926A2B3B7583004F6BF4 /* Character.swift */; };
+		FFE7926B2B3B7583004F6BF4 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926A2B3B7583004F6BF4 /* CharacterModel.swift */; };
 		FFE7926D2B3B766E004F6BF4 /* CharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926C2B3B766E004F6BF4 /* CharacterClass.swift */; };
 		FFE7926F2B3B76CD004F6BF4 /* CharacterArchetype.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926E2B3B76CD004F6BF4 /* CharacterArchetype.swift */; };
 		FFE792712B3B770D004F6BF4 /* BardCollegy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792702B3B770D004F6BF4 /* BardCollegy.swift */; };
@@ -155,6 +156,7 @@
 		FFB7501A2B78FE140099508F /* DistantionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistantionModel.swift; sourceTree = "<group>"; };
 		FFB7501C2B78FE260099508F /* TypeOfActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfActionModel.swift; sourceTree = "<group>"; };
 		FFB750202B79308D0099508F /* DatabaseSetupIfNeededView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSetupIfNeededView.swift; sourceTree = "<group>"; };
+		FFB873C82BC53E4B00528394 /* CharacterUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUpdateService.swift; sourceTree = "<group>"; };
 		FFCF4BCA2B700C7F00D38414 /* materials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = materials.json; sourceTree = "<group>"; };
 		FFCF4BCB2B700C7F00D38414 /* tags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tags.json; sourceTree = "<group>"; };
 		FFCF4BCC2B700C7F00D38414 /* skills.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skills.json; sourceTree = "<group>"; };
@@ -169,14 +171,14 @@
 		FFE792532B3A1186004F6BF4 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		FFE792562B3A13E1004F6BF4 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		FFE792582B3A17A3004F6BF4 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
-		FFE7925A2B3A1879004F6BF4 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		FFE7925A2B3A1879004F6BF4 /* MaterialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialModel.swift; sourceTree = "<group>"; };
 		FFE7925C2B3A1A4B004F6BF4 /* Distantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distantion.swift; sourceTree = "<group>"; };
 		FFE7925E2B3A1B43004F6BF4 /* TypeOfAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfAction.swift; sourceTree = "<group>"; };
 		FFE792602B3A1BC6004F6BF4 /* SpellSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellSchool.swift; sourceTree = "<group>"; };
 		FFE792622B3A1C13004F6BF4 /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
 		FFE792652B3A1CD1004F6BF4 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		FFE792672B3A1E56004F6BF4 /* TagAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAction.swift; sourceTree = "<group>"; };
-		FFE7926A2B3B7583004F6BF4 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		FFE7926A2B3B7583004F6BF4 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		FFE7926C2B3B766E004F6BF4 /* CharacterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClass.swift; sourceTree = "<group>"; };
 		FFE7926E2B3B76CD004F6BF4 /* CharacterArchetype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterArchetype.swift; sourceTree = "<group>"; };
 		FFE792702B3B770D004F6BF4 /* BardCollegy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BardCollegy.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				FF2CBC5E2B2D9EE6004D062C /* dnd_spellbookApp.swift */,
+				FFB873C72BC53E3900528394 /* Services */,
 				FFE792822B3B8FA2004F6BF4 /* Extension */,
 				FF2CBC9F2B2E4518004D062C /* Views */,
 				FF2CBC9C2B2E3C99004D062C /* Library */,
@@ -385,6 +388,14 @@
 			path = SpellModels;
 			sourceTree = "<group>";
 		};
+		FFB873C72BC53E3900528394 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FFB873C82BC53E4B00528394 /* CharacterUpdateService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		FFCF4BC92B700C7F00D38414 /* DndSu */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,7 +457,7 @@
 				FFB750152B78FACA0099508F /* SpellModels */,
 				FFE792562B3A13E1004F6BF4 /* Duration.swift */,
 				FFE792582B3A17A3004F6BF4 /* Component.swift */,
-				FFE7925A2B3A1879004F6BF4 /* Material.swift */,
+				FFE7925A2B3A1879004F6BF4 /* MaterialModel.swift */,
 				FFE7925C2B3A1A4B004F6BF4 /* Distantion.swift */,
 				FFE7925E2B3A1B43004F6BF4 /* TypeOfAction.swift */,
 				FFE792602B3A1BC6004F6BF4 /* SpellSchool.swift */,
@@ -468,7 +479,7 @@
 		FFE792692B3B7538004F6BF4 /* CharacterTypes */ = {
 			isa = PBXGroup;
 			children = (
-				FFE7926A2B3B7583004F6BF4 /* Character.swift */,
+				FFE7926A2B3B7583004F6BF4 /* CharacterModel.swift */,
 				FFE7926C2B3B766E004F6BF4 /* CharacterClass.swift */,
 				FFE7926E2B3B76CD004F6BF4 /* CharacterArchetype.swift */,
 				FFE792702B3B770D004F6BF4 /* BardCollegy.swift */,
@@ -641,7 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFE7926B2B3B7583004F6BF4 /* Character.swift in Sources */,
+				FFE7926B2B3B7583004F6BF4 /* CharacterModel.swift in Sources */,
 				FFDF84F32B2E89CB004916F3 /* FilterSetupView.swift in Sources */,
 				FF8325D02B31011F00820438 /* SpellListView.swift in Sources */,
 				FFE792592B3A17A3004F6BF4 /* Component.swift in Sources */,
@@ -675,6 +686,7 @@
 				FFB7501B2B78FE140099508F /* DistantionModel.swift in Sources */,
 				FF2CBCA52B2E55B1004D062C /* TagLine.swift in Sources */,
 				FFE792872B3B9170004F6BF4 /* Filter.swift in Sources */,
+				FFB873C92BC53E4B00528394 /* CharacterUpdateService.swift in Sources */,
 				FF8325BB2B30C84A00820438 /* CharacterClassCreationPicker.swift in Sources */,
 				FF8325CA2B30F6F900820438 /* CharacterCreationBigView.swift in Sources */,
 				FFDF85032B2FBA0D004916F3 /* FilterExpandableTagContent.swift in Sources */,
@@ -710,7 +722,7 @@
 				FF10CA2E2B44CCB900D9348F /* TypeOfActionPickerView.swift in Sources */,
 				FFE792612B3A1BC6004F6BF4 /* SpellSchool.swift in Sources */,
 				FFDF84FF2B2FB081004916F3 /* FilterExpandableHeader.swift in Sources */,
-				FFE7925B2B3A1879004F6BF4 /* Material.swift in Sources */,
+				FFE7925B2B3A1879004F6BF4 /* MaterialModel.swift in Sources */,
 				FFE792542B3A1186004F6BF4 /* Spell.swift in Sources */,
 				FF10CA342B44CECE00D9348F /* LevelPickerView.swift in Sources */,
 			);

@@ -229,7 +229,7 @@ struct CharacterCreationView: View {
         let imageUrl = FileManager.default.save(image: selectedImage)
         let newCharacterId = UUID().uuidString
         UserDefaults.standard.selectedId = newCharacterId
-        let character = Character(
+        let character = CharacterModel(
             id: newCharacterId,
             imageUrl: imageUrl,
             characterSubclass: subclassed,
@@ -240,5 +240,6 @@ struct CharacterCreationView: View {
         )
         modelContext.insert(character)
         try? modelContext.save()
+        CharacterUpdateService.send()
     }
 }

@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct CharacterListItem: View {
-    let character: Character?
+    let character: CharacterModel?
     let isCompact: Bool
     @AppStorage(UserDefaults.Constants.selectedId) var selectedId: String?
     var isSelected: Bool {
         character?.id != nil && selectedId == character?.id
     }
     
-    init(character: Character?, isCompact: Bool) {
+    init(character: CharacterModel?, isCompact: Bool) {
         self.character = character
         self.isCompact = isCompact
     }
@@ -109,7 +109,7 @@ struct CharacterListAppendItem: View {
         CharacterListAppendItem(isSingle: false)
         Spacer()
         CharacterListItem(
-            character: Character(
+            character: CharacterModel(
                 id: "1",
                 imageUrl: nil,
                 characterSubclass: .cleric(.life),

@@ -12,7 +12,7 @@ struct SpellView: View {
     let spell: Spell
     @State var collapsed: Bool
     @Query var allTags: [Tag]
-    @Query(sort: \Material.name) var allMaterials: [Material]
+    @Query(sort: \MaterialModel.name) var allMaterials: [MaterialModel]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {

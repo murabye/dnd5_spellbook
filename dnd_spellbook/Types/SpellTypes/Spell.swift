@@ -18,7 +18,7 @@ class Spell: HaveName {
     var level: Int
     var school: SpellSchool
     var sources: [Sources]
-    var userDescription: String?
+    var userDescription: String
     var classes: [CharacterClass]
     var isCustom: Bool
     var isHidden: Bool

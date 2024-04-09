@@ -23,7 +23,7 @@ struct SpellCreationView: View {
     @State var concentration: Bool = false
 
     @Query(sort: \Tag.text) var allTags: [Tag]
-    @Query(sort: \Material.name) var allMaterials: [Material]
+    @Query(sort: \MaterialModel.name) var allMaterials: [MaterialModel]
 
     var body: some View {
         ScrollView {

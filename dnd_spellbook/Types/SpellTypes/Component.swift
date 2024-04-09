@@ -125,7 +125,7 @@ extension Component: Codable {
 
 extension [Component] {
     
-    func name(allMaterials: [Material]) -> String {
+    func name(allMaterials: [MaterialModel]) -> String {
         self
             .sorted()
             .map { component in

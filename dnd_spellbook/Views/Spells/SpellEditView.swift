@@ -10,9 +10,9 @@ import SwiftUI
 
 struct SpellEditView: View {
     let spell: Spell
-    @State var description: String
+    @State var description: String = ""
     @Query(sort: \Tag.text) var allTags: [Tag]
-    @Query(sort: \Material.name) var allMaterials: [Material]
+    @Query(sort: \MaterialModel.name) var allMaterials: [MaterialModel]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {

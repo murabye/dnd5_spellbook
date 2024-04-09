@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Material: Codable {
+class MaterialModel: Codable {
     
     @Attribute(.unique) let id: String
     let cost: Int
@@ -33,7 +33,7 @@ class Material: Codable {
     }
 }
     
-extension Material: Hashable {
+extension MaterialModel: Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -42,7 +42,7 @@ extension Material: Hashable {
     }
 }
 
-extension Material {
+extension MaterialModel {
     
     enum CodingKeys: String, CodingKey {
         case id

@@ -9,11 +9,15 @@ import SwiftUI
 import MessageUI
 
 /*
- TODO: - Комбинация класса и уровней в фильтре, чтобы можно было задать каждому классу конкретные уровни заклинаний
- TODO: - Авторские отчисления в фильтр
- TODO: - Прелоад инфы
- TODO: - соединение в приложение
-*/
+ TODO: VARVAR
+ - возможность поправить скилл
+ - возможность добавить свой скилл
+ - возможность добавить свой тег
+ - автоматическое добавление скиллов для друида и жреца
+ - авторские отчисления в фильтре
+ - оптимизации главной страницы
+ - страничка создания уменьшить
+ */
 
 struct AuthorPage: View {
     
@@ -21,33 +25,35 @@ struct AuthorPage: View {
     @State var result: Result<MFMailComposeResult, Error>? = nil
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Я Варя Кузнецова, автор приложения")
-            
-            Text("В мои планы входит:")
-
-            Text("- Добавление разных переводов скиллов")
-            Text("- Комбинация класса и уровней в фильтре, чтобы можно было задать каждому классу конкретные уровни заклинаний")
-            Text("- Конвертация в сайт и андроид-приложение")
-
-            Text("")
-            
-            Text("Если у вас есть новые идеи или в приложении вы столкнулись с проблемами, пожалуйста,")
-            
-            Button("напишите мне") {
-                print("ttt")
-            }
-            .disabled(!MFMailComposeViewController.canSendMail())
-            .sheet(isPresented: $isShowingMailView) {
-                MailView(result: self.$result)
+        HStack {
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Я Варя Кузнецова, автор приложения")
+                
+                Text("В мои планы входит:")
+                
+                Text("- Добавление разных переводов скиллов")
+                Text("- Конвертация в сайт и андроид-приложение")
+                
+                Text("")
+                
+                Text("Если у вас есть новые идеи или в приложении вы столкнулись с проблемами, пожалуйста,")
+                
+                Button("напишите мне") {
+                    isShowingMailView.toggle()
+                }
+                .disabled(!MFMailComposeViewController.canSendMail())
+                .sheet(isPresented: $isShowingMailView) {
+                    MailView(result: self.$result)
+                }
+                Spacer()
             }
             Spacer()
         }
         .padding()
+        .navigationTitle("Hello, World!")
         .background(
             Color(uiColor: UIColor.systemGroupedBackground)
         )
-        .navigationTitle("Hello, World!")
     }
 }
 

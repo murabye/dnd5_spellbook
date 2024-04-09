@@ -11,14 +11,13 @@ import SwiftUI
 @main
 struct dnd_spellbookApp: App {
     
-    @Environment(\.modelContext) var modelContext
     let modelContainer: ModelContainer
     
     init() {
         do {
             modelContainer = try ModelContainer(
-                for: Filter.self, Character.self, Tag.self, Spell.self, Material.self,
-                configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+                for: Filter.self, CharacterModel.self, Tag.self, Spell.self, MaterialModel.self,
+                configurations: ModelConfiguration(isStoredInMemoryOnly: false)
             )
         } catch {
             fatalError("Could not initialize ModelContainer \(error.localizedDescription)")

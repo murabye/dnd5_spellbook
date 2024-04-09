@@ -35,14 +35,22 @@ struct MainView: View {
         spell.isHidden
     }, sort: \Spell.id) var hidden: [Spell]
     
-    @AppStorage(UserDefaults.Constants.selectedId) static var selectedId: String?
-    @Query(filter: #Predicate<Character> {
-        $0.id == selectedId ?? ""
-    }) var characters: [Character]
-    var character: Character? { characters.first }
+    @State var character: CharacterModel? = nil
 
-    @Query var materials: [Material]
+    @Query var materials: [MaterialModel]
     @Query var tags: [Tag]
+
+    func recallCharacter() {
+        guard let userId = UserDefaults.standard.selectedId, !userId.isEmpty else {
+            character = nil
+            return
+        }
+        var fetchDescriptor = FetchDescriptor<CharacterModel>(predicate: #Predicate { character in
+            character.id == userId
+        })
+        fetchDescriptor.fetchLimit = 1
+        character = (try? modelContext.fetch(fetchDescriptor))?.first
+    }
 
     var body: some View {
         NavigationStack {
@@ -58,7 +66,8 @@ struct MainView: View {
                                         allMaterials: materials,
                                         allTags: tags
                                     ) ?? character?.preparedSpells ?? [],
-                                    columns: max(Int(proxy.size.width / 300), 1)
+                                    columns: max(Int(proxy.size.width / 300), 1), 
+                                    character: $character
                                 ).padding(.horizontal)
 
                                 header("Известные")
@@ -68,19 +77,22 @@ struct MainView: View {
                                         allMaterials: materials,
                                         allTags: tags
                                     ) ?? character?.knownSpells ?? [],
-                                    columns: max(Int(proxy.size.width / 300), 1)
+                                    columns: max(Int(proxy.size.width / 300), 1),
+                                    character: $character
                                 ).padding(.horizontal)
 
                                 header("Прочие")
                                 SpellListView(
                                     spells: selectedFilter?.satisfying(spells: other, allMaterials: materials, allTags: tags) ?? other,
-                                    columns: max(Int(proxy.size.width / 300), 1)
+                                    columns: max(Int(proxy.size.width / 300), 1),
+                                    character: $character
                                 ).padding(.horizontal)
                                 
                                 header("Сокрытые")
                                 SpellListView(
                                     spells: selectedFilter?.satisfying(spells: hidden, allMaterials: materials, allTags: tags) ?? hidden,
-                                    columns: max(Int(proxy.size.width / 300), 1)
+                                    columns: max(Int(proxy.size.width / 300), 1),
+                                    character: $character
                                 ).padding(.horizontal)
 
                                 Spacer(minLength: 16)
@@ -116,6 +128,12 @@ struct MainView: View {
                     }
                 }
             }
+        }
+        .onAppear {
+            recallCharacter()
+        }
+        .onReceive(CharacterUpdateService.publisher()) { _ in
+            recallCharacter()
         }
     }
     
