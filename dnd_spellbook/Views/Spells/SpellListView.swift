@@ -51,8 +51,12 @@ struct SpellListView: View {
                         } else {
                             Button("Спрятать", action: { [weak spell] in hide(spell: spell) })
                         }
-                        
+                                                
                         Button("Править", action: { [weak spell] in self.editingSpell = spell })
+                        
+                        if spell.isCustom {
+                            Button("Удалить", role: .destructive) { [weak spell] in remove(spell: spell) }
+                        }
                     }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
@@ -146,6 +150,15 @@ struct SpellListView: View {
             return
         }
         spell.isHidden = false
+        try? modelContext.save()
+    }
+    
+    func remove(spell: Spell?) {
+        guard let spell,
+              spell.isCustom else {
+            return
+        }
+        modelContext.delete(spell)
         try? modelContext.save()
     }
 }
