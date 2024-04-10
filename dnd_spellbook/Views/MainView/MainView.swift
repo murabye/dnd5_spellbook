@@ -23,6 +23,8 @@ struct MainView: View {
     @Query(sort: \Filter.name) var filters: [Filter] = []
     @AppStorage(UserDefaults.Constants.selectedFilterName) var selectedFilterName: String?
 
+    @State var isSpellCreationOpened: Bool = false
+    
     var selectedFilter: Filter? {
         filters.first { $0.name == selectedFilterName }
     }
@@ -109,11 +111,20 @@ struct MainView: View {
             )
             .navigationBarTitle("Заклинания")
             .toolbar(content: {
-                NavigationLink(value: NavWay.characterList) {
-                    CharacterListItem(
-                        character: character,
-                        isCompact: true
-                    )
+                HStack {
+                    Button {
+                        isSpellCreationOpened.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.title2)
+                    }
+                    
+                    NavigationLink(value: NavWay.characterList) {
+                        CharacterListItem(
+                            character: character,
+                            isCompact: true
+                        )
+                    }
                 }
             })
             .navigationDestination(for: NavWay.self) { navWay in
@@ -127,6 +138,9 @@ struct MainView: View {
                         FilterSetupBigView()
                     }
                 }
+            }
+            .sheet(isPresented: $isSpellCreationOpened) {
+                SpellCreationView()
             }
         }
         .onAppear {

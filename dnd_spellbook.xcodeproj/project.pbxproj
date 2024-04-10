@@ -11,11 +11,8 @@
 		FF10CA262B44C1A700D9348F /* DurationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA252B44C1A700D9348F /* DurationPickerView.swift */; };
 		FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */; };
 		FF10CA2A2B44C5C400D9348F /* ComponentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */; };
-		FF10CA2C2B44CA5B00D9348F /* CharacterClassPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA2B2B44CA5B00D9348F /* CharacterClassPickerView.swift */; };
+		FF10CA2C2B44CA5B00D9348F /* MultipleElemsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA2B2B44CA5B00D9348F /* MultipleElemsMenu.swift */; };
 		FF10CA2E2B44CCB900D9348F /* TypeOfActionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA2D2B44CCB900D9348F /* TypeOfActionPickerView.swift */; };
-		FF10CA302B44CD8A00D9348F /* SchoolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA2F2B44CD8A00D9348F /* SchoolPickerView.swift */; };
-		FF10CA322B44CE8900D9348F /* SourcesPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA312B44CE8900D9348F /* SourcesPickerView.swift */; };
-		FF10CA342B44CECE00D9348F /* LevelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA332B44CECE00D9348F /* LevelPickerView.swift */; };
 		FF2CBC5F2B2D9EE6004D062C /* dnd_spellbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC5E2B2D9EE6004D062C /* dnd_spellbookApp.swift */; };
 		FF2CBC632B2D9EE8004D062C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2CBC622B2D9EE8004D062C /* Assets.xcassets */; };
 		FF2CBC672B2D9EE8004D062C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2CBC662B2D9EE8004D062C /* Preview Assets.xcassets */; };
@@ -113,11 +110,8 @@
 		FF10CA252B44C1A700D9348F /* DurationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerView.swift; sourceTree = "<group>"; };
 		FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistantionPickerView.swift; sourceTree = "<group>"; };
 		FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCreationView.swift; sourceTree = "<group>"; };
-		FF10CA2B2B44CA5B00D9348F /* CharacterClassPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClassPickerView.swift; sourceTree = "<group>"; };
+		FF10CA2B2B44CA5B00D9348F /* MultipleElemsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleElemsMenu.swift; sourceTree = "<group>"; };
 		FF10CA2D2B44CCB900D9348F /* TypeOfActionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfActionPickerView.swift; sourceTree = "<group>"; };
-		FF10CA2F2B44CD8A00D9348F /* SchoolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolPickerView.swift; sourceTree = "<group>"; };
-		FF10CA312B44CE8900D9348F /* SourcesPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesPickerView.swift; sourceTree = "<group>"; };
-		FF10CA332B44CECE00D9348F /* LevelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPickerView.swift; sourceTree = "<group>"; };
 		FF2CBC5B2B2D9EE6004D062C /* dnd_spellbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dnd_spellbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2CBC5E2B2D9EE6004D062C /* dnd_spellbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dnd_spellbookApp.swift; sourceTree = "<group>"; };
 		FF2CBC622B2D9EE8004D062C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -235,12 +229,9 @@
 				FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */,
 				FF10CA252B44C1A700D9348F /* DurationPickerView.swift */,
 				FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */,
-				FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */,
-				FF10CA2B2B44CA5B00D9348F /* CharacterClassPickerView.swift */,
 				FF10CA2D2B44CCB900D9348F /* TypeOfActionPickerView.swift */,
-				FF10CA2F2B44CD8A00D9348F /* SchoolPickerView.swift */,
-				FF10CA312B44CE8900D9348F /* SourcesPickerView.swift */,
-				FF10CA332B44CECE00D9348F /* LevelPickerView.swift */,
+				FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */,
+				FF10CA2B2B44CA5B00D9348F /* MultipleElemsMenu.swift */,
 			);
 			path = SpellCreation;
 			sourceTree = "<group>";
@@ -704,8 +695,7 @@
 				FFE792662B3A1CD1004F6BF4 /* Tag.swift in Sources */,
 				FF8325C12B30E41400820438 /* DynamicIslandMergingView.swift in Sources */,
 				FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */,
-				FF10CA2C2B44CA5B00D9348F /* CharacterClassPickerView.swift in Sources */,
-				FF10CA302B44CD8A00D9348F /* SchoolPickerView.swift in Sources */,
+				FF10CA2C2B44CA5B00D9348F /* MultipleElemsMenu.swift in Sources */,
 				FF8325C62B30F68600820438 /* WaterfallLayout.swift in Sources */,
 				FFE792572B3A13E1004F6BF4 /* Duration.swift in Sources */,
 				FFE7925F2B3A1B43004F6BF4 /* TypeOfAction.swift in Sources */,
@@ -724,7 +714,6 @@
 				FFE792792B3B77A9004F6BF4 /* ArtificerSpeciality.swift in Sources */,
 				FFE7927D2B3B77DE004F6BF4 /* RangerArchetype.swift in Sources */,
 				FFB7501D2B78FE260099508F /* TypeOfActionModel.swift in Sources */,
-				FF10CA322B44CE8900D9348F /* SourcesPickerView.swift in Sources */,
 				FFE792712B3B770D004F6BF4 /* BardCollegy.swift in Sources */,
 				FF2CBC5F2B2D9EE6004D062C /* dnd_spellbookApp.swift in Sources */,
 				FF10CA2E2B44CCB900D9348F /* TypeOfActionPickerView.swift in Sources */,
@@ -732,7 +721,6 @@
 				FFDF84FF2B2FB081004916F3 /* FilterExpandableHeader.swift in Sources */,
 				FFE7925B2B3A1879004F6BF4 /* MaterialModel.swift in Sources */,
 				FFE792542B3A1186004F6BF4 /* Spell.swift in Sources */,
-				FF10CA342B44CECE00D9348F /* LevelPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol FilterFormSelectable: HaveName, Equatable {
+protocol FilterFormSelectable: HaveName, Equatable, Hashable {
 }
 
 protocol HaveName {
