@@ -29,40 +29,40 @@ struct SpellListView: View {
                         spell: spell,
                         collapsed: true
                     )
-                    .contextMenu {
-                        if let selectedCharacter = character {
-                            if selectedCharacter.knownSpells.contains(spell) {
-                                Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
-                            } else {
-                                Button("Выучить", action: { [weak spell] in know(spell: spell) })
-                            }
-                            
-                            if selectedCharacter.preparedSpells.contains(spell) {
-                                Button("Отложить", action: { [weak spell] in unpare(spell: spell) })
-                            } else {
-                                Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
-                            }
-
-                            Divider()
-                        }
-                        
-                        if spell.isHidden {
-                            Button("Открыть", action: { [weak spell] in unhide(spell: spell) })
-                        } else {
-                            Button("Спрятать", action: { [weak spell] in hide(spell: spell) })
-                        }
-                                                
-                        Button("Править", action: { [weak spell] in self.editingSpell = spell })
-                        
-                        if spell.isCustom {
-                            Button("Удалить", role: .destructive) { [weak spell] in remove(spell: spell) }
-                        }
-                    }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
                 .background(Color.systemGroupedTableContent)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.vertical, 2)
+                .contextMenu {
+                    if let selectedCharacter = character {
+                        if selectedCharacter.knownSpells.contains(spell) {
+                            Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
+                        } else {
+                            Button("Выучить", action: { [weak spell] in know(spell: spell) })
+                        }
+                        
+                        if selectedCharacter.preparedSpells.contains(spell) {
+                            Button("Отложить", action: { [weak spell] in unpare(spell: spell) })
+                        } else {
+                            Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
+                        }
+
+                        Divider()
+                    }
+                    
+                    if spell.isHidden {
+                        Button("Открыть", action: { [weak spell] in unhide(spell: spell) })
+                    } else {
+                        Button("Спрятать", action: { [weak spell] in hide(spell: spell) })
+                    }
+                                            
+                    Button("Править", action: { [weak spell] in self.editingSpell = spell })
+                    
+                    if spell.isCustom {
+                        Button("Удалить", role: .destructive) { [weak spell] in remove(spell: spell) }
+                    }
+                }
             }
         }
         .sheet(item: $editingSpell) { spell in
