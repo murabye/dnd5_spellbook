@@ -178,6 +178,9 @@ struct MainView: View {
                     .onTapGesture {
                         selectedFilterName = filter.name
                     }
+                    .contextMenu {
+                        Button("Удалить", role: .destructive, action: { [weak filter] in remove(filter: filter) })
+                    }
                 }
                 Spacer(minLength: 16)
             }
@@ -185,6 +188,15 @@ struct MainView: View {
         }
         .scrollIndicators(.never)
         .background(Color.white)
+    }
+    
+    private func remove(filter: Filter?) {
+        guard let filter else { return }
+        if selectedFilterName == filter.name {
+            selectedFilterName = ""
+        }
+        modelContext.delete(filter)
+        try? modelContext.save()
     }
     
     private func header(_ name: String) -> some View {

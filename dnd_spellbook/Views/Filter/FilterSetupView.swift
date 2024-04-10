@@ -374,7 +374,7 @@ struct FilterSetupView: View {
             name: name,
             levels: activeLevels,
             noMaterials: materialsResctiction == .noOne,
-            maxMaterialPriceInGold: materialsMaxPrice,
+            maxMaterialPriceInGold: materialsResctiction == .maxPrice ? materialsMaxPrice : nil,
             sources: activeSources,
             schools: activeSchools,
             actions: activeActions,
