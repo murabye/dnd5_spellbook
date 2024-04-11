@@ -48,6 +48,7 @@
 		FFB7501D2B78FE260099508F /* TypeOfActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7501C2B78FE260099508F /* TypeOfActionModel.swift */; };
 		FFB750212B79308D0099508F /* DatabaseSetupIfNeededView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750202B79308D0099508F /* DatabaseSetupIfNeededView.swift */; };
 		FFB873C92BC53E4B00528394 /* CharacterUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB873C82BC53E4B00528394 /* CharacterUpdateService.swift */; };
+		FFC320BE2BC8180D00874532 /* CustomOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320BD2BC8180D00874532 /* CustomOnAppear.swift */; };
 		FFCF4BCD2B700C7F00D38414 /* materials.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCA2B700C7F00D38414 /* materials.json */; };
 		FFCF4BCE2B700C7F00D38414 /* tags.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCB2B700C7F00D38414 /* tags.json */; };
 		FFCF4BCF2B700C7F00D38414 /* skills.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCC2B700C7F00D38414 /* skills.json */; };
@@ -150,6 +151,7 @@
 		FFB7501C2B78FE260099508F /* TypeOfActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfActionModel.swift; sourceTree = "<group>"; };
 		FFB750202B79308D0099508F /* DatabaseSetupIfNeededView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSetupIfNeededView.swift; sourceTree = "<group>"; };
 		FFB873C82BC53E4B00528394 /* CharacterUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUpdateService.swift; sourceTree = "<group>"; };
+		FFC320BD2BC8180D00874532 /* CustomOnAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOnAppear.swift; sourceTree = "<group>"; };
 		FFCF4BCA2B700C7F00D38414 /* materials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = materials.json; sourceTree = "<group>"; };
 		FFCF4BCB2B700C7F00D38414 /* tags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tags.json; sourceTree = "<group>"; };
 		FFCF4BCC2B700C7F00D38414 /* skills.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skills.json; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				FFE792832B3B8FAB004F6BF4 /* String+.swift */,
 				FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */,
 				FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */,
+				FFC320BD2BC8180D00874532 /* CustomOnAppear.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				FF8325C32B30E60A00820438 /* ObservedScrollView.swift in Sources */,
 				FF10CA1C2B438E1A00D9348F /* SpellCreationView.swift in Sources */,
 				FF779A542B34F74500F7B654 /* AuthorPage.swift in Sources */,
+				FFC320BE2BC8180D00874532 /* CustomOnAppear.swift in Sources */,
 				FF10CA262B44C1A700D9348F /* DurationPickerView.swift in Sources */,
 				FFE7925D2B3A1A4B004F6BF4 /* Distantion.swift in Sources */,
 				FF2CBC8C2B2D9FD9004D062C /* CharacterCreation.swift in Sources */,

@@ -26,7 +26,6 @@ struct AuthorPage: View {
                 Text("")
                 
                 Text("Если у вас есть новые идеи или в приложении вы столкнулись с проблемами, пожалуйста,")
-                
                 Button("напишите мне") {
                     isShowingMailView.toggle()
                 }

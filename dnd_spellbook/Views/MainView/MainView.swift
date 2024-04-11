@@ -8,6 +8,8 @@
 import SwiftData
 import SwiftUI
 
+// TODO: VARVAR и вот сюда
+
 enum NavWay: Int, Hashable {
     
     case characterList
@@ -143,7 +145,7 @@ struct MainView: View {
                 SpellCreationView()
             }
         }
-        .onAppear {
+        .appearOnce {
             recallCharacter()
         }
         .onReceive(CharacterUpdateService.publisher()) { _ in

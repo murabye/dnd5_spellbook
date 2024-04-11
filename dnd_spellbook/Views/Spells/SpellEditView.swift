@@ -78,7 +78,7 @@ struct SpellEditView: View {
                 }
             }
             .navigationTitle(spell.name)
-            .onAppear {
+            .appearOnce {
                 tags = spell.tags(allTags: allTags)
             }
         }

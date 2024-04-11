@@ -16,8 +16,6 @@ struct CharacterCreationBigView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
 
-    @Query(sort: \Spell.id) var allSpells: [Spell]
-
     @State private var selectedImage: UIImage? = nil
     @State private var characterName: String = ""
     @State private var selectedClass: CharacterClass = .nothing
@@ -33,7 +31,9 @@ struct CharacterCreationBigView: View {
     @State private var selectedSorcererOrigin: SorcererOrigin = .defaultValue
     
     @State private var isPickerSelected = false
+
     @State var autoknowedSpells = [Spell]()
+    @State var paginationOffset: Int = 0
     
     var subclassed: CharacterArchetype {
         switch selectedClass {
@@ -91,30 +91,13 @@ struct CharacterCreationBigView: View {
                         spacingX: 16,
                         spacingY: 16
                     ) {
-                        ForEach(
-                            autoknowedSpells,
-                            id: \.id
-                        ) { spell in
-                            SpellView(
-                                spell: spell,
-                                collapsed: true
-                            )
-                            .padding(.horizontal)
-                            .padding(.vertical, 12)
-                            .background(Color.systemGroupedTableContent)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .padding(.vertical, 2)
-                            .contextMenu {
-                                Button("Забыть", action: { [weak spell] in
-                                    if let spell,
-                                       let index = autoknowedSpells.firstIndex(of: spell) {
-                                        autoknowedSpells.remove(at: index)
-                                    }
-                                })
-                            }
-                        }
+                        autoknowedSpellsList
                     }
                     .padding(.horizontal)
+                }
+                
+                LazyVStack {
+                    Rectangle().background(.clear).onAppear { loadSpells() }
                 }
             }
             .sheet(isPresented: $isPickerSelected) {
@@ -127,7 +110,11 @@ struct CharacterCreationBigView: View {
                 backgroundColor: Color(uiColor: .systemGroupedBackground)
             )
         }
-        .onChange(of: selectedClass, { _, _ in onChangeClass() })
+        .onChange(of: selectedClass, { _, _ in
+            autoknowedSpells = []
+            paginationOffset = 0
+            loadSpells()
+        })
         .background(Color(uiColor: .systemGroupedBackground))
     }
     
@@ -299,19 +286,42 @@ struct CharacterCreationBigView: View {
         CharacterUpdateService.send()
     }
     
-    func onChangeClass() {
+    func loadSpells() {
         guard selectedClass == .cleric || selectedClass == .druid else {
-            autoknowedSpells = []
             return
         }
+
+        var fetchDescriptor = FetchDescriptor<Spell>(sortBy: [SortDescriptor(\.id)])
+        guard let totalAmount = try? modelContext.fetchCount(fetchDescriptor) else { // заинитить один раз!
+            return
+        }
+
+        fetchDescriptor.fetchLimit = 50
+        fetchDescriptor.fetchOffset = min(totalAmount, paginationOffset)
         
-        autoknowedSpells = allSpells
-            .filter { $0.classes.contains(selectedClass) }
+        if totalAmount > paginationOffset + 1 {
+            let newData = (try? modelContext.fetch(fetchDescriptor)) ?? []
+            paginationOffset += newData.count
+            autoknowedSpells.append(contentsOf: newData.filter { $0.classes.contains(selectedClass) })
+        }
+    }
+    
+    var autoknowedSpellsList: some View {
         
-// SwiftData.SwiftDataError._Error.unsupportedPredicate enum + array
-//        let fetchDescriptor = FetchDescriptor<Spell>(predicate: #Predicate { spell in
-//            spell.classes.contains(selectedClass)
-//        })
+        ForEach(autoknowedSpells.indices, id: \.self) { index in
+            SpellView(
+                spell: autoknowedSpells[index],
+                collapsed: true
+            )
+            .padding(.horizontal)
+            .padding(.vertical, 12)
+            .background(Color.systemGroupedTableContent)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding(.vertical, 2)
+            .contextMenu {
+                Button("Забыть", action: { autoknowedSpells.remove(at: index) })
+            }
+        }
     }
 }
 

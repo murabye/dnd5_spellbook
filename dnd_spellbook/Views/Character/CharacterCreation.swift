@@ -15,8 +15,6 @@ struct CharacterCreationView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     
-    @Query(sort: \Spell.id) var allSpells: [Spell]
-
     @State private var selectedImage: UIImage? = nil
     @State private var characterName: String = ""
     @State private var selectedClass: CharacterClass = .nothing
@@ -33,8 +31,9 @@ struct CharacterCreationView: View {
     
     @State private var isPickerSelected = false
     @State private var scrollOffset: CGFloat = 0.0
-    @State var autoknowedSpells = [Spell]()
-    
+    @State private var autoknowedSpells = [Spell]()
+    @State private var paginationOffset: Int = 0
+
     var subclassed: CharacterArchetype {
         switch selectedClass {
         case .bard: .bard(selectedBardCollegy)
@@ -93,6 +92,10 @@ struct CharacterCreationView: View {
                     autoSpellsHeader.padding(.horizontal)
                     autoSpellsList.padding(.horizontal)
                 }
+                
+                LazyVStack {
+                    Rectangle().background(.clear).onAppear { loadSpells() }
+                }
             }
             .animation(.easeIn, value: selectedClass)
             .sheet(isPresented: $isPickerSelected) {
@@ -105,7 +108,11 @@ struct CharacterCreationView: View {
                 backgroundColor: Color(uiColor: .systemGroupedBackground)
             )
         }
-        .onChange(of: selectedClass, { _, _ in onChangeClass() })
+        .onChange(of: selectedClass, { _, _ in
+            autoknowedSpells = []
+            paginationOffset = 0
+            loadSpells()
+        })
         .background(Color(uiColor: .systemGroupedBackground))
     }
     
@@ -206,26 +213,28 @@ struct CharacterCreationView: View {
     }
     
     var autoSpellsList: some View {
-        ForEach(
-            autoknowedSpells,
-            id: \.id
-        ) { spell in
-            SpellView(
-                spell: spell,
-                collapsed: true
-            )
-            .padding(.horizontal)
-            .padding(.vertical, 12)
-            .background(Color.systemGroupedTableContent)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.vertical, 2)
-            .contextMenu {
-                Button("Забыть", action: { [weak spell] in
-                    if let spell,
-                       let index = autoknowedSpells.firstIndex(of: spell) {
-                        autoknowedSpells.remove(at: index)
-                    }
-                })
+        LazyVStack {
+            ForEach(
+                autoknowedSpells,
+                id: \.id
+            ) { spell in
+                SpellView(
+                    spell: spell,
+                    collapsed: true
+                )
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+                .background(Color.systemGroupedTableContent)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.vertical, 2)
+                .contextMenu {
+                    Button("Забыть", action: { [weak spell] in
+                        if let spell,
+                           let index = autoknowedSpells.firstIndex(of: spell) {
+                            autoknowedSpells.remove(at: index)
+                        }
+                    })
+                }
             }
         }
     }
@@ -286,18 +295,23 @@ struct CharacterCreationView: View {
     }
     
     
-    func onChangeClass() {
+    func loadSpells() {
         guard selectedClass == .cleric || selectedClass == .druid else {
-            autoknowedSpells = []
             return
         }
+
+        var fetchDescriptor = FetchDescriptor<Spell>(sortBy: [SortDescriptor(\.id)])
+        guard let totalAmount = try? modelContext.fetchCount(fetchDescriptor) else { // заинитить один раз!
+            return
+        }
+
+        fetchDescriptor.fetchLimit = 50
+        fetchDescriptor.fetchOffset = min(totalAmount, paginationOffset)
         
-        autoknowedSpells = allSpells
-            .filter { $0.classes.contains(selectedClass) }
-        
-// SwiftData.SwiftDataError._Error.unsupportedPredicate enum + array
-//        let fetchDescriptor = FetchDescriptor<Spell>(predicate: #Predicate { spell in
-//            spell.classes.contains(selectedClass)
-//        })
+        if totalAmount > paginationOffset + 1 {
+            let newData = (try? modelContext.fetch(fetchDescriptor)) ?? []
+            paginationOffset += newData.count
+            autoknowedSpells.append(contentsOf: newData.filter { $0.classes.contains(selectedClass) })
+        }
     }
 }
