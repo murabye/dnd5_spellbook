@@ -28,7 +28,7 @@ struct TagSelectView: View {
         ScrollView {
             VStack {
                 FlowLayout {
-                    ForEach(allTags) { tag in
+                    ForEach(allTags, id: \.id) { tag in
                         TagView(
                             compact: false,
                             edit: false,

@@ -33,7 +33,7 @@ struct CharacterList: View {
                         CharacterListAppendItem(isSingle: characters.isEmpty)
                     })
                     
-                    ForEach(characters, id: \.self) { character in
+                    ForEach(characters, id: \.id) { character in
                         CharacterListItem(
                             character: character,
                             isCompact: false
@@ -62,9 +62,14 @@ struct CharacterList: View {
             },
             content: {
                 if idiom == .phone {
-                    CharacterCreationView()
+                    ColumnReader { columnAmount, safeArea in CharacterCreationView(safeArea: safeArea) }
                 } else {
-                    CharacterCreationBigView()
+                    NavigationStack {
+                        ColumnReader { columnAmount, safeArea in
+                            CharacterCreationBigView(columnAmount: columnAmount)
+                        }
+                        .background(Color(uiColor: .systemGroupedBackground))
+                    }
                 }
             }
         )

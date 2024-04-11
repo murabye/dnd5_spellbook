@@ -11,7 +11,7 @@ import SwiftUI
 struct SpellView: View {
     let spell: Spell
     @State var collapsed: Bool
-    @Query var allTags: [Tag]
+    @Query(sort: \Tag.id) var allTags: [Tag]
     @Query(sort: \MaterialModel.name) var allMaterials: [MaterialModel]
     
     var body: some View {

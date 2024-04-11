@@ -13,7 +13,7 @@ struct UniversalTagLine: View {
     
     var body: some View {
         FlowLayout(alignment: .leading) {
-            ForEach(tags, id: \.self) { tag in
+            ForEach(tags, id: \.id) { tag in
                 UniversalTagView(tagProps: tag)
                     .onTapGesture {
                         guard let index = tags.firstIndex(of: tag) else {

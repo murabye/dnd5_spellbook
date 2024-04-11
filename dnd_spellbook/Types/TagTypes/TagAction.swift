@@ -55,34 +55,22 @@ extension TagAction: Codable {
 
 extension [TagAction] {
     
-    func applied(to current: [Tag], fullList: [Tag]) -> Set<Tag> {
-        var appendList = Set<Tag>()
-        var removeList = Set<Tag>()
-        var res = Set<Tag>(current)
+    func applied(to current: [Tag], fullList: [Tag]) -> [Tag] {
+        var res = current
         
         for tagAction in self {
             if tagAction.action {
                 if let tag = fullList.first(where: { $0.id == tagAction.tagId }) {
-                    appendList.insert(tag)
+                    res.append(tag)
                 }
             } else {
-                if let tag = fullList.first(where: { $0.id == tagAction.tagId }) {
-                    removeList.insert(tag)
+                if let tag = fullList.first(where: { $0.id == tagAction.tagId }),
+                   let index = res.firstIndex(of: tag) {
+                    res.remove(at: index)
                 }
             }
         }
-        
-        let toAppend = appendList.subtracting(removeList)
-        let toRemove = removeList.subtracting(appendList)
-        
-        for append in toAppend {
-            res.insert(append)
-        }
-        
-        for remove in toRemove {
-            res.remove(remove)
-        }
-        
+                
         return res
     }
 }

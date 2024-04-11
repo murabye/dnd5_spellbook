@@ -8,7 +8,6 @@
 import SwiftData
 import SwiftUI
 
-// TODO: VARVAR и вот сюда
 
 enum NavWay: Int, Hashable {
     
@@ -26,6 +25,8 @@ struct MainView: View {
     @AppStorage(UserDefaults.Constants.selectedFilterName) var selectedFilterName: String?
 
     @State var isSpellCreationOpened: Bool = false
+    
+    let columnAmount: Int
     
     var selectedFilter: Filter? {
         filters.first { $0.name == selectedFilterName }
@@ -57,93 +58,90 @@ struct MainView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            GeometryReader { proxy in
-                VStack(spacing: 0) {
-                    ScrollViewReader { scrollProxy in
-                        ZStack {
-                            ScrollView {
-                                header("Подготовленные")
-                                SpellListView(
-                                    spells: selectedFilter?.satisfying(
-                                        spells: character?.preparedSpells ?? [],
-                                        allMaterials: materials,
-                                        allTags: tags
-                                    ) ?? character?.preparedSpells ?? [],
-                                    columns: max(Int(proxy.size.width / 300), 1), 
-                                    character: $character
-                                ).padding(.horizontal)
-
-                                header("Известные")
-                                SpellListView(
-                                    spells: selectedFilter?.satisfying(
-                                        spells: character?.knownSpells ?? [],
-                                        allMaterials: materials,
-                                        allTags: tags
-                                    ) ?? character?.knownSpells ?? [],
-                                    columns: max(Int(proxy.size.width / 300), 1),
-                                    character: $character
-                                ).padding(.horizontal)
-
-                                header("Прочие")
-                                SpellListView(
-                                    spells: selectedFilter?.satisfying(spells: other, allMaterials: materials, allTags: tags) ?? other,
-                                    columns: max(Int(proxy.size.width / 300), 1),
-                                    character: $character
-                                ).padding(.horizontal)
-                                
-                                header("Сокрытые")
-                                SpellListView(
-                                    spells: selectedFilter?.satisfying(spells: hidden, allMaterials: materials, allTags: tags) ?? hidden,
-                                    columns: max(Int(proxy.size.width / 300), 1),
-                                    character: $character
-                                ).padding(.horizontal)
-
-                                Spacer(minLength: 16)
-                            }
-                            sectionIndexTitles(proxy: scrollProxy)
-                        }
+        VStack(spacing: 0) {
+            ScrollViewReader { scrollProxy in
+                ZStack {
+                    ScrollView {
+                        header("Подготовленные")
+                        SpellListView(
+                            spells: selectedFilter?.satisfying(
+                                spells: character?.preparedSpells ?? [],
+                                allMaterials: materials,
+                                allTags: tags
+                            ) ?? character?.preparedSpells ?? [],
+                            columns: columnAmount,
+                            character: $character
+                        ).padding(.horizontal)
+                        
+                        header("Известные")
+                        SpellListView(
+                            spells: selectedFilter?.satisfying(
+                                spells: character?.knownSpells ?? [],
+                                allMaterials: materials,
+                                allTags: tags
+                            ) ?? character?.knownSpells ?? [],
+                            columns: columnAmount,
+                            character: $character
+                        ).padding(.horizontal)
+                        
+                        header("Прочие")
+                        SpellListView(
+                            spells: selectedFilter?.satisfying(spells: other, allMaterials: materials, allTags: tags) ?? other,
+                            columns: columnAmount,
+                            character: $character
+                        ).padding(.horizontal)
+                        
+                        header("Сокрытые")
+                        SpellListView(
+                            spells: selectedFilter?.satisfying(spells: hidden, allMaterials: materials, allTags: tags) ?? hidden,
+                            columns: columnAmount,
+                            character: $character
+                        ).padding(.horizontal)
+                        
+                        Spacer(minLength: 16)
                     }
                     
-                    toolbar
+                    sectionIndexTitles(proxy: scrollProxy)
                 }
             }
-            .background(
-                Color(uiColor: UIColor.systemGroupedBackground)
-            )
-            .navigationBarTitle("Заклинания")
-            .toolbar(content: {
-                HStack {
-                    Button {
-                        isSpellCreationOpened.toggle()
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.title2)
-                    }
-                    
-                    NavigationLink(value: NavWay.characterList) {
-                        CharacterListItem(
-                            character: character,
-                            isCompact: true
-                        )
-                    }
+            
+            toolbar
+        }
+        .background(
+            Color(uiColor: UIColor.systemGroupedBackground)
+        )
+        .navigationBarTitle("Заклинания")
+        .toolbar(content: {
+            HStack {
+                Button {
+                    isSpellCreationOpened.toggle()
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title2)
                 }
-            })
-            .navigationDestination(for: NavWay.self) { navWay in
-                switch navWay {
-                case .characterList: CharacterList()
-                case .authorPage: AuthorPage()
-                case .filterCreate: 
-                    if idiom == .phone {
-                        FilterSetupView()
-                    } else {
-                        FilterSetupBigView()
-                    }
+                
+                NavigationLink(value: NavWay.characterList) {
+                    CharacterListItem(
+                        character: character,
+                        isCompact: true
+                    )
                 }
             }
-            .sheet(isPresented: $isSpellCreationOpened) {
-                SpellCreationView()
+        })
+        .navigationDestination(for: NavWay.self) { navWay in
+            switch navWay {
+            case .characterList: CharacterList()
+            case .authorPage: AuthorPage()
+            case .filterCreate:
+                if idiom == .phone {
+                    FilterSetupView()
+                } else {
+                    FilterSetupBigView()
+                }
             }
+        }
+        .sheet(isPresented: $isSpellCreationOpened) {
+            SpellCreationView()
         }
         .appearOnce {
             recallCharacter()
@@ -167,7 +165,7 @@ struct MainView: View {
                         .clipShape(Capsule())
                 }
 
-                ForEach(filters, id: \.self) { filter in
+                ForEach(filters, id: \.name) { filter in
                     UniversalTagView(
                         tagProps: UniversalTagProps(
                             title: filter.name,
@@ -236,31 +234,34 @@ struct SectionIndexTitles: View {
         VStack {
             ForEach(titles, id: \.self) { title in
                 SectionIndexTitle(image: sfSymbol(for: title))
-                    .background(dragObserver(title: title))
+                    .onTapGesture {
+                        proxy.scrollTo(title)
+                    }
+//                    .background(dragObserver(title: title))
             }
         }
-        .gesture(
-            DragGesture(minimumDistance: 0, coordinateSpace: .global)
-                .updating($dragLocation) { value, state, _ in
-                    state = value.location
-                }
-        )
+//        .gesture(
+//            DragGesture(minimumDistance: 0, coordinateSpace: .global)
+//                .updating($dragLocation) { value, state, _ in
+//                    state = value.location
+//                }
+//        )
     }
     
-    func dragObserver(title: String) -> some View {
-        GeometryReader { geometry in
-            dragObserver(geometry: geometry, title: title)
-        }
-    }
-    
-    func dragObserver(geometry: GeometryProxy, title: String) -> some View {
-        if geometry.frame(in: .global).contains(dragLocation) {
-            DispatchQueue.main.async {
-                proxy.scrollTo(title, anchor: .top)
-            }
-        }
-        return Rectangle().fill(Color.clear)
-    }
+//    func dragObserver(title: String) -> some View {
+//        GeometryReader { geometry in
+//            dragObserver(geometry: geometry, title: title)
+//        }
+//    }
+//    
+//    func dragObserver(geometry: GeometryProxy, title: String) -> some View {
+//        if geometry.frame(in: .global).contains(dragLocation) {
+//            DispatchQueue.main.async {
+//                proxy.scrollTo(title, anchor: .top)
+//            }
+//        }
+//        return Rectangle().fill(Color.clear)
+//    }
     
     func sfSymbol(for deviceCategory: String) -> Image {
         let systemName: String

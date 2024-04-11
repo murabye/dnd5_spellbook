@@ -56,7 +56,7 @@ class Spell: HaveName {
     }
     
     func tags(allTags: [Tag]) -> [Tag] {
-        Array(userTagsActions.applied(to: initialTags, fullList: allTags))
+        userTagsActions.applied(to: initialTags, fullList: allTags)
     }
     
     var descrText: String {

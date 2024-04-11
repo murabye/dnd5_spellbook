@@ -16,7 +16,7 @@ struct TagLine: View {
 
     var body: some View {
         FlowLayout {
-            ForEach(tags) { tag in
+            ForEach(tags, id: \.id) { tag in
                 TagView(compact: compact, edit: edit, tagType: TagType(tag: tag, removable: edit))
                     .gesture(edit ? TapGesture().onEnded { [weak tag] in tags.removeAll { $0.id == tag?.id } } : nil)
             }

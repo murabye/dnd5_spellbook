@@ -25,10 +25,10 @@ struct SpellListView: View {
                 spells,
                 id: \.id
             ) { spell in
-                    SpellView(
-                        spell: spell,
-                        collapsed: true
-                    )
+                SpellView(
+                    spell: spell,
+                    collapsed: true
+                )
                 .padding(.horizontal)
                 .padding(.vertical, 12)
                 .background(Color.systemGroupedTableContent)

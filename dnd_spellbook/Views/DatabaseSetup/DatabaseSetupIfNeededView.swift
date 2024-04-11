@@ -30,11 +30,11 @@ struct DatabaseSetupIfNeededView: View {
     var body: some View {
         Group {
             if needLoad {
-                MainView()
+                NavigationStack { ColumnReader { columns, _ in MainView(columnAmount: columns) } }
             } else if stage != .done {
                 DatabaseSetupView(stage: $stage)
             } else {
-                MainView()
+                NavigationStack { ColumnReader { columns, _ in MainView(columnAmount: columns) } }
             }
         }
         .animation(.easeIn, value: stage == .done)

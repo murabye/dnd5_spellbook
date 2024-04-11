@@ -8,11 +8,26 @@
 import SwiftData
 import SwiftUI
 
+struct ColumnReader<Content: View>: View {
+
+    @ViewBuilder var content: (Int, EdgeInsets) -> Content
+    var body: some View {
+        GeometryReader { proxy in
+            content(
+                max(Int(proxy.size.width / 300), 1),
+                proxy.safeAreaInsets
+            )
+        }
+    }
+}
+
 struct CharacterCreationBigView: View {
     enum Constants {
         static let islandCollapsableItemKey = "islandCollapsableItemKey"
     }
-    
+
+    let columnAmount: Int
+
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
 
@@ -66,49 +81,33 @@ struct CharacterCreationBigView: View {
     }
     
     var body: some View {
-        GeometryReader { proxy in
-            ScrollView {
-                VerticalWaterfallLayout(
-                    columns: max(Int(proxy.size.width / 300), 1),
-                    spacingX: 16,
-                    spacingY: 16
-                ) {
-                    imagePickerView
-                    classPicker
-                    archetypePicker
-                }
-                .padding()
-
-                if !autoknowedSpells.isEmpty {
-                    autoSpellsHeader
-                        .padding(.horizontal)
-                    
-                    applyButton
-                    cancelButton
-                    
-                    VerticalWaterfallLayout(
-                        columns: max(Int(proxy.size.width / 300), 1),
-                        spacingX: 16,
-                        spacingY: 16
-                    ) {
-                        autoknowedSpellsList
-                    }
-                    .padding(.horizontal)
-                }
-                
-                LazyVStack {
-                    Rectangle().background(.clear).onAppear { loadSpells() }
-                }
+        ScrollView {
+            VerticalWaterfallLayout(
+                columns: columnAmount,
+                spacingX: 16,
+                spacingY: 16
+            ) {
+                imagePickerView
+                classPicker
+                archetypePicker
             }
-            .sheet(isPresented: $isPickerSelected) {
-                UIPickerView(image: $selectedImage)
-                    .ignoresSafeArea()
+            .padding()
+            
+            if !autoknowedSpells.isEmpty {
+                autoSpellsHeader.padding(.horizontal)
+                autoknowedSpellsList.padding(.horizontal)
             }
-            .mergingDynamicIslandWithView(
-                forKey: Constants.islandCollapsableItemKey,
-                safeArea: proxy.safeAreaInsets,
-                backgroundColor: Color(uiColor: .systemGroupedBackground)
-            )
+            
+            LazyVStack {
+                Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadSpells() }
+            }
+        }
+        .sheet(isPresented: $isPickerSelected) {
+            UIPickerView(image: $selectedImage).ignoresSafeArea()
+        }
+        .toolbar {
+            applyButton
+            cancelButton
         }
         .onChange(of: selectedClass, { _, _ in
             autoknowedSpells = []
@@ -232,40 +231,16 @@ struct CharacterCreationBigView: View {
     }
 
     var applyButton: some View {
-        Button(action: {
-            addCharacter()
-            dismiss()
-        }, label: {
-            HStack {
-                Spacer()
-                Text("Готово")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding(8)
-                Spacer()
-            }
-        })
-        .buttonStyle(.borderedProminent)
-        .disabled(characterName.isEmpty)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 4)
+        Button("Save", action: { addCharacter(); dismiss() })
+            .disabled(characterName.isEmpty)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 4)
     }
     
     var cancelButton: some View {
-        Button(action: {
-            dismiss()
-        }, label: {
-            HStack {
-                Spacer()
-                Text("Отмена")
-                    .font(.headline)
-                    .padding(8)
-                Spacer()
-            }
-        })
-        .buttonStyle(.borderless)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 4)
+        Button("", systemImage: "xmark", action: { dismiss() })
+            .padding(.horizontal, 12)
+            .padding(.vertical, 4)
     }
     
     func addCharacter() {
@@ -307,24 +282,30 @@ struct CharacterCreationBigView: View {
     }
     
     var autoknowedSpellsList: some View {
-        
-        ForEach(autoknowedSpells.indices, id: \.self) { index in
-            SpellView(
-                spell: autoknowedSpells[index],
-                collapsed: true
-            )
-            .padding(.horizontal)
-            .padding(.vertical, 12)
-            .background(Color.systemGroupedTableContent)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.vertical, 2)
-            .contextMenu {
-                Button("Забыть", action: { autoknowedSpells.remove(at: index) })
+        VerticalWaterfallLayout(
+            columns: columnAmount,
+            spacingX: 16,
+            spacingY: 16
+        ) {
+            ForEach(autoknowedSpells, id: \.id) { spell in
+                SpellView(
+                    spell: spell,
+                    collapsed: true
+                )
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+                .background(Color.systemGroupedTableContent)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.vertical, 2)
+                .contextMenu {
+                    Button("Забыть", action: { [weak spell] in
+                        if let spell,
+                           let index = autoknowedSpells.firstIndex(of: spell) {
+                            autoknowedSpells.remove(at: index)
+                        }
+                    })
+                }
             }
         }
     }
-}
-
-#Preview {
-    CharacterCreationBigView()
 }

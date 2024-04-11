@@ -15,6 +15,8 @@ struct CharacterCreationView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     
+    let safeArea: EdgeInsets
+
     @State private var selectedImage: UIImage? = nil
     @State private var characterName: String = ""
     @State private var selectedClass: CharacterClass = .nothing
@@ -65,7 +67,7 @@ struct CharacterCreationView: View {
     }
     
     var body: some View {
-        GeometryReader { proxy in
+        ZStack {
             ObservableScrollView(scrollOffset: $scrollOffset) { _ in
                 imagePickerView
                 VStack {
@@ -84,9 +86,6 @@ struct CharacterCreationView: View {
                 .background(Color.systemGroupedTableContent)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding()
-
-                applyButton
-                cancelButton
                 
                 if !autoknowedSpells.isEmpty {
                     autoSpellsHeader.padding(.horizontal)
@@ -94,20 +93,29 @@ struct CharacterCreationView: View {
                 }
                 
                 LazyVStack {
-                    Rectangle().background(.clear).onAppear { loadSpells() }
+                    Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadSpells() }
                 }
             }
-            .animation(.easeIn, value: selectedClass)
-            .sheet(isPresented: $isPickerSelected) {
-                UIPickerView(image: $selectedImage)
-                    .ignoresSafeArea()
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    applyButton
+                    cancelButton
+                }
+                Spacer()
             }
-            .mergingDynamicIslandWithView(
-                forKey: Constants.islandCollapsableItemKey,
-                safeArea: proxy.safeAreaInsets,
-                backgroundColor: Color(uiColor: .systemGroupedBackground)
-            )
         }
+        .animation(.easeIn, value: selectedClass)
+        .sheet(isPresented: $isPickerSelected) {
+            UIPickerView(image: $selectedImage)
+                .ignoresSafeArea()
+        }
+        .mergingDynamicIslandWithView(
+            forKey: Constants.islandCollapsableItemKey,
+            safeArea: safeArea,
+            backgroundColor: Color(uiColor: .systemGroupedBackground)
+        )
         .onChange(of: selectedClass, { _, _ in
             autoknowedSpells = []
             paginationOffset = 0
@@ -240,42 +248,18 @@ struct CharacterCreationView: View {
     }
         
     var applyButton: some View {
-        Button(action: {
-            addCharacter()
-            dismiss()
-        }, label: {
-            HStack {
-                Spacer()
-                Text("Готово")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding(8)
-                Spacer()
-            }
-        })
-        .buttonStyle(.borderedProminent)
-        .disabled(characterName.isEmpty)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 4)
+        Button("Save", action: { addCharacter(); dismiss() })
+            .disabled(characterName.isEmpty)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 4)
     }
     
     var cancelButton: some View {
-        Button(action: {
-            dismiss()
-        }, label: {
-            HStack {
-                Spacer()
-                Text("Отмена")
-                    .font(.headline)
-                    .padding(8)
-                Spacer()
-            }
-        })
-        .buttonStyle(.borderless)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 4)
+        Button("", systemImage: "xmark", action: { dismiss() })
+            .padding(.horizontal, 12)
+            .padding(.vertical, 4)
     }
-    
+
     func addCharacter() {
         let imageUrl = FileManager.default.save(image: selectedImage)
         let newCharacterId = UUID().uuidString
