@@ -16,9 +16,11 @@ struct CharacterCreationBigView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
 
+    @Query(sort: \Spell.id) var allSpells: [Spell]
+
     @State private var selectedImage: UIImage? = nil
     @State private var characterName: String = ""
-    @State private var selectedClass: CharacterClass = .cleric
+    @State private var selectedClass: CharacterClass = .nothing
     
     @State private var selectedBardCollegy: BardCollegy = .defaultValue
     @State private var selectedWizardSchool: WizardSchool = .defaultValue
@@ -31,6 +33,7 @@ struct CharacterCreationBigView: View {
     @State private var selectedSorcererOrigin: SorcererOrigin = .defaultValue
     
     @State private var isPickerSelected = false
+    @State var autoknowedSpells = [Spell]()
     
     var subclassed: CharacterArchetype {
         switch selectedClass {
@@ -76,8 +79,43 @@ struct CharacterCreationBigView: View {
                 }
                 .padding()
 
-                applyButton
-                cancelButton
+                if !autoknowedSpells.isEmpty {
+                    autoSpellsHeader
+                        .padding(.horizontal)
+                    
+                    applyButton
+                    cancelButton
+                    
+                    VerticalWaterfallLayout(
+                        columns: max(Int(proxy.size.width / 300), 1),
+                        spacingX: 16,
+                        spacingY: 16
+                    ) {
+                        ForEach(
+                            autoknowedSpells,
+                            id: \.id
+                        ) { spell in
+                            SpellView(
+                                spell: spell,
+                                collapsed: true
+                            )
+                            .padding(.horizontal)
+                            .padding(.vertical, 12)
+                            .background(Color.systemGroupedTableContent)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .padding(.vertical, 2)
+                            .contextMenu {
+                                Button("Забыть", action: { [weak spell] in
+                                    if let spell,
+                                       let index = autoknowedSpells.firstIndex(of: spell) {
+                                        autoknowedSpells.remove(at: index)
+                                    }
+                                })
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
             }
             .sheet(isPresented: $isPickerSelected) {
                 UIPickerView(image: $selectedImage)
@@ -89,6 +127,7 @@ struct CharacterCreationBigView: View {
                 backgroundColor: Color(uiColor: .systemGroupedBackground)
             )
         }
+        .onChange(of: selectedClass, { _, _ in onChangeClass() })
         .background(Color(uiColor: .systemGroupedBackground))
     }
     
@@ -197,6 +236,14 @@ struct CharacterCreationBigView: View {
         }
     }
     
+    var autoSpellsHeader: some View {
+        HStack {
+            Text("Известные автоматически")
+            Spacer()
+            Button("Забыть все", action: { self.autoknowedSpells = [] })
+        }
+    }
+
     var applyButton: some View {
         Button(action: {
             addCharacter()
@@ -244,12 +291,27 @@ struct CharacterCreationBigView: View {
             characterSubclass: subclassed,
             name: characterName,
             tagActions: [:],
-            knownSpells: [],
+            knownSpells: autoknowedSpells,
             preparedSpells: []
         )
         modelContext.insert(character)
         try? modelContext.save()
         CharacterUpdateService.send()
+    }
+    
+    func onChangeClass() {
+        guard selectedClass == .cleric || selectedClass == .druid else {
+            autoknowedSpells = []
+            return
+        }
+        
+        autoknowedSpells = allSpells
+            .filter { $0.classes.contains(selectedClass) }
+        
+// SwiftData.SwiftDataError._Error.unsupportedPredicate enum + array
+//        let fetchDescriptor = FetchDescriptor<Spell>(predicate: #Predicate { spell in
+//            spell.classes.contains(selectedClass)
+//        })
     }
 }
 

@@ -143,6 +143,8 @@ extension Spell {
                     continue
                 }
                 price += material.cost
+            case let .authorPay(authorPayPrice):
+                price += authorPayPrice
             default: continue
             }
         }
