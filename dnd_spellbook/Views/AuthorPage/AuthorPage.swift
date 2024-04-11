@@ -8,11 +8,6 @@
 import SwiftUI
 import MessageUI
 
-/*
- TODO: VARVAR
- - оптимизации главной страницы
- */
-
 struct AuthorPage: View {
     
     @State var isShowingMailView = false
