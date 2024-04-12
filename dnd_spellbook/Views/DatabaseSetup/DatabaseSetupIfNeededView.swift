@@ -12,6 +12,7 @@ struct DatabaseSetupIfNeededView: View {
     
     @Environment(\.modelContext) var modelContext
     @State var stage: DatabaseSetupView.Stage = .preparing
+    private var idiom: UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     
     let descr: FetchDescriptor<Spell> = {
         var fetchDescriptor = FetchDescriptor<Spell>()
@@ -30,13 +31,30 @@ struct DatabaseSetupIfNeededView: View {
     var body: some View {
         Group {
             if needLoad {
-                NavigationStack { ColumnReader { columns, _ in MainView(columnAmount: columns) } }
+                mainView
             } else if stage != .done {
                 DatabaseSetupView(stage: $stage)
             } else {
-                NavigationStack { ColumnReader { columns, _ in MainView(columnAmount: columns) } }
+                mainView
             }
         }
         .animation(.easeIn, value: stage == .done)
+    }
+    
+    var mainView: some View {
+        Group {
+            if idiom == .phone {
+                NavigationStack {
+                    MainView().background(Color(uiColor: .systemGroupedBackground))
+                }
+            } else {
+                NavigationStack {
+                    ColumnReader { columnAmount, safeArea in
+                        MainBigView(columnAmount: columnAmount)
+                    }
+                    .background(Color(uiColor: .systemGroupedBackground))
+                }
+            }
+        }
     }
 }

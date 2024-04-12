@@ -13,7 +13,7 @@ class CharacterModel {
 
     let id: String
     let imageUrl: URL?
-    let characterSubclass: CharacterArchetype?
+    let characterClass: CharacterClass?
     let name: String
     let tagActions: [Int: TagAction]
     @Relationship(deleteRule: .nullify) var knownSpells: [Spell]
@@ -22,15 +22,15 @@ class CharacterModel {
     init(
         id: String,
         imageUrl: URL?,
-        characterSubclass: CharacterArchetype?,
-        name: String, 
+        characterClass: CharacterClass?,
+        name: String,
         tagActions: [Int: TagAction],
         knownSpells: [Spell],
         preparedSpells: [Spell]
     ) {
         self.id = id
         self.imageUrl = imageUrl
-        self.characterSubclass = characterSubclass
+        self.characterClass = characterClass
         self.name = name
         self.tagActions = tagActions
         self.knownSpells = knownSpells
@@ -50,7 +50,7 @@ extension CharacterModel: Identifiable {
     static func == (lhs: CharacterModel, rhs: CharacterModel) -> Bool {
         lhs.imageUrl == rhs.imageUrl
         && lhs.id == rhs.id
-        && lhs.characterSubclass == rhs.characterSubclass
+        && lhs.characterClass == rhs.characterClass
         && lhs.name == rhs.name
         && lhs.tagActions == rhs.tagActions
         && lhs.knownSpells == rhs.knownSpells

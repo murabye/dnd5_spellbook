@@ -11,6 +11,9 @@ import SwiftUI
 struct CharacterList: View {
     @Query(sort: \CharacterModel.name) var characters: [CharacterModel]
     @State private var showingNew = false
+    @Environment(\.modelContext) var modelContext
+
+    @State var characterCreationLoading: Bool = false
     
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
 
@@ -42,6 +45,9 @@ struct CharacterList: View {
                             UserDefaults.standard.selectedId = character.id
                             CharacterUpdateService.send()
                         }
+                        .contextMenu {
+                            Button("Удалить") { [weak character] in remove(character) }
+                        }
                     }
                 }
             }
@@ -62,16 +68,37 @@ struct CharacterList: View {
             },
             content: {
                 if idiom == .phone {
-                    ColumnReader { columnAmount, safeArea in CharacterCreationView(safeArea: safeArea) }
+                    ColumnReader { columnAmount, safeArea in 
+                        CharacterCreationView(
+                            isLoading: $characterCreationLoading,
+                            safeArea: safeArea
+                        )
+                    }
+                    .interactiveDismissDisabled(characterCreationLoading)
                 } else {
                     NavigationStack {
                         ColumnReader { columnAmount, safeArea in
-                            CharacterCreationBigView(columnAmount: columnAmount)
+                            CharacterCreationBigView(
+                                columnAmount: columnAmount,
+                                isLoading: $characterCreationLoading
+                            )
                         }
                         .background(Color(uiColor: .systemGroupedBackground))
                     }
+                    .interactiveDismissDisabled(characterCreationLoading)
                 }
             }
         )
+    }
+    
+    func remove(_ character: CharacterModel?) {
+        guard let character else { return }
+        if UserDefaults.standard.selectedId == character.id {
+            UserDefaults.standard.selectedId = ""
+            CharacterUpdateService.send()
+        }
+
+        modelContext.delete(character)
+        try? modelContext.save()
     }
 }

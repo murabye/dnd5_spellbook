@@ -15,57 +15,20 @@ struct CharacterCreationView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     
+    @Binding var isLoading: Bool
+    
     let safeArea: EdgeInsets
 
     @State private var selectedImage: UIImage? = nil
     @State private var characterName: String = ""
     @State private var selectedClass: CharacterClass = .nothing
-
-    @State private var selectedBardCollegy: BardCollegy = .defaultValue
-    @State private var selectedWizardSchool: WizardSchool = .defaultValue
-    @State private var selectedDruidCircle: DruidCircle = .defaultValue
-    @State private var selectedClericDomain: ClericDomain = .defaultValue
-    @State private var selectedArtificerSpeciality: ArtificerSpeciality = .defaultValue
-    @State private var selectedWarlockPatron: WarlockPatron = .defaultValue
-    @State private var selectedPaladinOath: PaladinOath = .defaultValue
-    @State private var selectedRangerArchetype: RangerArchetype = .defaultValue
-    @State private var selectedSorcererOrigin: SorcererOrigin = .defaultValue
     
     @State private var isPickerSelected = false
     @State private var scrollOffset: CGFloat = 0.0
-    @State private var autoknowedSpells = [Spell]()
+    @State private var autoKnownSpells = [Spell]()
     @State private var paginationOffset: Int = 0
+    @State private var allCleaned = false
 
-    var subclassed: CharacterArchetype {
-        switch selectedClass {
-        case .bard: .bard(selectedBardCollegy)
-        case .wizard: .wizard(selectedWizardSchool)
-        case .druid: .druid(selectedDruidCircle)
-        case .cleric: .cleric(selectedClericDomain)
-        case .artificer: .artificer(selectedArtificerSpeciality)
-        case .warlock: .warlock(selectedWarlockPatron)
-        case .paladin: .paladin(selectedPaladinOath)
-        case .ranger: .ranger(selectedRangerArchetype)
-        case .sorcerer: .sorcerer(selectedSorcererOrigin)
-        case .nothing: .nothing
-        }
-    }
-    
-    var archetype: any Archetype {
-        switch subclassed {
-        case let .bard(subtype): subtype
-        case let .wizard(subtype): subtype
-        case let .druid(subtype): subtype
-        case let .cleric(subtype): subtype
-        case let .artificer(subtype): subtype
-        case let .warlock(subtype): subtype
-        case let .paladin(subtype): subtype
-        case let .ranger(subtype): subtype
-        case let .sorcerer(subtype): subtype
-        case .nothing: NoneSubclass.nothing
-        }
-    }
-    
     var body: some View {
         ZStack {
             ObservableScrollView(scrollOffset: $scrollOffset) { _ in
@@ -76,10 +39,6 @@ struct CharacterCreationView: View {
                         .padding(.top, 3)
                     Divider()
                     classPicker
-                    if selectedClass != .nothing {
-                        Divider()
-                        archetypePicker
-                    }
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
@@ -87,7 +46,7 @@ struct CharacterCreationView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding()
                 
-                if !autoknowedSpells.isEmpty {
+                if !autoKnownSpells.isEmpty {
                     autoSpellsHeader.padding(.horizontal)
                     autoSpellsList.padding(.horizontal)
                 }
@@ -105,6 +64,10 @@ struct CharacterCreationView: View {
                 }
                 Spacer()
             }
+            
+            if isLoading {
+                LoaderBlock()
+            }
         }
         .animation(.easeIn, value: selectedClass)
         .sheet(isPresented: $isPickerSelected) {
@@ -117,7 +80,8 @@ struct CharacterCreationView: View {
             backgroundColor: Color(uiColor: .systemGroupedBackground)
         )
         .onChange(of: selectedClass, { _, _ in
-            autoknowedSpells = []
+            allCleaned = false
+            autoKnownSpells = []
             paginationOffset = 0
             loadSpells()
         })
@@ -145,85 +109,22 @@ struct CharacterCreationView: View {
         .pickerStyle(.menu)
     }
     
-    var archetypePicker: some View {
-        Group {
-            switch selectedClass {
-            case .bard:
-                CharacterClassCreationPicker(
-                    selected: $selectedBardCollegy,
-                    allCases: BardCollegy.allCases,
-                    isCompact: true
-                )
-            case .wizard:
-                CharacterClassCreationPicker(
-                    selected: $selectedWizardSchool,
-                    allCases: WizardSchool.allCases,
-                    isCompact: true
-                )
-            case .druid:
-                CharacterClassCreationPicker(
-                    selected: $selectedDruidCircle,
-                    allCases: DruidCircle.allCases,
-                    isCompact: true
-                )
-            case .cleric:
-                CharacterClassCreationPicker(
-                    selected: $selectedClericDomain,
-                    allCases: ClericDomain.allCases,
-                    isCompact: true
-                )
-            case .artificer:
-                CharacterClassCreationPicker(
-                    selected: $selectedArtificerSpeciality,
-                    allCases: ArtificerSpeciality.allCases,
-                    isCompact: true
-                )
-            case .warlock:
-                CharacterClassCreationPicker(
-                    selected: $selectedWarlockPatron,
-                    allCases: WarlockPatron.allCases,
-                    isCompact: true
-                )
-            case .paladin:
-                CharacterClassCreationPicker(
-                    selected: $selectedPaladinOath,
-                    allCases: PaladinOath.allCases,
-                    isCompact: true
-                )
-            case .ranger:
-                CharacterClassCreationPicker(
-                    selected: $selectedRangerArchetype,
-                    allCases: RangerArchetype.allCases,
-                    isCompact: true
-                )
-            case .sorcerer:
-                CharacterClassCreationPicker(
-                    selected: $selectedSorcererOrigin,
-                    allCases: SorcererOrigin.allCases,
-                    isCompact: true
-                )
-            case .nothing:
-                CharacterClassCreationPicker(
-                    selected: $selectedSorcererOrigin,
-                    allCases: SorcererOrigin.allCases,
-                    isCompact: true
-                )
-            }
-        }
-    }
-    
     var autoSpellsHeader: some View {
         HStack {
             Text("Известные автоматически")
             Spacer()
-            Button("Забыть все", action: { self.autoknowedSpells = [] })
+            Button("Забыть все", action: {
+                self.allCleaned = true
+                self.autoKnownSpells = [];
+                self.paginationOffset = Int.max
+            })
         }
     }
-    
+
     var autoSpellsList: some View {
         LazyVStack {
             ForEach(
-                autoknowedSpells,
+                autoKnownSpells,
                 id: \.id
             ) { spell in
                 SpellView(
@@ -238,8 +139,8 @@ struct CharacterCreationView: View {
                 .contextMenu {
                     Button("Забыть", action: { [weak spell] in
                         if let spell,
-                           let index = autoknowedSpells.firstIndex(of: spell) {
-                            autoknowedSpells.remove(at: index)
+                           let index = autoKnownSpells.firstIndex(of: spell) {
+                            autoKnownSpells.remove(at: index)
                         }
                     })
                 }
@@ -259,28 +160,70 @@ struct CharacterCreationView: View {
             .padding(.horizontal, 12)
             .padding(.vertical, 4)
     }
-
+    
     func addCharacter() {
+        if (selectedClass == .cleric || selectedClass == .druid), !allCleaned {
+            addClericOrDruid()
+        } else {
+            addSimpleCharacter()
+        }
+    }
+    func addSimpleCharacter() {
+        isLoading = true
         let imageUrl = FileManager.default.save(image: selectedImage)
         let newCharacterId = UUID().uuidString
         UserDefaults.standard.selectedId = newCharacterId
         let character = CharacterModel(
             id: newCharacterId,
             imageUrl: imageUrl,
-            characterSubclass: subclassed,
+            characterClass: selectedClass,
             name: characterName,
             tagActions: [:],
-            knownSpells: autoknowedSpells,
+            knownSpells: [],
             preparedSpells: []
         )
         modelContext.insert(character)
         try? modelContext.save()
         CharacterUpdateService.send()
+        isLoading = false
     }
     
+    func addClericOrDruid() {
+        isLoading = true
+        
+        let imageUrl = FileManager.default.save(image: selectedImage)
+        let fetchDescriptor = FetchDescriptor<Spell>(sortBy: [SortDescriptor(\.id)])
+        let allSpells = (try? modelContext.fetch(fetchDescriptor)) ?? []
+        
+        Task.detached {
+            let filter = allSpells.filter { $0.classes.contains(selectedClass) }
+            let newCharacterId = UUID().uuidString
+            
+            Task.detached { @MainActor in
+                UserDefaults.standard.selectedId = newCharacterId
+                let character = CharacterModel(
+                    id: newCharacterId,
+                    imageUrl: imageUrl,
+                    characterClass: selectedClass,
+                    name: characterName,
+                    tagActions: [:],
+                    knownSpells: [],
+                    preparedSpells: []
+                )
+                modelContext.insert(character)
+                try? modelContext.save()
+                
+                character.knownSpells = filter
+                try? modelContext.save()
+
+                CharacterUpdateService.send()
+                isLoading = false
+            }
+        }
+    }
     
     func loadSpells() {
-        guard selectedClass == .cleric || selectedClass == .druid else {
+        guard (selectedClass == .cleric || selectedClass == .druid), !allCleaned else {
             return
         }
 
@@ -295,7 +238,7 @@ struct CharacterCreationView: View {
         if totalAmount > paginationOffset + 1 {
             let newData = (try? modelContext.fetch(fetchDescriptor)) ?? []
             paginationOffset += newData.count
-            autoknowedSpells.append(contentsOf: newData.filter { $0.classes.contains(selectedClass) })
+            autoKnownSpells.append(contentsOf: newData.filter { $0.classes.contains(selectedClass) })
         }
     }
 }

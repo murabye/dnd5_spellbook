@@ -21,7 +21,6 @@
 		FF2CBC7D2B2D9EE8004D062C /* dnd_spellbookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC7C2B2D9EE8004D062C /* dnd_spellbookUITestsLaunchTests.swift */; };
 		FF2CBC8C2B2D9FD9004D062C /* CharacterCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC8B2B2D9FD9004D062C /* CharacterCreation.swift */; };
 		FF2CBC932B2DFD82004D062C /* GenericProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC922B2DFD82004D062C /* GenericProtocol.swift */; };
-		FF2CBCA12B2E4531004D062C /* SpellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBCA02B2E4531004D062C /* SpellView.swift */; };
 		FF2CBCA32B2E4E47004D062C /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBCA22B2E4E47004D062C /* TagView.swift */; };
 		FF2CBCA52B2E55B1004D062C /* TagLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBCA42B2E55B1004D062C /* TagLine.swift */; };
 		FF48BCA72B94B77000E3E3DF /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF48BCA62B94B77000E3E3DF /* MailView.swift */; };
@@ -29,9 +28,7 @@
 		FF48BCAB2B95164F00E3E3DF /* FileManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */; };
 		FF48BCAD2B9519DE00E3E3DF /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */; };
 		FF70ECE32B701FA3000B3A8F /* MCEmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = FF70ECE22B701FA3000B3A8F /* MCEmojiPicker */; };
-		FF779A4F2B34C50100F7B654 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF779A4E2B34C50100F7B654 /* MainView.swift */; };
 		FF779A542B34F74500F7B654 /* AuthorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF779A532B34F74500F7B654 /* AuthorPage.swift */; };
-		FF8325BB2B30C84A00820438 /* CharacterClassCreationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325BA2B30C84A00820438 /* CharacterClassCreationPicker.swift */; };
 		FF8325C12B30E41400820438 /* DynamicIslandMergingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */; };
 		FF8325C32B30E60A00820438 /* ObservedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C22B30E60A00820438 /* ObservedScrollView.swift */; };
 		FF8325C62B30F68600820438 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C52B30F68600820438 /* WaterfallLayout.swift */; };
@@ -49,6 +46,14 @@
 		FFB750212B79308D0099508F /* DatabaseSetupIfNeededView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750202B79308D0099508F /* DatabaseSetupIfNeededView.swift */; };
 		FFB873C92BC53E4B00528394 /* CharacterUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB873C82BC53E4B00528394 /* CharacterUpdateService.swift */; };
 		FFC320BE2BC8180D00874532 /* CustomOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320BD2BC8180D00874532 /* CustomOnAppear.swift */; };
+		FFC320C22BC8659200874532 /* MainBigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320C12BC8659200874532 /* MainBigView.swift */; };
+		FFC320C42BC8668C00874532 /* SectionIndexTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320C32BC8668C00874532 /* SectionIndexTitles.swift */; };
+		FFC320C82BC9382900874532 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320C72BC9382900874532 /* Array.swift */; };
+		FFC320CA2BC94DAB00874532 /* HiddenSpellsBigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320C92BC94DAB00874532 /* HiddenSpellsBigView.swift */; };
+		FFC320CC2BC95E2100874532 /* HiddenSpellsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320CB2BC95E2100874532 /* HiddenSpellsView.swift */; };
+		FFC320D02BC95EE100874532 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320CF2BC95EE100874532 /* MainView.swift */; };
+		FFC320D22BC9605E00874532 /* SpellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320D12BC9605E00874532 /* SpellView.swift */; };
+		FFC320D42BC9647100874532 /* LoaderBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC320D32BC9647100874532 /* LoaderBlock.swift */; };
 		FFCF4BCD2B700C7F00D38414 /* materials.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCA2B700C7F00D38414 /* materials.json */; };
 		FFCF4BCE2B700C7F00D38414 /* tags.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCB2B700C7F00D38414 /* tags.json */; };
 		FFCF4BCF2B700C7F00D38414 /* skills.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCC2B700C7F00D38414 /* skills.json */; };
@@ -72,16 +77,6 @@
 		FFE792682B3A1E56004F6BF4 /* TagAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792672B3A1E56004F6BF4 /* TagAction.swift */; };
 		FFE7926B2B3B7583004F6BF4 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926A2B3B7583004F6BF4 /* CharacterModel.swift */; };
 		FFE7926D2B3B766E004F6BF4 /* CharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926C2B3B766E004F6BF4 /* CharacterClass.swift */; };
-		FFE7926F2B3B76CD004F6BF4 /* CharacterArchetype.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7926E2B3B76CD004F6BF4 /* CharacterArchetype.swift */; };
-		FFE792712B3B770D004F6BF4 /* BardCollegy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792702B3B770D004F6BF4 /* BardCollegy.swift */; };
-		FFE792732B3B773C004F6BF4 /* WizardSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792722B3B773C004F6BF4 /* WizardSchool.swift */; };
-		FFE792752B3B7751004F6BF4 /* DruidCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792742B3B7751004F6BF4 /* DruidCircle.swift */; };
-		FFE792772B3B778E004F6BF4 /* ClericDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792762B3B778E004F6BF4 /* ClericDomain.swift */; };
-		FFE792792B3B77A9004F6BF4 /* ArtificerSpeciality.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792782B3B77A9004F6BF4 /* ArtificerSpeciality.swift */; };
-		FFE7927B2B3B77C7004F6BF4 /* PaladinOath.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7927A2B3B77C7004F6BF4 /* PaladinOath.swift */; };
-		FFE7927D2B3B77DE004F6BF4 /* RangerArchetype.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7927C2B3B77DE004F6BF4 /* RangerArchetype.swift */; };
-		FFE7927F2B3B7800004F6BF4 /* SorcererOrigin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE7927E2B3B7800004F6BF4 /* SorcererOrigin.swift */; };
-		FFE792812B3B7813004F6BF4 /* WarlockPatron.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792802B3B7813004F6BF4 /* WarlockPatron.swift */; };
 		FFE792842B3B8FAB004F6BF4 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792832B3B8FAB004F6BF4 /* String+.swift */; };
 		FFE792872B3B9170004F6BF4 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792862B3B9170004F6BF4 /* Filter.swift */; };
 		FFF28C622BC58C9A0032E605 /* TagSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF28C612BC58C9A0032E605 /* TagSelectView.swift */; };
@@ -125,16 +120,13 @@
 		FF2CBC7C2B2D9EE8004D062C /* dnd_spellbookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dnd_spellbookUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF2CBC8B2B2D9FD9004D062C /* CharacterCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreation.swift; sourceTree = "<group>"; };
 		FF2CBC922B2DFD82004D062C /* GenericProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericProtocol.swift; sourceTree = "<group>"; };
-		FF2CBCA02B2E4531004D062C /* SpellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellView.swift; sourceTree = "<group>"; };
 		FF2CBCA22B2E4E47004D062C /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		FF2CBCA42B2E55B1004D062C /* TagLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLine.swift; sourceTree = "<group>"; };
 		FF48BCA62B94B77000E3E3DF /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		FF48BCA82B94FCFD00E3E3DF /* CharacterImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImagePickerView.swift; sourceTree = "<group>"; };
 		FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+.swift"; sourceTree = "<group>"; };
 		FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
-		FF779A4E2B34C50100F7B654 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FF779A532B34F74500F7B654 /* AuthorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPage.swift; sourceTree = "<group>"; };
-		FF8325BA2B30C84A00820438 /* CharacterClassCreationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClassCreationPicker.swift; sourceTree = "<group>"; };
 		FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicIslandMergingView.swift; sourceTree = "<group>"; };
 		FF8325C22B30E60A00820438 /* ObservedScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedScrollView.swift; sourceTree = "<group>"; };
 		FF8325C52B30F68600820438 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
@@ -152,6 +144,14 @@
 		FFB750202B79308D0099508F /* DatabaseSetupIfNeededView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSetupIfNeededView.swift; sourceTree = "<group>"; };
 		FFB873C82BC53E4B00528394 /* CharacterUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUpdateService.swift; sourceTree = "<group>"; };
 		FFC320BD2BC8180D00874532 /* CustomOnAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOnAppear.swift; sourceTree = "<group>"; };
+		FFC320C12BC8659200874532 /* MainBigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBigView.swift; sourceTree = "<group>"; };
+		FFC320C32BC8668C00874532 /* SectionIndexTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIndexTitles.swift; sourceTree = "<group>"; };
+		FFC320C72BC9382900874532 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		FFC320C92BC94DAB00874532 /* HiddenSpellsBigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenSpellsBigView.swift; sourceTree = "<group>"; };
+		FFC320CB2BC95E2100874532 /* HiddenSpellsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenSpellsView.swift; sourceTree = "<group>"; };
+		FFC320CF2BC95EE100874532 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FFC320D12BC9605E00874532 /* SpellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellView.swift; sourceTree = "<group>"; };
+		FFC320D32BC9647100874532 /* LoaderBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderBlock.swift; sourceTree = "<group>"; };
 		FFCF4BCA2B700C7F00D38414 /* materials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = materials.json; sourceTree = "<group>"; };
 		FFCF4BCB2B700C7F00D38414 /* tags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tags.json; sourceTree = "<group>"; };
 		FFCF4BCC2B700C7F00D38414 /* skills.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skills.json; sourceTree = "<group>"; };
@@ -175,16 +175,6 @@
 		FFE792672B3A1E56004F6BF4 /* TagAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAction.swift; sourceTree = "<group>"; };
 		FFE7926A2B3B7583004F6BF4 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		FFE7926C2B3B766E004F6BF4 /* CharacterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClass.swift; sourceTree = "<group>"; };
-		FFE7926E2B3B76CD004F6BF4 /* CharacterArchetype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterArchetype.swift; sourceTree = "<group>"; };
-		FFE792702B3B770D004F6BF4 /* BardCollegy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BardCollegy.swift; sourceTree = "<group>"; };
-		FFE792722B3B773C004F6BF4 /* WizardSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardSchool.swift; sourceTree = "<group>"; };
-		FFE792742B3B7751004F6BF4 /* DruidCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DruidCircle.swift; sourceTree = "<group>"; };
-		FFE792762B3B778E004F6BF4 /* ClericDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClericDomain.swift; sourceTree = "<group>"; };
-		FFE792782B3B77A9004F6BF4 /* ArtificerSpeciality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtificerSpeciality.swift; sourceTree = "<group>"; };
-		FFE7927A2B3B77C7004F6BF4 /* PaladinOath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaladinOath.swift; sourceTree = "<group>"; };
-		FFE7927C2B3B77DE004F6BF4 /* RangerArchetype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangerArchetype.swift; sourceTree = "<group>"; };
-		FFE7927E2B3B7800004F6BF4 /* SorcererOrigin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SorcererOrigin.swift; sourceTree = "<group>"; };
-		FFE792802B3B7813004F6BF4 /* WarlockPatron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarlockPatron.swift; sourceTree = "<group>"; };
 		FFE792832B3B8FAB004F6BF4 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		FFE792862B3B9170004F6BF4 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		FFF28C612BC58C9A0032E605 /* TagSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectView.swift; sourceTree = "<group>"; };
@@ -337,7 +327,11 @@
 		FF779A4D2B34C4F800F7B654 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				FF779A4E2B34C50100F7B654 /* MainView.swift */,
+				FFC320C32BC8668C00874532 /* SectionIndexTitles.swift */,
+				FFC320C12BC8659200874532 /* MainBigView.swift */,
+				FFC320CF2BC95EE100874532 /* MainView.swift */,
+				FFC320C92BC94DAB00874532 /* HiddenSpellsBigView.swift */,
+				FFC320CB2BC95E2100874532 /* HiddenSpellsView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -404,8 +398,8 @@
 				FFF28C602BC58C870032E605 /* Tags */,
 				FF10CA1D2B44AF1E00D9348F /* SpellCreation */,
 				FF8325CF2B31011F00820438 /* SpellListView.swift */,
+				FFC320D12BC9605E00874532 /* SpellView.swift */,
 				FF8325D12B31058400820438 /* SpellEditView.swift */,
-				FF2CBCA02B2E4531004D062C /* SpellView.swift */,
 			);
 			path = Spells;
 			sourceTree = "<group>";
@@ -418,10 +412,10 @@
 				FF8325C92B30F6F900820438 /* CharacterCreationBigView.swift */,
 				FF8325C22B30E60A00820438 /* ObservedScrollView.swift */,
 				FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */,
-				FF8325BA2B30C84A00820438 /* CharacterClassCreationPicker.swift */,
 				FFDF84ED2B2E84B2004916F3 /* UIPickerView.swift */,
 				FFF90A762B338FB500569628 /* CharacterList.swift */,
 				FFF90A782B338FDE00569628 /* CharacterListItem.swift */,
+				FFC320D32BC9647100874532 /* LoaderBlock.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -471,16 +465,6 @@
 			children = (
 				FFE7926A2B3B7583004F6BF4 /* CharacterModel.swift */,
 				FFE7926C2B3B766E004F6BF4 /* CharacterClass.swift */,
-				FFE7926E2B3B76CD004F6BF4 /* CharacterArchetype.swift */,
-				FFE792702B3B770D004F6BF4 /* BardCollegy.swift */,
-				FFE792722B3B773C004F6BF4 /* WizardSchool.swift */,
-				FFE792742B3B7751004F6BF4 /* DruidCircle.swift */,
-				FFE792762B3B778E004F6BF4 /* ClericDomain.swift */,
-				FFE792782B3B77A9004F6BF4 /* ArtificerSpeciality.swift */,
-				FFE7927A2B3B77C7004F6BF4 /* PaladinOath.swift */,
-				FFE7927C2B3B77DE004F6BF4 /* RangerArchetype.swift */,
-				FFE7927E2B3B7800004F6BF4 /* SorcererOrigin.swift */,
-				FFE792802B3B7813004F6BF4 /* WarlockPatron.swift */,
 			);
 			path = CharacterTypes;
 			sourceTree = "<group>";
@@ -492,6 +476,7 @@
 				FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */,
 				FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */,
 				FFC320BD2BC8180D00874532 /* CustomOnAppear.swift */,
+				FFC320C72BC9382900874532 /* Array.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -659,9 +644,11 @@
 				FF8325D02B31011F00820438 /* SpellListView.swift in Sources */,
 				FFE792592B3A17A3004F6BF4 /* Component.swift in Sources */,
 				FFB750192B78FE060099508F /* ComponentModel.swift in Sources */,
+				FFC320D02BC95EE100874532 /* MainView.swift in Sources */,
 				FFB7500D2B76A26E0099508F /* TagColor.swift in Sources */,
 				FFDF85012B2FB0C1004916F3 /* FilterExpandableContent.swift in Sources */,
 				FF48BCAD2B9519DE00E3E3DF /* UserDefaults+.swift in Sources */,
+				FFC320D22BC9605E00874532 /* SpellView.swift in Sources */,
 				FF8325C82B30F69A00820438 /* FlowLayout.swift in Sources */,
 				FFE792632B3A1C13004F6BF4 /* Sources.swift in Sources */,
 				FF8325D22B31058400820438 /* SpellEditView.swift in Sources */,
@@ -672,30 +659,27 @@
 				FF10CA262B44C1A700D9348F /* DurationPickerView.swift in Sources */,
 				FFE7925D2B3A1A4B004F6BF4 /* Distantion.swift in Sources */,
 				FF2CBC8C2B2D9FD9004D062C /* CharacterCreation.swift in Sources */,
-				FF779A4F2B34C50100F7B654 /* MainView.swift in Sources */,
 				FFF90A792B338FDE00569628 /* CharacterListItem.swift in Sources */,
 				FF48BCA72B94B77000E3E3DF /* MailView.swift in Sources */,
-				FF2CBCA12B2E4531004D062C /* SpellView.swift in Sources */,
-				FFE792812B3B7813004F6BF4 /* WarlockPatron.swift in Sources */,
+				FFC320C82BC9382900874532 /* Array.swift in Sources */,
 				FFE7926D2B3B766E004F6BF4 /* CharacterClass.swift in Sources */,
 				FF10CA2A2B44C5C400D9348F /* ComponentCreationView.swift in Sources */,
 				FF2CBC932B2DFD82004D062C /* GenericProtocol.swift in Sources */,
-				FFE7927B2B3B77C7004F6BF4 /* PaladinOath.swift in Sources */,
 				FFE792842B3B8FAB004F6BF4 /* String+.swift in Sources */,
 				FF48BCAB2B95164F00E3E3DF /* FileManager+.swift in Sources */,
-				FFE7927F2B3B7800004F6BF4 /* SorcererOrigin.swift in Sources */,
 				FF2CBCA32B2E4E47004D062C /* TagView.swift in Sources */,
 				FFB7501B2B78FE140099508F /* DistantionModel.swift in Sources */,
 				FF2CBCA52B2E55B1004D062C /* TagLine.swift in Sources */,
 				FFE792872B3B9170004F6BF4 /* Filter.swift in Sources */,
 				FFB873C92BC53E4B00528394 /* CharacterUpdateService.swift in Sources */,
-				FF8325BB2B30C84A00820438 /* CharacterClassCreationPicker.swift in Sources */,
+				FFC320CA2BC94DAB00874532 /* HiddenSpellsBigView.swift in Sources */,
+				FFC320CC2BC95E2100874532 /* HiddenSpellsView.swift in Sources */,
+				FFC320C42BC8668C00874532 /* SectionIndexTitles.swift in Sources */,
 				FF8325CA2B30F6F900820438 /* CharacterCreationBigView.swift in Sources */,
 				FFDF85032B2FBA0D004916F3 /* FilterExpandableTagContent.swift in Sources */,
 				FFE792682B3A1E56004F6BF4 /* TagAction.swift in Sources */,
 				FF48BCA92B94FCFD00E3E3DF /* CharacterImagePickerView.swift in Sources */,
 				FFB750212B79308D0099508F /* DatabaseSetupIfNeededView.swift in Sources */,
-				FFE7926F2B3B76CD004F6BF4 /* CharacterArchetype.swift in Sources */,
 				FFE792662B3A1CD1004F6BF4 /* Tag.swift in Sources */,
 				FF8325C12B30E41400820438 /* DynamicIslandMergingView.swift in Sources */,
 				FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */,
@@ -704,21 +688,17 @@
 				FFE792572B3A13E1004F6BF4 /* Duration.swift in Sources */,
 				FFE7925F2B3A1B43004F6BF4 /* TypeOfAction.swift in Sources */,
 				FF8325CC2B30FFE600820438 /* FilterSetupBigView.swift in Sources */,
-				FFE792752B3B7751004F6BF4 /* DruidCircle.swift in Sources */,
 				FFB750172B78FAE30099508F /* DurationModel.swift in Sources */,
+				FFC320D42BC9647100874532 /* LoaderBlock.swift in Sources */,
 				FFDF84FB2B2F99EE004916F3 /* UniversalTagView.swift in Sources */,
 				FFDF84EE2B2E84B2004916F3 /* UIPickerView.swift in Sources */,
 				FFCF4BD12B70168500D38414 /* TagColorsGallery.swift in Sources */,
+				FFC320C22BC8659200874532 /* MainBigView.swift in Sources */,
 				FFDF84FD2B2F9AD4004916F3 /* UniversalTagLine.swift in Sources */,
-				FFE792772B3B778E004F6BF4 /* ClericDomain.swift in Sources */,
-				FFE792732B3B773C004F6BF4 /* WizardSchool.swift in Sources */,
 				FFB750112B77F8090099508F /* DatabaseSetupView.swift in Sources */,
 				FFF90A772B338FB500569628 /* CharacterList.swift in Sources */,
 				FFF28C622BC58C9A0032E605 /* TagSelectView.swift in Sources */,
-				FFE792792B3B77A9004F6BF4 /* ArtificerSpeciality.swift in Sources */,
-				FFE7927D2B3B77DE004F6BF4 /* RangerArchetype.swift in Sources */,
 				FFB7501D2B78FE260099508F /* TypeOfActionModel.swift in Sources */,
-				FFE792712B3B770D004F6BF4 /* BardCollegy.swift in Sources */,
 				FF2CBC5F2B2D9EE6004D062C /* dnd_spellbookApp.swift in Sources */,
 				FF10CA2E2B44CCB900D9348F /* TypeOfActionPickerView.swift in Sources */,
 				FFE792612B3A1BC6004F6BF4 /* SpellSchool.swift in Sources */,

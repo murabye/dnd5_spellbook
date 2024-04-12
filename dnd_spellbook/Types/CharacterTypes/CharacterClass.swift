@@ -19,21 +19,6 @@ enum CharacterClass: Int, Codable, FilterFormSelectable, CaseIterable, Hashable 
     case ranger
     case sorcerer
     case nothing
-
-    var subclassDesctiption: String {
-        switch self {
-        case .bard: BardCollegy.description
-        case .wizard: WizardSchool.description
-        case .druid: DruidCircle.description
-        case .cleric: ClericDomain.description
-        case .artificer: ArtificerSpeciality.description
-        case .warlock: WarlockPatron.description
-        case .paladin: PaladinOath.description
-        case .ranger: RangerArchetype.description
-        case .sorcerer: SorcererOrigin.description
-        case .nothing: "Нет класса"
-        }
-    }
 }
 
 extension CharacterClass: HaveName {
@@ -67,15 +52,5 @@ extension [ CharacterClass ] {
             .map(\.name)
             .sorted()
             .joined(separator: ", ")
-    }
-}
-
-enum NoneSubclass: Int, CaseIterable, Archetype, Codable {
-    
-    case nothing
-    
-    static var description: String = "Нет подкласса"
-    var name: String {
-        "Нет подкласса"
     }
 }

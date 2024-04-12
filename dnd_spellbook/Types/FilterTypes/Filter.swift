@@ -89,6 +89,9 @@ extension Filter {
             return false
         }
         
+        guard !onlyMute || !spell.components.contains(.verbal) else { return false }
+        guard !onlyNoHands || !spell.components.contains(.somatic) else { return false }
+
         let includedSet = Set(included)
         let excludedSet = Set(excluded)
         let classesSet = Set(classes)
@@ -97,9 +100,6 @@ extension Filter {
         guard includedSet.isEmpty || !includedSet.isDisjoint(with: spellTags) else { return false }
         guard excludedSet.isEmpty || excludedSet.isDisjoint(with: spellTags) else { return false }
         guard classesSet.isEmpty || !classesSet.isDisjoint(with: spell.classes) else { return false }
-
-        guard !onlyMute || !spell.components.contains(.verbal) else { return false }
-        guard !onlyNoHands || !spell.components.contains(.somatic) else { return false }
 
         return true
     }

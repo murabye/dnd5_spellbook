@@ -112,7 +112,7 @@ struct CharacterListAppendItem: View {
             character: CharacterModel(
                 id: "1",
                 imageUrl: nil,
-                characterSubclass: .cleric(.life),
+                characterClass: .cleric,
                 name: "Кронк",
                 tagActions: [:],
                 knownSpells: [],

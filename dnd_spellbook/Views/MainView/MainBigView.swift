@@ -5,12 +5,24 @@
 //  Created by Влада Кузнецова on 16.12.2023.
 //
 
+// TODO: создать персонажа с pregen spells
+
 import SwiftData
 import SwiftUI
 
-struct MainView: View {
+enum NavWay: Int, Hashable {
+    
+    case characterList
+    case authorPage
+    case filterCreate
+    case hiddenSpells
+}
+
+struct MainBigView: View {
     
     @Environment(\.modelContext) var modelContext
+    
+    let columnAmount: Int
     
     @State var isSpellCreationOpened: Bool = false
     
@@ -40,8 +52,12 @@ struct MainView: View {
             ScrollViewReader { scrollProxy in
                 ZStack {
                     ScrollView {
-                        LazyVStack {
-                            SectionIndexTitleView(name: .prepared)
+                        SectionIndexTitleView(name: .prepared)
+                        VerticalWaterfallLayout(
+                            columns: columnAmount,
+                            spacingX: 16,
+                            spacingY: 16
+                        ) {
                             SpellListView(
                                 spells: $characterPrepared,
                                 character: $character,
@@ -54,9 +70,15 @@ struct MainView: View {
                                 onPrepare: { spell in onPrepare(spell) },
                                 onUnprepare: { spell in onUnprepare(spell) }
                             )
-                            .padding()
-                            
-                            SectionIndexTitleView(name: .known)
+                        }
+                        .padding()
+
+                        SectionIndexTitleView(name: .known)
+                        VerticalWaterfallLayout(
+                            columns: columnAmount,
+                            spacingX: 16,
+                            spacingY: 16
+                        ) {
                             SpellListView(
                                 spells: $characterKnown,
                                 character: $character,
@@ -69,9 +91,15 @@ struct MainView: View {
                                 onPrepare: { spell in onPrepare(spell) },
                                 onUnprepare: { spell in onUnprepare(spell) }
                             )
-                            .padding()
-                            
-                            SectionIndexTitleView(name: .other )
+                        }
+                        .padding()
+
+                        SectionIndexTitleView(name: .other )
+                        VerticalWaterfallLayout(
+                            columns: columnAmount,
+                            spacingX: 16,
+                            spacingY: 16
+                        ) {
                             SpellListView(
                                 spells: $other,
                                 character: $character,
@@ -84,23 +112,25 @@ struct MainView: View {
                                 onPrepare: { spell in onPrepare(spell) },
                                 onUnprepare: { spell in onUnprepare(spell) }
                             )
-                            .padding()
-                            
-                            Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadOther() }
-                            if otherBatchIsEmpty {
-                                HStack {
-                                    Spacer()
-                                    Button("Загрузить еще...") { loadOther() }
-                                        .buttonStyle(.borderedProminent)
-                                    Spacer()
-                                }
-                            }
-                            
-                            NavigationLink(value: NavWay.hiddenSpells) {
-                                SectionIndexTitleView(name: .hidden)
-                            }
-                            Spacer(minLength: 16)
                         }
+                        .padding()
+                        
+                        LazyVStack {
+                            Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadOther() }
+                        }
+                        if otherBatchIsEmpty {
+                            HStack {
+                                Spacer()
+                                Button("Загрузить еще...") { loadOther() }
+                                    .buttonStyle(.borderedProminent)
+                                Spacer()
+                            }
+                        }
+                        
+                        NavigationLink(value: NavWay.hiddenSpells) {
+                            SectionIndexTitleView(name: .hidden)
+                        }
+                        Spacer(minLength: 16)
                     }
                     
                     sectionIndexTitles(proxy: scrollProxy)
@@ -141,7 +171,8 @@ struct MainView: View {
             case .filterCreate:
                 FilterSetupBigView()
             case .hiddenSpells:
-                HiddenSpellsView(
+                HiddenSpellsBigView(
+                    columnAmount: columnAmount,
                     allMaterials: materials,
                     allTags: tags,
                     character: $character
@@ -201,13 +232,13 @@ struct MainView: View {
         .scrollIndicators(.never)
         .background(Color.white)
     }
-    
+
     func sectionIndexTitles(proxy: ScrollViewProxy) -> some View {
         SectionIndexTitles(proxy: proxy, titles: SectionsNames.allCases)
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding()
     }
-    
+
     // MARK: - filters
     private func remove(filter: Filter?) {
         guard let filter else { return }
@@ -217,7 +248,7 @@ struct MainView: View {
         modelContext.delete(filter)
         try? modelContext.save()
     }
-    
+
     // MARK: - spell loading
     func recallCharacter() {
         guard let userId = UserDefaults.standard.selectedId, !userId.isEmpty else {
@@ -251,7 +282,7 @@ struct MainView: View {
     func loadPrepared(onFinish: @escaping () -> ()) {
         guard let character else {
             characterPrepared = []
-            onFinish() 
+            onFinish()
             return
         }
         
@@ -303,7 +334,6 @@ struct MainView: View {
     }
     
     func loadOther() {
-        isLoading = true
         otherBatchIsEmpty = false
         var fetchDescriptor = FetchDescriptor<Spell>(
             predicate: #Predicate { spell in
@@ -311,12 +341,13 @@ struct MainView: View {
             },
             sortBy: [SortDescriptor(\.id)]
         )
+        isLoading = true
         guard let totalAmount = try? modelContext.fetchCount(fetchDescriptor) else {
             otherBatchIsEmpty = true
             isLoading = false
             return
         }
-        
+
         fetchDescriptor.fetchLimit = 30
         fetchDescriptor.fetchOffset = min(totalAmount, max(fetchedOther.count - 1, 0))
         
@@ -342,15 +373,15 @@ struct MainView: View {
             isLoading = false
         }
     }
-    
+
     // MARK: actions
-    func onHide(_ spell: Spell) {
+    func onHide(_ spell: Spell) { 
         isLoading = true
-        
+
         Task.detached {
             let otherIndex = other.firstIndex(of: spell)
             let fetchedOtherIndex = fetchedOther.firstIndex(of: spell)
-            
+
             Task.detached { @MainActor in
                 if let otherIndex { other.remove(at: otherIndex) }
                 if let fetchedOtherIndex { fetchedOther.remove(at: fetchedOtherIndex) }
@@ -359,7 +390,7 @@ struct MainView: View {
         }
     }
     
-    func onUnknow(_ spell: Spell) {
+    func onUnknow(_ spell: Spell) { 
         isLoading = true
         
         Task.detached {
@@ -392,7 +423,7 @@ struct MainView: View {
             }
         }
     }
-    
+
     func onKnow(_ spell: Spell) {
         isLoading = true
         
@@ -406,14 +437,14 @@ struct MainView: View {
                 isLoading = false
             }
         }
-        
+
     }
-    
+        
     func onPrepare(_ spell: Spell) {
         if let index = characterKnown.firstIndex(of: spell) {
             characterKnown.remove(at: index)
         }
-        
+
         if !characterPrepared.contains(spell) {
             characterPrepared.append(spell)
         }
@@ -423,7 +454,7 @@ struct MainView: View {
         if let index = characterPrepared.firstIndex(of: spell) {
             characterPrepared.remove(at: index)
         }
-        
+
         if !characterKnown.contains(spell) {
             characterKnown.append(spell)
         }
