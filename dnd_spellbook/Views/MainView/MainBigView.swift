@@ -5,8 +5,6 @@
 //  Created by Влада Кузнецова on 16.12.2023.
 //
 
-// TODO: создать персонажа с pregen spells
-
 import SwiftData
 import SwiftUI
 
