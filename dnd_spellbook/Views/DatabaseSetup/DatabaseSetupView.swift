@@ -56,22 +56,23 @@ struct DatabaseSetupView: View {
             }
             Text(stage.text)
         }
-        .task {
-            do {
-                try save(tags: try parseTags())
-                try save(materials: parseMaterials())
-                let presets = try parseSpells()
-                let spells = try connect(presets)
-                try save(spells: spells)
-                self.stage = .done
-            } catch let error {
-                self.stage = .error
-                print("VARVAR \(error)")
+        .appearOnce {
+            Task.detached { @MainActor in
+                do {
+                    try save(tags: try parseTags())
+                    try save(materials: parseMaterials())
+                    let presets = try parseSpells()
+                    let spells = try connect(presets)
+                    try save(spells: spells)
+                    self.stage = .done
+                } catch let error {
+                    self.stage = .error
+                }
             }
         }
     }
 
-    func parseTags() throws -> [Tag] {
+    func parseTags() throws  -> [Tag] {
         self.stage = .parseTags
         if let bundlePath = Bundle.main.path(forResource: "tags", ofType: "json"),
            let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
