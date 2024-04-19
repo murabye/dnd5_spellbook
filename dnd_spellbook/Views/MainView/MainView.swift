@@ -324,7 +324,7 @@ struct MainView: View {
         }
         
         fetchDescriptor.fetchLimit = 30
-        fetchDescriptor.fetchOffset = min(totalAmount, max(fetchedOther.count - 1, 0))
+        fetchDescriptor.fetchOffset = min(totalAmount, fetchedOther.count)
         
         if totalAmount > fetchedOther.count {
             let newData = (try? modelContext.fetch(fetchDescriptor)) ?? []

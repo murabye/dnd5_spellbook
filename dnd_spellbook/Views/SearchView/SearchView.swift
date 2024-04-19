@@ -75,7 +75,7 @@ struct SearchView: View {
         }
 
         fetchDescriptor.fetchLimit = 30
-        fetchDescriptor.fetchOffset = min(totalAmount, max(spells.count - 1, 0))
+        fetchDescriptor.fetchOffset = min(totalAmount, spells.count)
         
         if totalAmount > spells.count {
             let newData = (try? modelContext.fetch(fetchDescriptor)) ?? []
