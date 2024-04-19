@@ -10,6 +10,7 @@ import SwiftUI
 
 enum NavWay: Int, Hashable {
     
+    case search
     case characterList
     case authorPage
     case filterCreate
@@ -150,10 +151,13 @@ struct MainBigView: View {
                 Button {
                     isSpellCreationOpened.toggle()
                 } label: {
-                    Image(systemName: "plus")
-                        .font(.title2)
+                    Image(systemName: "plus").font(.title2)
                 }
                 
+                NavigationLink(value: NavWay.search) {
+                    Image(systemName: "magnifyingglass").font(.title2)
+                }
+
                 NavigationLink(value: NavWay.characterList) {
                     CharacterListItem(
                         character: character,
@@ -166,8 +170,8 @@ struct MainBigView: View {
             switch navWay {
             case .characterList: CharacterList()
             case .authorPage: AuthorPage()
-            case .filterCreate:
-                FilterSetupBigView()
+            case .filterCreate: FilterSetupBigView()
+            case .search: SearchBigView(columnAmount: columnAmount, character: $character)
             case .hiddenSpells:
                 HiddenSpellsBigView(
                     columnAmount: columnAmount,
@@ -225,10 +229,11 @@ struct MainBigView: View {
                 }
                 Spacer(minLength: 16)
             }
+            .padding(.bottom, 4)
             .padding(.vertical, 4)
         }
         .scrollIndicators(.never)
-        .background(Color.white)
+        .background(Color.systemGroupedTableContent)
     }
 
     func sectionIndexTitles(proxy: ScrollViewProxy) -> some View {

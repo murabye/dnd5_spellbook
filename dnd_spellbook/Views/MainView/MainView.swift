@@ -119,6 +119,10 @@ struct MainView: View {
                     ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
                 }
                 
+                NavigationLink(value: NavWay.search) {
+                    Image(systemName: "magnifyingglass").font(.title2)
+                }
+
                 Button {
                     isSpellCreationOpened.toggle()
                 } label: {
@@ -138,8 +142,8 @@ struct MainView: View {
             switch navWay {
             case .characterList: CharacterList()
             case .authorPage: AuthorPage()
-            case .filterCreate:
-                FilterSetupBigView()
+            case .filterCreate: FilterSetupBigView()
+            case .search: SearchView(character: $character)
             case .hiddenSpells:
                 HiddenSpellsView(
                     allMaterials: materials,
@@ -199,7 +203,7 @@ struct MainView: View {
             .padding(.vertical, 4)
         }
         .scrollIndicators(.never)
-        .background(Color.white)
+        .background(Color.themed)
     }
     
     func sectionIndexTitles(proxy: ScrollViewProxy) -> some View {
