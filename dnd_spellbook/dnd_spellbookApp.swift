@@ -5,11 +5,6 @@
 //  Created by Влада Кузнецова on 16.12.2023.
 //
 
-/*
- TODO: VARVAR
- Пресет фильтров при добавлении персонажа
- */
-
 import SwiftData
 import SwiftUI
 
