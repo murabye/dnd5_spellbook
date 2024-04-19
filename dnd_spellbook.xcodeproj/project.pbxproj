@@ -337,8 +337,6 @@
 				FFC320C32BC8668C00874532 /* SectionIndexTitles.swift */,
 				FFC320C12BC8659200874532 /* MainBigView.swift */,
 				FFC320CF2BC95EE100874532 /* MainView.swift */,
-				FFC320C92BC94DAB00874532 /* HiddenSpellsBigView.swift */,
-				FFC320CB2BC95E2100874532 /* HiddenSpellsView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -402,6 +400,7 @@
 		FFDF84EF2B2E89AE004916F3 /* Spells */ = {
 			isa = PBXGroup;
 			children = (
+				FFE5092E2BD291690001A6EB /* HiddenSpellsView */,
 				FFF28C602BC58C870032E605 /* Tags */,
 				FF10CA1D2B44AF1E00D9348F /* SpellCreation */,
 				FF8325CF2B31011F00820438 /* SpellListView.swift */,
@@ -448,6 +447,15 @@
 				FFE5092A2BD269CC0001A6EB /* SearchView.swift */,
 			);
 			path = SearchView;
+			sourceTree = "<group>";
+		};
+		FFE5092E2BD291690001A6EB /* HiddenSpellsView */ = {
+			isa = PBXGroup;
+			children = (
+				FFC320C92BC94DAB00874532 /* HiddenSpellsBigView.swift */,
+				FFC320CB2BC95E2100874532 /* HiddenSpellsView.swift */,
+			);
+			path = HiddenSpellsView;
 			sourceTree = "<group>";
 		};
 		FFE792552B3A1391004F6BF4 /* SpellTypes */ = {

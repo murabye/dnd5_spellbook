@@ -239,7 +239,7 @@ struct MainBigView: View {
     }
 
     func sectionIndexTitles(proxy: ScrollViewProxy) -> some View {
-        SectionIndexTitles(proxy: proxy, titles: SectionsNames.allCases)
+        SectionIndexTitles(proxy: proxy, titles: [.prepared, .known, .hidden, .other])
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding()
     }

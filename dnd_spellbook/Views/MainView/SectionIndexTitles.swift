@@ -14,6 +14,7 @@ enum SectionsNames: String, CaseIterable {
     case known = "Известные"
     case other = "Прочие"
     case hidden = "Сокрытые"
+    case search = "Поиск"
 }
 
 struct SectionIndexTitleView: View {
@@ -40,14 +41,39 @@ struct SectionIndexTitles: View {
     var body: some View {
         VStack {
             ForEach(titles, id: \.self) { title in
-                SectionIndexTitle(image: sfSymbol(for: title))
-                    .onTapGesture {
-                        proxy.scrollTo(title.rawValue)
-                    }
+                sfSymbol(for: title)
+                    .foregroundColor(.blue)
+                    .background(dragObserver(title: title))
+                    .padding(.vertical, 2)
             }
+        }
+        .padding(.vertical, 4)
+        .background(Color(uiColor: UIColor.systemGray6))
+        .clipShape(Capsule())
+        .frame(width: 20)
+        .gesture(
+            DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                .updating($dragLocation) { value, state, _ in
+                    state = value.location
+                }
+        )
+    }
+    
+    func dragObserver(title: SectionsNames) -> some View {
+        GeometryReader { geometry in
+            dragObserver(geometry: geometry, title: title)
         }
     }
     
+    func dragObserver(geometry: GeometryProxy, title: SectionsNames) -> some View {
+        if geometry.frame(in: .global).contains(dragLocation) {
+            DispatchQueue.main.async {
+                proxy.scrollTo(title.rawValue, anchor: .top)
+            }
+        }
+        return Rectangle().fill(Color.clear)
+    }
+
     func sfSymbol(for deviceCategory: SectionsNames) -> Image {
         let systemName: String
         switch deviceCategory {
@@ -55,20 +81,8 @@ struct SectionIndexTitles: View {
         case .known: systemName = "book"
         case .other: systemName = "tray"
         case .hidden: systemName = "eye.slash"
+        case .search: systemName = "magnifyingglass"
         }
         return Image(systemName: systemName)
-    }
-}
-
-struct SectionIndexTitle: View {
-    let image: Image
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .foregroundColor(Color(uiColor: UIColor.systemGray6))
-            .frame(width: 20, height: 20)
-            .overlay(
-                image.foregroundColor(.blue)
-            )
     }
 }

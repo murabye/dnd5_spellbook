@@ -56,8 +56,19 @@ struct SpellListView: View {
                 case .hidden:
                     Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
                     Button("Выучить", action: { [weak spell] in know(spell: spell) })
-                    Divider()
                     Button("Открыть", action: { [weak spell] in unhide(spell: spell) })
+                case .search:
+                    Text("Для оптимизации пока не проверяем состояние заклинания")
+                    Button("Подготовить...", action: { [weak spell] in prepare(spell: spell) })
+                    Button("Выучить...", action: { [weak spell] in know(spell: spell) })
+                    Button("Отложить...", action: { [weak spell] in unprepare(spell: spell) })
+                    Button("Забыть...", action: { [weak spell] in unknow(spell: spell) })
+                    Divider()
+                    if spell.isHidden {
+                        Button("Открыть", action: { [weak spell] in unhide(spell: spell) })
+                    } else {
+                        Button("Спрятать", action: { [weak spell] in hide(spell: spell) })
+                    }
                 }
     
                 if canEdit {
@@ -86,12 +97,10 @@ struct SpellListView: View {
         
         if !selectedCharacter.preparedSpells.contains(spell) {
             selectedCharacter.preparedSpells.append(spell)
+            spell.isHidden = false
             onPrepare(spell)
         }
         
-        spell.isHidden = false
-        
-
         try? modelContext.save()
         CharacterUpdateService.send()
     }
@@ -102,16 +111,14 @@ struct SpellListView: View {
             return
         }
         
-        
         if let index = selectedCharacter.preparedSpells.firstIndex(of: spell) {
             selectedCharacter.preparedSpells.remove(at: index)
             onUnprepare(spell)
             selectedCharacter.knownSpells.append(spell)
             onKnow(spell)
+            try? modelContext.save()
+            CharacterUpdateService.send()
         }
-
-        try? modelContext.save()
-        CharacterUpdateService.send()
     }
 
     func know(spell: Spell?) {
@@ -120,12 +127,13 @@ struct SpellListView: View {
             return
         }
 
-        spell.isHidden = false
-        selectedCharacter.knownSpells.append(spell)
-        onKnow(spell)
-
-        try? modelContext.save()
-        CharacterUpdateService.send()
+        if !selectedCharacter.knownSpells.contains(spell) {
+            selectedCharacter.knownSpells.append(spell)
+            spell.isHidden = false
+            onKnow(spell)
+            try? modelContext.save()
+            CharacterUpdateService.send()
+        }
     }
     
     func unknow(spell: Spell?) {

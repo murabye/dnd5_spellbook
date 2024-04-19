@@ -33,7 +33,8 @@ struct SearchBigView: View {
                 SpellListView(
                     spells: $spells,
                     character: $character,
-                    name: .other,
+                    canEdit: false,
+                    name: .search,
                     onHide: { _ in },
                     onUnhide: { _ in },
                     onRemove: { _ in },
