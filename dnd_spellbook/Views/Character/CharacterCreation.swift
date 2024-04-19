@@ -55,16 +55,7 @@ struct CharacterCreationView: View {
                     Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadSpells() }
                 }
             }
-            
-            VStack {
-                HStack {
-                    Spacer()
-                    applyButton
-                    cancelButton
-                }
-                Spacer()
-            }
-            
+                        
             if isLoading {
                 LoaderBlock()
             }
@@ -79,6 +70,16 @@ struct CharacterCreationView: View {
             safeArea: safeArea,
             backgroundColor: Color(uiColor: .systemGroupedBackground)
         )
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                cancelButton
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                applyButton
+            }
+        }
+        .toolbarBackground(.hidden, for: .navigationBar)
         .onChange(of: selectedClass, { _, _ in
             allCleaned = false
             autoKnownSpells = []

@@ -84,11 +84,17 @@ struct SpellCreationView: View {
             }
             .navigationTitle("Создание заклинания")
             .toolbar {
-                Button("Сохранить") {
-                    saveUpdate()
-                    dismiss()
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("", systemImage: "xmark") { dismiss() }
                 }
-                .disabled(name.isEmpty || description.isEmpty)
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Сохранить") {
+                        saveUpdate()
+                        dismiss()
+                    }
+                    .disabled(name.isEmpty || description.isEmpty)
+                }
             }
         }
     }

@@ -3,6 +3,16 @@
     {
       "filename" : "Снимок экрана 2023-12-19 в 00.54.38.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Снимок экрана 2023-12-19 в 00.54.38.jpg",
+      "idiom" : "universal"
     }
   ],
   "info" : {

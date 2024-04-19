@@ -69,8 +69,13 @@ struct CharacterCreationBigView: View {
                 UIPickerView(image: $selectedImage).ignoresSafeArea()
             }
             .toolbar {
-                applyButton
-                cancelButton
+                ToolbarItem(placement: .navigationBarLeading) {
+                    cancelButton
+                }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    applyButton
+                }
             }
             .onChange(of: selectedClass, { _, _ in
                 autoKnownSpells = []

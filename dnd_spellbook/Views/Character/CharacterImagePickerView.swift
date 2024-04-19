@@ -40,9 +40,8 @@ struct CharacterImagePickerView: View {
                             [ CharacterCreationView.Constants.islandCollapsableItemKey: $0 ]
                         }
                 } else {
-                    Image(systemName: "plus")
+                    Image("plus")
                         .resizable()
-                        .padding()
                         .frame(width: imageSize, height: imageSize, alignment: .top)
                         .background()
                         .blur(radius: 10 * scrollProgress, opaque: true)

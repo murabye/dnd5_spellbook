@@ -68,11 +68,13 @@ struct CharacterList: View {
             },
             content: {
                 if idiom == .phone {
-                    ColumnReader { columnAmount, safeArea in 
-                        CharacterCreationView(
-                            isLoading: $characterCreationLoading,
-                            safeArea: safeArea
-                        )
+                    NavigationStack {
+                        ColumnReader { columnAmount, safeArea in
+                            CharacterCreationView(
+                                isLoading: $characterCreationLoading,
+                                safeArea: safeArea
+                            )
+                        }
                     }
                     .interactiveDismissDisabled(characterCreationLoading)
                 } else {
