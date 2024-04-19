@@ -71,6 +71,11 @@ struct MainView: View {
                             )
                             .padding()
                             
+                            NavigationLink(value: NavWay.hiddenSpells) {
+                                SectionIndexTitleView(name: .hidden)
+                            }
+                            .padding(.bottom)
+                            
                             SectionIndexTitleView(name: .other )
                             SpellListView(
                                 spells: $other,
@@ -96,9 +101,6 @@ struct MainView: View {
                                 }
                             }
                             
-                            NavigationLink(value: NavWay.hiddenSpells) {
-                                SectionIndexTitleView(name: .hidden)
-                            }
                             Spacer(minLength: 16)
                         }
                     }

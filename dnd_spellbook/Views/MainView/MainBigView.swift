@@ -93,6 +93,11 @@ struct MainBigView: View {
                         }
                         .padding()
 
+                        NavigationLink(value: NavWay.hiddenSpells) {
+                            SectionIndexTitleView(name: .hidden)
+                        }
+                        .padding(.bottom)
+
                         SectionIndexTitleView(name: .other )
                         VerticalWaterfallLayout(
                             columns: columnAmount,
@@ -126,9 +131,6 @@ struct MainBigView: View {
                             }
                         }
                         
-                        NavigationLink(value: NavWay.hiddenSpells) {
-                            SectionIndexTitleView(name: .hidden)
-                        }
                         Spacer(minLength: 16)
                     }
                     
