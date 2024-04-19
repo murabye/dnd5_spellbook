@@ -290,7 +290,7 @@ struct MainView: View {
         
         let allKnownSpells = character.knownSpells
         guard let selectedFilter else {
-            characterPrepared = allKnownSpells
+            characterKnown = allKnownSpells
             onFinish()
             return
         }
