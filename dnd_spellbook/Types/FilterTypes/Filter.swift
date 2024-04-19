@@ -21,11 +21,12 @@ class Filter: Hashable, Identifiable {
     let schools: [SpellSchool]
     let actions: [NoConreteActionType]
     let concentration: Bool?
-    @Relationship(deleteRule: .nullify) let included: [Tag]
-    @Relationship(deleteRule: .nullify) let excluded: [Tag]
+    @Relationship(deleteRule: .nullify) var included: [Tag]
+    @Relationship(deleteRule: .nullify) var excluded: [Tag]
     let classes: [CharacterClass]
     let onlyMute: Bool
     let onlyNoHands: Bool
+    let character: String
     
     init(
         name: String,
@@ -40,7 +41,8 @@ class Filter: Hashable, Identifiable {
         excluded: [Tag],
         classes: [CharacterClass],
         onlyMute: Bool,
-        onlyNoHands: Bool
+        onlyNoHands: Bool,
+        character: CharacterModel?
     ) {
         self.name = name
         self.levels = levels
@@ -50,11 +52,15 @@ class Filter: Hashable, Identifiable {
         self.schools = schools
         self.actions = actions
         self.concentration = concentration
-        self.included = included
-        self.excluded = excluded
+        self.included = []
+        self.excluded = []
         self.classes = classes
         self.onlyMute = onlyMute
         self.onlyNoHands = onlyNoHands
+        self.character = character?.id ?? ""
+
+        self.excluded = excluded
+        self.included = included
     }
 }
 
@@ -65,7 +71,6 @@ extension Filter {
         allMaterials: [MaterialModel],
         allTags: [Tag]
     ) -> Bool {
-
         guard levels.isEmpty || levels.contains(spell.level) else { return false }
         guard !noMaterials || !spell.haveMaterials else { return false }
         

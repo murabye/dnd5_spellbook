@@ -22,6 +22,7 @@ struct MainView: View {
     }
     
     // additional content
+    @Query(sort: \CharacterModel.name) var characters: [CharacterModel]
     @State var character: CharacterModel? = nil
     @Query var materials: [MaterialModel]
     @Query var tags: [Tag]
@@ -152,13 +153,22 @@ struct MainView: View {
                         isCompact: true
                     )
                 }
+                .contextMenu {
+                    ForEach(characters, id: \.id) { character in
+                        Button(character.name) { [weak character] in
+                            guard let character else { return }
+                            UserDefaults.standard.selectedId = character.id
+                            CharacterUpdateService.send()
+                        }
+                    }
+                }
             }
         })
         .navigationDestination(for: NavWay.self) { navWay in
             switch navWay {
             case .characterList: CharacterList()
             case .authorPage: AuthorPage()
-            case .filterCreate: FilterSetupBigView()
+            case .filterCreate: FilterSetupView(character: $character, bindToCharacter: character != nil)
             case .search: SearchView(character: $character)
             case .hiddenSpells:
                 HiddenSpellsView(
@@ -176,6 +186,11 @@ struct MainView: View {
         }
         .onReceive(CharacterUpdateService.publisher()) { _ in
             recallCharacter()
+        }
+        .onReceive(UserDefaults.standard.selectedId.publisher) { _ in
+            let filtered = filters
+                .filter { $0.character.isEmpty || $0.character == UserDefaults.standard.selectedId }
+            selectedFilterName = filtered.first?.id ?? ""
         }
         .onChange(of: selectedFilter, { old, new in
             guard old != new else { return }
@@ -197,7 +212,20 @@ struct MainView: View {
                         .clipShape(Capsule())
                 }
                 
-                ForEach(filters, id: \.name) { filter in
+                UniversalTagView(
+                    tagProps: UniversalTagProps(
+                        title: "Без фильтра",
+                        isActive: selectedFilterName == nil || selectedFilterName == "",
+                        foregroundColor: .white,
+                        backgroundColor: selectedFilterName == nil || selectedFilterName == "" ? .blue : .gray,
+                        isActionable: false
+                    )
+                )
+                .onTapGesture {
+                    selectedFilterName = nil
+                }
+
+                ForEach(filters.filter { $0.character.isEmpty || $0.character == character?.id }, id: \.name) { filter in
                     UniversalTagView(
                         tagProps: UniversalTagProps(
                             title: filter.name,

@@ -95,6 +95,17 @@ struct CharacterList: View {
     
     func remove(_ character: CharacterModel?) {
         guard let character else { return }
+        
+        let id = character.id
+        let fetchDescriptor = FetchDescriptor<Filter>(predicate: #Predicate { filter in
+            filter.character == id
+        })
+
+        let filters: [Filter] = (try? modelContext.fetch(fetchDescriptor)) ?? []
+        for filter in filters {
+            modelContext.delete(filter)
+        }
+        
         if UserDefaults.standard.selectedId == character.id {
             UserDefaults.standard.selectedId = ""
             CharacterUpdateService.send()

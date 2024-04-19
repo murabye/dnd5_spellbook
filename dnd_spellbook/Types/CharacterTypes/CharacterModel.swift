@@ -18,7 +18,7 @@ class CharacterModel {
     let tagActions: [Int: TagAction]
     @Relationship(deleteRule: .nullify) var knownSpells: [Spell]
     @Relationship(deleteRule: .nullify) var preparedSpells: [Spell]
-    
+
     init(
         id: String,
         imageUrl: URL?,

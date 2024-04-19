@@ -28,6 +28,7 @@
 		FF48BCAB2B95164F00E3E3DF /* FileManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */; };
 		FF48BCAD2B9519DE00E3E3DF /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */; };
 		FF70ECE32B701FA3000B3A8F /* MCEmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = FF70ECE22B701FA3000B3A8F /* MCEmojiPicker */; };
+		FF72A67A2BD2E0CE00352E6A /* FIlter+Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72A6792BD2E0CE00352E6A /* FIlter+Presets.swift */; };
 		FF779A542B34F74500F7B654 /* AuthorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF779A532B34F74500F7B654 /* AuthorPage.swift */; };
 		FF8325C12B30E41400820438 /* DynamicIslandMergingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */; };
 		FF8325C32B30E60A00820438 /* ObservedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325C22B30E60A00820438 /* ObservedScrollView.swift */; };
@@ -129,6 +130,7 @@
 		FF48BCA82B94FCFD00E3E3DF /* CharacterImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImagePickerView.swift; sourceTree = "<group>"; };
 		FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+.swift"; sourceTree = "<group>"; };
 		FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		FF72A6792BD2E0CE00352E6A /* FIlter+Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FIlter+Presets.swift"; sourceTree = "<group>"; };
 		FF779A532B34F74500F7B654 /* AuthorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPage.swift; sourceTree = "<group>"; };
 		FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicIslandMergingView.swift; sourceTree = "<group>"; };
 		FF8325C22B30E60A00820438 /* ObservedScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedScrollView.swift; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				FFE792862B3B9170004F6BF4 /* Filter.swift */,
+				FF72A6792BD2E0CE00352E6A /* FIlter+Presets.swift */,
 			);
 			path = FilterTypes;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				FFE792572B3A13E1004F6BF4 /* Duration.swift in Sources */,
 				FFE7925F2B3A1B43004F6BF4 /* TypeOfAction.swift in Sources */,
 				FF8325CC2B30FFE600820438 /* FilterSetupBigView.swift in Sources */,
+				FF72A67A2BD2E0CE00352E6A /* FIlter+Presets.swift in Sources */,
 				FFB750172B78FAE30099508F /* DurationModel.swift in Sources */,
 				FFC320D42BC9647100874532 /* LoaderBlock.swift in Sources */,
 				FFDF84FB2B2F99EE004916F3 /* UniversalTagView.swift in Sources */,

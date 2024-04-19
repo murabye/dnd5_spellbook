@@ -10,6 +10,8 @@ import SwiftUI
 
 struct FilterSetupBigView: View {
 
+    @Binding var character: CharacterModel?
+
     @AppStorage(UserDefaults.Constants.selectedFilterName) var selectedFilterName: String?
     @State var name: String = ""
     
@@ -39,7 +41,8 @@ struct FilterSetupBigView: View {
     @State var concentrationResctiction: ConcentrationResctiction = .anyway
     @State var onlyMute: Bool = false
     @State var onlyNoHands: Bool = false
-    
+    @State var bindToCharacter: Bool
+
     @Query(sort: \Tag.text) var includedTags: [Tag]
     @State var includedTagsIsOpened = false
     @State var activeIncludedTags = [Tag]()
@@ -203,6 +206,10 @@ struct FilterSetupBigView: View {
             }
             Toggle("Без голоса", isOn: $onlyMute)
             Toggle("Без рук", isOn: $onlyNoHands)
+            
+            if character != nil {
+                Toggle("Прикрепить к персонажу", isOn: $bindToCharacter)
+            }
         }
         .padding(12)
         .background(Color.systemGroupedTableContent)
@@ -357,7 +364,8 @@ struct FilterSetupBigView: View {
             excluded: activeExcludedTags,
             classes: activeClasses,
             onlyMute: onlyMute,
-            onlyNoHands: onlyNoHands
+            onlyNoHands: onlyNoHands,
+            character: bindToCharacter ? character : nil
         )
         
         modelContext.insert(filter)
@@ -390,7 +398,4 @@ extension View {
     }
 }
 
-#Preview {
-    FilterSetupBigView()
-}
 
