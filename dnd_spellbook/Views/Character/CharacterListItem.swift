@@ -27,11 +27,11 @@ struct CharacterListItem: View {
                     width: isCompact ? 30 : 70,
                     height: isCompact ? 30 : 70
                 )
-                .foregroundStyle(isSelected ? Color.blue : Color.black.opacity(0.6))
+                .foregroundStyle(isSelected ? Color.blue : Color.inverted.opacity(0.6))
                 .background(Color(UIColor.secondarySystemBackground))
                 .clipShape(Circle())
                 .overlay(Circle().stroke(
-                    isSelected ? Color.blue : Color.black.opacity(0.6),
+                    isSelected ? Color.blue : Color.inverted.opacity(0.6),
                     lineWidth: isCompact ? 2 : 4
                 ))
             
@@ -39,7 +39,7 @@ struct CharacterListItem: View {
                 Text(name)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 120)
-                    .foregroundStyle(isSelected ? Color.blue : Color.black.opacity(0.6))
+                    .foregroundStyle(isSelected ? Color.blue : Color.inverted.opacity(0.6))
             }
             Spacer(minLength: 0)
         }
@@ -79,13 +79,13 @@ struct CharacterListAppendItem: View {
                 .background(Color(UIColor.secondarySystemBackground))
                 .clipShape(Circle())
                 .overlay(Circle().stroke(
-                    isSingle ? Color.blue : Color.black.opacity(0.7),
+                    isSingle ? Color.blue : Color.inverted.opacity(0.7),
                     lineWidth: 4
                 ))
             
             Text("Добавить")
                 .fontWeight(.semibold)
-                .foregroundStyle(isSingle ? Color.blue : Color.black.opacity(0.7))
+                .foregroundStyle(isSingle ? Color.blue : Color.inverted.opacity(0.7))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 120)
             
@@ -96,7 +96,7 @@ struct CharacterListAppendItem: View {
     private var image: some View {
         Image(systemName: "person.badge.plus")
             .resizable()
-            .foregroundStyle(isSingle ? Color.blue : Color.black.opacity(0.7))
+            .foregroundStyle(isSingle ? Color.blue : Color.inverted.opacity(0.7))
             .padding(.top, 18)
             .padding(.bottom, 14)
             .padding(.leading, 20)

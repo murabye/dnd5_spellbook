@@ -65,6 +65,9 @@
 		FFDF84FF2B2FB081004916F3 /* FilterExpandableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF84FE2B2FB081004916F3 /* FilterExpandableHeader.swift */; };
 		FFDF85012B2FB0C1004916F3 /* FilterExpandableContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF85002B2FB0C1004916F3 /* FilterExpandableContent.swift */; };
 		FFDF85032B2FBA0D004916F3 /* FilterExpandableTagContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF85022B2FBA0D004916F3 /* FilterExpandableTagContent.swift */; };
+		FFE509292BD269C50001A6EB /* SearchBigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE509282BD269C50001A6EB /* SearchBigView.swift */; };
+		FFE5092B2BD269CC0001A6EB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE5092A2BD269CC0001A6EB /* SearchView.swift */; };
+		FFE5092D2BD27F9F0001A6EB /* OnChangeThrottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE5092C2BD27F9F0001A6EB /* OnChangeThrottle.swift */; };
 		FFE792542B3A1186004F6BF4 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792532B3A1186004F6BF4 /* Spell.swift */; };
 		FFE792572B3A13E1004F6BF4 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792562B3A13E1004F6BF4 /* Duration.swift */; };
 		FFE792592B3A17A3004F6BF4 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE792582B3A17A3004F6BF4 /* Component.swift */; };
@@ -163,6 +166,9 @@
 		FFDF84FE2B2FB081004916F3 /* FilterExpandableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterExpandableHeader.swift; sourceTree = "<group>"; };
 		FFDF85002B2FB0C1004916F3 /* FilterExpandableContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterExpandableContent.swift; sourceTree = "<group>"; };
 		FFDF85022B2FBA0D004916F3 /* FilterExpandableTagContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterExpandableTagContent.swift; sourceTree = "<group>"; };
+		FFE509282BD269C50001A6EB /* SearchBigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBigView.swift; sourceTree = "<group>"; };
+		FFE5092A2BD269CC0001A6EB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		FFE5092C2BD27F9F0001A6EB /* OnChangeThrottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChangeThrottle.swift; sourceTree = "<group>"; };
 		FFE792532B3A1186004F6BF4 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		FFE792562B3A13E1004F6BF4 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		FFE792582B3A17A3004F6BF4 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -313,6 +319,7 @@
 		FF2CBC9F2B2E4518004D062C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FFE509272BD269B70001A6EB /* SearchView */,
 				FFB750142B78FAA80099508F /* DatabaseSetup */,
 				FF779A522B34F72900F7B654 /* AuthorPage */,
 				FF779A4D2B34C4F800F7B654 /* MainView */,
@@ -434,6 +441,15 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
+		FFE509272BD269B70001A6EB /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				FFE509282BD269C50001A6EB /* SearchBigView.swift */,
+				FFE5092A2BD269CC0001A6EB /* SearchView.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
 		FFE792552B3A1391004F6BF4 /* SpellTypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +492,7 @@
 				FF48BCAA2B95164F00E3E3DF /* FileManager+.swift */,
 				FF48BCAC2B9519DE00E3E3DF /* UserDefaults+.swift */,
 				FFC320BD2BC8180D00874532 /* CustomOnAppear.swift */,
+				FFE5092C2BD27F9F0001A6EB /* OnChangeThrottle.swift */,
 				FFC320C72BC9382900874532 /* Array.swift */,
 			);
 			path = Extension;
@@ -648,6 +665,7 @@
 				FFB7500D2B76A26E0099508F /* TagColor.swift in Sources */,
 				FFDF85012B2FB0C1004916F3 /* FilterExpandableContent.swift in Sources */,
 				FF48BCAD2B9519DE00E3E3DF /* UserDefaults+.swift in Sources */,
+				FFE509292BD269C50001A6EB /* SearchBigView.swift in Sources */,
 				FFC320D22BC9605E00874532 /* SpellView.swift in Sources */,
 				FF8325C82B30F69A00820438 /* FlowLayout.swift in Sources */,
 				FFE792632B3A1C13004F6BF4 /* Sources.swift in Sources */,
@@ -678,6 +696,8 @@
 				FF8325CA2B30F6F900820438 /* CharacterCreationBigView.swift in Sources */,
 				FFDF85032B2FBA0D004916F3 /* FilterExpandableTagContent.swift in Sources */,
 				FFE792682B3A1E56004F6BF4 /* TagAction.swift in Sources */,
+				FFE5092D2BD27F9F0001A6EB /* OnChangeThrottle.swift in Sources */,
+				FFE5092B2BD269CC0001A6EB /* SearchView.swift in Sources */,
 				FF48BCA92B94FCFD00E3E3DF /* CharacterImagePickerView.swift in Sources */,
 				FFB750212B79308D0099508F /* DatabaseSetupIfNeededView.swift in Sources */,
 				FFE792662B3A1CD1004F6BF4 /* Tag.swift in Sources */,

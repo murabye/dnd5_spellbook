@@ -99,8 +99,9 @@ struct CharacterCreationBigView: View {
                             .background()
                             .clipShape(Circle())
                     } else {
-                        Image("plus")
+                        Image(systemName: "plus")
                             .resizable()
+                            .padding()
                             .frame(width: 70, height: 70, alignment: .top)
                             .background()
                             .clipShape(Circle())
