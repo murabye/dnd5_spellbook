@@ -33,6 +33,7 @@ struct MainBigView: View {
     }
     
     // additional content
+    @AppStorage(UserDefaults.Constants.selectedId) var selectedCharacterId: String?
     @Query(sort: \CharacterModel.name) var characters: [CharacterModel]
     @State var character: CharacterModel? = nil
     @Query var materials: [MaterialModel]
@@ -55,47 +56,50 @@ struct MainBigView: View {
                 ZStack {
                     ScrollView {
                         SectionIndexTitleView(name: .prepared, canHide: false, isHidden: .constant(false))
-                        VerticalWaterfallLayout(
-                            columns: columnAmount,
-                            spacingX: 16,
-                            spacingY: 16
-                        ) {
-                            SpellListView(
-                                spells: $characterPrepared,
-                                character: $character,
-                                name: .prepared,
-                                onHide: { spell in onHide(spell) },
-                                onUnhide: { _ in },
-                                onRemove: { spell in onRemove(spell) },
-                                onKnow: { spell in onKnow(spell) },
-                                onUnknow: { spell in onUnknow(spell) },
-                                onPrepare: { spell in onPrepare(spell) },
-                                onUnprepare: { spell in onUnprepare(spell) }
-                            )
+                        if !characterPrepared.isEmpty {
+                            VerticalWaterfallLayout(
+                                columns: columnAmount,
+                                spacingX: 16,
+                                spacingY: 16
+                            ) {
+                                SpellListView(
+                                    spells: $characterPrepared,
+                                    character: $character,
+                                    name: .prepared,
+                                    onHide: { spell in onHide(spell) },
+                                    onUnhide: { _ in },
+                                    onRemove: { spell in onRemove(spell) },
+                                    onKnow: { spell in onKnow(spell) },
+                                    onUnknow: { spell in onUnknow(spell) },
+                                    onPrepare: { spell in onPrepare(spell) },
+                                    onUnprepare: { spell in onUnprepare(spell) }
+                                )
+                            }
+                            .padding()
                         }
-                        .padding()
 
                         SectionIndexTitleView(name: .known, canHide: false, isHidden: .constant(false))
-                        
-                        VerticalWaterfallLayout(
-                            columns: columnAmount,
-                            spacingX: 16,
-                            spacingY: 16
-                        ) {
-                            SpellListView(
-                                spells: $characterKnown,
-                                character: $character,
-                                name: .known,
-                                onHide: { spell in onHide(spell) },
-                                onUnhide: { _ in },
-                                onRemove: { spell in onRemove(spell) },
-                                onKnow: { spell in onKnow(spell) },
-                                onUnknow: { spell in onUnknow(spell) },
-                                onPrepare: { spell in onPrepare(spell) },
-                                onUnprepare: { spell in onUnprepare(spell) }
-                            )
+                        if !characterKnown.isEmpty {
+                            VerticalWaterfallLayout(
+                                columns: columnAmount,
+                                spacingX: 16,
+                                spacingY: 16
+                            ) {
+                                SpellListView(
+                                    spells: $characterKnown,
+                                    character: $character,
+                                    name: .known,
+                                    onHide: { spell in onHide(spell) },
+                                    onUnhide: { _ in },
+                                    onRemove: { spell in onRemove(spell) },
+                                    onKnow: { spell in onKnow(spell) },
+                                    onUnknow: { spell in onUnknow(spell) },
+                                    onPrepare: { spell in onPrepare(spell) },
+                                    onUnprepare: { spell in onUnprepare(spell) }
+                                )
+                            }
+                            .padding()
                         }
-                        .padding()
 
                         NavigationLink(value: NavWay.hiddenSpells) {
                             SectionIndexTitleView(name: .hidden, canHide: false, isHidden: .constant(false))
@@ -206,11 +210,11 @@ struct MainBigView: View {
         .onReceive(CharacterUpdateService.publisher()) { _ in
             recallCharacter()
         }
-        .onReceive(UserDefaults.standard.selectedId.publisher) { _ in
+        .onChange(of: selectedCharacterId, perform: { _ in
             let filtered = filters
                 .filter { $0.character.isEmpty || $0.character == UserDefaults.standard.selectedId }
-            selectedFilterName = filtered.first?.id ?? ""
-        }
+            selectedFilterName = ""
+        })
         .onChange(of: selectedFilter, { old, new in
             guard old != new else { return }
             restartLoading()
@@ -220,49 +224,51 @@ struct MainBigView: View {
     var toolbar: some View {
         ScrollView(.horizontal) {
             Divider()
-            HStack {
-                Spacer(minLength: 16)
-                NavigationLink(value: NavWay.filterCreate) {
-                    Image(systemName: "text.badge.plus")
-                        .foregroundStyle(Color.white)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 16)
-                        .background(selectedFilter == nil ? .blue : .gray)
-                        .clipShape(Capsule())
-                }
-                
-                UniversalTagView(
-                    tagProps: UniversalTagProps(
-                        title: "Без фильтра",
-                        isActive: selectedFilterName == nil || selectedFilterName == "",
-                        foregroundColor: .white,
-                        backgroundColor: selectedFilterName == nil || selectedFilterName == "" ? .blue : .gray,
-                        isActionable: false
-                    )
-                )
-                .onTapGesture {
-                    selectedFilterName = nil
-                }
-                
-                ForEach(filters.filter { $0.character.isEmpty || $0.character == character?.id }, id: \.name) { filter in
+            LazyHStack(pinnedViews: [.sectionHeaders]) {
+                Section {
                     UniversalTagView(
                         tagProps: UniversalTagProps(
-                            title: filter.name,
-                            isActive: filter.name == selectedFilterName,
+                            title: "Без фильтра",
+                            isActive: selectedFilterName == nil || selectedFilterName == "",
                             foregroundColor: .white,
-                            backgroundColor: filter.name == selectedFilterName ? .blue : .gray,
+                            backgroundColor: selectedFilterName == nil || selectedFilterName == "" ? .blue : .gray,
                             isActionable: false
                         )
                     )
                     .onTapGesture {
-                        selectedFilterName = filter.name
+                        selectedFilterName = ""
                     }
-                    .contextMenu {
-                        Button("Удалить", role: .destructive, action: { [weak filter] in remove(filter: filter) })
+                    
+                    ForEach(filters.filter { $0.character.isEmpty || $0.character == character?.id }, id: \.name) { filter in
+                        UniversalTagView(
+                            tagProps: UniversalTagProps(
+                                title: filter.name,
+                                isActive: filter.name == selectedFilterName,
+                                foregroundColor: .white,
+                                backgroundColor: filter.name == selectedFilterName ? .blue : .gray,
+                                isActionable: false
+                            )
+                        )
+                        .onTapGesture {
+                            selectedFilterName = filter.name
+                        }
+                        .contextMenu {
+                            Button("Удалить", role: .destructive, action: { [weak filter] in remove(filter: filter) })
+                        }
+                    }
+                    Spacer(minLength: 16)
+                } header: {
+                    NavigationLink(value: NavWay.filterCreate) {
+                        Image(systemName: "text.badge.plus")
+                            .foregroundStyle(Color.white)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .background(selectedFilter == nil ? .blue : .gray)
+                            .clipShape(Capsule())
                     }
                 }
-                Spacer(minLength: 16)
             }
+            .frame(height: 30)
             .padding(.vertical, 4)
         }
         .scrollIndicators(.never)

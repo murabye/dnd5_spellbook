@@ -36,7 +36,8 @@ struct CharacterCreationBigView: View {
     @State private var selectedImage: UIImage? = nil
     @State private var characterName: String = ""
     @State private var selectedClass: CharacterClass = .nothing
-        
+    @State private var level: Int = 1
+
     @State private var isPickerSelected = false
 
     @State var autoKnownSpells = [Spell]()
@@ -124,6 +125,12 @@ struct CharacterCreationBigView: View {
                 .background(Color.systemGroupedTableContent)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.top)
+            Picker(level.levelName, selection: $level) {
+                ForEach(0...9, id: \.self) {
+                    Text($0.levelName)
+                }
+            }
+            .pickerStyle(.menu)
         }
     }
     
@@ -183,6 +190,10 @@ struct CharacterCreationBigView: View {
             preparedSpells: []
         )
         modelContext.insert(character)
+        
+        addFilters(for: level)
+        addFilters(for: 9)
+
         try? modelContext.save()
         CharacterUpdateService.send()
         isLoading = false
@@ -211,6 +222,10 @@ struct CharacterCreationBigView: View {
                     preparedSpells: []
                 )
                 modelContext.insert(character)
+                
+                addFilters(for: level)
+                addFilters(for: 9)
+                
                 try? modelContext.save()
                 
                 character.knownSpells = filter
@@ -220,6 +235,21 @@ struct CharacterCreationBigView: View {
                 isLoading = false
             }
         }
+    }
+
+    func addFilters(for level: Int) {
+        let text = "\(characterName) \(selectedClass.name) \(level) круг"
+        let fetchDescriptorLevel = FetchDescriptor<Filter>(predicate: #Predicate { filter in
+            filter.name.localizedStandardContains(text)
+        })
+        let existingFiltersCount: Int = (try? modelContext.fetchCount(fetchDescriptorLevel)) ?? 0
+        let filterPresetLevel = Filter.filterForClass(
+            name: characterName,
+            characterClass: selectedClass,
+            level: level,
+            copy: existingFiltersCount
+        )
+        modelContext.insert(filterPresetLevel)
     }
 
     func loadSpells() {

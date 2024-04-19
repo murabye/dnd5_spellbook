@@ -24,23 +24,32 @@ struct SectionIndexTitleView: View {
     @Binding var isHidden: Bool
     
     var body: some View {
-        HStack {
-            Text(name.rawValue)
-            Spacer()
-            if canHide {
+        if canHide {
+            HStack {
+                Text(name.rawValue)
+                Spacer()
                 Image(systemName: "chevron.right")
                     .rotationEffect(isHidden ? .degrees(0) : .degrees(90))
             }
-        }
-        .background(Color(uiColor: UIColor.systemGroupedBackground))
-        .padding(.horizontal)
-        .contentShape(Rectangle())
-        .onTapGesture {
-            withAnimation {
-                isHidden.toggle()
+            .background(Color(uiColor: UIColor.systemGroupedBackground))
+            .padding(.horizontal)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                withAnimation {
+                    isHidden.toggle()
+                }
             }
+            .id(name.rawValue)
+        } else {
+            HStack {
+                Text(name.rawValue)
+                Spacer()
+            }
+            .background(Color(uiColor: UIColor.systemGroupedBackground))
+            .padding(.horizontal)
+            .contentShape(Rectangle())
+            .id(name.rawValue)
         }
-        .id(name.rawValue)
     }
 }
 

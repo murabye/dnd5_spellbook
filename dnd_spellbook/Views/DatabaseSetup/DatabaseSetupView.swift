@@ -27,6 +27,7 @@ struct DatabaseSetupView: View {
         case parseSpells
         case writeSpells
         case connectSpells
+        case generateFilters
         case done
         
         var text: String {
@@ -40,6 +41,7 @@ struct DatabaseSetupView: View {
             case .parseSpells: "Расшифровываем заклинания 📚"
             case .writeSpells: "Записываем заклинания 📖"
             case .connectSpells: "Соединяем в магию 🧙‍♂️"
+            case .generateFilters: "Собираем фильтры 📋"
             case .done: "Настройка завершена"
             }
         }
@@ -64,6 +66,7 @@ struct DatabaseSetupView: View {
                     let presets = try parseSpells()
                     let spells = try connect(presets)
                     try save(spells: spells)
+                    try pregenerateFilters()
                     self.stage = .done
                 } catch let error {
                     self.stage = .error
@@ -123,7 +126,7 @@ struct DatabaseSetupView: View {
             throw AnyError.anyError
         }
     }
-    
+        
     func connect(_ presets: [SpellPreset]) throws -> [Spell] {
         self.stage = .connectSpells
         var res = [Spell]()
@@ -167,6 +170,27 @@ struct DatabaseSetupView: View {
         try modelContext.transaction {
             for spell in spells {
                 modelContext.insert(spell)
+            }
+            
+            try modelContext.save()
+        }
+    }
+    
+    func pregenerateFilters() throws {
+        self.stage = .generateFilters
+        let filters = [
+            Filter.free,
+            Filter.phb,
+            Filter.bonus,
+            Filter.mainAction,
+            Filter.noConcentration,
+            Filter.noSound,
+            Filter.noHand
+        ]
+        
+        try modelContext.transaction {
+            for filter in filters {
+                modelContext.insert(filter)
             }
             
             try modelContext.save()

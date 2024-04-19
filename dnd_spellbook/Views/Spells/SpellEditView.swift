@@ -137,7 +137,7 @@ extension Int {
         case 0:
             return "Заговор"
         default:
-            return "\(self) ур."
+            return "\(self) круг"
         }
     }
 }
