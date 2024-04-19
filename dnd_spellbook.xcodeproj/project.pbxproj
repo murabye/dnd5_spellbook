@@ -618,6 +618,7 @@
 			mainGroup = FF2CBC522B2D9EE6004D062C;
 			packageReferences = (
 				FF70ECE12B701FA3000B3A8F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */,
+				FF72A6762BD2ACE100352E6A /* XCRemoteSwiftPackageReference "PinnedScrollView" */,
 			);
 			productRefGroup = FF2CBC5C2B2D9EE6004D062C /* Products */;
 			projectDirPath = "";
@@ -896,7 +897,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"dnd_spellbook/Preview Content\"";
-				DEVELOPMENT_TEAM = 94N5K69DZP;
+				DEVELOPMENT_TEAM = 4F39V7T93L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Заклинания DnD5";
@@ -941,7 +942,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"dnd_spellbook/Preview Content\"";
-				DEVELOPMENT_TEAM = 94N5K69DZP;
+				DEVELOPMENT_TEAM = 4F39V7T93L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Заклинания DnD5";
@@ -1113,6 +1114,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.2.3;
+			};
+		};
+		FF72A6762BD2ACE100352E6A /* XCRemoteSwiftPackageReference "PinnedScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Lumisilk/PinnedScrollView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

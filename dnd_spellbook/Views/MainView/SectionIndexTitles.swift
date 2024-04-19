@@ -20,15 +20,26 @@ enum SectionsNames: String, CaseIterable {
 struct SectionIndexTitleView: View {
     
     let name: SectionsNames
+    let canHide: Bool
+    @Binding var isHidden: Bool
     
     var body: some View {
         HStack {
             Text(name.rawValue)
             Spacer()
+            if canHide {
+                Image(systemName: "chevron.right")
+                    .rotationEffect(isHidden ? .degrees(0) : .degrees(90))
+            }
         }
+        .background(Color(uiColor: UIColor.systemGroupedBackground))
         .padding(.horizontal)
-        .padding(.top, 16)
-        .padding(.bottom, -16)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            withAnimation {
+                isHidden.toggle()
+            }
+        }
         .id(name.rawValue)
     }
 }

@@ -55,6 +55,7 @@ struct CharacterCreationView: View {
                     Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadSpells() }
                 }
             }
+            .scrollDismissesKeyboard(.interactively)
                         
             if isLoading {
                 LoaderBlock()

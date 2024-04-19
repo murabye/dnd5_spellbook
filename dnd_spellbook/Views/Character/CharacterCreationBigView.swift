@@ -65,6 +65,7 @@ struct CharacterCreationBigView: View {
                     Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadSpells() }
                 }
             }
+            .scrollDismissesKeyboard(.interactively)
             .sheet(isPresented: $isPickerSelected) {
                 UIPickerView(image: $selectedImage).ignoresSafeArea()
             }

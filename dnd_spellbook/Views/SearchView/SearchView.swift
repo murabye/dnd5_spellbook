@@ -43,6 +43,7 @@ struct SearchView: View {
             }
             .padding()
         }
+        .scrollDismissesKeyboard(.interactively)
         .navigationTitle("Поиск")
         .searchable(text: $searchText)
         .toolbar(content: {

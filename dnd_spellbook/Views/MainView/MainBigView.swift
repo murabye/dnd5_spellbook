@@ -46,12 +46,14 @@ struct MainBigView: View {
     @State var otherBatchIsEmpty: Bool = false
     @State var isLoading: Bool = false
     
+    @State var isOtherHidden: Bool = true
+    
     var body: some View {
         VStack(spacing: 0) {
             ScrollViewReader { scrollProxy in
                 ZStack {
                     ScrollView {
-                        SectionIndexTitleView(name: .prepared)
+                        SectionIndexTitleView(name: .prepared, canHide: false, isHidden: .constant(false))
                         VerticalWaterfallLayout(
                             columns: columnAmount,
                             spacingX: 16,
@@ -72,7 +74,8 @@ struct MainBigView: View {
                         }
                         .padding()
 
-                        SectionIndexTitleView(name: .known)
+                        SectionIndexTitleView(name: .known, canHide: false, isHidden: .constant(false))
+                        
                         VerticalWaterfallLayout(
                             columns: columnAmount,
                             spacingX: 16,
@@ -94,40 +97,41 @@ struct MainBigView: View {
                         .padding()
 
                         NavigationLink(value: NavWay.hiddenSpells) {
-                            SectionIndexTitleView(name: .hidden)
+                            SectionIndexTitleView(name: .hidden, canHide: false, isHidden: .constant(false))
                         }
                         .padding(.bottom)
 
-                        SectionIndexTitleView(name: .other )
-                        VerticalWaterfallLayout(
-                            columns: columnAmount,
-                            spacingX: 16,
-                            spacingY: 16
-                        ) {
-                            SpellListView(
-                                spells: $other,
-                                character: $character,
-                                name: .other,
-                                onHide: { spell in onHide(spell) },
-                                onUnhide: { _ in },
-                                onRemove: { spell in onRemove(spell) },
-                                onKnow: { spell in onKnow(spell) },
-                                onUnknow: { spell in onUnknow(spell) },
-                                onPrepare: { spell in onPrepare(spell) },
-                                onUnprepare: { spell in onUnprepare(spell) }
-                            )
-                        }
-                        .padding()
-                        
-                        LazyVStack {
-                            Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadOther() }
-                        }
-                        if otherBatchIsEmpty {
-                            HStack {
-                                Spacer()
-                                Button("Загрузить еще...") { loadOther() }
-                                    .buttonStyle(.borderedProminent)
-                                Spacer()
+                        SectionIndexTitleView(name: .other, canHide: true, isHidden: $isOtherHidden)
+                        if !isOtherHidden {
+                            VerticalWaterfallLayout(
+                                columns: columnAmount,
+                                spacingX: 16,
+                                spacingY: 16
+                            ) {
+                                SpellListView(
+                                    spells: $other,
+                                    character: $character,
+                                    name: .other,
+                                    onHide: { spell in onHide(spell) },
+                                    onUnhide: { _ in },
+                                    onRemove: { spell in onRemove(spell) },
+                                    onKnow: { spell in onKnow(spell) },
+                                    onUnknow: { spell in onUnknow(spell) },
+                                    onPrepare: { spell in onPrepare(spell) },
+                                    onUnprepare: { spell in onUnprepare(spell) }
+                                )
+                            }
+                            .padding()
+                            LazyVStack {
+                                Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadOther() }
+                            }
+                            if otherBatchIsEmpty {
+                                HStack {
+                                    Spacer()
+                                    Button("Загрузить еще...") { loadOther() }
+                                        .buttonStyle(.borderedProminent)
+                                    Spacer()
+                                }
                             }
                         }
                         
@@ -339,6 +343,7 @@ struct MainBigView: View {
     }
     
     func loadOther() {
+        guard !isOtherHidden else { return }
         otherBatchIsEmpty = false
         var fetchDescriptor = FetchDescriptor<Spell>(
             predicate: #Predicate { spell in

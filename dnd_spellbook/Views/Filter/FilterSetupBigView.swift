@@ -83,6 +83,7 @@ struct FilterSetupBigView: View {
                 }
             }
         }
+        .scrollDismissesKeyboard(.interactively)
         .okAlert(titleKey: "Имя занято", isPresented: $showingAlert)
         .animation(.easeIn.speed(2), value: materialsResctiction)
         .animated(valueSpring: levelsIsOpened, valueEasy: activeLevels)

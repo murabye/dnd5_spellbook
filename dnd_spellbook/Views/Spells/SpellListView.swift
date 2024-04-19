@@ -37,7 +37,6 @@ struct SpellListView: View {
             .padding(.vertical, 12)
             .background(Color.systemGroupedTableContent)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.vertical, 2)
             .contextMenu {
                 switch name {
                 case .prepared:
@@ -78,6 +77,7 @@ struct SpellListView: View {
                     Button("Удалить", role: .destructive) { [weak spell] in remove(spell: spell) }
                 }
             }
+            .padding(.vertical, 2)
         }
         .sheet(item: $editingSpell) { spell in
             SpellEditView(spell: spell)

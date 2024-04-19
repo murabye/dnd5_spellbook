@@ -82,6 +82,7 @@ struct SpellCreationView: View {
                 .contentShape(Rectangle())
                 .padding()
             }
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle("Создание заклинания")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

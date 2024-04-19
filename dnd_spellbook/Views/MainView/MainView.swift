@@ -34,71 +34,85 @@ struct MainView: View {
     
     @State var otherBatchIsEmpty: Bool = false
     @State var isLoading: Bool = false
+    @State var isOtherHidden: Bool = true
     
     var body: some View {
         VStack(spacing: 0) {
             ScrollViewReader { scrollProxy in
                 ZStack {
                     ScrollView {
-                        LazyVStack {
-                            SectionIndexTitleView(name: .prepared)
-                            SpellListView(
-                                spells: $characterPrepared,
-                                character: $character,
-                                name: .prepared,
-                                onHide: { spell in onHide(spell) },
-                                onUnhide: { _ in },
-                                onRemove: { spell in onRemove(spell) },
-                                onKnow: { spell in onKnow(spell) },
-                                onUnknow: { spell in onUnknow(spell) },
-                                onPrepare: { spell in onPrepare(spell) },
-                                onUnprepare: { spell in onUnprepare(spell) }
-                            )
-                            .padding()
+                        LazyVStack(pinnedViews: [.sectionHeaders]) {
+                            Section {
+                                SpellListView(
+                                    spells: $characterPrepared,
+                                    character: $character,
+                                    name: .prepared,
+                                    onHide: { spell in onHide(spell) },
+                                    onUnhide: { _ in },
+                                    onRemove: { spell in onRemove(spell) },
+                                    onKnow: { spell in onKnow(spell) },
+                                    onUnknow: { spell in onUnknow(spell) },
+                                    onPrepare: { spell in onPrepare(spell) },
+                                    onUnprepare: { spell in onUnprepare(spell) }
+                                )
+                                .padding()
+                            } header: {
+                                SectionIndexTitleView(name: .prepared, canHide: false, isHidden: .constant(false))
+                            }
                             
-                            SectionIndexTitleView(name: .known)
-                            SpellListView(
-                                spells: $characterKnown,
-                                character: $character,
-                                name: .known,
-                                onHide: { spell in onHide(spell) },
-                                onUnhide: { _ in },
-                                onRemove: { spell in onRemove(spell) },
-                                onKnow: { spell in onKnow(spell) },
-                                onUnknow: { spell in onUnknow(spell) },
-                                onPrepare: { spell in onPrepare(spell) },
-                                onUnprepare: { spell in onUnprepare(spell) }
-                            )
-                            .padding()
+                            Section {
+                                SpellListView(
+                                    spells: $characterKnown,
+                                    character: $character,
+                                    name: .known,
+                                    onHide: { spell in onHide(spell) },
+                                    onUnhide: { _ in },
+                                    onRemove: { spell in onRemove(spell) },
+                                    onKnow: { spell in onKnow(spell) },
+                                    onUnknow: { spell in onUnknow(spell) },
+                                    onPrepare: { spell in onPrepare(spell) },
+                                    onUnprepare: { spell in onUnprepare(spell) }
+                                )
+                                .padding()
+                            } header: {
+                                SectionIndexTitleView(name: .known, canHide: false, isHidden: .constant(false))
+                            }
                             
                             NavigationLink(value: NavWay.hiddenSpells) {
-                                SectionIndexTitleView(name: .hidden)
+                                SectionIndexTitleView(name: .hidden, canHide: false, isHidden: .constant(false))
                             }
                             .padding(.bottom)
-                            
-                            SectionIndexTitleView(name: .other )
-                            SpellListView(
-                                spells: $other,
-                                character: $character,
-                                name: .other,
-                                onHide: { spell in onHide(spell) },
-                                onUnhide: { _ in },
-                                onRemove: { spell in onRemove(spell) },
-                                onKnow: { spell in onKnow(spell) },
-                                onUnknow: { spell in onUnknow(spell) },
-                                onPrepare: { spell in onPrepare(spell) },
-                                onUnprepare: { spell in onUnprepare(spell) }
-                            )
-                            .padding()
-                            
-                            Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadOther() }
-                            if otherBatchIsEmpty {
-                                HStack {
-                                    Spacer()
-                                    Button("Загрузить еще...") { loadOther() }
-                                        .buttonStyle(.borderedProminent)
-                                    Spacer()
+                                                        
+                            Section {
+                                Group {
+                                    if !isOtherHidden {
+                                        SpellListView(
+                                            spells: $other,
+                                            character: $character,
+                                            name: .other,
+                                            onHide: { spell in onHide(spell) },
+                                            onUnhide: { _ in },
+                                            onRemove: { spell in onRemove(spell) },
+                                            onKnow: { spell in onKnow(spell) },
+                                            onUnknow: { spell in onUnknow(spell) },
+                                            onPrepare: { spell in onPrepare(spell) },
+                                            onUnprepare: { spell in onUnprepare(spell) }
+                                        )
+                                        .padding()
+                                        
+                                        Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadOther() }
+                                        if otherBatchIsEmpty {
+                                            HStack {
+                                                Spacer()
+                                                Button("Загрузить еще...") { loadOther() }
+                                                    .buttonStyle(.borderedProminent)
+                                                Spacer()
+                                            }
+                                        }
+                                    }
                                 }
+                            } header: {
+                                SectionIndexTitleView(name: .other, canHide: true, isHidden: $isOtherHidden)
                             }
                             
                             Spacer(minLength: 16)
@@ -309,6 +323,7 @@ struct MainView: View {
     }
     
     func loadOther() {
+        guard !isOtherHidden else { return }
         isLoading = true
         otherBatchIsEmpty = false
         var fetchDescriptor = FetchDescriptor<Spell>(
@@ -354,6 +369,7 @@ struct MainView: View {
         isLoading = true
         
         Task.detached {
+            try? await Task.sleep(nanoseconds: 500000000)
             let otherIndex = other.firstIndex(of: spell)
             let fetchedOtherIndex = fetchedOther.firstIndex(of: spell)
             
@@ -369,6 +385,7 @@ struct MainView: View {
         isLoading = true
         
         Task.detached {
+            try? await Task.sleep(nanoseconds: 500000000)
             let characterKnownIndex = characterKnown.firstIndex(of: spell)
             let fetchedOtherContains = fetchedOther.contains(spell)
             
@@ -384,6 +401,7 @@ struct MainView: View {
         isLoading = true
         
         Task.detached {
+            try? await Task.sleep(nanoseconds: 500000000)
             let characterPreparedIndex = characterPrepared.firstIndex(of: spell)
             let characterKnownIndex = characterKnown.firstIndex(of: spell)
             let otherIndex = other.firstIndex(of: spell)
@@ -403,6 +421,7 @@ struct MainView: View {
         isLoading = true
         
         Task.detached {
+            try? await Task.sleep(nanoseconds: 500000000)
             let otherIndex = other.firstIndex(of: spell)
             let characterKnownContains = characterKnown.contains(spell)
             
@@ -416,22 +435,45 @@ struct MainView: View {
     }
     
     func onPrepare(_ spell: Spell) {
-        if let index = characterKnown.firstIndex(of: spell) {
-            characterKnown.remove(at: index)
-        }
-        
-        if !characterPrepared.contains(spell) {
-            characterPrepared.append(spell)
+        isLoading = true
+
+        Task.detached {
+            try? await Task.sleep(nanoseconds: 500000000)
+            let index = characterKnown.firstIndex(of: spell)
+            let contains = characterPrepared.contains(spell)
+            
+            Task.detached { @MainActor in
+                if let index {
+                    characterKnown.remove(at: index)
+                }
+                
+                if !contains {
+                    characterPrepared.append(spell)
+                }
+                isLoading = false
+            }
         }
     }
     
     func onUnprepare(_ spell: Spell) {
-        if let index = characterPrepared.firstIndex(of: spell) {
-            characterPrepared.remove(at: index)
+        isLoading = true
+
+        Task.detached {
+            try? await Task.sleep(nanoseconds: 500000000)
+            let index = characterPrepared.firstIndex(of: spell)
+            let contains = characterKnown.contains(spell)
+            
+            Task.detached { @MainActor in
+                if let index {
+                    characterPrepared.remove(at: index)
+                }
+                
+                if !contains {
+                    characterKnown.append(spell)
+                }
+                isLoading = false
+            }
         }
-        
-        if !characterKnown.contains(spell) {
-            characterKnown.append(spell)
-        }
+
     }
 }

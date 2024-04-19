@@ -28,49 +28,52 @@ struct SpellEditView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 8) {
-                TagLine(compact: false, edit: true, tags: $tags) {
-                    isTagCreationPresented.toggle()
-                }
-                .popover(isPresented: $isTagCreationPresented) {
-                    TagSelectView(selectedTags: $tags)
-                }
-                
-                Text(spell.components.name(allMaterials: allMaterials))
-                
-                HStack {
-                    Text(spell.typeOfAction.name)
-                    Spacer()
-                    Text(spell.duration.name)
-                }
-                
-                Group {
-                    Divider()
-                    Text(spell.sources.map(\.name).joined(separator: ", "))
-                        .foregroundStyle(Color.secondary)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 8) {
+                    TagLine(compact: false, edit: true, tags: $tags) {
+                        isTagCreationPresented.toggle()
+                    }
+                    .popover(isPresented: $isTagCreationPresented) {
+                        TagSelectView(selectedTags: $tags)
+                    }
                     
-                    TextField("Описание заклинания", text: $description, axis: .vertical)
+                    Text(spell.components.name(allMaterials: allMaterials))
                     
                     HStack {
-                        Text(spell.school.name)
-                            .foregroundStyle(Color.secondary)
+                        Text(spell.typeOfAction.name)
                         Spacer()
-                        Text(spell.classes.name)
-                            .foregroundStyle(Color.secondary)
+                        Text(spell.duration.name)
                     }
-                    Divider()
-                }
-                
-                HStack {
-                    Text(spell.level.levelName)
+                    
+                    Group {
+                        Divider()
+                        Text(spell.sources.map(\.name).joined(separator: ", "))
+                            .foregroundStyle(Color.secondary)
+                        
+                        TextField("Описание заклинания", text: $description, axis: .vertical)
+                        
+                        HStack {
+                            Text(spell.school.name)
+                                .foregroundStyle(Color.secondary)
+                            Spacer()
+                            Text(spell.classes.name)
+                                .foregroundStyle(Color.secondary)
+                        }
+                        Divider()
+                    }
+                    
+                    HStack {
+                        Text(spell.level.levelName)
+                        Spacer()
+                        Text(spell.distantion.name)
+                    }
+                    
                     Spacer()
-                    Text(spell.distantion.name)
                 }
-                
-                Spacer()
+                .contentShape(Rectangle())
+                .padding()
             }
-            .contentShape(Rectangle())
-            .padding()
+            .scrollDismissesKeyboard(.interactively)
             .toolbar {
                 Button("Сохранить") {
                     saveUpdate()

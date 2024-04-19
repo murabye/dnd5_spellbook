@@ -104,6 +104,7 @@ struct FilterSetupView: View {
             includedSection
             excludedSection
         }
+        .scrollDismissesKeyboard(.interactively)
         .animation(.easeIn.speed(2), value: materialsResctiction)
         .animation(.spring(response: 0.4, dampingFraction: 0.85, blendDuration: 0.7), value: levelsIsOpened)
         .animation(.easeIn, value: activeLevels)
