@@ -40,29 +40,40 @@ struct SpellListView: View {
             .contextMenu {
                 switch name {
                 case .prepared:
-                    Button("Отложить", action: { [weak spell] in unprepare(spell: spell) })
-                    Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
-                    Divider()
+                    if character != nil {
+                        Button("Отложить", action: { [weak spell] in unprepare(spell: spell) })
+                        Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
+                        Divider()
+                    }
                 case .known:
-                    Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
-                    Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
-                    Divider()
+                    if character != nil {
+                        Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
+                        Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
+                        Divider()
+                    }
                 case .other:
-                    Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
-                    Button("Выучить", action: { [weak spell] in know(spell: spell) })
-                    Divider()
+                    if character != nil {
+                        Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
+                        Button("Выучить", action: { [weak spell] in know(spell: spell) })
+                        Divider()
+                    }
                     Button("Спрятать", action: { [weak spell] in hide(spell: spell) })
                 case .hidden:
-                    Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
-                    Button("Выучить", action: { [weak spell] in know(spell: spell) })
+                    if character != nil {
+                        Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
+                        Button("Выучить", action: { [weak spell] in know(spell: spell) })
+                        Divider()
+                    }
                     Button("Открыть", action: { [weak spell] in unhide(spell: spell) })
                 case .search:
-                    Text("Для оптимизации пока не проверяем состояние заклинания")
-                    Button("Подготовить...", action: { [weak spell] in prepare(spell: spell) })
-                    Button("Выучить...", action: { [weak spell] in know(spell: spell) })
-                    Button("Отложить...", action: { [weak spell] in unprepare(spell: spell) })
-                    Button("Забыть...", action: { [weak spell] in unknow(spell: spell) })
-                    Divider()
+                    if character != nil {
+                        Text("Для оптимизации пока не проверяем состояние заклинания")
+                        Button("Подготовить...", action: { [weak spell] in prepare(spell: spell) })
+                        Button("Выучить...", action: { [weak spell] in know(spell: spell) })
+                        Button("Отложить...", action: { [weak spell] in unprepare(spell: spell) })
+                        Button("Забыть...", action: { [weak spell] in unknow(spell: spell) })
+                        Divider()
+                    }
                     if spell.isHidden {
                         Button("Открыть", action: { [weak spell] in unhide(spell: spell) })
                     } else {

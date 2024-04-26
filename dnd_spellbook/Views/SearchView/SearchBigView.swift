@@ -70,8 +70,13 @@ struct SearchBigView: View {
             predicate: #Predicate { spell in
                 if searchText.isEmpty {
                     return true
+                } else if let descr = spell.userDescription {
+                    return spell.name.localizedStandardContains(searchText)
+                        || spell.labelling.localizedStandardContains(searchText)
+                        || descr.localizedStandardContains(searchText)
                 } else {
                     return spell.name.localizedStandardContains(searchText)
+                        || spell.labelling.localizedStandardContains(searchText)
                 }
             },
             sortBy: [SortDescriptor(\.id)]

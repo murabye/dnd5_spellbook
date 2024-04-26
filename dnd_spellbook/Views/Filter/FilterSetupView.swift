@@ -43,7 +43,7 @@ struct FilterSetupView: View {
     @AppStorage(UserDefaults.Constants.selectedFilterName) var selectedFilterName: String?
     @State var name: String = ""
 
-    var levels = (Array(0...20) as [Int])
+    var levels = (Array(0...9) as [Int])
     @State var levelsIsOpened = false
     @State var activeLevels = [0]
     
@@ -248,7 +248,13 @@ struct FilterSetupView: View {
     
     var sourcesSection: some View {
         VStack {
-            FilterExpandableHeader(title: "Источники", isOpened: $sourceIsOpened)
+            FilterExpandableHeader(
+                title: "Источники",
+                isOpened: $sourceIsOpened,
+                canSelectAll: sources.count != activeSources.count
+            ) {
+                activeSources = sources
+            }
             FilterExpandableContent(
                 isOpened: $sourceIsOpened,
                 active: $activeSources,
@@ -266,7 +272,13 @@ struct FilterSetupView: View {
     
     var schoolsSection: some View {
         VStack {
-            FilterExpandableHeader(title: "Школы", isOpened: $schoolsIsOpened)
+            FilterExpandableHeader(
+                title: "Школы",
+                isOpened: $schoolsIsOpened,
+                canSelectAll: schools.count != activeSchools.count
+            ) {
+                activeSchools = schools
+            }
             if schoolsIsOpened {
                 FilterExpandableContent(
                     isOpened: $schoolsIsOpened,
@@ -285,7 +297,13 @@ struct FilterSetupView: View {
     
     var typeOfActionSection: some View {
         VStack {
-            FilterExpandableHeader(title: "Типы действий", isOpened: $actionsIsOpened)
+            FilterExpandableHeader(
+                title: "Типы действий",
+                isOpened: $actionsIsOpened,
+                canSelectAll: actions.count != activeActions.count
+            ) {
+                activeActions = actions
+            }
             FilterExpandableContent(
                 isOpened: $actionsIsOpened,
                 active: $activeActions,
@@ -302,7 +320,13 @@ struct FilterSetupView: View {
     
     var classesSection: some View {
         VStack {
-            FilterExpandableHeader(title: "Классы", isOpened: $classesIsOpened)
+            FilterExpandableHeader(
+                title: "Классы",
+                isOpened: $classesIsOpened,
+                canSelectAll: classes.count != activeClasses.count
+            ) {
+                activeClasses = classes
+            }
             if classesIsOpened {
                 FilterExpandableContent(
                     isOpened: $classesIsOpened,
@@ -321,7 +345,13 @@ struct FilterSetupView: View {
     
     var includedSection: some View {
         VStack {
-            FilterExpandableHeader(title: "Обязательные теги", isOpened: $includedTagsIsOpened)
+            FilterExpandableHeader(
+                title: "Обязательные теги",
+                isOpened: $includedTagsIsOpened,
+                canSelectAll: includedTags.count != activeIncludedTags.count
+            ) {
+                activeIncludedTags = includedTags
+            }
             FilterExpandableTagContent(
                 isOpened: $includedTagsIsOpened,
                 active: $activeIncludedTags,
@@ -338,7 +368,13 @@ struct FilterSetupView: View {
     
     var excludedSection: some View {
         VStack {
-            FilterExpandableHeader(title: "Исключенные теги", isOpened: $excludedTagsIsOpened)
+            FilterExpandableHeader(
+                title: "Исключенные теги",
+                isOpened: $excludedTagsIsOpened,
+                canSelectAll: excludedTags.count != activeExcludedTags.count
+            ) {
+                activeExcludedTags = excludedTags
+            }
             FilterExpandableTagContent(
                 isOpened: $excludedTagsIsOpened,
                 active: $activeExcludedTags,

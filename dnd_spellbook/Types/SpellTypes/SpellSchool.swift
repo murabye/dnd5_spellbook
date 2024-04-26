@@ -23,14 +23,14 @@ extension SpellSchool: HaveName {
     
     var name: String {
         switch self {
-        case .divinition: "Школа разделения"
-        case .illusion: "Школа иллюзий"
-        case .transmutation: "Школа преобразования"
-        case .enchantment: "Школа очарования"
-        case .evocation: "Школа проявления"
-        case .necromancy: "Школа некромантии"
-        case .abjuration: "Школа ограждения"
-        case .conjuration: "Школа призыва"
+        case .divinition: "Разделения"
+        case .illusion: "Иллюзий"
+        case .transmutation: "Преобразования"
+        case .enchantment: "Очарования"
+        case .evocation: "Проявления"
+        case .necromancy: "Некромантии"
+        case .abjuration: "Ограждения"
+        case .conjuration: "Призыва"
         }
     }
 }

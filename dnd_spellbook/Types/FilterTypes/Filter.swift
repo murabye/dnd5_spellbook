@@ -62,6 +62,42 @@ class Filter: Hashable, Identifiable {
         self.excluded = excluded
         self.included = included
     }
+    
+    init(
+        name: String,
+        levels: [Int],
+        noMaterials: Bool,
+        maxMaterialPriceInGold: Int? = nil,
+        sources: [Sources],
+        schools: [SpellSchool],
+        actions: [NoConreteActionType],
+        concentration: Bool? = nil,
+        included: [Tag],
+        excluded: [Tag],
+        classes: [CharacterClass],
+        onlyMute: Bool,
+        onlyNoHands: Bool,
+        characterId: String?
+    ) {
+        self.name = name
+        self.levels = levels
+        self.noMaterials = noMaterials
+        self.maxMaterialPriceInGold = maxMaterialPriceInGold
+        self.sources = sources
+        self.schools = schools
+        self.actions = actions
+        self.concentration = concentration
+        self.included = []
+        self.excluded = []
+        self.classes = classes
+        self.onlyMute = onlyMute
+        self.onlyNoHands = onlyNoHands
+        self.character = characterId ?? ""
+
+        self.excluded = excluded
+        self.included = included
+    }
+
 }
 
 extension Filter {

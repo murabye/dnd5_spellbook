@@ -195,8 +195,10 @@ struct CharacterCreationView: View {
         )
         modelContext.insert(character)
         
-        addFilters(for: level)
-        addFilters(for: 9)
+        addFilters(for: level, characterId: newCharacterId)
+        if level < 9 {
+            addFilters(for: 9, characterId: newCharacterId)
+        }
         
         try? modelContext.save()
         CharacterUpdateService.send()
@@ -227,8 +229,10 @@ struct CharacterCreationView: View {
                 )
                 modelContext.insert(character)
                 
-                addFilters(for: level)
-                addFilters(for: 9)
+                addFilters(for: level, characterId: newCharacterId)
+                if level < 9 {
+                    addFilters(for: 9, characterId: newCharacterId)
+                }
                 
                 try? modelContext.save()
                 
@@ -241,8 +245,13 @@ struct CharacterCreationView: View {
         }
     }
     
-    func addFilters(for level: Int) {
-        let text = "\(characterName) \(selectedClass.name) \(level) круг"
+    func addFilters(for level: Int, characterId: String) {
+        let text: String
+        if level < 9 {
+            text = "\(characterName) \(selectedClass.name) до \(level) круга"
+        } else {
+            text = "\(characterName) \(selectedClass.name)"
+        }
         let fetchDescriptorLevel = FetchDescriptor<Filter>(predicate: #Predicate { filter in
             filter.name.localizedStandardContains(text)
         })
@@ -251,7 +260,8 @@ struct CharacterCreationView: View {
             name: characterName,
             characterClass: selectedClass,
             level: level,
-            copy: existingFiltersCount
+            copy: existingFiltersCount,
+            characterId: characterId
         )
         modelContext.insert(filterPresetLevel)
     }

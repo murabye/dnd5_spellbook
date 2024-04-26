@@ -43,7 +43,7 @@ struct SpellView: View {
                         .foregroundStyle(Color.secondary)
                     
                     HStack {
-                        Text(spell.school.name)
+                        Text("Школа \(spell.school.name.lowercased())")
                             .foregroundStyle(Color.secondary)
                         Spacer()
                         Text(spell.classes.name)

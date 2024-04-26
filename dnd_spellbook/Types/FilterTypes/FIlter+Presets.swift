@@ -132,7 +132,8 @@ extension Filter {
         name: String,
         characterClass: CharacterClass,
         level: Int,
-        copy: Int
+        copy: Int,
+        characterId: String
     ) -> Filter {
         Filter(
             name: [name, characterClass.name, "\(level) круг", copy == 0 ? nil : "(\(copy))"]
@@ -150,7 +151,7 @@ extension Filter {
             classes: [characterClass],
             onlyMute: false,
             onlyNoHands: false,
-            character: nil
+            characterId: characterId
         )
     }
 }
