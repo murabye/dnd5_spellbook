@@ -34,7 +34,7 @@ class DurationExportModel: Codable {
             return .time(minutes: number)
         } else if isClause {
             return .clause
-        } else if isMany {
+        } else {
             return .many
         }
     }

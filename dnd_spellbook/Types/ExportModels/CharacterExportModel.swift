@@ -12,6 +12,7 @@ class CharacterExportModel: Codable {
     
     let image: Data?
     let characterClass: CharacterClass?
+    let level: Int
     let name: String
     let knownSpells: [String]
     let preparedSpells: [String]
@@ -26,6 +27,7 @@ class CharacterExportModel: Codable {
         } else {
             self.image = nil
         }
+        self.level = from.level
         self.characterClass = from.characterClass
         self.name = from.name
         self.knownSpells = from.knownSpells

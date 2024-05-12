@@ -13,6 +13,8 @@
 		FF10CA2A2B44C5C400D9348F /* ComponentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */; };
 		FF10CA2C2B44CA5B00D9348F /* MultipleElemsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA2B2B44CA5B00D9348F /* MultipleElemsMenu.swift */; };
 		FF10CA2E2B44CCB900D9348F /* TypeOfActionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA2D2B44CCB900D9348F /* TypeOfActionPickerView.swift */; };
+		FF2C59622BF13E3F0090048F /* CharacterEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C59612BF13E3F0090048F /* CharacterEditView.swift */; };
+		FF2C59642BF13E550090048F /* CharacterEditBigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C59632BF13E550090048F /* CharacterEditBigView.swift */; };
 		FF2CBC5F2B2D9EE6004D062C /* dnd_spellbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CBC5E2B2D9EE6004D062C /* dnd_spellbookApp.swift */; };
 		FF2CBC632B2D9EE8004D062C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2CBC622B2D9EE8004D062C /* Assets.xcassets */; };
 		FF2CBC672B2D9EE8004D062C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2CBC662B2D9EE8004D062C /* Preview Assets.xcassets */; };
@@ -121,6 +123,8 @@
 		FF10CA292B44C5C400D9348F /* ComponentCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCreationView.swift; sourceTree = "<group>"; };
 		FF10CA2B2B44CA5B00D9348F /* MultipleElemsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleElemsMenu.swift; sourceTree = "<group>"; };
 		FF10CA2D2B44CCB900D9348F /* TypeOfActionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfActionPickerView.swift; sourceTree = "<group>"; };
+		FF2C59612BF13E3F0090048F /* CharacterEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEditView.swift; sourceTree = "<group>"; };
+		FF2C59632BF13E550090048F /* CharacterEditBigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEditBigView.swift; sourceTree = "<group>"; };
 		FF2CBC5B2B2D9EE6004D062C /* dnd_spellbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dnd_spellbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2CBC5E2B2D9EE6004D062C /* dnd_spellbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dnd_spellbookApp.swift; sourceTree = "<group>"; };
 		FF2CBC622B2D9EE8004D062C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -252,6 +256,15 @@
 				FF10CA2B2B44CA5B00D9348F /* MultipleElemsMenu.swift */,
 			);
 			path = SpellCreation;
+			sourceTree = "<group>";
+		};
+		FF2C59602BF13DA20090048F /* CharacterEditView */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C59632BF13E550090048F /* CharacterEditBigView.swift */,
+				FF2C59612BF13E3F0090048F /* CharacterEditView.swift */,
+			);
+			path = CharacterEditView;
 			sourceTree = "<group>";
 		};
 		FF2CBC522B2D9EE6004D062C = {
@@ -473,6 +486,7 @@
 		FFDF84F02B2E89B7004916F3 /* Character */ = {
 			isa = PBXGroup;
 			children = (
+				FF2C59602BF13DA20090048F /* CharacterEditView */,
 				FF85147C2BEAE1DF007C0E6F /* CharacterList */,
 				FF85147B2BEAE1C3007C0E6F /* CharacterCreation */,
 			);
@@ -747,6 +761,8 @@
 				FFC320C82BC9382900874532 /* Array.swift in Sources */,
 				FFE7926D2B3B766E004F6BF4 /* CharacterClass.swift in Sources */,
 				FF8514782BEADD9A007C0E6F /* ComponentsExportModel.swift in Sources */,
+				FF2C59642BF13E550090048F /* CharacterEditBigView.swift in Sources */,
+				FF2C59622BF13E3F0090048F /* CharacterEditView.swift in Sources */,
 				FF10CA2A2B44C5C400D9348F /* ComponentCreationView.swift in Sources */,
 				FF8514742BEADC3F007C0E6F /* DistantionExportModel.swift in Sources */,
 				FF2CBC932B2DFD82004D062C /* GenericProtocol.swift in Sources */,

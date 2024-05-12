@@ -15,6 +15,7 @@ struct CharacterList: View {
     @State private var showingImport = false
     @Environment(\.modelContext) var modelContext
 
+    @State private var editingCharacter: CharacterModel? = nil
     @State var characterCreationLoading: Bool = false
     @State var shareText: ShareText?
 
@@ -50,7 +51,8 @@ struct CharacterList: View {
                         }
                         .contextMenu {
                             Button("Экспорт") { [weak character] in export(character) }
-                            Button("Удалить") { [weak character] in remove(character) }
+                            Button("Редактировать") { [weak character] in edit(character) }
+                            Button("Удалить", role: .destructive) { [weak character] in remove(character) }
                         }
                     }
                 }
@@ -102,6 +104,48 @@ struct CharacterList: View {
                 }
             }
         )
+        .fullScreenCover(item: $editingCharacter) { character in
+            if idiom == .phone {
+                NavigationStack {
+                    ColumnReader { columnAmount, safeArea in
+                        CharacterEditView(
+                            isLoading: $characterCreationLoading,
+                            safeArea: safeArea,
+                            characterId: character.id,
+                            initialImageUrl: character.imageUrl,
+                            initialCharacterName: character.name,
+                            initialLevel: character.level,
+                            selectedClass: character.characterClass ?? .nothing,
+                            initialPrepared: character.preparedSpells,
+                            initialKnown: character.knownSpells,
+                            characterName: character.name,
+                            level: character.level
+                        )
+                    }
+                }
+                .interactiveDismissDisabled(characterCreationLoading)
+            } else {
+                NavigationStack {
+                    ColumnReader { columnAmount, safeArea in
+                        CharacterEditBigView(
+                            columnAmount: columnAmount,
+                            isLoading: $characterCreationLoading,
+                            characterId: character.id,
+                            initialImageUrl: character.imageUrl,
+                            initialCharacterName: character.name,
+                            initialLevel: character.level,
+                            selectedClass: character.characterClass ?? .nothing,
+                            initialPrepared: character.preparedSpells,
+                            initialKnown: character.knownSpells,
+                            characterName: character.name,
+                            level: character.level
+                        )
+                    }
+                    .background(Color(uiColor: .systemGroupedBackground))
+                }
+                .interactiveDismissDisabled(characterCreationLoading)
+            }
+        }
     }
     
     func remove(_ character: CharacterModel?) {
@@ -136,4 +180,7 @@ struct CharacterList: View {
         shareText = ShareText(text: string)
     }
 
+    func edit(_ character: CharacterModel?) {
+        self.editingCharacter = character
+    }
 }

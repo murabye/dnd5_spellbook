@@ -189,6 +189,7 @@ struct CharacterCreationView: View {
             imageUrl: imageUrl,
             characterClass: selectedClass,
             name: characterName,
+            level: level,
             knownSpells: [],
             preparedSpells: []
         )
@@ -222,6 +223,7 @@ struct CharacterCreationView: View {
                     imageUrl: imageUrl,
                     characterClass: selectedClass,
                     name: characterName,
+                    level: level,
                     knownSpells: [],
                     preparedSpells: []
                 )

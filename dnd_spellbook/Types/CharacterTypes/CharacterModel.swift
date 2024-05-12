@@ -15,6 +15,7 @@ class CharacterModel {
     let imageUrl: URL?
     let characterClass: CharacterClass?
     let name: String
+    let level: Int
     @Relationship(deleteRule: .nullify) var knownSpells: [Spell]
     @Relationship(deleteRule: .nullify) var preparedSpells: [Spell]
 
@@ -23,6 +24,7 @@ class CharacterModel {
         imageUrl: URL?,
         characterClass: CharacterClass?,
         name: String,
+        level: Int,
         knownSpells: [Spell],
         preparedSpells: [Spell]
     ) {
@@ -30,7 +32,20 @@ class CharacterModel {
         self.imageUrl = imageUrl
         self.characterClass = characterClass
         self.name = name
+        self.level = level
+        self.knownSpells = []
+        self.preparedSpells = []
+        
+        
+        set(knownSpells: knownSpells)
+        set(preparedSpells: preparedSpells)
+    }
+    
+    func set(knownSpells: [Spell]) {
         self.knownSpells = knownSpells
+    }
+    
+    func set(preparedSpells: [Spell]) {
         self.preparedSpells = preparedSpells
     }
 }

@@ -25,25 +25,34 @@ struct CharacterImportView: View {
     }
 
     var body: some View {
-        VStack(spacing: 16) {
-            HStack(spacing: 16) {
-                Button("Импортировать файл") {
-                    fileImporting = true
+        NavigationStack {
+            VStack(spacing: 16) {
+                HStack(spacing: 16) {
+                    Button("Из файла") {
+                        fileImporting = true
+                    }
+                    Button("Из строки") {
+                        importCharacter(string: string)
+                    }
+                    .disabled(string.isEmpty)
+                    
+                    if isError {
+                        Text("Произошла ошибка...")
+                    }
                 }
-                Button("Импортировать строку") {
-                    importCharacter(string: string)
-                }
-                .disabled(string.isEmpty)
                 
-                if isError {
-                    Text("Произошла ошибка...")
-                }
+                TextField("Строка экспорта", text: $string, axis: .vertical)
+                    .autocorrectionDisabled()
+                
+                Spacer()
             }
-            
-            TextField("Строка экспорта", text: $string, axis: .vertical)
+            .toolbar {
+                cancelButton
+            }
+            .navigationTitle("Импорт")
+            .padding()
+            .background(Color(uiColor: .systemGroupedBackground))
         }
-        .padding()
-        .navigationTitle("Импорт")
         .fileImporter(
             isPresented: $fileImporting,
             allowedContentTypes: [.plainText]
@@ -61,6 +70,12 @@ struct CharacterImportView: View {
         }
     }
     
+    var cancelButton: some View {
+        Button("", systemImage: "xmark", action: { dismiss() })
+            .padding(.horizontal, 12)
+            .padding(.vertical, 4)
+    }
+
     func importCharacter(string: String) {
         let decoder = JSONDecoder()
         guard let data = string.data(using: .utf8),
@@ -83,16 +98,20 @@ struct CharacterImportView: View {
         let initialPrepared = model.preparedSpells.compactMap { spell(id: $0) }
         let customPrepared = model.customPreparedSpells.compactMap { spell(model: $0) }
 
+        let newId = UUID().uuidString
         let character = CharacterModel(
-            id: UUID().uuidString,
+            id: newId,
             imageUrl: imageUrl,
             characterClass: model.characterClass,
-            name: model.name,
+            name: model.name, 
+            level: model.level,
             knownSpells: initialKnown + customKnown,
             preparedSpells: initialPrepared + customPrepared
         )
         modelContext.insert(character)
+        UserDefaults.standard.selectedId = newId
         try? modelContext.save()
+        CharacterUpdateService.send()
         dismiss()
     }
     

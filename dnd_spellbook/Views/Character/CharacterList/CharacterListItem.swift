@@ -103,22 +103,3 @@ struct CharacterListAppendItem: View {
             .padding(.trailing, 12)
     }
 }
-
-#Preview {
-    HStack(alignment: .center) {
-        CharacterListAppendItem(isSingle: false)
-        Spacer()
-        CharacterListItem(
-            character: CharacterModel(
-                id: "1",
-                imageUrl: nil,
-                characterClass: .cleric,
-                name: "Кронк",
-                knownSpells: [],
-                preparedSpells: []
-            ),
-            isCompact: true
-        )
-        Spacer()
-    }
-}

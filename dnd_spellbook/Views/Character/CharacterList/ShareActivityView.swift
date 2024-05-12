@@ -8,15 +8,19 @@
 import UIKit
 import SwiftUI
 
-// 1. Activity View
 struct ActivityView: UIViewControllerRepresentable {
     let text: String
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ActivityView>) -> UIActivityViewController {
+    func makeUIViewController(
+        context: UIViewControllerRepresentableContext<ActivityView>
+    ) -> UIActivityViewController {
         return UIActivityViewController(activityItems: [text], applicationActivities: nil)
     }
 
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: UIViewControllerRepresentableContext<ActivityView>) {}
+    func updateUIViewController(
+        _ uiViewController: UIActivityViewController,
+        context: UIViewControllerRepresentableContext<ActivityView>
+    ) {}
 }
 
 struct ShareText: Identifiable {
