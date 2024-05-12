@@ -114,7 +114,6 @@ struct CharacterListAppendItem: View {
                 imageUrl: nil,
                 characterClass: .cleric,
                 name: "Кронк",
-                tagActions: [:],
                 knownSpells: [],
                 preparedSpells: []
             ),

@@ -17,7 +17,6 @@ class TypeOfActionModel {
     let reaction: Bool
     let time: Int
     
-
     init(from typeOfAction: TypeOfAction) {
         switch typeOfAction {
         case .action:

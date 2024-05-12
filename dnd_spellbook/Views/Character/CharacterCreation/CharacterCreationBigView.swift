@@ -1,23 +1,37 @@
 //
-//  ContentView.swift
+//  CharacterCreationBigView.swift
 //  dnd_spellbook
 //
-//  Created by Влада Кузнецова on 16.12.2023.
+//  Created by Влада Кузнецова on 19.12.2023.
 //
 
 import SwiftData
 import SwiftUI
 
-struct CharacterCreationView: View {
+struct ColumnReader<Content: View>: View {
+
+    @ViewBuilder var content: (Int, EdgeInsets) -> Content
+    var body: some View {
+        GeometryReader { proxy in
+            content(
+                max(Int(proxy.size.width / 300), 1),
+                proxy.safeAreaInsets
+            )
+        }
+    }
+}
+
+struct CharacterCreationBigView: View {
     enum Constants {
         static let islandCollapsableItemKey = "islandCollapsableItemKey"
     }
-    @Environment(\.modelContext) var modelContext
-    @Environment(\.dismiss) var dismiss
-    
+
+    let columnAmount: Int
+
     @Binding var isLoading: Bool
     
-    let safeArea: EdgeInsets
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) var dismiss
 
     @State private var selectedImage: UIImage? = nil
     @State private var characterName: String = ""
@@ -25,38 +39,27 @@ struct CharacterCreationView: View {
     @State private var level: Int = 1
 
     @State private var isPickerSelected = false
-    @State private var scrollOffset: CGFloat = 0.0
-    @State private var autoKnownSpells = [Spell]()
-    @State private var paginationOffset: Int = 0
-    @State private var allCleaned = false
 
+    @State var autoKnownSpells = [Spell]()
+    @State var paginationOffset: Int = 0
+    @State private var allCleaned = false
+    
     var body: some View {
         ZStack {
-            ObservableScrollView(scrollOffset: $scrollOffset) { _ in
-                imagePickerView
-                VStack {
-                    TextField("Имя", text: $characterName)
-                        .padding(.bottom, 6)
-                        .padding(.top, 3)
-                    Picker(level.levelName, selection: $level) {
-                        ForEach(0...9, id: \.self) {
-                            Text($0.levelName)
-                        }
-                    }
-                    .pickerStyle(.menu)
-
-                    Divider()
+            ScrollView {
+                VerticalWaterfallLayout(
+                    columns: columnAmount,
+                    spacingX: 16,
+                    spacingY: 16
+                ) {
+                    imagePickerView
                     classPicker
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-                .background(Color.systemGroupedTableContent)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding()
                 
                 if !autoKnownSpells.isEmpty {
                     autoSpellsHeader.padding(.horizontal)
-                    autoSpellsList.padding(.horizontal)
+                    autoKnownSpellsList.padding(.horizontal)
                 }
                 
                 LazyVStack {
@@ -64,59 +67,80 @@ struct CharacterCreationView: View {
                 }
             }
             .scrollDismissesKeyboard(.interactively)
-                        
+            .sheet(isPresented: $isPickerSelected) {
+                UIPickerView(image: $selectedImage).ignoresSafeArea()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    cancelButton
+                }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    applyButton
+                }
+            }
+            .onChange(of: selectedClass, { _, _ in
+                autoKnownSpells = []
+                paginationOffset = 0
+                loadSpells()
+                allCleaned = false
+            })
+            .background(Color(uiColor: .systemGroupedBackground))
+            
             if isLoading {
                 LoaderBlock()
             }
         }
-        .animation(.easeIn, value: selectedClass)
-        .sheet(isPresented: $isPickerSelected) {
-            UIPickerView(image: $selectedImage)
-                .ignoresSafeArea()
-        }
-        .mergingDynamicIslandWithView(
-            forKey: Constants.islandCollapsableItemKey,
-            safeArea: safeArea,
-            backgroundColor: Color(uiColor: .systemGroupedBackground)
-        )
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                cancelButton
-            }
-
-            ToolbarItem(placement: .navigationBarTrailing) {
-                applyButton
-            }
-        }
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .onChange(of: selectedClass, { _, _ in
-            allCleaned = false
-            autoKnownSpells = []
-            paginationOffset = 0
-            loadSpells()
-        })
-        .background(Color(uiColor: .systemGroupedBackground))
     }
     
     var imagePickerView: some View {
-        CharacterImagePickerView(
-            isPickerSelected: $isPickerSelected,
-            selectedImage: $selectedImage,
-            scrollOffset: $scrollOffset
-        )
+        VStack {
+            Button(action: {
+                isPickerSelected = true
+            }) {
+                Group {
+                    if let selectedImage {
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .frame(width: 70, height: 70, alignment: .top)
+                            .background()
+                            .clipShape(Circle())
+                    } else {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .padding()
+                            .frame(width: 70, height: 70, alignment: .top)
+                            .background()
+                            .clipShape(Circle())
+                    }
+                }
+                .padding(.leading, 16)
+                .padding(.top, 10)
+            }
+            
+            TextField("Имя", text: $characterName)
+                .padding(.bottom, 18)
+                .padding(.top, 15)
+                .padding(.horizontal)
+                .background(Color.systemGroupedTableContent)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.top)
+            Picker(level.levelName, selection: $level) {
+                ForEach(0...9, id: \.self) {
+                    Text($0.levelName)
+                }
+            }
+            .pickerStyle(.menu)
+        }
     }
     
     var classPicker: some View {
         Picker("Класс", selection: $selectedClass) {
-            ForEach(CharacterClass.allCases, id: \.self) { value in
-                if value != .nothing {
-                    Text(value.name)
-                } else {
-                    Text("Другой")
-                }
+            ForEach(CharacterClass.allCases, id: \.self) {
+                Text($0.name)
             }
         }
-        .pickerStyle(.menu)
+        .pickerStyle(.wheel)
     }
     
     var autoSpellsHeader: some View {
@@ -125,41 +149,14 @@ struct CharacterCreationView: View {
             Spacer()
             Button("Забыть все", action: {
                 self.allCleaned = true
-                self.autoKnownSpells = [];
+                self.autoKnownSpells = []
                 self.paginationOffset = Int.max
             })
         }
     }
 
-    var autoSpellsList: some View {
-        LazyVStack {
-            ForEach(
-                autoKnownSpells,
-                id: \.id
-            ) { spell in
-                SpellView(
-                    spell: spell,
-                    collapsed: true
-                )
-                .padding(.horizontal)
-                .padding(.vertical, 12)
-                .background(Color.systemGroupedTableContent)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .padding(.vertical, 2)
-                .contextMenu {
-                    Button("Забыть", action: { [weak spell] in
-                        if let spell,
-                           let index = autoKnownSpells.firstIndex(of: spell) {
-                            autoKnownSpells.remove(at: index)
-                        }
-                    })
-                }
-            }
-        }
-    }
-        
     var applyButton: some View {
-        Button("Save", action: { addCharacter(); dismiss() })
+        Button("Сохранить", action: { addCharacter(); dismiss() })
             .disabled(characterName.isEmpty)
             .padding(.horizontal, 12)
             .padding(.vertical, 4)
@@ -178,7 +175,6 @@ struct CharacterCreationView: View {
             addSimpleCharacter()
         }
     }
-    
     func addSimpleCharacter() {
         isLoading = true
         let imageUrl = FileManager.default.save(image: selectedImage)
@@ -189,7 +185,6 @@ struct CharacterCreationView: View {
             imageUrl: imageUrl,
             characterClass: selectedClass,
             name: characterName,
-            tagActions: [:],
             knownSpells: [],
             preparedSpells: []
         )
@@ -223,7 +218,6 @@ struct CharacterCreationView: View {
                     imageUrl: imageUrl,
                     characterClass: selectedClass,
                     name: characterName,
-                    tagActions: [:],
                     knownSpells: [],
                     preparedSpells: []
                 )
@@ -244,7 +238,7 @@ struct CharacterCreationView: View {
             }
         }
     }
-    
+
     func addFilters(for level: Int, characterId: String) {
         let text: String
         if level < 9 {
@@ -265,7 +259,7 @@ struct CharacterCreationView: View {
         )
         modelContext.insert(filterPresetLevel)
     }
-    
+
     func loadSpells() {
         guard (selectedClass == .cleric || selectedClass == .druid), !allCleaned else {
             return
@@ -283,6 +277,34 @@ struct CharacterCreationView: View {
             let newData = (try? modelContext.fetch(fetchDescriptor)) ?? []
             paginationOffset += newData.count
             autoKnownSpells.append(contentsOf: newData.filter { $0.classes.contains(selectedClass) })
+        }
+    }
+    
+    var autoKnownSpellsList: some View {
+        VerticalWaterfallLayout(
+            columns: columnAmount,
+            spacingX: 16,
+            spacingY: 16
+        ) {
+            ForEach(autoKnownSpells, id: \.id) { spell in
+                SpellView(
+                    spell: spell,
+                    collapsed: true
+                )
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+                .background(Color.systemGroupedTableContent)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.vertical, 2)
+                .contextMenu {
+                    Button("Забыть", action: { [weak spell] in
+                        if let spell,
+                           let index = autoKnownSpells.firstIndex(of: spell) {
+                            autoKnownSpells.remove(at: index)
+                        }
+                    })
+                }
+            }
         }
     }
 }

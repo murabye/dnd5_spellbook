@@ -15,7 +15,6 @@ class CharacterModel {
     let imageUrl: URL?
     let characterClass: CharacterClass?
     let name: String
-    let tagActions: [Int: TagAction]
     @Relationship(deleteRule: .nullify) var knownSpells: [Spell]
     @Relationship(deleteRule: .nullify) var preparedSpells: [Spell]
 
@@ -24,7 +23,6 @@ class CharacterModel {
         imageUrl: URL?,
         characterClass: CharacterClass?,
         name: String,
-        tagActions: [Int: TagAction],
         knownSpells: [Spell],
         preparedSpells: [Spell]
     ) {
@@ -32,7 +30,6 @@ class CharacterModel {
         self.imageUrl = imageUrl
         self.characterClass = characterClass
         self.name = name
-        self.tagActions = tagActions
         self.knownSpells = knownSpells
         self.preparedSpells = preparedSpells
     }
@@ -52,7 +49,6 @@ extension CharacterModel: Identifiable {
         && lhs.id == rhs.id
         && lhs.characterClass == rhs.characterClass
         && lhs.name == rhs.name
-        && lhs.tagActions == rhs.tagActions
         && lhs.knownSpells == rhs.knownSpells
         && lhs.preparedSpells == rhs.preparedSpells
     }

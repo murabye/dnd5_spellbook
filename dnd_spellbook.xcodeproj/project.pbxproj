@@ -38,6 +38,15 @@
 		FF8325CC2B30FFE600820438 /* FilterSetupBigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325CB2B30FFE600820438 /* FilterSetupBigView.swift */; };
 		FF8325D02B31011F00820438 /* SpellListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325CF2B31011F00820438 /* SpellListView.swift */; };
 		FF8325D22B31058400820438 /* SpellEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8325D12B31058400820438 /* SpellEditView.swift */; };
+		FF85146B2BEAD2B9007C0E6F /* CharacterExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF85146A2BEAD2B9007C0E6F /* CharacterExportModel.swift */; };
+		FF85146E2BEAD98E007C0E6F /* SpellExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF85146D2BEAD98E007C0E6F /* SpellExportModel.swift */; };
+		FF8514702BEAD995007C0E6F /* TagExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF85146F2BEAD995007C0E6F /* TagExportModel.swift */; };
+		FF8514722BEADB86007C0E6F /* TypeOfActionExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8514712BEADB86007C0E6F /* TypeOfActionExportModel.swift */; };
+		FF8514742BEADC3F007C0E6F /* DistantionExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8514732BEADC3F007C0E6F /* DistantionExportModel.swift */; };
+		FF8514762BEADCA5007C0E6F /* DurationExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8514752BEADCA5007C0E6F /* DurationExportModel.swift */; };
+		FF8514782BEADD9A007C0E6F /* ComponentsExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8514772BEADD9A007C0E6F /* ComponentsExportModel.swift */; };
+		FF85147A2BEAE0BB007C0E6F /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8514792BEAE0BB007C0E6F /* ShareActivityView.swift */; };
+		FF85147E2BEAE20B007C0E6F /* CharacterImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF85147D2BEAE20B007C0E6F /* CharacterImportView.swift */; };
 		FFB7500D2B76A26E0099508F /* TagColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7500C2B76A26E0099508F /* TagColor.swift */; };
 		FFB750112B77F8090099508F /* DatabaseSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750102B77F8090099508F /* DatabaseSetupView.swift */; };
 		FFB750172B78FAE30099508F /* DurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750162B78FAE30099508F /* DurationModel.swift */; };
@@ -140,6 +149,15 @@
 		FF8325CB2B30FFE600820438 /* FilterSetupBigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSetupBigView.swift; sourceTree = "<group>"; };
 		FF8325CF2B31011F00820438 /* SpellListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellListView.swift; sourceTree = "<group>"; };
 		FF8325D12B31058400820438 /* SpellEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellEditView.swift; sourceTree = "<group>"; };
+		FF85146A2BEAD2B9007C0E6F /* CharacterExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterExportModel.swift; sourceTree = "<group>"; };
+		FF85146D2BEAD98E007C0E6F /* SpellExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellExportModel.swift; sourceTree = "<group>"; };
+		FF85146F2BEAD995007C0E6F /* TagExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagExportModel.swift; sourceTree = "<group>"; };
+		FF8514712BEADB86007C0E6F /* TypeOfActionExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfActionExportModel.swift; sourceTree = "<group>"; };
+		FF8514732BEADC3F007C0E6F /* DistantionExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistantionExportModel.swift; sourceTree = "<group>"; };
+		FF8514752BEADCA5007C0E6F /* DurationExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationExportModel.swift; sourceTree = "<group>"; };
+		FF8514772BEADD9A007C0E6F /* ComponentsExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsExportModel.swift; sourceTree = "<group>"; };
+		FF8514792BEAE0BB007C0E6F /* ShareActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityView.swift; sourceTree = "<group>"; };
+		FF85147D2BEAE20B007C0E6F /* CharacterImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImportView.swift; sourceTree = "<group>"; };
 		FFB7500C2B76A26E0099508F /* TagColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagColor.swift; sourceTree = "<group>"; };
 		FFB750102B77F8090099508F /* DatabaseSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSetupView.swift; sourceTree = "<group>"; };
 		FFB750162B78FAE30099508F /* DurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationModel.swift; sourceTree = "<group>"; };
@@ -301,6 +319,7 @@
 		FF2CBC8D2B2DE96F004D062C /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				FF85146C2BEAD96F007C0E6F /* ExportModels */,
 				FFE792852B3B912A004F6BF4 /* FilterTypes */,
 				FFE792692B3B7538004F6BF4 /* CharacterTypes */,
 				FFE792642B3A1CBD004F6BF4 /* TagTypes */,
@@ -361,6 +380,45 @@
 			path = Layouts;
 			sourceTree = "<group>";
 		};
+		FF85146C2BEAD96F007C0E6F /* ExportModels */ = {
+			isa = PBXGroup;
+			children = (
+				FF85146A2BEAD2B9007C0E6F /* CharacterExportModel.swift */,
+				FF85146D2BEAD98E007C0E6F /* SpellExportModel.swift */,
+				FF85146F2BEAD995007C0E6F /* TagExportModel.swift */,
+				FF8514712BEADB86007C0E6F /* TypeOfActionExportModel.swift */,
+				FF8514732BEADC3F007C0E6F /* DistantionExportModel.swift */,
+				FF8514752BEADCA5007C0E6F /* DurationExportModel.swift */,
+				FF8514772BEADD9A007C0E6F /* ComponentsExportModel.swift */,
+			);
+			path = ExportModels;
+			sourceTree = "<group>";
+		};
+		FF85147B2BEAE1C3007C0E6F /* CharacterCreation */ = {
+			isa = PBXGroup;
+			children = (
+				FF8325C92B30F6F900820438 /* CharacterCreationBigView.swift */,
+				FF2CBC8B2B2D9FD9004D062C /* CharacterCreation.swift */,
+				FF48BCA82B94FCFD00E3E3DF /* CharacterImagePickerView.swift */,
+				FF8325C22B30E60A00820438 /* ObservedScrollView.swift */,
+				FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */,
+				FFDF84ED2B2E84B2004916F3 /* UIPickerView.swift */,
+				FFC320D32BC9647100874532 /* LoaderBlock.swift */,
+			);
+			path = CharacterCreation;
+			sourceTree = "<group>";
+		};
+		FF85147C2BEAE1DF007C0E6F /* CharacterList */ = {
+			isa = PBXGroup;
+			children = (
+				FFF90A762B338FB500569628 /* CharacterList.swift */,
+				FFF90A782B338FDE00569628 /* CharacterListItem.swift */,
+				FF8514792BEAE0BB007C0E6F /* ShareActivityView.swift */,
+				FF85147D2BEAE20B007C0E6F /* CharacterImportView.swift */,
+			);
+			path = CharacterList;
+			sourceTree = "<group>";
+		};
 		FFB750142B78FAA80099508F /* DatabaseSetup */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,15 +473,8 @@
 		FFDF84F02B2E89B7004916F3 /* Character */ = {
 			isa = PBXGroup;
 			children = (
-				FF48BCA82B94FCFD00E3E3DF /* CharacterImagePickerView.swift */,
-				FF2CBC8B2B2D9FD9004D062C /* CharacterCreation.swift */,
-				FF8325C92B30F6F900820438 /* CharacterCreationBigView.swift */,
-				FF8325C22B30E60A00820438 /* ObservedScrollView.swift */,
-				FF8325C02B30E41400820438 /* DynamicIslandMergingView.swift */,
-				FFDF84ED2B2E84B2004916F3 /* UIPickerView.swift */,
-				FFF90A762B338FB500569628 /* CharacterList.swift */,
-				FFF90A782B338FDE00569628 /* CharacterListItem.swift */,
-				FFC320D32BC9647100874532 /* LoaderBlock.swift */,
+				FF85147C2BEAE1DF007C0E6F /* CharacterList */,
+				FF85147B2BEAE1C3007C0E6F /* CharacterCreation */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -677,6 +728,7 @@
 				FFB7500D2B76A26E0099508F /* TagColor.swift in Sources */,
 				FFDF85012B2FB0C1004916F3 /* FilterExpandableContent.swift in Sources */,
 				FF48BCAD2B9519DE00E3E3DF /* UserDefaults+.swift in Sources */,
+				FF8514702BEAD995007C0E6F /* TagExportModel.swift in Sources */,
 				FFE509292BD269C50001A6EB /* SearchBigView.swift in Sources */,
 				FFC320D22BC9605E00874532 /* SpellView.swift in Sources */,
 				FF8325C82B30F69A00820438 /* FlowLayout.swift in Sources */,
@@ -690,11 +742,15 @@
 				FFE7925D2B3A1A4B004F6BF4 /* Distantion.swift in Sources */,
 				FF2CBC8C2B2D9FD9004D062C /* CharacterCreation.swift in Sources */,
 				FFF90A792B338FDE00569628 /* CharacterListItem.swift in Sources */,
+				FF85147A2BEAE0BB007C0E6F /* ShareActivityView.swift in Sources */,
 				FF48BCA72B94B77000E3E3DF /* MailView.swift in Sources */,
 				FFC320C82BC9382900874532 /* Array.swift in Sources */,
 				FFE7926D2B3B766E004F6BF4 /* CharacterClass.swift in Sources */,
+				FF8514782BEADD9A007C0E6F /* ComponentsExportModel.swift in Sources */,
 				FF10CA2A2B44C5C400D9348F /* ComponentCreationView.swift in Sources */,
+				FF8514742BEADC3F007C0E6F /* DistantionExportModel.swift in Sources */,
 				FF2CBC932B2DFD82004D062C /* GenericProtocol.swift in Sources */,
+				FF85147E2BEAE20B007C0E6F /* CharacterImportView.swift in Sources */,
 				FFE792842B3B8FAB004F6BF4 /* String+.swift in Sources */,
 				FF48BCAB2B95164F00E3E3DF /* FileManager+.swift in Sources */,
 				FF2CBCA32B2E4E47004D062C /* TagView.swift in Sources */,
@@ -712,6 +768,7 @@
 				FFE5092B2BD269CC0001A6EB /* SearchView.swift in Sources */,
 				FF48BCA92B94FCFD00E3E3DF /* CharacterImagePickerView.swift in Sources */,
 				FFB750212B79308D0099508F /* DatabaseSetupIfNeededView.swift in Sources */,
+				FF85146E2BEAD98E007C0E6F /* SpellExportModel.swift in Sources */,
 				FFE792662B3A1CD1004F6BF4 /* Tag.swift in Sources */,
 				FF8325C12B30E41400820438 /* DynamicIslandMergingView.swift in Sources */,
 				FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */,
@@ -723,8 +780,10 @@
 				FF72A67A2BD2E0CE00352E6A /* FIlter+Presets.swift in Sources */,
 				FFB750172B78FAE30099508F /* DurationModel.swift in Sources */,
 				FFC320D42BC9647100874532 /* LoaderBlock.swift in Sources */,
+				FF85146B2BEAD2B9007C0E6F /* CharacterExportModel.swift in Sources */,
 				FFDF84FB2B2F99EE004916F3 /* UniversalTagView.swift in Sources */,
 				FFDF84EE2B2E84B2004916F3 /* UIPickerView.swift in Sources */,
+				FF8514722BEADB86007C0E6F /* TypeOfActionExportModel.swift in Sources */,
 				FFCF4BD12B70168500D38414 /* TagColorsGallery.swift in Sources */,
 				FFC320C22BC8659200874532 /* MainBigView.swift in Sources */,
 				FFDF84FD2B2F9AD4004916F3 /* UniversalTagLine.swift in Sources */,
@@ -732,6 +791,7 @@
 				FFF90A772B338FB500569628 /* CharacterList.swift in Sources */,
 				FFF28C622BC58C9A0032E605 /* TagSelectView.swift in Sources */,
 				FFB7501D2B78FE260099508F /* TypeOfActionModel.swift in Sources */,
+				FF8514762BEADCA5007C0E6F /* DurationExportModel.swift in Sources */,
 				FF2CBC5F2B2D9EE6004D062C /* dnd_spellbookApp.swift in Sources */,
 				FF10CA2E2B44CCB900D9348F /* TypeOfActionPickerView.swift in Sources */,
 				FFE792612B3A1BC6004F6BF4 /* SpellSchool.swift in Sources */,

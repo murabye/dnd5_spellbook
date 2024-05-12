@@ -22,6 +22,7 @@ class Spell: HaveName {
     var classes: [CharacterClass]
     var isCustom: Bool
     var isHidden: Bool
+    var canUpcast: Bool
 
     var userTagsActions: [TagAction]
     var typeOfActionModel: TypeOfActionModel
@@ -85,7 +86,8 @@ class Spell: HaveName {
         userTagsActions: [TagAction],
         classes: [CharacterClass],
         isCustom: Bool,
-        isHidden: Bool
+        isHidden: Bool,
+        canUpcast: Bool
     ) {
         self.id = id
         self.name = name
@@ -107,6 +109,7 @@ class Spell: HaveName {
         self.isHidden = isHidden
         self.initialTags = []
         self.componentsModel = []
+        self.canUpcast = canUpcast
         
         set(tags: initialTags)
         set(components: components)

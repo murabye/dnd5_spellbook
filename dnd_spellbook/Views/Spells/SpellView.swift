@@ -17,6 +17,18 @@ struct SpellView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
+                HStack(spacing: 2) {
+                    Text("\(spell.level)")
+                    if spell.canUpcast {
+                        Image(systemName: "chevron.right.2")
+                            .rotationEffect(.degrees(-90))
+                            .font(.caption2)
+                    }
+                }
+                .padding(.horizontal, 4)
+                .background(.yellow)
+                .clipShape(Capsule())
+                
                 Text(spell.name)
                     .font(.title)
                 Spacer()
@@ -26,12 +38,6 @@ struct SpellView: View {
             
             TagLine(compact: collapsed, edit: false, tags: .constant(spell.tags(allTags: allTags)))
             Text(spell.components.name(allMaterials: allMaterials))
-
-            HStack {
-                Text(spell.typeOfAction.name)
-                Spacer()
-                Text(spell.duration.name)
-            }
             
             if !collapsed {
                 Group {
@@ -54,9 +60,9 @@ struct SpellView: View {
             }
 
             HStack {
-                Text(spell.level.levelName)
+                Text(spell.typeOfAction.name)
                 Spacer()
-                Text(spell.distantion.name)
+                Text("\(spell.duration.name) \(spell.distantion.name)")
             }
         }
         .contentShape(Rectangle())

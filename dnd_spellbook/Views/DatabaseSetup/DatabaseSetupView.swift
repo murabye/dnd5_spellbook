@@ -156,7 +156,8 @@ struct DatabaseSetupView: View {
                 userTagsActions: [],
                 classes: preset.classes,
                 isCustom: false,
-                isHidden: false
+                isHidden: false,
+                canUpcast: preset.canUpcast
             )
 
             res.append(spell)
@@ -213,6 +214,7 @@ struct SpellPreset: Codable {
     let initialTagsIds: [String]
     let classes: [CharacterClass]
     let components: [Component]
+    let canUpcast: Bool
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -228,6 +230,7 @@ struct SpellPreset: Codable {
         case initialTagsIds = "initialTags"
         case classes
         case components
+        case canUpcast = "canUpcast"
     }
 
     init(from decoder: Decoder) throws {
@@ -248,6 +251,7 @@ struct SpellPreset: Codable {
         let sourcesOne = [(try? container.decode(Sources.self, forKey: .sources))].compactMap { $0 }
         let sourcesMultiple = try? container.decode([Sources].self, forKey: .sources)
         self.sources = sourcesMultiple ?? sourcesOne
+        self.canUpcast = (try? container.decode(Bool.self, forKey: .canUpcast)) ?? false
     }
     
     func encode(to encoder: Encoder) throws {
@@ -265,5 +269,6 @@ struct SpellPreset: Codable {
         try container.encode(initialTagsIds, forKey: .initialTagsIds)
         try container.encode(classes, forKey: .classes)
         try container.encode(concentration, forKey: .concentration)
+        try container.encode(canUpcast, forKey: .canUpcast)
     }
 }

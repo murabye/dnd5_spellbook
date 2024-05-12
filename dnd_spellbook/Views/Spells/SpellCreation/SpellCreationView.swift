@@ -25,6 +25,7 @@ struct SpellCreationView: View {
     @State var source: [Sources] = []
     @State var school: SpellSchool = .evocation
     @State var level: Int = 0
+    @State var canUpcast: Bool = false
     @State var concentration: Bool = false
     @State var typeOfAction: TypeOfAction = .action
     @State var components: [ComponentCreationElement] = []
@@ -77,6 +78,7 @@ struct SpellCreationView: View {
                             }
                         }
                         .pickerStyle(.menu)
+                        Toggle("Каст уровнем выше", isOn: $canUpcast)
                     }
                 }
                 .contentShape(Rectangle())
@@ -141,7 +143,8 @@ struct SpellCreationView: View {
             userTagsActions: [],
             classes: classes,
             isCustom: true,
-            isHidden: false
+            isHidden: false, 
+            canUpcast: canUpcast
         )
         
         for material in materials {

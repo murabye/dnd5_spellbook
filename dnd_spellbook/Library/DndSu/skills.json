@@ -796,7 +796,8 @@
         "initialTags": [ "damage", "fire"],
         "userTagsActions": [],
         "classes": [ 5, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "47",
@@ -830,7 +831,8 @@
         "initialTags": [ "baff" ],
         "userTagsActions": [],
         "classes": [ 3, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "49",
@@ -864,7 +866,8 @@
         "initialTags": [ "damage", "lightning"],
         "userTagsActions": [],
         "classes": [ 1, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "51",
@@ -881,7 +884,8 @@
         "initialTags": [ "damage", "thunder" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 2, 3, 4, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "52",
@@ -898,7 +902,8 @@
         "initialTags": [ "damage", "force" ],
         "userTagsActions": [],
         "classes": [ 1, 3, 4, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "53",
@@ -915,7 +920,8 @@
         "initialTags": ["damage", "force"],
         "userTagsActions": [],
         "classes": [ 1 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "54",
@@ -949,7 +955,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "56",
@@ -966,7 +973,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [ 0, 3, 4, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "57",
@@ -1000,7 +1008,8 @@
         "initialTags": ["damage", "baff", "piercing"],
         "userTagsActions": [],
         "classes": [ 7 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "59",
@@ -1051,7 +1060,8 @@
         "initialTags": [ "damage", "psychic" ],
         "userTagsActions": [],
         "classes": [ 0, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "62",
@@ -1068,7 +1078,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [ 5, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "63",
@@ -1102,7 +1113,8 @@
         "initialTags": [ "damage", "debaff", "bludgeoning"],
         "userTagsActions": [],
         "classes": [0, 1, 2, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "65",
@@ -1119,7 +1131,8 @@
         "initialTags": ["debaff"],
         "userTagsActions": [],
         "classes": [ 0, 2, 4],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "66",
@@ -1136,7 +1149,8 @@
         "initialTags": [ "damage", "acid"],
         "userTagsActions": [],
         "classes": [1, 4, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "67",
@@ -1192,7 +1206,7 @@
     {
         "id": "70",
         "title": "Искажение цены",
-        "labelling": "Вам нужно выжать ещё несколько золотых из торговца, которому вы пытаетесь продать странную статую осьминога, освобождённую вами из храма хаоса? Или занизить стоимость кое-каких магических ценностей, когда к вам заглянет сборщик налогов? Искажение цены поможет вам в этом.\nВыберите один объект со стороной не больше одного фута, вы можете удвоить видимую ценность, добавив иллюзорные блеск и привлекательность, или уменьшить на половину, добавив иллюзорных царапин, вмятин и других неприглядных черт. Любой, кто внимательно изучит предмет и совершит проверку Интеллекта (Расследование) против вашей Сл заклинаний, узнаёт настоящую цену.\nЕсли вы накладываете это заклинание, используя ячейку 2-го уровня или выше, максимальная длина предмета увеличивается на 1 фут за каждый уровень ячейки выше первого.",
+        "labelling": "Вам нужно выжать ещё несколько золотых из торговца, которому вы пытаетесь продать странную статую осьминога, освобождённую вами из храма хаоса, или занизить стоимость кое-каких магических ценностей, когда к вам заглянет сборщик налогов? Искажение цены поможет вам в этом.\nВыберите один объект со стороной не больше одного фута, вы можете удвоить видимую ценность, добавив иллюзорные блеск и привлекательность, или уменьшить на половину, добавив иллюзорных царапин, вмятин и других неприглядных черт. Любой, кто внимательно изучит предмет и совершит проверку Интеллекта (Расследование) против вашей Сл заклинаний, узнаёт настоящую цену.\nЕсли вы накладываете это заклинание, используя ячейку 2-го уровня или выше, максимальная длина предмета увеличивается на 1 фут за каждый уровень ячейки выше первого.",
         "concentration": false,
         "duration": { "time": 480 },
         "level": 1,
@@ -1204,7 +1218,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 0, 1, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "71",
@@ -1226,7 +1241,7 @@
     {
         "id": "72",
         "title": "Катапульта",
-        "labelling": "Выберите один предмет весом от 1 до 5 фунтов в пределах дистанции, который никто не несе?т и не носит. Предмет пролетает до 90 футов по прямой в выбранном вами направлении, прежде чем упасть на землю, и останавливается раньше, если ударится о тве?рдую поверхность. Если предмет ударяется о существо, оно должно совершить спасбросок Ловкости. При провале предмет наносит урон цели и останавливается. Когда предмет ударяется обо что-то, и предмет, и то, во что он ударился, получают 3к8 дробящего урона.\nЕсли вы накладываете это заклинание, используя ячейку 2-го уровня или выше, максимальный вес предметов, которые вы можете использовать, увеличивается на 5 фунтов, а урон увеличивается на 1к8 за каждый уровень ячейки выше 1-го.",
+        "labelling": "Выберите один предмет весом от 1 до 5 фунтов в пределах дистанции, который никто не несет и не носит. Предмет пролетает до 90 футов по прямой в выбранном вами направлении, прежде чем упасть на землю, и останавливается раньше, если ударится о твердую поверхность. Если предмет ударяется о существо, оно должно совершить спасбросок Ловкости. При провале предмет наносит урон цели и останавливается. Когда предмет ударяется обо что-то, и предмет, и то, во что он ударился, получают 3к8 дробящего урона.\nЕсли вы накладываете это заклинание, используя ячейку 2-го уровня или выше, максимальный вес предметов, которые вы можете использовать, увеличивается на 5 фунтов, а урон увеличивается на 1к8 за каждый уровень ячейки выше 1-го.",
         "concentration": false,
         "duration": { "instantly": true },
         "level": 1,
@@ -1238,7 +1253,8 @@
         "initialTags": [ "damage", "bludgeoning"],
         "userTagsActions": [],
         "classes": [1, 4, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "73",
@@ -1255,7 +1271,8 @@
         "initialTags": [ "damage", "cold"],
         "userTagsActions": [],
         "classes": [1, 2, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "74",
@@ -1272,7 +1289,8 @@
         "initialTags": [ "damage", "cold"],
         "userTagsActions": [],
         "classes": [ 1 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "75",
@@ -1289,7 +1307,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [0, 2, 3, 4],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "76",
@@ -1306,7 +1325,8 @@
         "initialTags": [ "baff"],
         "userTagsActions": [],
         "classes": [0, 2, 3, 4, 5, 6, 7, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "77",
@@ -1323,7 +1343,8 @@
         "initialTags": [ "damage", "debaff", "poison"],
         "userTagsActions": [],
         "classes": [1, 3, 4, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "78",
@@ -1357,7 +1378,8 @@
         "initialTags": [ "baff", "damage"],
         "userTagsActions": [],
         "classes": [ 6, 7 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "80",
@@ -1374,7 +1396,8 @@
         "initialTags": ["damage", "necrotic"],
         "userTagsActions": [],
         "classes": [3, 6, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "81",
@@ -1391,7 +1414,8 @@
         "initialTags": [ "damage", "force"],
         "userTagsActions": [],
         "classes": [2, 3, 5, 6],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "82",
@@ -1493,7 +1517,8 @@
         "initialTags": [ "damage", "fire"],
         "userTagsActions": [],
         "classes": [ 1, 2, 3, 5],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "88",
@@ -1561,7 +1586,8 @@
         "initialTags": ["debaff", "damage", "piercing"],
         "userTagsActions": [],
         "classes": [6, 7],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "92",
@@ -1578,7 +1604,8 @@
         "initialTags": ["debaff"],
         "userTagsActions": [],
         "classes": [0, 1, 2, 3, 5, 7, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "93",
@@ -1629,7 +1656,8 @@
         "initialTags": ["damage", "fire", "debaff"],
         "userTagsActions": [],
         "classes": [3, 6, 7],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "96",
@@ -1646,7 +1674,8 @@
         "initialTags": ["baff", "damage"],
         "userTagsActions": [],
         "classes": [1, 2, 4, 7, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "97",
@@ -1697,7 +1726,8 @@
         "initialTags": ["debaff"],
         "userTagsActions": [],
         "classes": [0, 3, 4, 5, 6],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "100",
@@ -1731,7 +1761,8 @@
         "initialTags": ["debaff"],
         "userTagsActions": [],
         "classes": [0, 3, 5, 6],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "102",
@@ -1748,7 +1779,8 @@
         "initialTags": ["damage", "debaff", "force"],
         "userTagsActions": [],
         "classes": [1],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "103",
@@ -1782,7 +1814,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [1, 3, 4, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "105",
@@ -1816,7 +1849,8 @@
         "initialTags": ["damage", "debaff", "necrotic"],
         "userTagsActions": [],
         "classes": [5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "107",
@@ -1833,7 +1867,8 @@
         "initialTags": ["debaff"],
         "userTagsActions": [],
         "classes": [0, 1, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "108",
@@ -1850,7 +1885,8 @@
         "initialTags": ["debaff"],
         "userTagsActions": [],
         "classes": [5],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "109",
@@ -1918,7 +1954,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [0, 1, 2, 4, 7],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "113",
@@ -1935,7 +1972,8 @@
         "initialTags": ["damage"],
         "userTagsActions": [],
         "classes": [8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "114",
@@ -1986,7 +2024,8 @@
         "initialTags": ["debaff"],
         "userTagsActions": [],
         "classes": [1, 2, 3, 5, 7, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "117",
@@ -2037,7 +2076,8 @@
         "initialTags": ["debaff"],
         "userTagsActions": [],
         "classes": [0, 1, 3, 5, 6, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "120",
@@ -2054,7 +2094,8 @@
         "initialTags": ["damage"],
         "userTagsActions": [],
         "classes": [1, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "121",
@@ -2156,7 +2197,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [1],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "127",
@@ -2173,7 +2215,8 @@
         "initialTags": ["baff", "damage", "force"],
         "userTagsActions": [],
         "classes": [3, 6],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "128",
@@ -2224,7 +2267,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [1, 4, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "131",
@@ -2258,7 +2302,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [1, 2, 4, 7, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "133",
@@ -2343,7 +2388,8 @@
         "initialTags": ["debaff"],
         "userTagsActions": [],
         "classes": [0, 1, 2, 3, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "138",
@@ -2360,7 +2406,8 @@
         "initialTags": ["baff", "damage", "fire"],
         "userTagsActions": [],
         "classes": [2, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "139",
@@ -2377,7 +2424,8 @@
         "initialTags": ["damage", "thunder"],
         "userTagsActions": [],
         "classes": [0, 1, 3, 4, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "140",
@@ -2411,7 +2459,8 @@
         "initialTags": ["baff", "damage"],
         "userTagsActions": [],
         "classes": [1, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "142",
@@ -2445,7 +2494,8 @@
         "initialTags": ["damage", "piercing"],
         "userTagsActions": [],
         "classes": [7],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "144",
@@ -2518,7 +2568,7 @@
     {
         "id": "148",
         "title": "Исцеляющий дух",
-        "labelling": "Вы вызываете дух природы, чтобы унять боль раненых. Нематериальный дух появляется в пространстве, представляющее собой куб с длиной ребра 5 футов, которой вы можете видеть в пределах дистанции. Дух выглядит как прозрачный зверь или фея (по вашему выбору).Пока заклинание активно, всякий раз, когда вы или существо, которое вы можете видеть, впервые за ход попадают в пространство духа или начинают в не?м свой ход, вы можете заставить духа восстановить 1к6 хитов этому существу (никаких действий не требуется). Дух не может исцелять Конструктов или Нежить. Дух может исцелять количество раз, равное 1 плюс ваш модификатор базовой характеристики (минимум 2). После того, как дух исцеляет доступное количество раз, он исчезает.\nБонусным действием в ваш ход вы можете переместить дух до 30 футов в пространство, которое вы можете видеть.\nЕсли вы накладываете это заклинание, используя ячейку заклинания 3-го уровня или выше, исцеление увеличивается на 1к6 для каждого уровня ячейки выше 2.",
+        "labelling": "Вы вызываете дух природы, чтобы унять боль раненых. Нематериальный дух появляется в пространстве, представляющее собой куб с длиной ребра 5 футов, которой вы можете видеть в пределах дистанции. Дух выглядит как прозрачный зверь или фея (по вашему выбору).Пока заклинание активно, всякий раз, когда вы или существо, которое вы можете видеть, впервые за ход попадают в пространство духа или начинают в нем свой ход, вы можете заставить духа восстановить 1к6 хитов этому существу (никаких действий не требуется). Дух не может исцелять Конструктов или Нежить. Дух может исцелять количество раз, равное 1 плюс ваш модификатор базовой характеристики (минимум 2). После того, как дух исцеляет доступное количество раз, он исчезает.\nБонусным действием в ваш ход вы можете переместить дух до 30 футов в пространство, которое вы можете видеть.\nЕсли вы накладываете это заклинание, используя ячейку заклинания 3-го уровня или выше, исцеление увеличивается на 1к6 для каждого уровня ячейки выше 2.",
         "concentration": true,
         "duration": { "time": 1 },
         "level": 2,
@@ -2530,7 +2580,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [2, 7],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "149",
@@ -2564,7 +2615,8 @@
         "initialTags": ["baff", "damage", "force"],
         "userTagsActions": [],
         "classes": [4, 5, 6],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "151",
@@ -2615,7 +2667,8 @@
         "initialTags": ["damage", "force"],
         "userTagsActions": [],
         "classes": [2, 3, 6],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "154",
@@ -2649,7 +2702,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [1, 3, 4, 6, 7, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "156",
@@ -2683,7 +2737,8 @@
         "initialTags": ["debaff", "damage", "acid"],
         "userTagsActions": [],
         "classes": [1, 2, 4],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "158",
@@ -2700,7 +2755,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [3, 6],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "159",
@@ -2734,7 +2790,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [0, 1, 2, 4, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "161",
@@ -2802,7 +2859,8 @@
         "initialTags": ["damage", "slashing"],
         "userTagsActions": [],
         "classes": [0, 1, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "165",
@@ -2921,7 +2979,8 @@
         "initialTags": ["damage", "fire"],
         "userTagsActions": [],
         "classes": [1, 2, 3, 4, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "172",
@@ -2972,7 +3031,8 @@
         "initialTags": ["damage", "fire"],
         "userTagsActions": [],
         "classes": [1, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "175",
@@ -3023,7 +3083,8 @@
         "initialTags": ["baff"],
         "userTagsActions": [],
         "classes": [0, 3, 4, 6, 7],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "178",
@@ -3125,7 +3186,8 @@
         "initialTags": ["ritual", "talking"],
         "userTagsActions": [],
         "classes": [0, 2, 7],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "184",
@@ -3142,7 +3204,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [2, 7],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "185",
@@ -3159,7 +3222,8 @@
         "initialTags": ["damage", "psychic"],
         "userTagsActions": [],
         "classes": [1, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "186",
@@ -3193,7 +3257,8 @@
         "initialTags": ["damage", "fire"],
         "userTagsActions": [],
         "classes": [1, 2, 3, 4, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "188",
@@ -3210,7 +3275,8 @@
         "initialTags": ["damage", "bludgeoning", "debaff"],
         "userTagsActions": [],
         "classes": [1, 2, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "189",
@@ -3244,7 +3310,8 @@
         "initialTags": ["damage", "fire", "debaff"],
         "userTagsActions": [],
         "classes": [0, 2, 3, 4],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "191",
@@ -3295,7 +3362,8 @@
         "initialTags": [ "damage", "cold", "debaff" ],
         "userTagsActions": [],
         "classes": [1, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "194",
@@ -3329,7 +3397,8 @@
         "initialTags": [ "damage", "cold" ],
         "userTagsActions": [],
         "classes": [ 1, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "196",
@@ -3346,7 +3415,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "197",
@@ -3363,7 +3433,8 @@
         "initialTags": [ "baff", "damage", "psychic" ],
         "userTagsActions": [],
         "classes": [ 1, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "198",
@@ -3402,7 +3473,7 @@
     {
         "id": "200",
         "title": "Трюк с верёвкой",
-        "labelling": "Вы касаетесь верёвки длиной до 60 футов. Один её конец поднимается в воздух, а остальная часть висит перпендикулярно полу. На верхнем конце верёвки появляется невидимый вход в межпространство, существующий, пока заклинание активно.\nВ межпространство можно попасть забравшись по верёвке наверх. В этом межпространстве может поместиться восемь существ с размером не больше Среднего. Верёвку можно затянуть внутрь, после чего снаружи её не будет видно.\nАтаки и заклинания не могут проходить через вход внутрь межпространства и наружу, но те, кто находятся внутри, могут все видеть как через окно 3 ? 5 футов с центром на верёвке.\nВсё, что находится в межпространстве, вываливается наружу, когда заклинание оканчивается.",
+        "labelling": "Вы касаетесь верёвки длиной до 60 футов. Один её конец поднимается в воздух, а остальная часть висит перпендикулярно полу. На верхнем конце верёвки появляется невидимый вход в межпространство, существующий, пока заклинание активно.\nВ межпространство можно попасть забравшись по верёвке наверх. В этом межпространстве может поместиться восемь существ с размером не больше Среднего. Верёвку можно затянуть внутрь, после чего снаружи её не будет видно.\nАтаки и заклинания не могут проходить через вход внутрь межпространства и наружу, но те, кто находятся внутри, могут все видеть как через окно 3 x 5 футов с центром на верёвке.\nВсё, что находится в межпространстве, вываливается наружу, когда заклинание оканчивается.",
         "concentration": false,
         "duration": { "time": 60 },
         "level": 2,
@@ -3499,7 +3570,8 @@
         "initialTags": [ "damage" ],
         "userTagsActions": [],
         "classes": [ 1, 2, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "206",
@@ -3516,7 +3588,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 2, 3, 5, 6, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "207",
@@ -3550,7 +3623,8 @@
         "initialTags": [ "baff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 2, 3, 4, 6, 7, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "209",
@@ -3618,7 +3692,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "213",
@@ -3635,12 +3710,13 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 3 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "214",
         "title": "Водяная стена",
-        "labelling": "Вы создаёте стену воды в точке, которую можете видеть, в пределах дистанции. Точка должна располагаться на земле. Стена может быть длиной до 30 футов, высотой до 10 футов и толщиной до 1 фута. В качестве альтернативы, вы можете создать кольцо диаметром до 20 футов, высотой до 20 футов и толщиной до 1 фута. Стена существует, пока действует заклинание. Стена считается труднопроходимой местностью.\nВсе атаки дальнобойным оружием, траектория которых проходит через пространство стены, совершаются с помехой. Огненный урон от эффектов, которые прошли через стену, уменьшается вдвое. Заклинания, которые причиняют урон холодом, при прохождении через стену замораживают ту область стены, сквозь которую прошли (минимум клетка 5?5 футов). Каждая замёрзшая секция площадью 5?5 футов имеет КД 5 и 15 хитов. Если хиты секции уменьшаются до 0, она разрушается. Разрушенные секции стены не заполняются водой повторно.",
+        "labelling": "Вы создаёте стену воды в точке, которую можете видеть, в пределах дистанции. Точка должна располагаться на земле. Стена может быть длиной до 30 футов, высотой до 10 футов и толщиной до 1 фута. В качестве альтернативы, вы можете создать кольцо диаметром до 20 футов, высотой до 20 футов и толщиной до 1 фута. Стена существует, пока действует заклинание. Стена считается труднопроходимой местностью.\nВсе атаки дальнобойным оружием, траектория которых проходит через пространство стены, совершаются с помехой. Огненный урон от эффектов, которые прошли через стену, уменьшается вдвое. Заклинания, которые причиняют урон холодом, при прохождении через стену замораживают ту область стены, сквозь которую прошли (минимум клетка 5х5 футов). Каждая замёрзшая секция площадью 5х5 футов имеет КД 5 и 15 хитов. Если хиты секции уменьшаются до 0, она разрушается. Разрушенные секции стены не заполняются водой повторно.",
         "concentration": true,
         "duration": { "time": 10 },
         "level": 3,
@@ -3686,7 +3762,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 2, 3, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "217",
@@ -3754,7 +3831,8 @@
         "initialTags": [ "damage", "thunder" ],
         "userTagsActions": [],
         "classes": [ 1, 5, 8 ] ,
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "221",
@@ -3788,7 +3866,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 4, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "223",
@@ -3805,12 +3884,13 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 3, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "224",
         "title": "Замедление",
-        "labelling": "Вы изменяете время для шести существ на ваш выбор, находящихся в кубе с длиной ребра 40 футов в пределах дистанции. Все цели должны преуспеть в спасброске Мудрости, иначе они попадут под действие заклинания на время его длительности.\nСкорость попавшего под действие существа уменьшатся вдвое, оно получает штраф ?2 к КД и спасброскам Ловкости, и оно не может совершать реакции. В свой ход оно может использовать либо действие, либо бонусное действие, и не может использовать сразу оба. Вне зависимости от умений и магических предметов, оно не может в свой ход совершать более одной рукопашной или дальнобойной атаки.\nЕсли существо попытается наложить заклинание со временем накладывания 1 действие, бросьте к20. Если выпадет «11» или больше, заклинание не вступит в силу до его следующего хода, и в том ходу оно должно будет использовать действие для завершения заклинания. Если оно этого не сделает, заклинание будет потрачено.\nСущество, находящееся под действием этого заклинания, совершает новые спасброски Мудрости в конце каждого своего хода. При успехе эффект для него оканчивается.",
+        "labelling": "Вы изменяете время для шести существ на ваш выбор, находящихся в кубе с длиной ребра 40 футов в пределах дистанции. Все цели должны преуспеть в спасброске Мудрости, иначе они попадут под действие заклинания на время его длительности.\nСкорость попавшего под действие существа уменьшатся вдвое, оно получает штраф х2 к КД и спасброскам Ловкости, и оно не может совершать реакции. В свой ход оно может использовать либо действие, либо бонусное действие, и не может использовать сразу оба. Вне зависимости от умений и магических предметов, оно не может в свой ход совершать более одной рукопашной или дальнобойной атаки.\nЕсли существо попытается наложить заклинание со временем накладывания 1 действие, бросьте к20. Если выпадет «11» или больше, заклинание не вступит в силу до его следующего хода, и в том ходу оно должно будет использовать действие для завершения заклинания. Если оно этого не сделает, заклинание будет потрачено.\nСущество, находящееся под действием этого заклинания, совершает новые спасброски Мудрости в конце каждого своего хода. При успехе эффект для него оканчивается.",
         "concentration": true,
         "duration": { "time": 1 },
         "level": 3,
@@ -3873,7 +3953,8 @@
         "initialTags": [ "debaff", "damage", "bludgeoning" ],
         "userTagsActions": [],
         "classes": [ 1, 2, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "228",
@@ -3907,7 +3988,8 @@
         "initialTags": [ "baff" ],
         "userTagsActions": [],
         "classes": [ 1, 5, 6, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "230",
@@ -3941,7 +4023,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 4],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "232",
@@ -3975,7 +4058,8 @@
         "initialTags": [ "debaff", "baff" ],
         "userTagsActions": [],
         "classes": [ 1, 3, 5, 6, 7 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "234",
@@ -4026,7 +4110,8 @@
         "initialTags": [ "baff", "damage", "fire" ],
         "userTagsActions": [],
         "classes": [ 1, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "237",
@@ -4077,7 +4162,8 @@
         "initialTags": [ "heal" ],
         "userTagsActions": [],
         "classes": [ 0, 3, 4 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "240",
@@ -4094,7 +4180,8 @@
         "initialTags": [ "baff", "damage", "lightning" ],
         "userTagsActions": [],
         "classes": [ 7 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "241",
@@ -4111,7 +4198,8 @@
         "initialTags": [ "damage", "lightning" ],
         "userTagsActions": [],
         "classes": [ 1, 2, 4, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "242",
@@ -4128,7 +4216,8 @@
         "initialTags": [ "baff" ],
         "userTagsActions": [],
         "classes": [ 0, 3 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "243",
@@ -4162,7 +4251,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 0, 1, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "245",
@@ -4179,7 +4269,8 @@
         "initialTags": [ "damage", "fire" ],
         "userTagsActions": [],
         "classes": [ 1, 3, 4, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "246",
@@ -4213,7 +4304,8 @@
         "initialTags": [ "baff", "damage" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 3, 4 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "248",
@@ -4230,7 +4322,8 @@
         "initialTags": [ "heal" ],
         "userTagsActions": [],
         "classes": [ 1, 3 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "249",
@@ -4298,7 +4391,8 @@
         "initialTags": [ "baff", "damage", "debaff" ],
         "userTagsActions": [],
         "classes": [ 1, 3, 5, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "253",
@@ -4315,7 +4409,8 @@
         "initialTags": [ "baff" ],
         "userTagsActions": [],
         "classes": [ 1, 4, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "254",
@@ -4349,7 +4444,8 @@
         "initialTags": [ "baff", "damage", "fire" ],
         "userTagsActions": [],
         "classes": [ 1, 4, 7, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "256",
@@ -4383,7 +4479,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "258",
@@ -4400,7 +4497,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "259",
@@ -4417,7 +4515,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 2, 5, 7 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "260",
@@ -4434,7 +4533,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 2, 7 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "261",
@@ -4468,7 +4568,8 @@
         "initialTags": [ "damage", "lightning" ],
         "userTagsActions": [],
         "classes": [ 2, 3 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "263",
@@ -4485,7 +4586,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "264",
@@ -4502,7 +4604,8 @@
         "initialTags": [ "damage", "necrotic", "heal" ],
         "userTagsActions": [],
         "classes": [ 1, 3, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "265",
@@ -4553,7 +4656,8 @@
         "initialTags": [ "debaff", "damage", "necrotic" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 3, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "268",
@@ -4570,7 +4674,8 @@
         "initialTags": [ "baff", "damage", "fire" ],
         "userTagsActions": [],
         "classes": [ 1, 2, 4, 7, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "269",
@@ -4621,7 +4726,8 @@
         "initialTags": [ "effectRemoval" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "272",
@@ -4757,7 +4863,8 @@
         "initialTags": [ "baff", "damage" ],
         "userTagsActions": [],
         "classes": [ 2, 3, 4, 5, 6, 7 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "280",
@@ -4961,7 +5068,8 @@
         "initialTags": [ "debaff", "damage", "psychic" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "292",
@@ -5012,7 +5120,8 @@
         "initialTags": [ "damage", "cold", "debaff" ],
         "userTagsActions": [],
         "classes": [ 1, 2, 3, 4, 6, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "295",
@@ -5029,7 +5138,8 @@
         "initialTags": [ "damage", "acid" ],
         "userTagsActions": [],
         "classes": [ 1, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "296",
@@ -5063,7 +5173,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 1, 3, 5, 6, 7, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "298",
@@ -5136,7 +5247,7 @@
     {
         "id": "302",
         "title": "Леомундов потайной сундук",
-        "labelling": "Вы прячете сундук вместе со всем его содержимым на Эфирном плане. Вы должны касаться и сундука, и его миниатюрной копии, служащей материальным компонентом для заклинания. Сундук может содержать до 12 кубических футов неживой материи (3?2?2 фута).Пока сундук остается на Эфирном плане, вы можете действием прикоснуться к копии, чтобы вернуть сундук. Он появляется в свободном пространстве на полу в пределах 5 футов от вас. Вы можете отослать сундук обратно на Эфирный план, прикоснувшись действием к сундуку и его копии.\nСпустя 60 дней появляется накопительный шанс 5% в день, что эффект заклинания окончится. Эффект оканчивается, если вы активируете это заклинание ещё раз, если копия сундука будет уничтожена, или если вы окончите это заклинание действием. Если заклинание оканчивается, а сундук находится на Эфирном плане, он безвозвратно теряется.",
+        "labelling": "Вы прячете сундук вместе со всем его содержимым на Эфирном плане. Вы должны касаться и сундука, и его миниатюрной копии, служащей материальным компонентом для заклинания. Сундук может содержать до 12 кубических футов неживой материи (3х2х2 фута).Пока сундук остается на Эфирном плане, вы можете действием прикоснуться к копии, чтобы вернуть сундук. Он появляется в свободном пространстве на полу в пределах 5 футов от вас. Вы можете отослать сундук обратно на Эфирный план, прикоснувшись действием к сундуку и его копии.\nСпустя 60 дней появляется накопительный шанс 5% в день, что эффект заклинания окончится. Эффект оканчивается, если вы активируете это заклинание ещё раз, если копия сундука будет уничтожена, или если вы окончите это заклинание действием. Если заклинание оканчивается, а сундук находится на Эфирном плане, он безвозвратно теряется.",
         "concentration": false,
         "duration": { "instantly": true },
         "level": 4,
@@ -5318,7 +5429,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 2, 3, 5, 6, 7, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "313",
@@ -5403,7 +5515,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "318",
@@ -5420,7 +5533,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "319",
@@ -5437,7 +5551,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 4, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "320",
@@ -5454,7 +5569,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 2, 5, 7 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "321",
@@ -5471,7 +5587,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 2, 7 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "322",
@@ -5488,7 +5605,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 2 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "323",
@@ -5539,7 +5657,8 @@
         "initialTags": [ "damage", "psychic", "debaff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 5, 8],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "326",
@@ -5573,7 +5692,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 2, 3, 6, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "328",
@@ -5624,7 +5744,8 @@
         "initialTags": [ "damage", "bludgeoning", "lightning", "debaff"],
         "userTagsActions": [],
         "classes": [ 1, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "331",
@@ -5641,7 +5762,8 @@
         "initialTags": [ "damage", "necrotic" ],
         "userTagsActions": [],
         "classes": [ 1, 2, 3, 4, 5, 6, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "332",
@@ -5658,7 +5780,8 @@
         "initialTags": [ "damage", "force" ],
         "userTagsActions": [],
         "classes": [ 1 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "333",
@@ -5777,7 +5900,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 1 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "340",
@@ -5845,7 +5969,8 @@
         "initialTags": [ "baff", "debaff", "damage", "force", "bludgeoning" ],
         "userTagsActions": [],
         "classes": [ 1, 4, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "344",
@@ -5930,7 +6055,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 3 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "349",
@@ -5947,12 +6073,13 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "350",
         "title": "Испепеление",
-        "labelling": "Одно существо, которое вы можете видеть в пределах дистанции, охватывает пламя. Цель должна совершить спасбросок Ловкости. Существо получает 8к6 урона огне?м при провале или половину этого урона при успехе. Кроме того, при провале цель воспламеняется на время действия заклинания. Горящая цель испускает яркий свет в пределах 30 футов и тусклый свет в пределах ещё 30 футов. В конце каждого своего хода цель повторяет спасбросок. При провале цель получает 4к6 урона огне?м. При успехе заклинание оканчивается. Этот магический огонь не может быть погашен немагическими средствами.\nЕсли урон от этого заклинания убивает цель, то она превращается в пепел.",
+        "labelling": "Одно существо, которое вы можете видеть в пределах дистанции, охватывает пламя. Цель должна совершить спасбросок Ловкости. Существо получает 8к6 урона огнем при провале или половину этого урона при успехе. Кроме того, при провале цель воспламеняется на время действия заклинания. Горящая цель испускает яркий свет в пределах 30 футов и тусклый свет в пределах ещё 30 футов. В конце каждого своего хода цель повторяет спасбросок. При провале цель получает 4к6 урона огнем. При успехе заклинание оканчивается. Этот магический огонь не может быть погашен немагическими средствами.\nЕсли урон от этого заклинания убивает цель, то она превращается в пепел.",
         "concentration": true,
         "duration": { "time": 1 },
         "level": 5,
@@ -5969,7 +6096,7 @@
     {
         "id": "351",
         "title": "Каменная стена",
-        "labelling": "В точке, выбранной вами в пределах дистанции, появляется немагическая стена из камня. Стена толщиной 15 сантиметров и составлена из десяти плит 10?10 футов. Каждая плита должна соседствовать как минимум с одной другой плитой. Вы можете создать плиты 10?20 футов, но толщиной только 7,5. Если стена при появлении проходит по пространству существа, это существо выталкивается по одну из сторон стены. Если существо со всех сторон окружается стеной, это существо может совершить спасбросок Ловкости. При успехе оно может реакцией переместиться на расстояние, равное своей скорости, чтобы не быть окружённым стеной. Стена может иметь любую форму, хотя и не может занимать одно пространство с существами и предметами. Стена не обязана быть вертикальной, и не обязана целиком покоиться на твёрдом основании. Однако, она должна сливаться с существующим камнем, опираясь на него.\nТаким образом, вы можете создать этим заклинанием мост через пропасть. Если вы создаёте пролёт длиной больше 20 футов, вы должны уменьшить вдвое размер каждой плиты, чтобы создать поддержку. Вы можете придавать стене грубую форму, создавая бойницы, зубцы, и тд. Стена является предметом, изготовленным из камня, которому можно причинить урон и, тем самым, пробить. У каждой плиты КД 15 и по 30 хитов за каждый 2,5 сантиметра толщины. Уменьшение хитов плиты до 0 уничтожает её, и по решению Мастера, может вызвать обвал смежных плит. Если вы поддерживаете концентрацию на этом заклинании в течение всей длительности, стена становится постоянной, и с этого момента её уже нельзя будет рассеять. В противном случае стена исчезает, когда заклинание будет окончено.",
+        "labelling": "В точке, выбранной вами в пределах дистанции, появляется немагическая стена из камня. Стена толщиной 15 сантиметров и составлена из десяти плит 10x10 футов. Каждая плита должна соседствовать как минимум с одной другой плитой. Вы можете создать плиты 10x20 футов, но толщиной только 7,5. Если стена при появлении проходит по пространству существа, это существо выталкивается по одну из сторон стены. Если существо со всех сторон окружается стеной, это существо может совершить спасбросок Ловкости. При успехе оно может реакцией переместиться на расстояние, равное своей скорости, чтобы не быть окружённым стеной. Стена может иметь любую форму, хотя и не может занимать одно пространство с существами и предметами. Стена не обязана быть вертикальной, и не обязана целиком покоиться на твёрдом основании. Однако, она должна сливаться с существующим камнем, опираясь на него.\nТаким образом, вы можете создать этим заклинанием мост через пропасть. Если вы создаёте пролёт длиной больше 20 футов, вы должны уменьшить вдвое размер каждой плиты, чтобы создать поддержку. Вы можете придавать стене грубую форму, создавая бойницы, зубцы, и тд. Стена является предметом, изготовленным из камня, которому можно причинить урон и, тем самым, пробить. У каждой плиты КД 15 и по 30 хитов за каждый 2,5 сантиметра толщины. Уменьшение хитов плиты до 0 уничтожает её, и по решению Мастера, может вызвать обвал смежных плит. Если вы поддерживаете концентрацию на этом заклинании в течение всей длительности, стена становится постоянной, и с этого момента её уже нельзя будет рассеять. В противном случае стена исчезает, когда заклинание будет окончено.",
         "concentration": true,
         "duration": { "time": 10 },
         "level": 5,
@@ -5998,7 +6125,8 @@
         "initialTags": [ "damage", "cold" ],
         "userTagsActions": [],
         "classes": [ 1, 2, 4, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "353",
@@ -6100,7 +6228,8 @@
         "initialTags": [ "debaff", "damage", "piercing" ],
         "userTagsActions": [],
         "classes": [ 2, 3, 7, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "359",
@@ -6117,7 +6246,8 @@
         "initialTags": [ "damage", "force", "fire" ],
         "userTagsActions": [],
         "classes": [ 2, 3, 5, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "360",
@@ -6134,7 +6264,8 @@
         "initialTags": [ "damage", "necrotic", "debaff" ],
         "userTagsActions": [],
         "classes": [ 1, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "361",
@@ -6151,7 +6282,8 @@
         "initialTags": [ "debaff", "damage", "necrotic" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 2, 3, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "362",
@@ -6168,7 +6300,8 @@
         "initialTags": [ "damage", "poison" ],
         "userTagsActions": [],
         "classes": [ 1, 2, 3, 4, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "363",
@@ -6236,12 +6369,13 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 0, 1, 3, 4, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "367",
         "title": "Планарные узы",
-        "labelling": "При помощи этого заклинания вы можете попытаться подчинить Исчадие, Небожителя, Фею или Элементаля. Существо должно находиться в пределах дистанции в течение всего времени накладывания заклинания (обычно для этого существо призывается в центр вывернутого магического круга). В конце накладывания заклинания цель должна совершить спасбросок Харизмы. При провале она должна служить вам, пока заклинание активно. Если существо было призвано или создано другим заклинанием, то длительность того заклинания увеличивается, чтобы совпадать с длительностью этого заклинания.\nПодчинённое существо должно выполнять ваши инструкции. Вы можете приказать ему сопровождать вас в приключении, охранять место, или передать послание. Существо выполняет ваши инструкции буквально, и если оно враждебно по отношению к вам, оно будет искать возможность помешать вам. Если существо выполняет ваши инструкции до того как заклинание оканчивается, оно отправляется к вам, чтобы сообщить об этом, если вы с ним находитесь на одном плане существования. Если вы находитесь на разных планах, оно возвращается к месту, где вы подчинили его, и остаётся там, пока заклинание не окончится.\nЯчейка 6-го уровня - длительность увеличивается до 10 днейЯчейка 7-го уровня - 30 днейЯчейка 8-го уровня - 180 днейЯчейки 9-го уровня - год и одного дня",
+        "labelling": "При помощи этого заклинания вы можете попытаться подчинить Исчадие, Небожителя, Фею или Элементаля. Существо должно находиться в пределах дистанции в течение всего времени накладывания заклинания (обычно для этого существо призывается в центр вывернутого магического круга). В конце накладывания заклинания цель должна совершить спасбросок Харизмы. При провале она должна служить вам, пока заклинание активно. Если существо было призвано или создано другим заклинанием, то длительность того заклинания увеличивается, чтобы совпадать с длительностью этого заклинания.\nПодчинённое существо должно выполнять ваши инструкции. Вы можете приказать ему сопровождать вас в приключении, охранять место, или передать послание. Существо выполняет ваши инструкции буквально, и если оно враждебно по отношению к вам, оно будет искать возможность помешать вам. Если существо выполняет ваши инструкции до того как заклинание оканчивается, оно отправляется к вам, чтобы сообщить об этом, если вы с ним находитесь на одном плане существования. Если вы находитесь на разных планах, оно возвращается к месту, где вы подчинили его, и остаётся там, пока заклинание не окончится.\nЯчейка 6-го уровня - длительность увеличивается до 10 дней. Ячейка 7-го уровня - 30 дней. Ячейка 8-го уровня - 180 дней. Ячейки 9-го уровня - год и одного дня",
         "concentration": false,
         "duration": { "time": 1440 },
         "level": 5,
@@ -6253,7 +6387,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 0, 1, 2, 3, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "368",
@@ -6270,7 +6405,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "369",
@@ -6287,7 +6423,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 3, 5, 6, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "370",
@@ -6355,7 +6492,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 2, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "374",
@@ -6372,7 +6510,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 2, 6 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "375",
@@ -6406,7 +6545,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 2 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "377",
@@ -6564,7 +6704,7 @@
     {
         "id": "386",
         "title": "Силовая стена",
-        "labelling": "Невидимая стена из силового поля появляется в точке, выбранной вами в пределах дистанции. Стена появляется, будучи ориентированной в любом направлении: горизонтальном, вертикальном или наклонённом. Она может свободно парить, а может опираться на твёрдую поверхность. Вы можете создать её полусферой-куполом или сферой с радиусом до 10 футов, или можете сформировать плоскую поверхность, состоящую из плит 10 ? 10 футов, количество которых может доходить до десяти. Каждая плита должна соседствовать как минимум с одной другой плитой. Какая бы форма ни была у стены, её толщина всегда 1/4 дюйма (6 миллиметров). Она существует, пока активно заклинание. Если стена при появлении проходит по пространству существа, это существо выталкивается по одну из сторон стены (на ваш выбор).Ничто не может физически пройти сквозь эту стену. Она обладает иммунитетом ко всем видам урона, и не может быть рассеяна заклинанием рассеивание магии. Заклинание распад полностью уничтожает стену. Стена простирается и на Эфирный план, блокируя эфирные перемещения сквозь себя.",
+        "labelling": "Невидимая стена из силового поля появляется в точке, выбранной вами в пределах дистанции. Стена появляется, будучи ориентированной в любом направлении: горизонтальном, вертикальном или наклонённом. Она может свободно парить, а может опираться на твёрдую поверхность. Вы можете создать её полусферой-куполом или сферой с радиусом до 10 футов, или можете сформировать плоскую поверхность, состоящую из плит 10x10 футов, количество которых может доходить до десяти. Каждая плита должна соседствовать как минимум с одной другой плитой. Какая бы форма ни была у стены, её толщина всегда 1/4 дюйма (6 миллиметров). Она существует, пока активно заклинание. Если стена при появлении проходит по пространству существа, это существо выталкивается по одну из сторон стены (на ваш выбор).Ничто не может физически пройти сквозь эту стену. Она обладает иммунитетом ко всем видам урона, и не может быть рассеяна заклинанием рассеивание магии. Заклинание распад полностью уничтожает стену. Стена простирается и на Эфирный план, блокируя эфирные перемещения сквозь себя.",
         "concentration": true,
         "duration": { "time": 10 },
         "level": 5,
@@ -6627,7 +6767,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 3, 4, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "390",
@@ -6661,7 +6802,8 @@
         "initialTags": [ "damage", "force", "debaff" ],
         "userTagsActions": [],
         "classes": [ 1, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "392",
@@ -6780,7 +6922,8 @@
         "initialTags": [ "damage", "force" ],
         "userTagsActions": [],
         "classes": [ 1 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "399",
@@ -6899,7 +7042,8 @@
         "initialTags": [ "debaff", "damage", "bludgeoning" ],
         "userTagsActions": [],
         "classes": [ 2 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "406",
@@ -6916,7 +7060,8 @@
         "initialTags": [ "damage", "necrotic" ],
         "userTagsActions": [],
         "classes": [ 1, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "407",
@@ -6933,7 +7078,8 @@
         "initialTags": [ "damage", "cold" ],
         "userTagsActions": [],
         "classes": [ 1 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "408",
@@ -6984,7 +7130,8 @@
         "initialTags": [ "debaff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "411",
@@ -7074,7 +7221,7 @@
     {
         "id": "416",
         "title": "Окаменение",
-        "labelling": "Компоненты: щепотка извести, воды и земли.\nВы пытаетесь сделать каменным одно существо, которое видите в пределах дистанции. Если тело цели состоит из плоти, она должна совершить спасбросок Телосложения. При провале она становится опутанной, так как плоть начитает отвердевать. При успехе существо не попадает под действие заклинания.\nСущество, опутанное этим заклинанием, должно совершать спасброски Телосложения в конце каждого своего хода. Если оно преуспело в спасброске от этого заклинания три раза, оно оканчивается. Если оно провалит спасбросок три раза, оно превращается в камень и получает состояние окаменевшее на время длительности заклинания. Успехи и провалы не обязаны быть последовательными\nотслеживайте их отдельно, пока не накопится три вида чего-то одного.\nЕсли существо физически ломается, будучи окаменевшим, при возвращении в обычное тело оно сохраняет все полученные деформации.\nЕсли вы сохраняете концентрацию на этом заклинании до максимально возможного времени, существо становится окаменевшим до снятия эффекта.",
+        "labelling": "Компоненты: щепотка извести, воды и земли.\nВы пытаетесь сделать каменным одно существо, которое видите в пределах дистанции. Если тело цели состоит из плоти, она должна совершить спасбросок Телосложения. При провале она становится опутанной, так как плоть начитает отвердевать. При успехе существо не попадает под действие заклинания.\nСущество, опутанное этим заклинанием, должно совершать спасброски Телосложения в конце каждого своего хода. Если оно преуспело в спасброске от этого заклинания три раза, оно оканчивается. Если оно провалит спасбросок три раза, оно превращается в камень и получает состояние окаменевшее на время длительности заклинания. Успехи и провалы не обязаны быть последовательными: отслеживайте их отдельно, пока не накопится три вида чего-то одного.\nЕсли существо физически ломается, будучи окаменевшим, при возвращении в обычное тело оно сохраняет все полученные деформации.\nЕсли вы сохраняете концентрацию на этом заклинании до максимально возможного времени, существо становится окаменевшим до снятия эффекта.",
         "concentration": true,
         "duration": { "time": 1 },
         "level": 6,
@@ -7103,7 +7250,8 @@
         "initialTags": [ "damage", "cold" ],
         "userTagsActions": [],
         "classes": [ 1, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "418",
@@ -7188,7 +7336,8 @@
         "initialTags": [ "damage", "lightning" ],
         "userTagsActions": [],
         "classes": [ 1, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "423",
@@ -7222,7 +7371,8 @@
         "initialTags": [ "effectRemoval", "heal" ],
         "userTagsActions": [],
         "classes": [ 2, 3 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "425",
@@ -7290,7 +7440,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "429",
@@ -7307,7 +7458,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 2, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "430",
@@ -7375,12 +7527,13 @@
         "initialTags": [ "damage", "force" ],
         "userTagsActions": [],
         "classes": [ 1, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "434",
         "title": "Роща друида",
-        "labelling": "Вы призываете духов природы для защиты области на открытом воздухе или под землёй. Эта область может быть кубом с длиной ребра от 30 до 90 футов. Здания и другие сооружения исключаются из этой области. Если вы накладываете это заклинание в одном и том же месте каждый день в течение года, заклинание длится до тех пор, пока не будет рассеяно.\nЗаклинание создает следующие эффекты в пределах области. Когда вы накладываете это заклинание, вы можете указать существ как друзей, которые будут невосприимчивы к эффектам заклинания. Вы также можете указать кодовое слово, которое, при произношении, делает говорящего невосприимчивым к этим эффектам.\nВся защищённая область источает магию. Магия рассеивания, наложенная на область, при успехе удаляет только один из нижеследующих эффектов, а не всю область. Заклинатель выбирает, какой эффект окончить. Только когда все эффекты окончены, заклинание рассеивается.\nНепроглядный туман.\nЦепкий подлесок.\nХранители рощи. Дополнительные эффекты от заклинания:Постоянный порыв ветра в двух местах по вашему выборуШипы в одном месте по вашему выборуСтена ветров в двух местах по вашему выборуДля существа, невосприимчивого к данному эффекту, ветры – это приятный легкий бриз, а шипы безвредны.",
+        "labelling": "Вы призываете духов природы для защиты области на открытом воздухе или под землёй. Эта область может быть кубом с длиной ребра от 30 до 90 футов. Здания и другие сооружения исключаются из этой области. Если вы накладываете это заклинание в одном и том же месте каждый день в течение года, заклинание длится до тех пор, пока не будет рассеяно.\nЗаклинание создает следующие эффекты в пределах области. Когда вы накладываете это заклинание, вы можете указать существ как друзей, которые будут невосприимчивы к эффектам заклинания. Вы также можете указать кодовое слово, которое, при произношении, делает говорящего невосприимчивым к этим эффектам.\nВся защищённая область источает магию. Магия рассеивания, наложенная на область, при успехе удаляет только один из нижеследующих эффектов, а не всю область. Заклинатель выбирает, какой эффект окончить. Только когда все эффекты окончены, заклинание рассеивается.\nНепроглядный туман.\nЦепкий подлесок.\nХранители рощи. Дополнительные эффекты от заклинания:Постоянный порыв ветра в двух местах по вашему выборуШипы в одном месте по вашему выборуСтена ветров в двух местах по вашему выбору. Для существа, невосприимчивого к данному эффекту, ветры – это приятный легкий бриз, а шипы безвредны.",
         "concentration": false,
         "duration": { "time": 1440 },
         "level": 6,
@@ -7460,7 +7613,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 1, 3, 5 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "439",
@@ -7482,7 +7636,7 @@
     {
         "id": "440",
         "title": "Стражи",
-        "labelling": "Вы создаёте защиту, охраняющую 2 500 квадратных футов пола (квадрат с длиной стороны 50 футов, сто клеток 5 ? 5 футов или двадцать пять квадратов с длиной стороны 10 футов). Охраняемая область может быть до 20 футов в высоту и может иметь любую форму. Вы можете защитить несколько этажей крепости, поделив их на части, при условии, что во время накладывания этого заклинания вы можете туда попасть.\nПри накладывании заклинания вы можете указать тех, кто не будет попадать под действие одного или всех выбранных вами эффектов. Вы можете также указать пароль, произношение которого дарует иммунитет к этим эффектам.\nЗаклинание стражи создаёт в охраняемой местности следующие эффекты:Двери. Все двери в охраняемой области запираются магией, как если бы они были закрыты заклинанием волшебный замок. Кроме того, вы можете покрыть до десяти дверей иллюзией (эквивалентной функции «иллюзорный предмет» заклинания малая иллюзия), заставляя их выглядеть как гладкая стена.\nКоридоры. Коридоры заполняются туманом, делающим местность сильно заслонённой. Кроме того, на каждом перекрёстке или развилке, где есть выбор направления, есть 50% шанс того, что существо (но не вы) будет считать, что идёт в сторону, противоположную той, в которую она на самом деле идёт.\nЛестницы. Все лестницы в охраняемой области сверху донизу заполняются паутиной, как от одноимённого заклинания. Нити восстанавливаются через 10 минут, если их сожгут или разрежут, а заклинание стражи ещё активно.\nПрочие эффекты заклинания. Вы можете добавить к охраняемой области один из следующих эффектов:\n— Поместите пляшущие огоньки в четыре коридора. Вы можете задать простую последовательность, которую огоньки будут выполнять, пока активно заклинание стражи.\n— Поместите волшебные уста в два места.\n— Поместите зловонное облако в два места. Испарения появляются в указанных вами местах\nони возвращаются через 10 минут, если рассеются ветром, а заклинание стражи ещё будет активно.\n— Поместите постоянный порыв ветра в один коридор или комнату.\n— Поместите внушение в одно место. Выберите область с размером не больше клетки 5 ? 5 футов, и все существа, входящие в эту область или проходящие по ней, мысленно воспринимают внушение.\nВся охраняемая область излучает магию. Рассеивание магии, наложенное на конкретный эффект, в случае успеха устраняет только этот эффект.\nВы можете сделать эту магию постоянной, накладывая это заклинание каждый день в течение одного года.",
+        "labelling": "Вы создаёте защиту, охраняющую 2 500 квадратных футов пола (квадрат с длиной стороны 50 футов, сто клеток 5x5 футов или двадцать пять квадратов с длиной стороны 10 футов). Охраняемая область может быть до 20 футов в высоту и может иметь любую форму. Вы можете защитить несколько этажей крепости, поделив их на части, при условии, что во время накладывания этого заклинания вы можете туда попасть.\nПри накладывании заклинания вы можете указать тех, кто не будет попадать под действие одного или всех выбранных вами эффектов. Вы можете также указать пароль, произношение которого дарует иммунитет к этим эффектам.\nЗаклинание стражи создаёт в охраняемой местности следующие эффекты:Двери. Все двери в охраняемой области запираются магией, как если бы они были закрыты заклинанием волшебный замок. Кроме того, вы можете покрыть до десяти дверей иллюзией (эквивалентной функции «иллюзорный предмет» заклинания малая иллюзия), заставляя их выглядеть как гладкая стена.\nКоридоры. Коридоры заполняются туманом, делающим местность сильно заслонённой. Кроме того, на каждом перекрёстке или развилке, где есть выбор направления, есть 50% шанс того, что существо (но не вы) будет считать, что идёт в сторону, противоположную той, в которую она на самом деле идёт.\nЛестницы. Все лестницы в охраняемой области сверху донизу заполняются паутиной, как от одноимённого заклинания. Нити восстанавливаются через 10 минут, если их сожгут или разрежут, а заклинание стражи ещё активно.\nПрочие эффекты заклинания. Вы можете добавить к охраняемой области один из следующих эффектов:\n— Поместите пляшущие огоньки в четыре коридора. Вы можете задать простую последовательность, которую огоньки будут выполнять, пока активно заклинание стражи.\n— Поместите волшебные уста в два места.\n— Поместите зловонное облако в два места. Испарения появляются в указанных вами местах\nони возвращаются через 10 минут, если рассеются ветром, а заклинание стражи ещё будет активно.\n— Поместите постоянный порыв ветра в один коридор или комнату.\n— Поместите внушение в одно место. Выберите область с размером не больше клетки 5x5 футов, и все существа, входящие в эту область или проходящие по ней, мысленно воспринимают внушение.\nВся охраняемая область излучает магию. Рассеивание магии, наложенное на конкретный эффект, в случае успеха устраняет только этот эффект.\nВы можете сделать эту магию постоянной, накладывая это заклинание каждый день в течение одного года.",
         "concentration": false,
         "duration": { "time": 1440 },
         "level": 6,
@@ -7511,7 +7665,8 @@
         "initialTags": [ "baff" ],
         "userTagsActions": [],
         "classes": [ 1, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "442",
@@ -7528,7 +7683,8 @@
         "initialTags": [ "damage", "piercing" ],
         "userTagsActions": [],
         "classes": [ 2 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "443",
@@ -7664,7 +7820,8 @@
         "initialTags": [ "damage", "fire" ],
         "userTagsActions": [],
         "classes": [ 1, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "451",
@@ -7817,7 +7974,8 @@
         "initialTags": [],
         "userTagsActions": [],
         "classes": [ 3 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "460",
@@ -7890,7 +8048,7 @@
     {
         "id": "464",
         "title": "Смерч",
-        "labelling": "В указанной вами точке на поверхности земли возникает ревущий смерч. Он представляет собой цилиндр с радиусом 10 футов и высотой 30 футов. Пока заклинание действует, вы можете действием переместить его на расстояние до 30 футов в любом направлении вдоль земли. Смерч засасывает любые предметы с размером не больше Среднего, никем не носимые и не переносимые.\nСущество должно совершить спасбросок Ловкости в момент, когда в первый раз за ход входит в область смерча или когда область смерча входит в пространство существа, включая момент первоначального возникновения смерча. При провале существо получает 10к6 дробящего урона, а при успехе — половину этого урона. Кроме того, существо с размером не больше Большого, провалившее спасбросок, должно преуспеть в спасброске Силы, иначе будет опутано смерчем на время действия заклинания. В начале каждого хода опутанное существо подтягивается на 5 футов вверх, пока не окажется на вершине смерча. Опутанное существо перемещается вместе со смерчем и падает на землю, когда заклинание заканчивается, если у него нет возможности остаться в воздухе.\nОпутанное существо может действием совершить проверку Силы или Ловкости против Сл ваших заклинаний. В случае успеха оно перестаёт быть опутанным и вылетает из смерча на 3к6 ? 10 футов в случайном направлении.",
+        "labelling": "В указанной вами точке на поверхности земли возникает ревущий смерч. Он представляет собой цилиндр с радиусом 10 футов и высотой 30 футов. Пока заклинание действует, вы можете действием переместить его на расстояние до 30 футов в любом направлении вдоль земли. Смерч засасывает любые предметы с размером не больше Среднего, никем не носимые и не переносимые.\nСущество должно совершить спасбросок Ловкости в момент, когда в первый раз за ход входит в область смерча или когда область смерча входит в пространство существа, включая момент первоначального возникновения смерча. При провале существо получает 10к6 дробящего урона, а при успехе — половину этого урона. Кроме того, существо с размером не больше Большого, провалившее спасбросок, должно преуспеть в спасброске Силы, иначе будет опутано смерчем на время действия заклинания. В начале каждого хода опутанное существо подтягивается на 5 футов вверх, пока не окажется на вершине смерча. Опутанное существо перемещается вместе со смерчем и падает на землю, когда заклинание заканчивается, если у него нет возможности остаться в воздухе.\nОпутанное существо может действием совершить проверку Силы или Ловкости против Сл ваших заклинаний. В случае успеха оно перестаёт быть опутанным и вылетает из смерча на 3к6 x 10 футов в случайном направлении.",
         "concentration": true,
         "duration": { "time": 1 },
         "level": 7,
@@ -7958,7 +8116,7 @@
     {
         "id": "468",
         "title": "Телепортация",
-        "labelling": "Это заклинание мгновенно переносит вас и до восьми согласных существ на ваш выбор, видимых вами и находящихся в пределах дистанции, или один предмет, видимый в пределах дистанции, в выбранное вами место. Если целью является предмет, он должен полностью помещаться в куб с длиной ребра 10 футов, и его не может носить или нести несогласное существо.\nВыбранное место назначения должно быть известно вам, и оно должно находиться на одном плане существования с вами. Ваша ознакомленность с местом назначения определяет, успешным ли будет перемещение. Мастер бросает к100 и сверяется с таблицей.\nНеудача, Похожее место, Мимо цели, Точно в цельПостоянный круг    —    —    —    01-00Связанный предмет    —    —    —    01-00Очень знакомое    01-05    06-13    14-24    25-00Изредка видимое    01-33    34-43    44-53    54-00Виденное один раз    01-43    44-53    54-73    74-00Описанное    01-43    44-53    54-73    74-00Ложное описание    01-50    51-00    —    —Точно в цель. Вы и ваша группа (или предмет) появляетесь там, где было задумано.\nМимо цели. Вы и ваша группа (или предмет) появляетесь на случайном расстоянии от места назначения в случайном направлении. Расстояние от цели равно (1к10 ? 1к10) процентов от расстояния, на которое вы перемещались. Например, если вы пытались перенестись на 120 миль, промахиваетесь мимо цели, и на двух 1к10 у вас выпадает «5» и «3», то вы промахиваетесь мимо цели на 15 процентов, то есть на 18 миль. Мастер определяет направление случайным образом, бросая к8, где «1» означает север, «2» — северо-восток, «3» — восток, и так далее. Если вы телепортировались в город на побережье, и оказываетесь в море на расстоянии 18 миль, вы окажетесь в беде.\nПохожее место. Вы и ваша группа (или предмет) оказываетесь в другом месте, визуально или тематически похожем на место назначения. Например, если вы направлялись в свою лабораторию, вы можете оказаться в лаборатории другого волшебника или алхимическом магазине с таким же оборудованием как в вашей лаборатории. Обычно вы появляетесь в ближайшем похожем месте, но так как у заклинания нет ограничений по дистанции, вы можете оказаться где угодно на текущем плане.\nНеудача. Непредсказуемая магия заклинания делает перемещение опасным. Все телепортирующиеся существа (или предмет) получают урон силовым полем 3к10, и Мастер совершает новый бросок по таблице, чтобы определить место назначения (возможны несколько неудач, и каждая будет причинять урон).",
+        "labelling": "Это заклинание мгновенно переносит вас и до восьми согласных существ на ваш выбор, видимых вами и находящихся в пределах дистанции, или один предмет, видимый в пределах дистанции, в выбранное вами место. Если целью является предмет, он должен полностью помещаться в куб с длиной ребра 10 футов, и его не может носить или нести несогласное существо.\nВыбранное место назначения должно быть известно вам, и оно должно находиться на одном плане существования с вами. Ваша ознакомленность с местом назначения определяет, успешным ли будет перемещение. Мастер бросает к100 и сверяется с таблицей.\nНеудача, Похожее место, Мимо цели, Точно в цель\nПостоянный круг    —    —    —    01-00\nСвязанный предмет    —    —    —    01-00\nОчень знакомое    01-05    06-13    14-24    25-00\nИзредка видимое    01-33    34-43    44-53    54-00\nВиденное один раз    01-43    44-53    54-73    74-00\nОписанное    01-43    44-53    54-73    74-00\nЛожное описание    01-50    51-00    —    —Точно в цель.\n Вы и ваша группа (или предмет) появляетесь там, где было задумано.\nМимо цели. Вы и ваша группа (или предмет) появляетесь на случайном расстоянии от места назначения в случайном направлении. Расстояние от цели равно (1к10x1к10) процентов от расстояния, на которое вы перемещались. Например, если вы пытались перенестись на 120 миль, промахиваетесь мимо цели, и на двух 1к10 у вас выпадает «5» и «3», то вы промахиваетесь мимо цели на 15 процентов, то есть на 18 миль. Мастер определяет направление случайным образом, бросая к8, где «1» означает север, «2» — северо-восток, «3» — восток, и так далее. Если вы телепортировались в город на побережье, и оказываетесь в море на расстоянии 18 миль, вы окажетесь в беде.\nПохожее место. Вы и ваша группа (или предмет) оказываетесь в другом месте, визуально или тематически похожем на место назначения. Например, если вы направлялись в свою лабораторию, вы можете оказаться в лаборатории другого волшебника или алхимическом магазине с таким же оборудованием как в вашей лаборатории. Обычно вы появляетесь в ближайшем похожем месте, но так как у заклинания нет ограничений по дистанции, вы можете оказаться где угодно на текущем плане.\nНеудача. Непредсказуемая магия заклинания делает перемещение опасным. Все телепортирующиеся существа (или предмет) получают урон силовым полем 3к10, и Мастер совершает новый бросок по таблице, чтобы определить место назначения (возможны несколько неудач, и каждая будет причинять урон).",
         "concentration": false,
         "duration": { "instantly": true },
         "level": 7,
@@ -8038,7 +8196,8 @@
         "initialTags": [ "baff" ],
         "userTagsActions": [],
         "classes": [ 0, 1, 3, 5, 8 ],
-        "isCustom": false
+        "isCustom": false,
+        "canUpcast": true
     },
     {
         "id": "473",
@@ -8077,7 +8236,7 @@
     {
         "id": "475",
         "title": "Брешь в реальности",
-        "labelling": "Вы разрушаете границы между пространствами и временными линиями, погружая существо в пучину хаоса и безумия. Цель должна преуспеть в спасброске Мудрости, иначе она не может совершать реакции до начала своего следующего хода.\nВ начале каждого своего хода существо под действием заклинания совершает бросок к10 и попадает под действие одного из эффектов, указанных ниже. В конце своего хода существо может повторить спасбросок Мудрости, при успехе оканчивая на себе эффект.\nЭФФЕКТЫ БРЕШИ В РЕАЛЬНОСТИ1-2    Виденье Дальнего Предела. Цель получает 6к12 урона психической энергией и является ошеломлённым до конца хода.3-5    Разрыв пространства. Цель совершает спасбросок Ловкости и получает 8к12 урона силовым полем при провале и половину урона при успехе.6-8    Червоточина. Цель, вместе с всем, что она несёт и носит, телепортируется до 30 футов в незанятое видимое пространство по вашему выбору, получает 10к12 урона силовым полем и падает ничком.9-10    Хлад пустоты. Цель получает 10к12 урона холодом и ослеплена до начала своего следующего хода.",
+        "labelling": "Вы разрушаете границы между пространствами и временными линиями, погружая существо в пучину хаоса и безумия. Цель должна преуспеть в спасброске Мудрости, иначе она не может совершать реакции до начала своего следующего хода.\nВ начале каждого своего хода существо под действием заклинания совершает бросок к10 и попадает под действие одного из эффектов, указанных ниже. В конце своего хода существо может повторить спасбросок Мудрости, при успехе оканчивая на себе эффект.\nЭФФЕКТЫ БРЕШИ В РЕАЛЬНОСТИ\n1-2 Виденье Дальнего Предела. Цель получает 6к12 урона психической энергией и является ошеломлённым до конца хода.\n3-5 Разрыв пространства. Цель совершает спасбросок Ловкости и получает 8к12 урона силовым полем при провале и половину урона при успехе.\n6-8 Червоточина. Цель, вместе с всем, что она несёт и носит, телепортируется до 30 футов в незанятое видимое пространство по вашему выбору, получает 10к12 урона силовым полем и падает ничком.\n9-10 Хлад пустоты. Цель получает 10к12 урона холодом и ослеплена до начала своего следующего хода.",
         "concentration": true,
         "duration": { "time": 1 },
         "level": 8,
@@ -8094,7 +8253,7 @@
     {
         "id": "476",
         "title": "Власть над погодой",
-        "labelling": "Вы получаете на время длительности контроль над погодой в пределах 5 миль от себя. Для накладывания этого заклинания вы должны находиться на открытом воздухе. Если вы переместитесь в место, где над головой не будет неба, заклинание тут же закончится.\nКогда вы накладываете это заклинание, вы изменяете текущую погоду, которую определяет Мастер в зависимости от климата и времени года. Вы можете изменить осадки, температуру и ветер. Требуется 1к4 ? 10 минут, чтобы новые условия вступили в силу. Когда новые условия вступят в силу, вы можете создать новые условия. Когда заклинание оканчивается, погода постепенно возвращается к нормальной.\nИзменяя погоду, найдите текущее состояние в таблицах и измените их на одну позицию выше или ниже. Изменяя ветер, можете изменить его направление.1.Чистое небо, 2.Небольшая облачность, 3.Пасмурно или густой туман, 4.Дождь, град или снег,5.Проливной дождь, сильный град или метель1.Невыносимая жара, 2.Жара, 3.Тепло, 4.Прохладно, 5.Холодно, 6.Арктическая стужа1.Штиль, 2.Умеренный ветер, 3.Сильный ветер, 4.Буря, 5.Шторм",
+        "labelling": "Вы получаете на время длительности контроль над погодой в пределах 5 миль от себя. Для накладывания этого заклинания вы должны находиться на открытом воздухе. Если вы переместитесь в место, где над головой не будет неба, заклинание тут же закончится.\nКогда вы накладываете это заклинание, вы изменяете текущую погоду, которую определяет Мастер в зависимости от климата и времени года. Вы можете изменить осадки, температуру и ветер. Требуется 1к4 x 10 минут, чтобы новые условия вступили в силу. Когда новые условия вступят в силу, вы можете создать новые условия. Когда заклинание оканчивается, погода постепенно возвращается к нормальной.\nИзменяя погоду, найдите текущее состояние в таблицах и измените их на одну позицию выше или ниже. Изменяя ветер, можете изменить его направление:\n1.Чистое небо,\n2.Небольшая облачность,\n3.Пасмурно или густой туман,\n4.Дождь, град или снег,\n5.Проливной дождь, сильный град или метель\n1.Невыносимая жара,\n2.Жара,\n3.Тепло,\n4.Прохладно,\n5.Холодно,\n6.Арктическая стужа\n1.Штиль,\n2.Умеренный ветер,\n3.Сильный ветер,\n4.Буря,\n5.Шторм",
         "concentration": true,
         "duration": { "time": 480 },
         "level": 8,
@@ -8162,7 +8321,7 @@
     {
         "id": "480",
         "title": "Землетрясение",
-        "labelling": "Вы создаёте сейсмические возмущения в точке на земле, которую видите в пределах дистанции. Пока заклинание активно, на земле в круге с радиусом 100 футов от этой точки ощущаются интенсивные толчки, сотрясающие существ и строения, находящиеся там.\nМестность в этой области становится труднопроходимой. Все существа, находящиеся на земле и концентрирующиеся при этом, должны совершить спасбросок Телосложения. При провале концентрация существа нарушается.\nКогда вы накладываете это заклинание, а также в конце каждого хода, когда вы на нём концентрируетесь, все существа, находящиеся на земле в области заклинания, должны совершать спасброски Ловкости. При провале существо сбивается с ног.\nТрещины. В области заклинания в начале вашего хода, следующего за тем, в котором вы наложили это заклинание, появляются трещины. Появляется 1к6 трещин в местах, определённых Мастером. Каждая 1к10?10 футов глубиной, 10 футов в ширину, а длиной от одного края заклинания до другого. Существо, стоящее в месте, где должна появиться трещина, должно преуспеть в спасброске Ловкости, иначе упадёт внутрь. Успешно спасшееся существо перемещается вместе с одним из краёв трещины.\nТрещины, открывающиеся под зданиями, заставляют их автоматически обрушиться.\nЗдания. Толчки причиняют 50 дробящего урона строениям, находящимся в контакте с землёй, когда вы накладываете это заклинание, а также в начале каждого вашего хода, пока заклинание активно. Если хиты здания опускаются до 0, оно обрушивается, и может причинить урон существам. Существо, находящееся в пределах половины высоты здания, должно совершить спасбросок Ловкости. При провале существо получает дробящий урон 5к6, сбивается с ног и погребается под завалами, после чего для высвобождения требуется проверка Силы (Атлетика) Сл 20, совершённая действием. В случае успеха существо получает половину урона, не сбивается с ног и не погребается.",
+        "labelling": "Вы создаёте сейсмические возмущения в точке на земле, которую видите в пределах дистанции. Пока заклинание активно, на земле в круге с радиусом 100 футов от этой точки ощущаются интенсивные толчки, сотрясающие существ и строения, находящиеся там.\nМестность в этой области становится труднопроходимой. Все существа, находящиеся на земле и концентрирующиеся при этом, должны совершить спасбросок Телосложения. При провале концентрация существа нарушается.\nКогда вы накладываете это заклинание, а также в конце каждого хода, когда вы на нём концентрируетесь, все существа, находящиеся на земле в области заклинания, должны совершать спасброски Ловкости. При провале существо сбивается с ног.\nТрещины. В области заклинания в начале вашего хода, следующего за тем, в котором вы наложили это заклинание, появляются трещины. Появляется 1к6 трещин в местах, определённых Мастером. Каждая 1к10x10 футов глубиной, 10 футов в ширину, а длиной от одного края заклинания до другого. Существо, стоящее в месте, где должна появиться трещина, должно преуспеть в спасброске Ловкости, иначе упадёт внутрь. Успешно спасшееся существо перемещается вместе с одним из краёв трещины.\nТрещины, открывающиеся под зданиями, заставляют их автоматически обрушиться.\nЗдания. Толчки причиняют 50 дробящего урона строениям, находящимся в контакте с землёй, когда вы накладываете это заклинание, а также в начале каждого вашего хода, пока заклинание активно. Если хиты здания опускаются до 0, оно обрушивается, и может причинить урон существам. Существо, находящееся в пределах половины высоты здания, должно совершить спасбросок Ловкости. При провале существо получает дробящий урон 5к6, сбивается с ног и погребается под завалами, после чего для высвобождения требуется проверка Силы (Атлетика) Сл 20, совершённая действием. В случае успеха существо получает половину урона, не сбивается с ног и не погребается.",
         "concentration": true,
         "duration": { "time": 1 },
         "level": 8,
@@ -8196,7 +8355,7 @@
     {
         "id": "482",
         "title": "Лабиринт",
-        "labelling": "Вы изгоняете существо, видимое в пределах дистанции, в похожий на лабиринт демиплан.\nЦель остаётся там, пока заклинание активно, или пока она не найдёт выход. Цель может действием пытаться найти выход. Для этого она совершает проверку Интеллекта Сл 20. При успехе она находит выход, а заклинание оканчивается (минотавры и демоны гористро преуспевают автоматически).Когда заклинание заканчивается, цель возвращается в пространство, которое она покинула, или, если оно занято, в ближайшее свободное пространство.",
+        "labelling": "Вы изгоняете существо, видимое в пределах дистанции, в похожий на лабиринт демиплан.\nЦель остаётся там, пока заклинание активно, или пока она не найдёт выход. Цель может действием пытаться найти выход. Для этого она совершает проверку Интеллекта Сл 20. При успехе она находит выход, а заклинание оканчивается (минотавры и демоны гористро преуспевают автоматически). Когда заклинание заканчивается, цель возвращается в пространство, которое она покинула, или, если оно занято, в ближайшее свободное пространство.",
         "concentration": true,
         "duration": { "time": 10 },
         "level": 8,

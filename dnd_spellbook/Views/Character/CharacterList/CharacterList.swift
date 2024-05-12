@@ -10,11 +10,14 @@ import SwiftUI
 
 struct CharacterList: View {
     @Query(sort: \CharacterModel.name) var characters: [CharacterModel]
+    @Query var tags: [Tag]
     @State private var showingNew = false
+    @State private var showingImport = false
     @Environment(\.modelContext) var modelContext
 
     @State var characterCreationLoading: Bool = false
-    
+    @State var shareText: ShareText?
+
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
 
     var body: some View {
@@ -46,6 +49,7 @@ struct CharacterList: View {
                             CharacterUpdateService.send()
                         }
                         .contextMenu {
+                            Button("Экспорт") { [weak character] in export(character) }
                             Button("Удалить") { [weak character] in remove(character) }
                         }
                     }
@@ -57,10 +61,17 @@ struct CharacterList: View {
         )
         .navigationTitle("Список персонажей")
         .toolbar(content: {
+            Button("Импорт") { showingImport = true }
             NavigationLink(value: NavWay.authorPage) {
                 Text("Автор")
             }
         })
+        .sheet(item: $shareText) { shareText in
+            ActivityView(text: shareText.text)
+        }
+        .fullScreenCover(isPresented: $showingImport) {
+            CharacterImportView()
+        }
         .fullScreenCover(
             isPresented: $showingNew,
             onDismiss: {
@@ -114,4 +125,15 @@ struct CharacterList: View {
         modelContext.delete(character)
         try? modelContext.save()
     }
+    
+    func export(_ character: CharacterModel?) {
+        guard let character else { return }
+        
+        let exportModel = CharacterExportModel(from: character, allTags: tags)
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(exportModel) else { return }
+        let string = String(decoding: data, as: UTF8.self)
+        shareText = ShareText(text: string)
+    }
+
 }
