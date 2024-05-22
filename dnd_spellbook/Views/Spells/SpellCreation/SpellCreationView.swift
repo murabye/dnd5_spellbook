@@ -128,7 +128,8 @@ struct SpellCreationView: View {
         
         let spell = Spell(
             id: UUID().uuidString,
-            name: name,
+            name: name, 
+            engName: nil,
             labelling: "",
             concentration: concentration,
             duration: duration,

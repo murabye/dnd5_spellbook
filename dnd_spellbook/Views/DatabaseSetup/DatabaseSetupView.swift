@@ -70,6 +70,7 @@ struct DatabaseSetupView: View {
                     self.stage = .done
                 } catch let error {
                     self.stage = .error
+                    debugPrint(error)
                 }
             }
         }
@@ -141,7 +142,8 @@ struct DatabaseSetupView: View {
             
             let spell = Spell(
                 id: preset.id,
-                name: preset.name,
+                name: preset.name, 
+                engName: preset.engName,
                 labelling: preset.labelling,
                 concentration: preset.concentration,
                 duration: preset.duration,
@@ -203,6 +205,7 @@ struct SpellPreset: Codable {
 
     let id: String
     let name: String
+    let engName: String?
     let labelling: String
     let concentration: Bool
     let duration: Duration
@@ -219,6 +222,7 @@ struct SpellPreset: Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case name = "title"
+        case engName
         case labelling
         case concentration
         case duration
@@ -237,6 +241,7 @@ struct SpellPreset: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
+        self.engName = try container.decodeIfPresent(String.self, forKey: .engName)
         self.labelling = try container.decode(String.self, forKey: .labelling)
         self.concentration = try container.decode(Bool.self, forKey: .concentration)
         self.duration = try container.decode(Duration.self, forKey: .duration)
@@ -258,6 +263,7 @@ struct SpellPreset: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
+        try container.encode(engName, forKey: .engName)
         try container.encode(labelling, forKey: .labelling)
         try container.encode(duration, forKey: .duration)
         try container.encode(level, forKey: .level)

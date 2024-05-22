@@ -13,6 +13,7 @@ class Spell: HaveName {
     
     @Attribute(.unique) var id: String
     var name: String
+    var engName: String?
     var labelling: String
     var concentration: Bool
     var level: Int
@@ -72,6 +73,7 @@ class Spell: HaveName {
     init(
         id: String,
         name: String,
+        engName: String?,
         labelling: String,
         concentration: Bool,
         duration: Duration,
@@ -90,6 +92,7 @@ class Spell: HaveName {
         canUpcast: Bool
     ) {
         self.id = id
+        self.engName = engName
         self.name = name
         self.labelling = labelling
         self.concentration = concentration

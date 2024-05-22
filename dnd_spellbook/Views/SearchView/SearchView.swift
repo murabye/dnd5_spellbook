@@ -67,6 +67,10 @@ struct SearchView: View {
                     return spell.name.localizedStandardContains(searchText)
                         || spell.labelling.localizedStandardContains(searchText)
                         || descr.localizedStandardContains(searchText)
+                } else if let eng = spell.engName {
+                    return spell.name.localizedStandardContains(searchText)
+                        || spell.labelling.localizedStandardContains(searchText)
+                        || eng.localizedStandardContains(searchText)
                 } else {
                     return spell.name.localizedStandardContains(searchText)
                         || spell.labelling.localizedStandardContains(searchText)

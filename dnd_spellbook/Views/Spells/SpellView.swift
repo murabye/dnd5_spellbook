@@ -42,6 +42,10 @@ struct SpellView: View {
             if !collapsed {
                 Group {
                     Divider()
+                    if let engName = spell.engName {
+                        Text(engName).foregroundStyle(Color.secondary)
+                    }
+
                     Text(spell.sources.map(\.name).joined(separator: ", "))
                         .foregroundStyle(Color.secondary)
                     

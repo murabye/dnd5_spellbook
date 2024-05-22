@@ -129,6 +129,7 @@ struct CharacterImportView: View {
         let new = Spell(
             id: model.id,
             name: model.name,
+            engName: model.engName,
             labelling: model.labelling,
             concentration: model.concentration,
             duration: model.durationModel.duration,

@@ -11,6 +11,7 @@ class CustomSpellExportModel: Codable {
 
     let id: String
     let name: String
+    let engName: String?
     let labelling: String
     let concentration: Bool
     let level: Int
@@ -27,6 +28,7 @@ class CustomSpellExportModel: Codable {
     
     init(spell: Spell, allTags: [Tag]) {
         self.id = spell.id
+        self.engName = spell.engName
         self.name = spell.name
         self.labelling = spell.descrText
         self.concentration = spell.concentration
