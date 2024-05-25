@@ -44,16 +44,12 @@ struct DatabaseSetupIfNeededView: View {
     var mainView: some View {
         Group {
             if idiom == .phone {
-                NavigationStack {
-                    MainView().background(Color(uiColor: .systemGroupedBackground))
-                }
+                MainView().background(Color(uiColor: .systemGroupedBackground))
             } else {
-                NavigationStack {
-                    ColumnReader { columnAmount, safeArea in
-                        MainBigView(columnAmount: columnAmount)
-                    }
-                    .background(Color(uiColor: .systemGroupedBackground))
+                ColumnReader { columnAmount, safeArea in
+                    MainBigView(columnAmount: columnAmount)
                 }
+                .background(Color(uiColor: .systemGroupedBackground))
             }
         }
     }

@@ -11,10 +11,13 @@ import SwiftUI
 struct MainView: View {
     
     @Environment(\.modelContext) var modelContext
+    @State private var navPath = NavigationPath()
     
     @State var isSpellCreationOpened: Bool = false
     
     // filters
+    @State var presentFilters = true
+    @State var selectedDetent: PresentationDetent = .height(80)
     @Query(sort: \Filter.name) var filters: [Filter] = []
     @AppStorage(UserDefaults.Constants.selectedFilterName) var selectedFilterName: String?
     var selectedFilter: Filter? {
@@ -39,7 +42,7 @@ struct MainView: View {
     @State var isOtherHidden: Bool = true
     
     var body: some View {
-        VStack(spacing: 0) {
+        NavigationStack(path: $navPath) {
             ScrollViewReader { scrollProxy in
                 ZStack {
                     ScrollView {
@@ -92,7 +95,7 @@ struct MainView: View {
                                 )
                             }
                             .padding(.bottom)
-                                                        
+                            
                             Section {
                                 Group {
                                     if !isOtherHidden {
@@ -125,93 +128,113 @@ struct MainView: View {
                                 SectionIndexTitleView(name: .other, canHide: true, isHidden: $isOtherHidden)
                             }
                             
-                            Spacer(minLength: 16)
+                            Spacer(minLength: selectedDetent == .height(80) ? 100 : 330)
                         }
                     }
                     
                     sectionIndexTitles(proxy: scrollProxy)
                 }
             }
-            
-            toolbar
-        }
-        .background(
-            Color(uiColor: UIColor.systemGroupedBackground)
-        )
-        .navigationBarTitle("Заклинания")
-        .toolbar(content: {
-            HStack {
-                if isLoading {
-                    ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
-                }
-                
-                NavigationLink(value: NavWay.search) {
-                    Image(systemName: "magnifyingglass").font(.title2)
-                }
-
-                Button {
-                    isSpellCreationOpened.toggle()
-                } label: {
-                    Image(systemName: "plus")
-                        .font(.title2)
-                }
-                
-                NavigationLink(value: NavWay.characterList) {
-                    CharacterListItem(
-                        character: character,
-                        isCompact: true
-                    )
-                }
-                .contextMenu {
-                    ForEach(characters, id: \.id) { character in
-                        Button(character.name) { [weak character] in
-                            guard let character else { return }
-                            UserDefaults.standard.selectedId = character.id
-                            CharacterUpdateService.send()
+            .onDisappear {
+                presentFilters = false
+            }
+            .onAppear {
+                presentFilters = true
+            }
+            .sheet(isPresented: $presentFilters) {
+                filterBar
+                    .presentationDetents([ .height(80), .height(300) ], selection: $selectedDetent)
+                    .interactiveDismissDisabled()
+                    .presentationBackgroundInteraction(.enabled)
+            }
+            .background(
+                Color(uiColor: UIColor.systemGroupedBackground)
+            )
+            .navigationBarTitle("Заклинания")
+            .toolbar {
+                HStack {
+                    if isLoading {
+                        ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
+                    }
+                    
+                    NavigationLink(value: NavWay.search) {
+                        Image(systemName: "magnifyingglass").font(.title2)
+                    }
+                    
+                    Button {
+                        isSpellCreationOpened.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.title2)
+                    }
+                    
+                    NavigationLink(value: NavWay.characterList) {
+                        CharacterListItem(
+                            character: character,
+                            isCompact: true
+                        )
+                    }
+                    .contextMenu {
+                        ForEach(characters, id: \.id) { character in
+                            Button(character.name) { [weak character] in
+                                guard let character else { return }
+                                UserDefaults.standard.selectedId = character.id
+                                CharacterUpdateService.send()
+                            }
                         }
                     }
                 }
             }
-        })
-        .navigationDestination(for: NavWay.self) { navWay in
-            switch navWay {
-            case .characterList: CharacterList()
-            case .authorPage: AuthorPage()
-            case .filterCreate: FilterSetupView(character: $character, bindToCharacter: character != nil)
-            case .search: SearchView(character: $character)
-            case .hiddenSpells:
-                HiddenSpellsView(
-                    allMaterials: materials,
-                    allTags: tags,
-                    character: $character
-                )
+            .navigationDestination(for: NavWay.self) { navWay in
+                switch navWay {
+                case .characterList: CharacterList()
+                case .authorPage: AuthorPage()
+                case .filterCreate: FilterSetupView(character: $character, bindToCharacter: character != nil)
+                case .search: SearchView(character: $character)
+                case .hiddenSpells:
+                    HiddenSpellsView(
+                        allMaterials: materials,
+                        allTags: tags,
+                        character: $character
+                    )
+                }
+            }
+            .sheet(isPresented: $isSpellCreationOpened) {
+                SpellCreationView()
+            }
+            .appearOnce {
+                recallCharacter()
+            }
+            .onReceive(CharacterUpdateService.publisher()) { _ in
+                recallCharacter()
+            }
+            .onChange(of: selectedCharacterId) { _ in
+                selectedFilterName = ""
+            }
+            .onChange(of: selectedFilter) { old, new in
+                guard old != new else { return }
+                restartLoading()
             }
         }
-        .sheet(isPresented: $isSpellCreationOpened) {
-            SpellCreationView()
-        }
-        .appearOnce {
-            recallCharacter()
-        }
-        .onReceive(CharacterUpdateService.publisher()) { _ in
-            recallCharacter()
-        }
-        .onChange(of: selectedCharacterId, perform: { _ in
-            let filtered = filters
-                .filter { $0.character.isEmpty || $0.character == UserDefaults.standard.selectedId }
-            selectedFilterName = ""
-        })
-        .onChange(of: selectedFilter, { old, new in
-            guard old != new else { return }
-            restartLoading()
-        })
     }
     
-    var toolbar: some View {
-        ScrollView(.horizontal) {
-            Divider()
-            LazyHStack(pinnedViews: [.sectionHeaders]) {
-                Section {
+    var filterBar: some View {
+        ScrollView(.vertical) {
+            HStack {
+                FlowLayout(alignment: .topLeading) {
+                    UniversalTagView(
+                        tagProps: UniversalTagProps(
+                            title: "+",
+                            isActive: selectedFilter == nil,
+                            foregroundColor: .white,
+                            backgroundColor: selectedFilter == nil ? .blue : .gray,
+                            isActionable: false
+                        )
+                    )
+                    .onTapGesture {
+                        navPath.append(NavWay.filterCreate)
+                    }
+                    
                     UniversalTagView(
                         tagProps: UniversalTagProps(
                             title: "Без фильтра",
@@ -242,21 +265,12 @@ struct MainView: View {
                             Button("Удалить", role: .destructive, action: { [weak filter] in remove(filter: filter) })
                         }
                     }
-                    Spacer(minLength: 16)
-                } header: {
-                    NavigationLink(value: NavWay.filterCreate) {
-                        Image(systemName: "text.badge.plus")
-                            .foregroundStyle(Color.white)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .background(selectedFilter == nil ? .blue : .gray)
-                            .clipShape(Capsule())
-                    }
                 }
+                Spacer(minLength: 0)
             }
-            .frame(height: 30)
-            .padding(.vertical, 4)
         }
+        .padding(.horizontal, 8)
+        .padding(.top, 20)
         .scrollIndicators(.never)
         .background(Color.systemGroupedTableContent)
     }
