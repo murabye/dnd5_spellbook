@@ -40,7 +40,16 @@ struct MainView: View {
     @State var otherBatchIsEmpty: Bool = false
     @State var isLoading: Bool = false
     @State var isOtherHidden: Bool = true
-    
+
+  private var filterModels: [FilterModel] {
+    var array = filters
+      .filter { $0.character.isEmpty || $0.character == character?.id }
+      .map { FilterModel(.fiter($0)) }
+    array.insert(FilterModel(.reset), at: 0)
+    array.insert(FilterModel(.plus), at: 0)
+    return array
+  }
+
     var body: some View {
         NavigationStack(path: $navPath) {
             ScrollViewReader { scrollProxy in
@@ -133,6 +142,14 @@ struct MainView: View {
                     }
                     
                     sectionIndexTitles(proxy: scrollProxy)
+
+                  MainViewFilterLayer(
+                    filterModels: filterModels,
+                    selectedFilter: selectedFilter,
+                    selectedFilterName: $selectedFilterName,
+                    navPath: $navPath,
+                    removeFilter: remove(filter:)
+                  )
                 }
             }
             .onDisappear {
@@ -140,12 +157,6 @@ struct MainView: View {
             }
             .onAppear {
                 presentFilters = true
-            }
-            .sheet(isPresented: $presentFilters) {
-                filterBar
-                    .presentationDetents([ .height(80), .height(300) ], selection: $selectedDetent)
-                    .interactiveDismissDisabled()
-                    .presentationBackgroundInteraction(.enabled)
             }
             .background(
                 Color(uiColor: UIColor.systemGroupedBackground)
@@ -216,63 +227,6 @@ struct MainView: View {
                 restartLoading()
             }
         }
-    }
-    
-    var filterBar: some View {
-        ScrollView(.vertical) {
-            HStack {
-                FlowLayout(alignment: .topLeading) {
-                    UniversalTagView(
-                        tagProps: UniversalTagProps(
-                            title: "+",
-                            isActive: selectedFilter == nil,
-                            foregroundColor: .white,
-                            backgroundColor: selectedFilter == nil ? .blue : .gray,
-                            isActionable: false
-                        )
-                    )
-                    .onTapGesture {
-                        navPath.append(NavWay.filterCreate)
-                    }
-                    
-                    UniversalTagView(
-                        tagProps: UniversalTagProps(
-                            title: "Без фильтра",
-                            isActive: selectedFilterName == nil || selectedFilterName == "",
-                            foregroundColor: .white,
-                            backgroundColor: selectedFilterName == nil || selectedFilterName == "" ? .blue : .gray,
-                            isActionable: false
-                        )
-                    )
-                    .onTapGesture {
-                        selectedFilterName = ""
-                    }
-                    
-                    ForEach(filters.filter { $0.character.isEmpty || $0.character == character?.id }, id: \.name) { filter in
-                        UniversalTagView(
-                            tagProps: UniversalTagProps(
-                                title: filter.name,
-                                isActive: filter.name == selectedFilterName,
-                                foregroundColor: .white,
-                                backgroundColor: filter.name == selectedFilterName ? .blue : .gray,
-                                isActionable: false
-                            )
-                        )
-                        .onTapGesture {
-                            selectedFilterName = filter.name
-                        }
-                        .contextMenu {
-                            Button("Удалить", role: .destructive, action: { [weak filter] in remove(filter: filter) })
-                        }
-                    }
-                }
-                Spacer(minLength: 0)
-            }
-        }
-        .padding(.horizontal, 8)
-        .padding(.top, 20)
-        .scrollIndicators(.never)
-        .background(Color.systemGroupedTableContent)
     }
 
     func sectionIndexTitles(proxy: ScrollViewProxy) -> some View {

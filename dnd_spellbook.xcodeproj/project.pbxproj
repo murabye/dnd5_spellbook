@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		662847552C0673E900253350 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662847542C0673E900253350 /* ViewModels.swift */; };
+		662847582C067ADB00253350 /* FilterModelContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662847572C067ADB00253350 /* FilterModelContainerView.swift */; };
+		6628475A2C067D4200253350 /* MainViewFilterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662847592C067D4200253350 /* MainViewFilterLayer.swift */; };
+		66D3F19E2C03DB8A0019F51F /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 66D3F19D2C03DB8A0019F51F /* WaterfallGrid */; };
 		FF10CA1C2B438E1A00D9348F /* SpellCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */; };
 		FF10CA262B44C1A700D9348F /* DurationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA252B44C1A700D9348F /* DurationPickerView.swift */; };
 		FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */; };
@@ -117,6 +121,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		662847542C0673E900253350 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
+		662847572C067ADB00253350 /* FilterModelContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModelContainerView.swift; sourceTree = "<group>"; };
+		662847592C067D4200253350 /* MainViewFilterLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewFilterLayer.swift; sourceTree = "<group>"; };
 		FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellCreationView.swift; sourceTree = "<group>"; };
 		FF10CA252B44C1A700D9348F /* DurationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerView.swift; sourceTree = "<group>"; };
 		FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistantionPickerView.swift; sourceTree = "<group>"; };
@@ -217,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D3F19E2C03DB8A0019F51F /* WaterfallGrid in Frameworks */,
 				FF70ECE32B701FA3000B3A8F /* MCEmojiPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +246,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		662847562C067AD600253350 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				662847572C067ADB00253350 /* FilterModelContainerView.swift */,
+				662847592C067D4200253350 /* MainViewFilterLayer.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FF0532272B701C4E00DA42DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,9 +385,11 @@
 		FF779A4D2B34C4F800F7B654 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				662847562C067AD600253350 /* Views */,
 				FFC320C32BC8668C00874532 /* SectionIndexTitles.swift */,
 				FFC320C12BC8659200874532 /* MainBigView.swift */,
 				FFC320CF2BC95EE100874532 /* MainView.swift */,
+				662847542C0673E900253350 /* ViewModels.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -611,6 +630,7 @@
 			name = dnd_spellbook;
 			packageProductDependencies = (
 				FF70ECE22B701FA3000B3A8F /* MCEmojiPicker */,
+				66D3F19D2C03DB8A0019F51F /* WaterfallGrid */,
 			);
 			productName = dnd_spellbook;
 			productReference = FF2CBC5B2B2D9EE6004D062C /* dnd_spellbook.app */;
@@ -687,6 +707,7 @@
 			packageReferences = (
 				FF70ECE12B701FA3000B3A8F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */,
 				FF72A6762BD2ACE100352E6A /* XCRemoteSwiftPackageReference "PinnedScrollView" */,
+				66D3F19C2C03DAC70019F51F /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
 			);
 			productRefGroup = FF2CBC5C2B2D9EE6004D062C /* Products */;
 			projectDirPath = "";
@@ -739,6 +760,7 @@
 				FFE792592B3A17A3004F6BF4 /* Component.swift in Sources */,
 				FFB750192B78FE060099508F /* ComponentModel.swift in Sources */,
 				FFC320D02BC95EE100874532 /* MainView.swift in Sources */,
+				662847552C0673E900253350 /* ViewModels.swift in Sources */,
 				FFB7500D2B76A26E0099508F /* TagColor.swift in Sources */,
 				FFDF85012B2FB0C1004916F3 /* FilterExpandableContent.swift in Sources */,
 				FF48BCAD2B9519DE00E3E3DF /* UserDefaults+.swift in Sources */,
@@ -760,6 +782,7 @@
 				FF48BCA72B94B77000E3E3DF /* MailView.swift in Sources */,
 				FFC320C82BC9382900874532 /* Array.swift in Sources */,
 				FFE7926D2B3B766E004F6BF4 /* CharacterClass.swift in Sources */,
+				662847582C067ADB00253350 /* FilterModelContainerView.swift in Sources */,
 				FF8514782BEADD9A007C0E6F /* ComponentsExportModel.swift in Sources */,
 				FF2C59642BF13E550090048F /* CharacterEditBigView.swift in Sources */,
 				FF2C59622BF13E3F0090048F /* CharacterEditView.swift in Sources */,
@@ -790,6 +813,7 @@
 				FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */,
 				FF10CA2C2B44CA5B00D9348F /* MultipleElemsMenu.swift in Sources */,
 				FF8325C62B30F68600820438 /* WaterfallLayout.swift in Sources */,
+				6628475A2C067D4200253350 /* MainViewFilterLayer.swift in Sources */,
 				FFE792572B3A13E1004F6BF4 /* Duration.swift in Sources */,
 				FFE7925F2B3A1B43004F6BF4 /* TypeOfAction.swift in Sources */,
 				FF8325CC2B30FFE600820438 /* FilterSetupBigView.swift in Sources */,
@@ -1188,6 +1212,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		66D3F19C2C03DAC70019F51F /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 		FF70ECE12B701FA3000B3A8F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/izyumkin/MCEmojiPicker";
@@ -1207,6 +1239,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		66D3F19D2C03DB8A0019F51F /* WaterfallGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66D3F19C2C03DAC70019F51F /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
+			productName = WaterfallGrid;
+		};
 		FF70ECE22B701FA3000B3A8F /* MCEmojiPicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FF70ECE12B701FA3000B3A8F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */;
