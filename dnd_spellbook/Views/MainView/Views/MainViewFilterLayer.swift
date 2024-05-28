@@ -91,11 +91,12 @@ struct MainViewFilterLayer: View {
     }
     .gridStyle(
       columns: bottomSheetHeight > Constants.limitHeight ? 3 : 1,
-      spacing: 8
+      animation: .spring(response: 0.4, dampingFraction: 0.85, blendDuration: 0.7)
     )
     .scrollOptions(direction: .horizontal)
     .onChange(of: bottomSheetHeight > Constants.limitHeight) { newValue in
       UIImpactFeedbackGenerator(style: .medium).impactOccurred()
     }
+    .frame(height: Constants.maxHeight, alignment: .bottomLeading)
   }
 }
