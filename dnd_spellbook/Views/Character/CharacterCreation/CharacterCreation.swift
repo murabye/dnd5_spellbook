@@ -22,7 +22,8 @@ struct CharacterCreationView: View {
     @State private var selectedImage: UIImage? = nil
     @State private var characterName: String = ""
     @State private var selectedClass: CharacterClass = .nothing
-    @State private var level: Int = 1
+    @State private var maxLevel: Int = 0
+    @State private var levels: LevelList = [:]
 
     @State private var isPickerSelected = false
     @State private var scrollOffset: CGFloat = 0.0
@@ -34,16 +35,11 @@ struct CharacterCreationView: View {
         ZStack {
             ObservableScrollView(scrollOffset: $scrollOffset) { _ in
                 imagePickerView
+                
                 VStack {
                     TextField("Имя", text: $characterName)
                         .padding(.bottom, 6)
                         .padding(.top, 3)
-                    Picker(level.levelName, selection: $level) {
-                        ForEach(0...9, id: \.self) {
-                            Text($0.levelName)
-                        }
-                    }
-                    .pickerStyle(.menu)
 
                     Divider()
                     classPicker
@@ -54,6 +50,13 @@ struct CharacterCreationView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding()
                 
+                levelPickerView
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .background(Color.systemGroupedTableContent)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding()
+
                 if !autoKnownSpells.isEmpty {
                     autoSpellsHeader.padding(.horizontal)
                     autoSpellsList.padding(.horizontal)
@@ -98,6 +101,35 @@ struct CharacterCreationView: View {
         .background(Color(uiColor: .systemGroupedBackground))
     }
     
+    var levelPickerView: some View {
+        VStack {
+            Stepper("Ячейки заклинаний", value: $maxLevel, in: 0...9)
+                .onChange(of: maxLevel) { oldValue, newValue in
+                    if oldValue > newValue {
+                        levels[oldValue] = nil
+                    } else if oldValue < newValue {
+                        levels[newValue] = 1
+                    }
+                }
+            if maxLevel > 0 {
+                Divider()
+            }
+            ForEach(levels.sortedList, id: \.0) { (level, amount) in
+                Stepper {
+                    HStack {
+                        Text(level.levelName)
+                        Spacer()
+                        Text(String(amount))
+                    }
+                } onIncrement: {
+                    levels[level] = amount + 1
+                } onDecrement: {
+                    levels[level] = max(amount - 1, 1)
+                }
+            }
+        }
+    }
+
     var imagePickerView: some View {
         CharacterImagePickerView(
             isPickerSelected: $isPickerSelected,
@@ -189,14 +221,15 @@ struct CharacterCreationView: View {
             imageUrl: imageUrl,
             characterClass: selectedClass,
             name: characterName,
-            level: level,
+            levels: levels,
+            usedLevels: [:],
             knownSpells: [],
             preparedSpells: []
         )
         modelContext.insert(character)
         
-        addFilters(for: level, characterId: newCharacterId)
-        if level < 9 {
+        addFilters(for: maxLevel, characterId: newCharacterId)
+        if maxLevel < 9 {
             addFilters(for: 9, characterId: newCharacterId)
         }
         
@@ -223,14 +256,15 @@ struct CharacterCreationView: View {
                     imageUrl: imageUrl,
                     characterClass: selectedClass,
                     name: characterName,
-                    level: level,
+                    levels: levels,
+                    usedLevels: [:],
                     knownSpells: [],
                     preparedSpells: []
                 )
                 modelContext.insert(character)
                 
-                addFilters(for: level, characterId: newCharacterId)
-                if level < 9 {
+                addFilters(for: maxLevel, characterId: newCharacterId)
+                if maxLevel < 9 {
                     addFilters(for: 9, characterId: newCharacterId)
                 }
                 

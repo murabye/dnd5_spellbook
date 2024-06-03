@@ -129,16 +129,3 @@ struct SpellEditView: View {
         try? modelContext.save()
     }
 }
-
-extension Int {
-    
-    var levelName: String {
-        switch self {
-        case 0:
-            return "Заговор"
-        default:
-            return "\(self) круг"
-        }
-    }
-}
-

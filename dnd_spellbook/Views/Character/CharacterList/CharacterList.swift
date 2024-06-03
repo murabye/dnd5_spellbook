@@ -114,12 +114,13 @@ struct CharacterList: View {
                             characterId: character.id,
                             initialImageUrl: character.imageUrl,
                             initialCharacterName: character.name,
-                            initialLevel: character.level,
                             selectedClass: character.characterClass ?? .nothing,
                             initialPrepared: character.preparedSpells,
                             initialKnown: character.knownSpells,
                             characterName: character.name,
-                            level: character.level
+                            maxLevel: character.levels.maxLevel,
+                            levels: character.levels, 
+                            initialUsedLevels: character.usedLevels
                         )
                     }
                 }
@@ -133,12 +134,13 @@ struct CharacterList: View {
                             characterId: character.id,
                             initialImageUrl: character.imageUrl,
                             initialCharacterName: character.name,
-                            initialLevel: character.level,
                             selectedClass: character.characterClass ?? .nothing,
                             initialPrepared: character.preparedSpells,
                             initialKnown: character.knownSpells,
                             characterName: character.name,
-                            level: character.level
+                            maxLevel: character.levels.maxLevel,
+                            levels: character.levels,
+                            initialUsedLevels: character.usedLevels
                         )
                     }
                     .background(Color(uiColor: .systemGroupedBackground))

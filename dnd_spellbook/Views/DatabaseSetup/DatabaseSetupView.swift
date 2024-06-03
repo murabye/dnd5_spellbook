@@ -52,7 +52,7 @@ struct DatabaseSetupView: View {
             if stage == .error {
                 Text("❌").font(.system(size: 60))
             } else {
-                ProgressView(value: stage.rawValue, total: 10)
+                ProgressView(value: stage.rawValue, total: 11)
                     .foregroundColor(.blue)
                     .padding(30)
             }

@@ -104,7 +104,8 @@ struct CharacterImportView: View {
             imageUrl: imageUrl,
             characterClass: model.characterClass,
             name: model.name, 
-            level: model.level,
+            levels: model.levels, 
+            usedLevels: model.usedLevels,
             knownSpells: initialKnown + customKnown,
             preparedSpells: initialPrepared + customPrepared
         )

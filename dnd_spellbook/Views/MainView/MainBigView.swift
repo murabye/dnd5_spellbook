@@ -7,7 +7,6 @@
 
 import SwiftData
 import SwiftUI
-import Flow
 
 enum NavWay: Int, Hashable {
     
@@ -25,11 +24,10 @@ struct MainBigView: View {
 
     let columnAmount: Int
     
+    @State var isSpellLevelRule: Bool = false
     @State var isSpellCreationOpened: Bool = false
     
     // filters
-    @State var presentFilters = true
-    @State var selectedDetent: PresentationDetent = .height(80)
     @Query(sort: \Filter.name) var filters: [Filter] = []
     @AppStorage(UserDefaults.Constants.selectedFilterName) var selectedFilterName: String?
     var selectedFilter: Filter? {
@@ -152,8 +150,6 @@ struct MainBigView: View {
                                 }
                             }
                         }
-                        
-                        Spacer(minLength: selectedDetent == .height(80) ? 100 : 330)
                     }
                     
                     sectionIndexTitles(proxy: scrollProxy)
@@ -168,12 +164,6 @@ struct MainBigView: View {
                   )
                 }
             }
-            .onDisappear {
-                presentFilters = false
-            }
-            .onAppear {
-                presentFilters = true
-            }
             .background(
                 Color(uiColor: UIColor.systemGroupedBackground)
             )
@@ -182,6 +172,18 @@ struct MainBigView: View {
                 HStack {
                     if isLoading {
                         ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
+                    }
+                    
+                    if character != nil {
+                        Button {
+                            isSpellLevelRule.toggle()
+                        } label: {
+                            Image(systemName: "hand.point.up.braille")
+                                .font(.title2)
+                        }
+                        .popover(isPresented: $isSpellLevelRule, content: {
+                            SpellCellsRestoreView(character: $character)
+                        })
                     }
                     
                     Button {
@@ -298,16 +300,18 @@ struct MainBigView: View {
             return
         }
         
-        let allPreparedSpells = character.preparedSpells
-        guard let selectedFilter else {
-            characterPrepared = allPreparedSpells
-            onFinish()
-            return
-        }
-        
         Task.detached {
+            let allPreparedSpells = character.preparedSpells
+            guard let selectedFilter else {
+                characterPrepared = allPreparedSpells.sorted(by: { $0.level < $1.level })
+                Task.detached { @MainActor in
+                    onFinish()
+                }
+                return
+            }
+        
             let result = selectedFilter.satisfying(
-                spells: allPreparedSpells,
+                spells: allPreparedSpells.sorted(by: { $0.level < $1.level }),
                 allMaterials: materials,
                 allTags: tags
             )
@@ -325,26 +329,28 @@ struct MainBigView: View {
             return
         }
         
-        let allKnownSpells = character.knownSpells
-        guard let selectedFilter else {
-            characterKnown = allKnownSpells
-            onFinish()
-            return
-        }
-        
         Task.detached {
+            let allKnownSpells = character.knownSpells
+            guard let selectedFilter else {
+                characterKnown = allKnownSpells.sorted(by: { $0.level < $1.level })
+                Task.detached { @MainActor in
+                    onFinish()
+                }
+                return
+            }
+            
             let result = selectedFilter.satisfying(
                 spells: allKnownSpells,
                 allMaterials: materials,
                 allTags: tags
             )
-            characterKnown = result
+            characterKnown = result.sorted(by: { $0.level < $1.level })
             Task.detached { @MainActor in
                 onFinish()
             }
         }
     }
-    
+
     func loadOther() {
         guard !isOtherHidden else { return }
         otherBatchIsEmpty = false

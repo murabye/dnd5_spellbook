@@ -14,10 +14,9 @@ struct MainView: View {
     @State private var navPath = NavigationPath()
     
     @State var isSpellCreationOpened: Bool = false
-    
+    @State var isSpellLevelRule: Bool = false
+
     // filters
-    @State var presentFilters = true
-    @State var selectedDetent: PresentationDetent = .height(80)
     @Query(sort: \Filter.name) var filters: [Filter] = []
     @AppStorage(UserDefaults.Constants.selectedFilterName) var selectedFilterName: String?
     var selectedFilter: Filter? {
@@ -56,44 +55,38 @@ struct MainView: View {
                 ZStack {
                     ScrollView {
                         LazyVStack(pinnedViews: [.sectionHeaders]) {
-                            Section {
-                                if !characterPrepared.isEmpty {
-                                    SpellListView(
-                                        spells: $characterPrepared,
-                                        character: $character,
-                                        name: .prepared,
-                                        onHide: { spell in onHide(spell) },
-                                        onUnhide: { _ in },
-                                        onRemove: { spell in onRemove(spell) },
-                                        onKnow: { spell in onKnow(spell) },
-                                        onUnknow: { spell in onUnknow(spell) },
-                                        onPrepare: { spell in onPrepare(spell) },
-                                        onUnprepare: { spell in onUnprepare(spell) }
-                                    )
-                                    .padding()
-                                }
-                            } header: {
-                                SectionIndexTitleView(name: .prepared, canHide: false, isHidden: .constant(false))
+                            SectionIndexTitleView(name: .prepared, canHide: false, isHidden: .constant(false))
+                            if !characterPrepared.isEmpty {
+                                SpellListView(
+                                    spells: $characterPrepared,
+                                    character: $character,
+                                    name: .prepared,
+                                    onHide: { spell in onHide(spell) },
+                                    onUnhide: { _ in },
+                                    onRemove: { spell in onRemove(spell) },
+                                    onKnow: { spell in onKnow(spell) },
+                                    onUnknow: { spell in onUnknow(spell) },
+                                    onPrepare: { spell in onPrepare(spell) },
+                                    onUnprepare: { spell in onUnprepare(spell) }
+                                )
+                                .padding()
                             }
                             
-                            Section {
-                                if !characterKnown.isEmpty {
-                                    SpellListView(
-                                        spells: $characterKnown,
-                                        character: $character,
-                                        name: .known,
-                                        onHide: { spell in onHide(spell) },
-                                        onUnhide: { _ in },
-                                        onRemove: { spell in onRemove(spell) },
-                                        onKnow: { spell in onKnow(spell) },
-                                        onUnknow: { spell in onUnknow(spell) },
-                                        onPrepare: { spell in onPrepare(spell) },
-                                        onUnprepare: { spell in onUnprepare(spell) }
-                                    )
-                                    .padding()
-                                }
-                            } header: {
-                                SectionIndexTitleView(name: .known, canHide: false, isHidden: .constant(false))
+                            SectionIndexTitleView(name: .known, canHide: false, isHidden: .constant(false))
+                            if !characterKnown.isEmpty {
+                                SpellListView(
+                                    spells: $characterKnown,
+                                    character: $character,
+                                    name: .known,
+                                    onHide: { spell in onHide(spell) },
+                                    onUnhide: { _ in },
+                                    onRemove: { spell in onRemove(spell) },
+                                    onKnow: { spell in onKnow(spell) },
+                                    onUnknow: { spell in onUnknow(spell) },
+                                    onPrepare: { spell in onPrepare(spell) },
+                                    onUnprepare: { spell in onUnprepare(spell) }
+                                )
+                                .padding()
                             }
                             
                             NavigationLink(value: NavWay.hiddenSpells) {
@@ -105,39 +98,34 @@ struct MainView: View {
                             }
                             .padding(.bottom)
                             
-                            Section {
-                                Group {
-                                    if !isOtherHidden {
-                                        SpellListView(
-                                            spells: $other,
-                                            character: $character,
-                                            name: .other,
-                                            onHide: { spell in onHide(spell) },
-                                            onUnhide: { _ in },
-                                            onRemove: { spell in onRemove(spell) },
-                                            onKnow: { spell in onKnow(spell) },
-                                            onUnknow: { spell in onUnknow(spell) },
-                                            onPrepare: { spell in onPrepare(spell) },
-                                            onUnprepare: { spell in onUnprepare(spell) }
-                                        )
-                                        .padding()
-                                        
-                                        Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadOther() }
-                                        if otherBatchIsEmpty {
-                                            HStack {
-                                                Spacer()
-                                                Button("Загрузить еще...") { loadOther() }
-                                                    .buttonStyle(.borderedProminent)
-                                                Spacer()
-                                            }
+                            SectionIndexTitleView(name: .other, canHide: true, isHidden: $isOtherHidden)
+                            Group {
+                                if !isOtherHidden {
+                                    SpellListView(
+                                        spells: $other,
+                                        character: $character,
+                                        name: .other,
+                                        onHide: { spell in onHide(spell) },
+                                        onUnhide: { _ in },
+                                        onRemove: { spell in onRemove(spell) },
+                                        onKnow: { spell in onKnow(spell) },
+                                        onUnknow: { spell in onUnknow(spell) },
+                                        onPrepare: { spell in onPrepare(spell) },
+                                        onUnprepare: { spell in onUnprepare(spell) }
+                                    )
+                                    .padding()
+                                    
+                                    Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadOther() }
+                                    if otherBatchIsEmpty {
+                                        HStack {
+                                            Spacer()
+                                            Button("Загрузить еще...") { loadOther() }
+                                                .buttonStyle(.borderedProminent)
+                                            Spacer()
                                         }
                                     }
                                 }
-                            } header: {
-                                SectionIndexTitleView(name: .other, canHide: true, isHidden: $isOtherHidden)
                             }
-                            
-                            Spacer(minLength: selectedDetent == .height(80) ? 100 : 330)
                         }
                     }
                     
@@ -152,33 +140,47 @@ struct MainView: View {
                   )
                 }
             }
-            .onDisappear {
-                presentFilters = false
-            }
-            .onAppear {
-                presentFilters = true
-            }
             .background(
                 Color(uiColor: UIColor.systemGroupedBackground)
             )
             .navigationBarTitle("Заклинания")
             .toolbar {
-                HStack {
-                    if isLoading {
-                        ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
-                    }
-                    
-                    NavigationLink(value: NavWay.search) {
-                        Image(systemName: "magnifyingglass").font(.title2)
-                    }
-                    
+                ToolbarItem(placement: .topBarLeading) {
                     Button {
                         isSpellCreationOpened.toggle()
                     } label: {
                         Image(systemName: "plus")
                             .font(.title2)
                     }
-                    
+                }
+                
+                if character != nil {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            isSpellLevelRule.toggle()
+                        } label: {
+                            Image(systemName: "hand.point.up.braille")
+                                .font(.title2)
+                        }
+                        .popover(isPresented: $isSpellLevelRule) {
+                            SpellCellsRestoreView(character: $character)
+                        }
+                    }
+                }
+                
+                if isLoading {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(value: NavWay.search) {
+                        Image(systemName: "magnifyingglass").font(.title2)
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink(value: NavWay.characterList) {
                         CharacterListItem(
                             character: character,
@@ -282,16 +284,18 @@ struct MainView: View {
             return
         }
         
-        let allPreparedSpells = character.preparedSpells
-        guard let selectedFilter else {
-            characterPrepared = allPreparedSpells
-            onFinish()
-            return
-        }
-        
         Task.detached {
+            let allPreparedSpells = character.preparedSpells
+            guard let selectedFilter else {
+                characterPrepared = allPreparedSpells.sorted(by: { $0.level < $1.level })
+                Task.detached { @MainActor in
+                    onFinish()
+                }
+                return
+            }
+        
             let result = selectedFilter.satisfying(
-                spells: allPreparedSpells,
+                spells: allPreparedSpells.sorted(by: { $0.level < $1.level }),
                 allMaterials: materials,
                 allTags: tags
             )
@@ -309,20 +313,22 @@ struct MainView: View {
             return
         }
         
-        let allKnownSpells = character.knownSpells
-        guard let selectedFilter else {
-            characterKnown = allKnownSpells
-            onFinish()
-            return
-        }
-        
         Task.detached {
+            let allKnownSpells = character.knownSpells
+            guard let selectedFilter else {
+                characterKnown = allKnownSpells.sorted(by: { $0.level < $1.level })
+                Task.detached { @MainActor in
+                    onFinish()
+                }
+                return
+            }
+            
             let result = selectedFilter.satisfying(
                 spells: allKnownSpells,
                 allMaterials: materials,
                 allTags: tags
             )
-            characterKnown = result
+            characterKnown = result.sorted(by: { $0.level < $1.level })
             Task.detached { @MainActor in
                 onFinish()
             }

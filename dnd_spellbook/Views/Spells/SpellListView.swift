@@ -10,8 +10,6 @@ import SwiftUI
 
 struct SpellListView: View {
     @Binding var spells: [Spell]
-    @State var editingSpell: Spell?
-    @Environment(\.modelContext) var modelContext
     @Binding var character: CharacterModel?
 
     var canEdit: Bool = true
@@ -26,174 +24,23 @@ struct SpellListView: View {
 
     var body: some View {
         ForEach(
-            spells,
+            $spells,
             id: \.id
         ) { spell in
-            SpellView(
+            SetuppedSpellView(
                 spell: spell,
-                collapsed: true
+                editingSpell: nil,
+                character: $character,
+                canEdit: canEdit,
+                name: name,
+                onHide: onHide,
+                onUnhide: onUnhide,
+                onRemove: onRemove,
+                onKnow: onKnow,
+                onUnknow: onUnknow,
+                onPrepare: onPrepare,
+                onUnprepare: onUnprepare
             )
-            .padding(.horizontal)
-            .padding(.vertical, 12)
-            .background(Color.systemGroupedTableContent)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .contextMenu {
-                switch name {
-                case .prepared:
-                    if character != nil {
-                        Button("Отложить", action: { [weak spell] in unprepare(spell: spell) })
-                        Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
-                        Divider()
-                    }
-                case .known:
-                    if character != nil {
-                        Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
-                        Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
-                        Divider()
-                    }
-                case .other:
-                    if character != nil {
-                        Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
-                        Button("Выучить", action: { [weak spell] in know(spell: spell) })
-                        Divider()
-                    }
-                    Button("Спрятать", action: { [weak spell] in hide(spell: spell) })
-                case .hidden:
-                    if character != nil {
-                        Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
-                        Button("Выучить", action: { [weak spell] in know(spell: spell) })
-                        Divider()
-                    }
-                    Button("Открыть", action: { [weak spell] in unhide(spell: spell) })
-                case .search:
-                    if character != nil {
-                        Text("Для оптимизации пока не проверяем состояние заклинания")
-                        Button("Подготовить...", action: { [weak spell] in prepare(spell: spell) })
-                        Button("Выучить...", action: { [weak spell] in know(spell: spell) })
-                        Button("Отложить...", action: { [weak spell] in unprepare(spell: spell) })
-                        Button("Забыть...", action: { [weak spell] in unknow(spell: spell) })
-                        Divider()
-                    }
-                    if spell.isHidden {
-                        Button("Открыть", action: { [weak spell] in unhide(spell: spell) })
-                    } else {
-                        Button("Спрятать", action: { [weak spell] in hide(spell: spell) })
-                    }
-                }
-    
-                if canEdit {
-                    Button("Править", action: { [weak spell] in self.editingSpell = spell })
-                }
-                if spell.isCustom {
-                    Button("Удалить", role: .destructive) { [weak spell] in remove(spell: spell) }
-                }
-            }
-            .padding(.vertical, 2)
         }
-        .sheet(item: $editingSpell) { spell in
-            SpellEditView(spell: spell)
-        }
-    }
-
-    func prepare(spell: Spell?) {
-        guard let spell,
-              let selectedCharacter = character else {
-            return
-        }
-
-        if let index = selectedCharacter.knownSpells.firstIndex(of: spell) {
-            selectedCharacter.knownSpells.remove(at: index)
-            onUnknow(spell)
-        }
-        
-        if !selectedCharacter.preparedSpells.contains(spell) {
-            selectedCharacter.preparedSpells.append(spell)
-            spell.isHidden = false
-            onPrepare(spell)
-        }
-        
-        try? modelContext.save()
-        CharacterUpdateService.send()
-    }
-    
-    func unprepare(spell: Spell?) {
-        guard let spell,
-              let selectedCharacter = character else {
-            return
-        }
-        
-        if let index = selectedCharacter.preparedSpells.firstIndex(of: spell) {
-            selectedCharacter.preparedSpells.remove(at: index)
-            onUnprepare(spell)
-            selectedCharacter.knownSpells.append(spell)
-            onKnow(spell)
-            try? modelContext.save()
-            CharacterUpdateService.send()
-        }
-    }
-
-    func know(spell: Spell?) {
-        guard let spell,
-              let selectedCharacter = character else {
-            return
-        }
-
-        if !selectedCharacter.knownSpells.contains(spell) {
-            selectedCharacter.knownSpells.append(spell)
-            spell.isHidden = false
-            onKnow(spell)
-            try? modelContext.save()
-            CharacterUpdateService.send()
-        }
-    }
-    
-    func unknow(spell: Spell?) {
-        guard let spell,
-              let selectedCharacter = character else {
-            return
-        }
-
-        if let index = selectedCharacter.knownSpells.firstIndex(of: spell) {
-            selectedCharacter.knownSpells.remove(at: index)
-            onUnknow(spell)
-        }
-
-        if let index = selectedCharacter.preparedSpells.firstIndex(of: spell) {
-            selectedCharacter.preparedSpells.remove(at: index)
-            onUnprepare(spell)
-        }
-
-        try? modelContext.save()
-        CharacterUpdateService.send()
-    }
-        
-    func hide(spell: Spell?) {
-        guard let spell,
-              !spell.isHidden else {
-            return
-        }
-        spell.isHidden = true
-        onHide(spell)
-        try? modelContext.save()
-    }
-    
-    func unhide(spell: Spell?) {
-        guard let spell,
-              spell.isHidden else {
-            return
-        }
-        spell.isHidden = false
-        onUnhide(spell)
-        try? modelContext.save()
-    }
-    
-    func remove(spell: Spell?) {
-        guard let spell,
-              spell.isCustom else {
-            return
-        }
-        onRemove(spell)
-        modelContext.delete(spell)
-        try? modelContext.save()
     }
 }

@@ -1,5 +1,5 @@
 {
-  "originHash" : "76259a9f3b98aee30e59ed8b19830ff16db9787e6ffe5cbe189118f5a1ac2f74",
+  "originHash" : "5b32dddf68e612c9fb84574cdbd15bf283397957cbbf15fe49ac415209f1fb34",
   "pins" : [
     {
       "identity" : "mcemojipicker",
@@ -8,15 +8,6 @@
       "state" : {
         "revision" : "e0b4903b75ae1cc418d276d84d1cb946b8a1d73c",
         "version" : "1.2.3"
-      }
-    },
-    {
-      "identity" : "pinnedscrollview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Lumisilk/PinnedScrollView.git",
-      "state" : {
-        "revision" : "cf8311e65c12b8a6991c83cb5e98a804cd232231",
-        "version" : "1.0.0"
       }
     },
     {

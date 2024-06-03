@@ -22,7 +22,6 @@ public struct CharacterEditView: View {
     let characterId: String
     let initialImageUrl: URL?
     let initialCharacterName: String
-    let initialLevel: Int
     let selectedClass: CharacterClass
     let initialPrepared: [Spell]
     let initialKnown: [Spell]
@@ -30,7 +29,9 @@ public struct CharacterEditView: View {
     @State var imageWasUpdated: Bool = false
     @State var selectedImage: UIImage? = nil
     @State var characterName: String
-    @State var level: Int
+    @State var maxLevel: Int = 0
+    @State var levels: LevelList = [:]
+    @State var initialUsedLevels: LevelList
 
     @State var isPickerSelected = false
     @State var scrollOffset: CGFloat = 0.0
@@ -43,18 +44,19 @@ public struct CharacterEditView: View {
                     TextField("Имя", text: $characterName)
                         .padding(.bottom, 6)
                         .padding(.top, 3)
-                    Picker(level.levelName, selection: $level) {
-                        ForEach(0...9, id: \.self) {
-                            Text($0.levelName)
-                        }
-                    }
-                    .pickerStyle(.menu)
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
                 .background(Color.systemGroupedTableContent)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding()
+                
+                levelPickerView
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .background(Color.systemGroupedTableContent)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding()
             }
             .scrollDismissesKeyboard(.interactively)
                         
@@ -85,6 +87,35 @@ public struct CharacterEditView: View {
         .background(Color(uiColor: .systemGroupedBackground))
     }
     
+    var levelPickerView: some View {
+        VStack {
+            Stepper("Ячейки заклинаний", value: $maxLevel, in: 0...9)
+                .onChange(of: maxLevel) { oldValue, newValue in
+                    if oldValue > newValue {
+                        levels[oldValue] = nil
+                    } else if oldValue < newValue {
+                        levels[newValue] = 1
+                    }
+                }
+            if maxLevel > 0 {
+                Divider()
+            }
+            ForEach(levels.sortedList, id: \.0) { (level, amount) in
+                Stepper {
+                    HStack {
+                        Text(level.levelName)
+                        Spacer()
+                        Text(String(amount))
+                    }
+                } onIncrement: {
+                    levels[level] = amount + 1
+                } onDecrement: {
+                    levels[level] = max(amount - 1, 1)
+                }
+            }
+        }
+    }
+
     var imagePickerView: some View {
         CharacterImagePickerView(
             isPickerSelected: $isPickerSelected,
@@ -109,26 +140,43 @@ public struct CharacterEditView: View {
     func addCharacter() {
         isLoading = true
         let imageUrl = FileManager.default.save(image: selectedImage)
+        removeOldCharacters()
+        while initialUsedLevels.maxLevel > levels.maxLevel {
+            initialUsedLevels[maxLevel] = nil
+        }
         let character = CharacterModel(
             id: characterId,
             imageUrl: imageUrl ?? initialImageUrl,
             characterClass: selectedClass,
             name: characterName,
-            level: level,
+            levels: levels, 
+            usedLevels: initialUsedLevels,
             knownSpells: initialKnown,
             preparedSpells: initialPrepared
         )
         modelContext.insert(character)
         
         removeOldFilters()
-        addFilters(for: level, characterId: characterId)
-        if level < 9 {
+        addFilters(for: maxLevel, characterId: characterId)
+        if maxLevel < 9 {
             addFilters(for: 9, characterId: characterId)
         }
 
         try? modelContext.save()
         CharacterUpdateService.send()
         isLoading = false
+    }
+    
+    func removeOldCharacters() {
+        var fetchDescriptor = FetchDescriptor<CharacterModel>(predicate: #Predicate { model in
+            model.id == characterId
+        })
+        fetchDescriptor.fetchLimit = 1
+        let existingCharacters: [CharacterModel] = (try? modelContext.fetch(fetchDescriptor)) ?? []
+        for character in existingCharacters {
+            modelContext.delete(character)
+        }
+        try? modelContext.save()
     }
         
     func removeOldFilters() {

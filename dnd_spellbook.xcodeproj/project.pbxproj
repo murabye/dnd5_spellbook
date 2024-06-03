@@ -11,6 +11,7 @@
 		662847582C067ADB00253350 /* FilterModelContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662847572C067ADB00253350 /* FilterModelContainerView.swift */; };
 		6628475A2C067D4200253350 /* MainViewFilterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662847592C067D4200253350 /* MainViewFilterLayer.swift */; };
 		66D3F19E2C03DB8A0019F51F /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 66D3F19D2C03DB8A0019F51F /* WaterfallGrid */; };
+		FF076E002C03D2F4005B8747 /* Level+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF076DFF2C03D2F4005B8747 /* Level+.swift */; };
 		FF10CA1C2B438E1A00D9348F /* SpellCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */; };
 		FF10CA262B44C1A700D9348F /* DurationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA252B44C1A700D9348F /* DurationPickerView.swift */; };
 		FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */; };
@@ -53,6 +54,8 @@
 		FF8514782BEADD9A007C0E6F /* ComponentsExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8514772BEADD9A007C0E6F /* ComponentsExportModel.swift */; };
 		FF85147A2BEAE0BB007C0E6F /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8514792BEAE0BB007C0E6F /* ShareActivityView.swift */; };
 		FF85147E2BEAE20B007C0E6F /* CharacterImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF85147D2BEAE20B007C0E6F /* CharacterImportView.swift */; };
+		FF981EF42C067DBA00C2D8D9 /* SpellCellsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF981EF32C067DBA00C2D8D9 /* SpellCellsHeaderView.swift */; };
+		FF981EF72C0683E100C2D8D9 /* SetuppedSpellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF981EF62C0683E100C2D8D9 /* SetuppedSpellView.swift */; };
 		FFB7500D2B76A26E0099508F /* TagColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7500C2B76A26E0099508F /* TagColor.swift */; };
 		FFB750112B77F8090099508F /* DatabaseSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750102B77F8090099508F /* DatabaseSetupView.swift */; };
 		FFB750172B78FAE30099508F /* DurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB750162B78FAE30099508F /* DurationModel.swift */; };
@@ -74,6 +77,7 @@
 		FFCF4BCE2B700C7F00D38414 /* tags.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCB2B700C7F00D38414 /* tags.json */; };
 		FFCF4BCF2B700C7F00D38414 /* skills.json in Resources */ = {isa = PBXBuildFile; fileRef = FFCF4BCC2B700C7F00D38414 /* skills.json */; };
 		FFCF4BD12B70168500D38414 /* TagColorsGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF4BD02B70168500D38414 /* TagColorsGallery.swift */; };
+		FFDD59822C0D1AAE005E9DA3 /* SpellCellsRestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDD59812C0D1AAE005E9DA3 /* SpellCellsRestoreView.swift */; };
 		FFDF84EE2B2E84B2004916F3 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF84ED2B2E84B2004916F3 /* UIPickerView.swift */; };
 		FFDF84F32B2E89CB004916F3 /* FilterSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF84F22B2E89CB004916F3 /* FilterSetupView.swift */; };
 		FFDF84FB2B2F99EE004916F3 /* UniversalTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF84FA2B2F99EE004916F3 /* UniversalTagView.swift */; };
@@ -124,6 +128,7 @@
 		662847542C0673E900253350 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		662847572C067ADB00253350 /* FilterModelContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModelContainerView.swift; sourceTree = "<group>"; };
 		662847592C067D4200253350 /* MainViewFilterLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewFilterLayer.swift; sourceTree = "<group>"; };
+		FF076DFF2C03D2F4005B8747 /* Level+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Level+.swift"; sourceTree = "<group>"; };
 		FF10CA1B2B438E1A00D9348F /* SpellCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellCreationView.swift; sourceTree = "<group>"; };
 		FF10CA252B44C1A700D9348F /* DurationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerView.swift; sourceTree = "<group>"; };
 		FF10CA272B44C54A00D9348F /* DistantionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistantionPickerView.swift; sourceTree = "<group>"; };
@@ -169,6 +174,8 @@
 		FF8514772BEADD9A007C0E6F /* ComponentsExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsExportModel.swift; sourceTree = "<group>"; };
 		FF8514792BEAE0BB007C0E6F /* ShareActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityView.swift; sourceTree = "<group>"; };
 		FF85147D2BEAE20B007C0E6F /* CharacterImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImportView.swift; sourceTree = "<group>"; };
+		FF981EF32C067DBA00C2D8D9 /* SpellCellsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellCellsHeaderView.swift; sourceTree = "<group>"; };
+		FF981EF62C0683E100C2D8D9 /* SetuppedSpellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetuppedSpellView.swift; sourceTree = "<group>"; };
 		FFB7500C2B76A26E0099508F /* TagColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagColor.swift; sourceTree = "<group>"; };
 		FFB750102B77F8090099508F /* DatabaseSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSetupView.swift; sourceTree = "<group>"; };
 		FFB750162B78FAE30099508F /* DurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationModel.swift; sourceTree = "<group>"; };
@@ -190,6 +197,7 @@
 		FFCF4BCB2B700C7F00D38414 /* tags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tags.json; sourceTree = "<group>"; };
 		FFCF4BCC2B700C7F00D38414 /* skills.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skills.json; sourceTree = "<group>"; };
 		FFCF4BD02B70168500D38414 /* TagColorsGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagColorsGallery.swift; sourceTree = "<group>"; };
+		FFDD59812C0D1AAE005E9DA3 /* SpellCellsRestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellCellsRestoreView.swift; sourceTree = "<group>"; };
 		FFDF84ED2B2E84B2004916F3 /* UIPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerView.swift; sourceTree = "<group>"; };
 		FFDF84F22B2E89CB004916F3 /* FilterSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSetupView.swift; sourceTree = "<group>"; };
 		FFDF84FA2B2F99EE004916F3 /* UniversalTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalTagView.swift; sourceTree = "<group>"; };
@@ -451,6 +459,15 @@
 			path = CharacterList;
 			sourceTree = "<group>";
 		};
+		FF981EF52C067EA600C2D8D9 /* SpellCellsViews */ = {
+			isa = PBXGroup;
+			children = (
+				FF981EF32C067DBA00C2D8D9 /* SpellCellsHeaderView.swift */,
+				FFDD59812C0D1AAE005E9DA3 /* SpellCellsRestoreView.swift */,
+			);
+			path = SpellCellsViews;
+			sourceTree = "<group>";
+		};
 		FFB750142B78FAA80099508F /* DatabaseSetup */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,10 +509,12 @@
 		FFDF84EF2B2E89AE004916F3 /* Spells */ = {
 			isa = PBXGroup;
 			children = (
+				FF981EF52C067EA600C2D8D9 /* SpellCellsViews */,
 				FFE5092E2BD291690001A6EB /* HiddenSpellsView */,
 				FFF28C602BC58C870032E605 /* Tags */,
 				FF10CA1D2B44AF1E00D9348F /* SpellCreation */,
 				FF8325CF2B31011F00820438 /* SpellListView.swift */,
+				FF981EF62C0683E100C2D8D9 /* SetuppedSpellView.swift */,
 				FFC320D12BC9605E00874532 /* SpellView.swift */,
 				FF8325D12B31058400820438 /* SpellEditView.swift */,
 			);
@@ -556,6 +575,7 @@
 				FFE7925E2B3A1B43004F6BF4 /* TypeOfAction.swift */,
 				FFE792602B3A1BC6004F6BF4 /* SpellSchool.swift */,
 				FFE792622B3A1C13004F6BF4 /* Sources.swift */,
+				FF076DFF2C03D2F4005B8747 /* Level+.swift */,
 			);
 			path = SpellTypes;
 			sourceTree = "<group>";
@@ -706,7 +726,6 @@
 			mainGroup = FF2CBC522B2D9EE6004D062C;
 			packageReferences = (
 				FF70ECE12B701FA3000B3A8F /* XCRemoteSwiftPackageReference "MCEmojiPicker" */,
-				FF72A6762BD2ACE100352E6A /* XCRemoteSwiftPackageReference "PinnedScrollView" */,
 				66D3F19C2C03DAC70019F51F /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
 			);
 			productRefGroup = FF2CBC5C2B2D9EE6004D062C /* Products */;
@@ -777,6 +796,8 @@
 				FF10CA262B44C1A700D9348F /* DurationPickerView.swift in Sources */,
 				FFE7925D2B3A1A4B004F6BF4 /* Distantion.swift in Sources */,
 				FF2CBC8C2B2D9FD9004D062C /* CharacterCreation.swift in Sources */,
+				FF981EF42C067DBA00C2D8D9 /* SpellCellsHeaderView.swift in Sources */,
+				FF981EF72C0683E100C2D8D9 /* SetuppedSpellView.swift in Sources */,
 				FFF90A792B338FDE00569628 /* CharacterListItem.swift in Sources */,
 				FF85147A2BEAE0BB007C0E6F /* ShareActivityView.swift in Sources */,
 				FF48BCA72B94B77000E3E3DF /* MailView.swift in Sources */,
@@ -808,6 +829,7 @@
 				FF48BCA92B94FCFD00E3E3DF /* CharacterImagePickerView.swift in Sources */,
 				FFB750212B79308D0099508F /* DatabaseSetupIfNeededView.swift in Sources */,
 				FF85146E2BEAD98E007C0E6F /* SpellExportModel.swift in Sources */,
+				FF076E002C03D2F4005B8747 /* Level+.swift in Sources */,
 				FFE792662B3A1CD1004F6BF4 /* Tag.swift in Sources */,
 				FF8325C12B30E41400820438 /* DynamicIslandMergingView.swift in Sources */,
 				FF10CA282B44C54A00D9348F /* DistantionPickerView.swift in Sources */,
@@ -831,6 +853,7 @@
 				FFF90A772B338FB500569628 /* CharacterList.swift in Sources */,
 				FFF28C622BC58C9A0032E605 /* TagSelectView.swift in Sources */,
 				FFB7501D2B78FE260099508F /* TypeOfActionModel.swift in Sources */,
+				FFDD59822C0D1AAE005E9DA3 /* SpellCellsRestoreView.swift in Sources */,
 				FF8514762BEADCA5007C0E6F /* DurationExportModel.swift in Sources */,
 				FF2CBC5F2B2D9EE6004D062C /* dnd_spellbookApp.swift in Sources */,
 				FF10CA2E2B44CCB900D9348F /* TypeOfActionPickerView.swift in Sources */,
@@ -1226,14 +1249,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.2.3;
-			};
-		};
-		FF72A6762BD2ACE100352E6A /* XCRemoteSwiftPackageReference "PinnedScrollView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Lumisilk/PinnedScrollView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

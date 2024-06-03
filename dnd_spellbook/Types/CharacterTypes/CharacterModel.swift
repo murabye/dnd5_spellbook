@@ -15,7 +15,8 @@ class CharacterModel {
     let imageUrl: URL?
     let characterClass: CharacterClass?
     let name: String
-    let level: Int
+    let levels: LevelList
+    var usedLevels: LevelList
     @Relationship(deleteRule: .nullify) var knownSpells: [Spell]
     @Relationship(deleteRule: .nullify) var preparedSpells: [Spell]
 
@@ -24,7 +25,8 @@ class CharacterModel {
         imageUrl: URL?,
         characterClass: CharacterClass?,
         name: String,
-        level: Int,
+        levels: LevelList,
+        usedLevels: LevelList,
         knownSpells: [Spell],
         preparedSpells: [Spell]
     ) {
@@ -32,10 +34,10 @@ class CharacterModel {
         self.imageUrl = imageUrl
         self.characterClass = characterClass
         self.name = name
-        self.level = level
+        self.levels = levels
         self.knownSpells = []
         self.preparedSpells = []
-        
+        self.usedLevels = usedLevels
         
         set(knownSpells: knownSpells)
         set(preparedSpells: preparedSpells)
@@ -66,5 +68,6 @@ extension CharacterModel: Identifiable {
         && lhs.name == rhs.name
         && lhs.knownSpells == rhs.knownSpells
         && lhs.preparedSpells == rhs.preparedSpells
+        && lhs.levels == rhs.levels
     }
 }
