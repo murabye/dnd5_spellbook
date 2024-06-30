@@ -5,19 +5,20 @@
 //  Created by Влада Кузнецова on 29.05.2024.
 //
 
-// TODO: VARVAR https://habr.com/ru/articles/784768/
-
 import SwiftData
 import SwiftUI
 
 struct SetuppedSpellView: View {
-    @Binding var spell: Spell
+    @State var spell: Spell
     @State var editingSpell: Spell?
     @Environment(\.modelContext) var modelContext
     @Binding var character: CharacterModel?
 
+    @Binding var preparedSpellsMap: [String: Bool]
+    @Binding var knownSpellsMap: [String: Bool]
+
     var canEdit: Bool = true
-    let name: SectionsNames
+    let name: SectionsName
     var onHide: (Spell) -> Void
     var onUnhide: (Spell) -> Void
     var onRemove: (Spell) -> Void
@@ -65,11 +66,17 @@ struct SetuppedSpellView: View {
                 Button("Открыть", action: { [weak spell] in unhide(spell: spell) })
             case .search:
                 if character != nil {
-                    Text("Для оптимизации пока не проверяем состояние заклинания")
-                    Button("Подготовить...", action: { [weak spell] in prepare(spell: spell) })
-                    Button("Выучить...", action: { [weak spell] in know(spell: spell) })
-                    Button("Отложить...", action: { [weak spell] in unprepare(spell: spell) })
-                    Button("Забыть...", action: { [weak spell] in unknow(spell: spell) })
+                    if preparedSpellsMap[spell.id] != true {
+                        Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
+                    } else {
+                        Button("Отложить", action: { [weak spell] in unprepare(spell: spell) })
+                    }
+                    
+                    if knownSpellsMap[spell.id] != true {
+                        Button("Выучить", action: { [weak spell] in know(spell: spell) })
+                    } else {
+                        Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
+                    }
                     Divider()
                 }
                 if spell.isHidden {

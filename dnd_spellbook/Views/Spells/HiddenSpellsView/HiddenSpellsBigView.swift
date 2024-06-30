@@ -19,7 +19,7 @@ struct HiddenSpellsBigView: View {
     @Binding var character: CharacterModel?
 
     // spells
-    @State var hidden = [Spell]()
+    @State var hidden = [Int: [Spell]]()
     @State var hiddenFetchOffset = 0
     
     @State var changed = false
@@ -32,8 +32,11 @@ struct HiddenSpellsBigView: View {
                 spacingY: 16
             ) {
                 SpellListView(
-                    spells: $hidden,
+                    spellsByLevel: $hidden,
                     character: $character,
+                    preparedSpellsMap: .constant([:]),
+                    knownSpellsMap: .constant([:]),
+                    pinIndex: 0,
                     canEdit: false,
                     name: .other,
                     onHide: { _ in },
@@ -75,14 +78,16 @@ struct HiddenSpellsBigView: View {
         if totalAmount > hiddenFetchOffset + 1 {
             let newData = (try? modelContext.fetch(fetchDescriptor)) ?? []
             hiddenFetchOffset = hiddenFetchOffset + newData.count
-            hidden.append(contentsOf: newData)
+            newData.forEach { spell in
+                hidden[spell.level]?.append(spell)
+            }
         }
     }
 
     // MARK: actions
     func onRemove(_ spell: Spell) {
-        if let index = hidden.firstIndex(of: spell) {
-            hidden.remove(at: index)
+        if let index = hidden[spell.level]?.firstIndex(of: spell) {
+            hidden[spell.level]?.remove(at: index)
             hiddenFetchOffset = hiddenFetchOffset - 1
             changed = true
         }

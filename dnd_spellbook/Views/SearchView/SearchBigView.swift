@@ -15,13 +15,16 @@ struct SearchBigView: View {
     @Binding var character: CharacterModel?
 
     @Environment(\.modelContext) var modelContext
-    
+    @Binding var preparedSpellsMap: [String: Bool]
+    @Binding var knownSpellsMap: [String: Bool]
+
     @State private var searchText = ""
     @State private var isLoading = false
     
     @Query var materials: [MaterialModel]
     @Query var tags: [Tag]
-    @State var spells = [Spell]()
+    @State var spells = [Int: [Spell]]()
+    @State var spellCount = 0
 
     var body: some View {
         ScrollView {
@@ -31,8 +34,11 @@ struct SearchBigView: View {
                 spacingY: 16
             ) {
                 SpellListView(
-                    spells: $spells,
+                    spellsByLevel: $spells,
                     character: $character,
+                    preparedSpellsMap: $preparedSpellsMap,
+                    knownSpellsMap: $knownSpellsMap,
+                    pinIndex: 0,
                     canEdit: false,
                     name: .search,
                     onHide: { _ in },
@@ -50,6 +56,7 @@ struct SearchBigView: View {
             }
             .padding()
         }
+        .pinContainer()
         .scrollDismissesKeyboard(.interactively)
         .navigationTitle("Поиск")
         .searchable(text: $searchText)
@@ -60,7 +67,8 @@ struct SearchBigView: View {
         })
         .background(Color(uiColor: UIColor.systemGroupedBackground))
         .onChange(of: searchText, debounceTime: 0.3) { newValue in
-            spells = []
+            spells = [:]
+            spellCount = 0
             loadSpells()
         }
     }
@@ -96,7 +104,10 @@ struct SearchBigView: View {
         
         if totalAmount > spells.count {
             let newData = (try? modelContext.fetch(fetchDescriptor)) ?? []
-            spells.append(contentsOf: newData)
+            for spell in newData {
+                spells[spell.level]?.append(contentsOf: newData)
+            }
+            spellCount = spellCount + newData.count
             isLoading = false
         } else {
             isLoading = false

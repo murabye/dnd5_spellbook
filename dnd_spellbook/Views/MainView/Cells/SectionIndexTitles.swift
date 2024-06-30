@@ -6,30 +6,39 @@
 //
 
 import Foundation
+import UIKit
 import SwiftUI
 
-enum SectionsNames: String, CaseIterable {
+enum SectionsName: String, CaseIterable {
     
     case prepared = "Подготовленные"
     case known = "Известные"
     case other = "Прочие"
     case hidden = "Сокрытые"
     case search = "Поиск"
+    
+    var canHide: Bool {
+        self == .other
+    }
+    
+    var canExpand: Bool {
+        self == .hidden
+    }
 }
 
 struct SectionIndexTitleView: View {
     
-    let name: SectionsNames
-    let canHide: Bool
+    let name: SectionsName
     @Binding var isHidden: Bool
-    
+    @Binding var scrollOffset: CGPoint
+
     var body: some View {
-        if canHide {
+        if name.canHide || name.canExpand {
             HStack {
                 Text(name.rawValue)
                 Spacer()
                 Image(systemName: "chevron.right")
-                    .rotationEffect(isHidden ? .degrees(0) : .degrees(90))
+                    .rotationEffect(isHidden || name.canExpand ? .degrees(0) : .degrees(90))
             }
             .background(Color(uiColor: UIColor.systemGroupedBackground))
             .padding(.horizontal)
@@ -40,6 +49,7 @@ struct SectionIndexTitleView: View {
                 }
             }
             .id(name.rawValue)
+            .pinned(index: 0)
         } else {
             HStack {
                 Text(name.rawValue)
@@ -49,13 +59,14 @@ struct SectionIndexTitleView: View {
             .padding(.horizontal)
             .contentShape(Rectangle())
             .id(name.rawValue)
+            .pinned(index: 0)
         }
     }
 }
 
 struct SectionIndexTitles: View {
     let proxy: ScrollViewProxy
-    let titles: [SectionsNames]
+    let titles: [SectionsName]
     @GestureState private var dragLocation: CGPoint = .zero
     
     var body: some View {
@@ -79,13 +90,13 @@ struct SectionIndexTitles: View {
         )
     }
     
-    func dragObserver(title: SectionsNames) -> some View {
+    func dragObserver(title: SectionsName) -> some View {
         GeometryReader { geometry in
             dragObserver(geometry: geometry, title: title)
         }
     }
     
-    func dragObserver(geometry: GeometryProxy, title: SectionsNames) -> some View {
+    func dragObserver(geometry: GeometryProxy, title: SectionsName) -> some View {
         if geometry.frame(in: .global).contains(dragLocation) {
             DispatchQueue.main.async {
                 proxy.scrollTo(title.rawValue, anchor: .top)
@@ -94,7 +105,7 @@ struct SectionIndexTitles: View {
         return Rectangle().fill(Color.clear)
     }
 
-    func sfSymbol(for deviceCategory: SectionsNames) -> Image {
+    func sfSymbol(for deviceCategory: SectionsName) -> Image {
         let systemName: String
         switch deviceCategory {
         case .prepared: systemName = "brain"

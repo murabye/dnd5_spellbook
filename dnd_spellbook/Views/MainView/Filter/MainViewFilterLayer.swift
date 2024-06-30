@@ -72,8 +72,7 @@ struct MainViewFilterLayer: View {
     
     var filterBar: some View {
         ScrollView(.horizontal) {
-            flow
-                .padding(.horizontal, 8)
+            flow.padding(.horizontal, 8)
         }
         .scrollIndicators(.never)
     }

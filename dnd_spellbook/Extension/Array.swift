@@ -12,3 +12,14 @@ extension Array where Element: Equatable {
         self.filter { !array.contains($0) }
     }
 }
+
+extension Dictionary where Key == Int, Value == Array<Spell> {
+    
+    mutating func appendOrSet(_ spell: Spell) {
+        if self[spell.level] == nil {
+            self[spell.level] = [spell]
+        } else {
+            self[spell.level]?.append(spell)
+        }
+    }
+}

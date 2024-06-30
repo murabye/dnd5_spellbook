@@ -44,5 +44,6 @@ struct SpellCellsHeaderView: View {
             .buttonStyle(.borderless)
         }
         .padding(.horizontal)
+        .background(Color(uiColor: UIColor.systemGroupedBackground))
     }
 }
