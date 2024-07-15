@@ -72,53 +72,43 @@ struct MainBigView: View {
                     ScrollView {
                         SectionIndexTitleView(name: .prepared, isHidden: .constant(false), scrollOffset: $scrollOffset)
                         if !characterPrepared.isEmpty {
-                            VerticalWaterfallLayout(
-                                columns: columnAmount,
-                                spacingX: 16,
-                                spacingY: 16
-                            ) {
-                                SpellListView(
-                                    spellsByLevel: $characterPrepared,
-                                    character: $character,
-                                    preparedSpellsMap: .constant([:]),
-                                    knownSpellsMap: .constant([:]),
-                                    pinIndex: 1,
-                                    name: .prepared,
-                                    onHide: { spell in onHide(spell) },
-                                    onUnhide: { _ in },
-                                    onRemove: { spell in onRemove(spell) },
-                                    onKnow: { spell in onKnow(spell) },
-                                    onUnknow: { spell in onUnknow(spell) },
-                                    onPrepare: { spell in onPrepare(spell) },
-                                    onUnprepare: { spell in onUnprepare(spell) }
-                                )
-                            }
+                            SpellListBigView(
+                                spellsByLevel: $characterPrepared,
+                                character: $character,
+                                preparedSpellsMap: .constant([:]),
+                                knownSpellsMap: .constant([:]),
+                                pinIndex: 1, 
+                                columnAmount: columnAmount,
+                                name: .prepared,
+                                onHide: { spell in onHide(spell) },
+                                onUnhide: { _ in },
+                                onRemove: { spell in onRemove(spell) },
+                                onKnow: { spell in onKnow(spell) },
+                                onUnknow: { spell in onUnknow(spell) },
+                                onPrepare: { spell in onPrepare(spell) },
+                                onUnprepare: { spell in onUnprepare(spell) }
+                            )
                             .padding()
                         }
                         
                         SectionIndexTitleView(name: .known, isHidden: .constant(false), scrollOffset: $scrollOffset)
                         if !characterKnown.isEmpty {
-                            VerticalWaterfallLayout(
-                                columns: columnAmount,
-                                spacingX: 16,
-                                spacingY: 16
-                            ) {
-                                SpellListView(
-                                    spellsByLevel: $characterPrepared,
-                                    character: $character,
-                                    preparedSpellsMap: .constant([:]),
-                                    knownSpellsMap: .constant([:]),
-                                    pinIndex: 1,
-                                    name: .known,
-                                    onHide: { spell in onHide(spell) },
-                                    onUnhide: { _ in },
-                                    onRemove: { spell in onRemove(spell) },
-                                    onKnow: { spell in onKnow(spell) },
-                                    onUnknow: { spell in onUnknow(spell) },
-                                    onPrepare: { spell in onPrepare(spell) },
-                                    onUnprepare: { spell in onUnprepare(spell) }
-                                )
-                            }
+                            SpellListBigView(
+                                spellsByLevel: $characterKnown,
+                                character: $character,
+                                preparedSpellsMap: .constant([:]),
+                                knownSpellsMap: .constant([:]),
+                                pinIndex: 1,
+                                columnAmount: columnAmount,
+                                name: .known,
+                                onHide: { spell in onHide(spell) },
+                                onUnhide: { _ in },
+                                onRemove: { spell in onRemove(spell) },
+                                onKnow: { spell in onKnow(spell) },
+                                onUnknow: { spell in onUnknow(spell) },
+                                onPrepare: { spell in onPrepare(spell) },
+                                onUnprepare: { spell in onUnprepare(spell) }
+                            )
                             .padding()
                         }
                         
@@ -129,27 +119,22 @@ struct MainBigView: View {
                         
                         SectionIndexTitleView(name: .other, isHidden: $isOtherHidden, scrollOffset: $scrollOffset)
                         if !isOtherHidden {
-                            VerticalWaterfallLayout(
-                                columns: columnAmount,
-                                spacingX: 16,
-                                spacingY: 16
-                            ) {
-                                SpellListView(
-                                    spellsByLevel: $characterPrepared,
-                                    character: $character,
-                                    preparedSpellsMap: .constant([:]),
-                                    knownSpellsMap: .constant([:]),
-                                    pinIndex: 1,
-                                    name: .other,
-                                    onHide: { spell in onHide(spell) },
-                                    onUnhide: { _ in },
-                                    onRemove: { spell in onRemove(spell) },
-                                    onKnow: { spell in onKnow(spell) },
-                                    onUnknow: { spell in onUnknow(spell) },
-                                    onPrepare: { spell in onPrepare(spell) },
-                                    onUnprepare: { spell in onUnprepare(spell) }
-                                )
-                            }
+                            SpellListBigView(
+                                spellsByLevel: $other,
+                                character: $character,
+                                preparedSpellsMap: .constant([:]),
+                                knownSpellsMap: .constant([:]),
+                                pinIndex: 1,
+                                columnAmount: columnAmount,
+                                name: .other,
+                                onHide: { spell in onHide(spell) },
+                                onUnhide: { _ in },
+                                onRemove: { spell in onRemove(spell) },
+                                onKnow: { spell in onKnow(spell) },
+                                onUnknow: { spell in onUnknow(spell) },
+                                onPrepare: { spell in onPrepare(spell) },
+                                onUnprepare: { spell in onUnprepare(spell) }
+                            )
                             .padding()
                             LazyVStack {
                                 Rectangle().fill(Color(uiColor: .systemGroupedBackground)).onAppear { loadOther() }
@@ -323,7 +308,7 @@ struct MainBigView: View {
             return
         }
         
-        Task.detached {
+        Task.detached(priority: .high) {
             let allPreparedSpells = character.preparedSpells
             guard let selectedFilter else {
                 characterPrepared = Dictionary(grouping: allPreparedSpells, by: \.level)
@@ -363,7 +348,7 @@ struct MainBigView: View {
             return
         }
         
-        Task.detached {
+        Task.detached(priority: .high) {
             let allKnownSpells = character.knownSpells
             guard let selectedFilter else {
                 characterKnown =  Dictionary(grouping: allKnownSpells, by: \.level)
@@ -446,7 +431,7 @@ struct MainBigView: View {
     func onHide(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let otherIndex = other[spell.level]?.firstIndex(of: spell)
             let fetchedOtherIndex = fetchedOther.firstIndex(of: spell)
@@ -462,7 +447,7 @@ struct MainBigView: View {
     func onUnknow(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let characterKnownIndex = characterKnown[spell.level]?.firstIndex(of: spell)
             let otherContains = other[spell.level]?.contains(spell) == true
@@ -481,7 +466,7 @@ struct MainBigView: View {
     func onRemove(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let characterPreparedIndex = characterPrepared[spell.level]?.firstIndex(of: spell)
             let characterKnownIndex = characterKnown[spell.level]?.firstIndex(of: spell)
@@ -507,7 +492,7 @@ struct MainBigView: View {
     func onKnow(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let otherIndex = other[spell.level]?.firstIndex(of: spell)
             let characterKnownContains = characterKnown[spell.level]?.contains(spell) == true
@@ -527,7 +512,7 @@ struct MainBigView: View {
     func onPrepare(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let index = characterKnown[spell.level]?.firstIndex(of: spell)
             let contains = characterPrepared[spell.level]?.contains(spell) == true
@@ -550,7 +535,7 @@ struct MainBigView: View {
     func onUnprepare(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let index = characterPrepared[spell.level]?.firstIndex(of: spell)
             let contains = characterKnown[spell.level]?.contains(spell) == true

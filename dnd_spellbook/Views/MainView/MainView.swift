@@ -307,7 +307,7 @@ struct MainView: View {
             return
         }
         
-        Task.detached {
+        Task.detached(priority: .high) {
             let allPreparedSpells = character.preparedSpells
             guard let selectedFilter else {
                 characterPrepared = Dictionary(grouping: allPreparedSpells, by: \.level)
@@ -347,7 +347,7 @@ struct MainView: View {
             return
         }
         
-        Task.detached {
+        Task.detached(priority: .high) {
             let allKnownSpells = character.knownSpells
             guard let selectedFilter else {
                 characterKnown =  Dictionary(grouping: allKnownSpells, by: \.level)
@@ -430,7 +430,7 @@ struct MainView: View {
     func onHide(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let otherIndex = other[spell.level]?.firstIndex(of: spell)
             let fetchedOtherIndex = fetchedOther.firstIndex(of: spell)
@@ -446,7 +446,7 @@ struct MainView: View {
     func onUnknow(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let characterKnownIndex = characterKnown[spell.level]?.firstIndex(of: spell)
             let otherContains = other[spell.level]?.contains(spell) == true
@@ -465,7 +465,7 @@ struct MainView: View {
     func onRemove(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let characterPreparedIndex = characterPrepared[spell.level]?.firstIndex(of: spell)
             let characterKnownIndex = characterKnown[spell.level]?.firstIndex(of: spell)
@@ -491,7 +491,7 @@ struct MainView: View {
     func onKnow(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let otherIndex = other[spell.level]?.firstIndex(of: spell)
             let characterKnownContains = characterKnown[spell.level]?.contains(spell) == true
@@ -511,7 +511,7 @@ struct MainView: View {
     func onPrepare(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let index = characterKnown[spell.level]?.firstIndex(of: spell)
             let contains = characterPrepared[spell.level]?.contains(spell) == true
@@ -534,7 +534,7 @@ struct MainView: View {
     func onUnprepare(_ spell: Spell) {
         isLoading = true
         
-        Task.detached {
+        Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let index = characterPrepared[spell.level]?.firstIndex(of: spell)
             let contains = characterKnown[spell.level]?.contains(spell) == true
