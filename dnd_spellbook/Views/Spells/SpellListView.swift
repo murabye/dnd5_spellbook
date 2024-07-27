@@ -12,9 +12,10 @@ struct SpellListView: View {
     @Binding var spellsByLevel: [Int: [Spell]]
     @Binding var character: CharacterModel?
     
-    @Binding var preparedSpellsMap: [String: Bool]
-    @Binding var knownSpellsMap: [String: Bool]
-
+    @Binding var preparedSpellsMap: [UInt: Bool]
+    @Binding var knownSpellsMap: [UInt: Bool]
+    @Binding var lockedSpellsMap: [UInt: Bool]
+    
     let pinIndex: Int
     
     var canEdit: Bool = true
@@ -40,6 +41,7 @@ struct SpellListView: View {
                             character: $character,
                             preparedSpellsMap: $preparedSpellsMap,
                             knownSpellsMap: $knownSpellsMap,
+                            lockedSpellsMap: $lockedSpellsMap,
                             canEdit: canEdit,
                             name: name,
                             onHide: onHide,
@@ -63,9 +65,10 @@ struct SpellListBigView: View {
     @Binding var spellsByLevel: [Int: [Spell]]
     @Binding var character: CharacterModel?
     
-    @Binding var preparedSpellsMap: [String: Bool]
-    @Binding var knownSpellsMap: [String: Bool]
-
+    @Binding var preparedSpellsMap: [UInt: Bool]
+    @Binding var knownSpellsMap: [UInt: Bool]
+    @Binding var lockedSpellsMap: [UInt: Bool]
+    
     let pinIndex: Int
     let columnAmount: Int
     
@@ -97,6 +100,7 @@ struct SpellListBigView: View {
                                 character: $character,
                                 preparedSpellsMap: $preparedSpellsMap,
                                 knownSpellsMap: $knownSpellsMap,
+                                lockedSpellsMap: $lockedSpellsMap,
                                 canEdit: canEdit,
                                 name: name,
                                 onHide: onHide,

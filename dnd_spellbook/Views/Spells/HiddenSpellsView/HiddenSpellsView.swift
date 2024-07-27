@@ -31,6 +31,7 @@ struct HiddenSpellsView: View {
                     character: $character,
                     preparedSpellsMap: .constant([:]),
                     knownSpellsMap: .constant([:]),
+                    lockedSpellsMap: .constant([:]),
                     pinIndex: 0,
                     canEdit: false,
                     name: .other,

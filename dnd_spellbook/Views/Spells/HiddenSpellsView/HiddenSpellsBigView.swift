@@ -31,12 +31,14 @@ struct HiddenSpellsBigView: View {
                 spacingX: 16,
                 spacingY: 16
             ) {
-                SpellListView(
+                SpellListBigView(
                     spellsByLevel: $hidden,
                     character: $character,
                     preparedSpellsMap: .constant([:]),
-                    knownSpellsMap: .constant([:]),
+                    knownSpellsMap: .constant([:]), 
+                    lockedSpellsMap: .constant([:]),
                     pinIndex: 0,
+                    columnAmount: columnAmount,
                     canEdit: false,
                     name: .other,
                     onHide: { _ in },

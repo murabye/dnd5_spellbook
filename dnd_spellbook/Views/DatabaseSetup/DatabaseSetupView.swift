@@ -203,7 +203,7 @@ struct DatabaseSetupView: View {
 
 struct SpellPreset: Codable {
 
-    let id: String
+    let id: UInt
     let name: String
     let engName: String?
     let labelling: String
@@ -239,7 +239,10 @@ struct SpellPreset: Codable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
+        guard let id = UInt(try container.decode(String.self, forKey: .id)) else {
+            throw NSError(domain: "dnd_spellbook", code: 404)
+        }
+        self.id = id
         self.name = try container.decode(String.self, forKey: .name)
         self.engName = try container.decodeIfPresent(String.self, forKey: .engName)
         self.labelling = try container.decode(String.self, forKey: .labelling)

@@ -15,9 +15,10 @@ struct SearchBigView: View {
     @Binding var character: CharacterModel?
 
     @Environment(\.modelContext) var modelContext
-    @Binding var preparedSpellsMap: [String: Bool]
-    @Binding var knownSpellsMap: [String: Bool]
-
+    @Binding var preparedSpellsMap: [UInt: Bool]
+    @Binding var knownSpellsMap: [UInt: Bool]
+    @Binding var lockedSpellsMap: [UInt: Bool]
+    
     @State private var searchText = ""
     @State private var isLoading = false
     
@@ -33,12 +34,14 @@ struct SearchBigView: View {
                 spacingX: 16,
                 spacingY: 16
             ) {
-                SpellListView(
+                SpellListBigView(
                     spellsByLevel: $spells,
                     character: $character,
                     preparedSpellsMap: $preparedSpellsMap,
                     knownSpellsMap: $knownSpellsMap,
+                    lockedSpellsMap: $lockedSpellsMap,
                     pinIndex: 0,
+                    columnAmount: columnAmount,
                     canEdit: false,
                     name: .search,
                     onHide: { _ in },

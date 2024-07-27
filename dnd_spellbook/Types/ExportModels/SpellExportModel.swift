@@ -9,7 +9,10 @@ import Foundation
 
 class CustomSpellExportModel: Codable {
 
-    let id: String
+    let isLockedRelationship: Bool
+    let relationType: SpellRelationType
+    
+    let id: UInt
     let name: String
     let engName: String?
     let labelling: String
@@ -26,7 +29,7 @@ class CustomSpellExportModel: Codable {
     let customTags: [CustomTagExportModel]
     let componentsModel: [ComponentsExportModel]
     
-    init(spell: Spell, allTags: [Tag]) {
+    init(spell: Spell, allTags: [Tag], isLockedRelationship: Bool, relationType: SpellRelationType) {
         self.id = spell.id
         self.engName = spell.engName
         self.name = spell.name
@@ -49,5 +52,7 @@ class CustomSpellExportModel: Codable {
             .map { CustomTagExportModel(from: $0) }
         self.componentsModel = spell.componentsModel
             .map { ComponentsExportModel(components: $0) }
+        self.isLockedRelationship = isLockedRelationship
+        self.relationType = relationType
     }
 }

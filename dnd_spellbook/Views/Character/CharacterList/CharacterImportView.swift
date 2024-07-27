@@ -92,12 +92,6 @@ struct CharacterImportView: View {
             imageUrl = nil
         }
         
-        let initialKnown = model.knownSpells.compactMap { spell(id: $0) }
-        let customKnown = model.customKnownSpells.compactMap { spell(model: $0) }
-        
-        let initialPrepared = model.preparedSpells.compactMap { spell(id: $0) }
-        let customPrepared = model.customPreparedSpells.compactMap { spell(model: $0) }
-
         let newId = UUID().uuidString
         let character = CharacterModel(
             id: newId,
@@ -105,23 +99,53 @@ struct CharacterImportView: View {
             characterClass: model.characterClass,
             name: model.name, 
             levels: model.levels, 
-            usedLevels: model.usedLevels,
-            knownSpells: initialKnown + customKnown,
-            preparedSpells: initialPrepared + customPrepared
+            usedLevels: model.usedLevels
         )
         modelContext.insert(character)
-        UserDefaults.standard.selectedId = newId
         try? modelContext.save()
+                
+        model
+            .relationships
+            .compactMap { exportModel -> CharacterToSpell? in
+                let id = exportModel.spellId
+                let descriptor = FetchDescriptor<Spell>(predicate: #Predicate { spell in spell.id == id })
+                guard let spell = (try? modelContext.fetch(descriptor))?.first else { return nil }
+                return CharacterToSpell(
+                    characterId: newId,
+                    spellId: exportModel.spellId, 
+                    spellLevel: spell.level,
+                    isLocked: exportModel.isLocked,
+                    isSpellCustom: false,
+                    typeOfRelation: exportModel.typeOfRelation,
+                    spell: spell
+                )
+            }
+            .forEach { modelContext.insert($0) }
+
+        try? modelContext.save()
+        
+        model
+            .customSpellsRelationships
+            .forEach { exportModel in
+                let spell = spell(model: exportModel)
+                modelContext.insert(spell)
+                
+                let relationship = CharacterToSpell(
+                    characterId: newId,
+                    spellId: exportModel.id, 
+                    spellLevel: spell.level,
+                    isLocked: exportModel.isLockedRelationship, 
+                    isSpellCustom: true,
+                    typeOfRelation: exportModel.relationType,
+                    spell: spell
+                )
+                modelContext.insert(relationship)
+            }
+        try? modelContext.save()
+
+        UserDefaults.standard.selectedId = newId
         CharacterUpdateService.send()
         dismiss()
-    }
-    
-    func spell(id: String) -> Spell? {
-        var fetchDescriptor = FetchDescriptor<Spell>(predicate: #Predicate { spell in
-            spell.id == id
-        })
-        fetchDescriptor.fetchLimit = 1
-        return try? modelContext.fetch(fetchDescriptor).first
     }
     
     func spell(model: CustomSpellExportModel) -> Spell {

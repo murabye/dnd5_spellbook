@@ -30,7 +30,6 @@ struct SectionIndexTitleView: View {
     
     let name: SectionsName
     @Binding var isHidden: Bool
-    @Binding var scrollOffset: CGPoint
 
     var body: some View {
         if name.canHide || name.canExpand {

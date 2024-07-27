@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct CharacterList: View {
+    
     @Query(sort: \CharacterModel.name) var characters: [CharacterModel]
     @Query var tags: [Tag]
     @State private var showingNew = false
@@ -115,8 +116,6 @@ struct CharacterList: View {
                             initialImageUrl: character.imageUrl,
                             initialCharacterName: character.name,
                             selectedClass: character.characterClass ?? .nothing,
-                            initialPrepared: character.preparedSpells,
-                            initialKnown: character.knownSpells,
                             characterName: character.name,
                             maxLevel: character.levels.maxLevel,
                             levels: character.levels, 
@@ -135,8 +134,6 @@ struct CharacterList: View {
                             initialImageUrl: character.imageUrl,
                             initialCharacterName: character.name,
                             selectedClass: character.characterClass ?? .nothing,
-                            initialPrepared: character.preparedSpells,
-                            initialKnown: character.knownSpells,
                             characterName: character.name,
                             maxLevel: character.levels.maxLevel,
                             levels: character.levels,
@@ -174,8 +171,17 @@ struct CharacterList: View {
     
     func export(_ character: CharacterModel?) {
         guard let character else { return }
+        let characterId = character.id
         
-        let exportModel = CharacterExportModel(from: character, allTags: tags)
+        let relationships = FetchDescriptor<CharacterToSpell>(predicate: #Predicate { rel in rel.characterId == characterId })
+        let customSpells = FetchDescriptor<Spell>(predicate: #Predicate { spell in spell.isCustom })
+        let exportModel = CharacterExportModel(
+            from: character,
+            allTags: tags,
+            allCustomSpells: (try? modelContext.fetch(customSpells)) ?? [],
+            characterRelationships: (try? modelContext.fetch(relationships)) ?? []
+        )
+        
         let encoder = JSONEncoder()
         guard let data = try? encoder.encode(exportModel) else { return }
         let string = String(decoding: data, as: UTF8.self)

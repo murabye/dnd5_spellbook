@@ -159,6 +159,21 @@ extension Filter {
             allTags: allTags
         ) }
     }
+    
+    func satisfying(
+        spells: [CharacterToSpell],
+        allMaterials: [MaterialModel],
+        allTags: [Tag]
+    ) -> [CharacterToSpell] {
+        spells.filter { relation in
+            guard let spell = relation.spell else { return false }
+            return isSatisfy(
+                spell: spell,
+                allMaterials: allMaterials,
+                allTags: allTags
+            )
+        }
+    }
 }
 
 

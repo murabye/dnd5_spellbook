@@ -103,8 +103,11 @@ struct SpellCreationView: View {
     }
 
     func saveUpdate() {
+        let descriptor = FetchDescriptor<Spell>()
+
         guard !name.isEmpty,
-              !description.isEmpty else {
+              !description.isEmpty,
+              let index = try? modelContext.fetchCount(descriptor) else {
             return
         }
 
@@ -127,8 +130,8 @@ struct SpellCreationView: View {
         }
         
         let spell = Spell(
-            id: UUID().uuidString,
-            name: name, 
+            id: UInt(index),
+            name: name,
             engName: nil,
             labelling: "",
             concentration: concentration,

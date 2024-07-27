@@ -15,7 +15,8 @@ struct MainView: View {
     
     @State var isSpellCreationOpened: Bool = false
     @State var isSpellLevelRule: Bool = false
-
+    @State var lockedSpellsMap: [UInt: Bool]
+    
     // filters
     @Query(sort: \Filter.name) var filters: [Filter] = []
     @AppStorage(UserDefaults.Constants.selectedFilterName) var selectedFilterName: String?
@@ -30,17 +31,19 @@ struct MainView: View {
     @Query var materials: [MaterialModel]
     @Query var tags: [Tag]
     
-    @State var scrollOffset: CGPoint = .zero
-
     // spells
-    @State var preparedSpellsMap: [String: Bool] = [:]
-    @State var knownSpellsMap: [String: Bool] = [:] 
+    @State var relatedBatchIsEmpty: Bool = false
+    @State var fetchedRelated = [CharacterToSpell]()
+
+    @State var preparedSpellsMap: [UInt: Bool] = [:]
     @State var characterPrepared = [Int: [Spell]]()
+    @State var knownSpellsMap: [UInt: Bool] = [:]
     @State var characterKnown = [Int: [Spell]]()
+
+    @State var otherBatchIsEmpty: Bool = false
     @State var other = [Int: [Spell]]()
     @State var fetchedOther: [Spell] = []
 
-    @State var otherBatchIsEmpty: Bool = false
     @State var isLoading: Bool = false
     @State var isOtherHidden: Bool = true
     
@@ -58,7 +61,7 @@ struct MainView: View {
             ScrollViewReader { scrollProxy in
                 ZStack {
                     ScrollView {
-                        SectionIndexTitleView(name: .prepared, isHidden: .constant(false), scrollOffset: $scrollOffset)
+                        SectionIndexTitleView(name: .prepared, isHidden: .constant(false))
                         if !characterPrepared.isEmpty {
                             LazyVStack {
                                 SpellListView(
@@ -66,6 +69,7 @@ struct MainView: View {
                                     character: $character,
                                     preparedSpellsMap: .constant([:]),
                                     knownSpellsMap: .constant([:]),
+                                    lockedSpellsMap: $lockedSpellsMap,
                                     pinIndex: 1,
                                     name: .prepared,
                                     onHide: { spell in onHide(spell) },
@@ -80,7 +84,7 @@ struct MainView: View {
                             .padding()
                         }
                         
-                        SectionIndexTitleView(name: .known, isHidden: .constant(false), scrollOffset: $scrollOffset)
+                        SectionIndexTitleView(name: .known, isHidden: .constant(false))
                         if !characterKnown.isEmpty {
                             LazyVStack {
                                 SpellListView(
@@ -88,6 +92,7 @@ struct MainView: View {
                                     character: $character,
                                     preparedSpellsMap: .constant([:]),
                                     knownSpellsMap: .constant([:]),
+                                    lockedSpellsMap: $lockedSpellsMap,
                                     pinIndex: 1,
                                     name: .known,
                                     onHide: { spell in onHide(spell) },
@@ -103,11 +108,11 @@ struct MainView: View {
                         }
                         
                         NavigationLink(value: NavWay.hiddenSpells) {
-                            SectionIndexTitleView(name: .hidden, isHidden: .constant(false), scrollOffset: $scrollOffset)
+                            SectionIndexTitleView(name: .hidden, isHidden: .constant(false))
                         }
                         .padding(.bottom)
                         
-                        SectionIndexTitleView(name: .other, isHidden: $isOtherHidden, scrollOffset: $scrollOffset)
+                        SectionIndexTitleView(name: .other, isHidden: $isOtherHidden)
                         Group {
                             LazyVStack {
                                 if !isOtherHidden {
@@ -116,6 +121,7 @@ struct MainView: View {
                                         character: $character,
                                         preparedSpellsMap: .constant([:]),
                                         knownSpellsMap: .constant([:]),
+                                        lockedSpellsMap: $lockedSpellsMap,
                                         pinIndex: 1,
                                         name: .other,
                                         onHide: { spell in onHide(spell) },
@@ -222,7 +228,8 @@ struct MainView: View {
                     SearchView(
                         character: $character,
                         preparedSpellsMap: $preparedSpellsMap,
-                        knownSpellsMap: $knownSpellsMap
+                        knownSpellsMap: $knownSpellsMap,
+                        lockedSpellsMap: $lockedSpellsMap
                     )
                 case .hiddenSpells:
                     HiddenSpellsView(
@@ -243,6 +250,7 @@ struct MainView: View {
             }
             .onChange(of: selectedCharacterId) { _ in
                 selectedFilterName = ""
+                lockedSpellsMap = CharacterToSpell.lockedSpellMap(modelContext: modelContext)
             }
             .onChange(of: selectedFilter) { old, new in
                 guard old != new else { return }
@@ -291,97 +299,74 @@ struct MainView: View {
         preparedSpellsMap = [:]
         otherBatchIsEmpty = false
         isLoading = true
-        loadPrepared {
-            loadKnown {
-                loadOther()
-                isLoading = false
-            }
+        loadRelated {
+            loadOther()
+            isLoading = false
         }
     }
     
-    func loadPrepared(onFinish: @escaping () -> ()) {
-        guard let character else {
-            characterPrepared = [:]
-            preparedSpellsMap = [:]
-            onFinish()
-            return
-        }
-        
-        Task.detached(priority: .high) {
-            let allPreparedSpells = character.preparedSpells
-            guard let selectedFilter else {
-                characterPrepared = Dictionary(grouping: allPreparedSpells, by: \.level)
-                allPreparedSpells
-                    .map(\.id)
-                    .forEach { id in
-                        preparedSpellsMap[id] = true
-                    }
-                Task.detached { @MainActor in
-                    onFinish()
-                }
-                return
-            }
-            
-            let result = selectedFilter.satisfying(
-                spells: allPreparedSpells.sorted(by: { $0.level < $1.level }),
-                allMaterials: materials,
-                allTags: tags
-            )
-            characterPrepared = Dictionary(grouping: result, by: \.level)
-            allPreparedSpells
-                .map(\.id)
-                .forEach { id in
-                    preparedSpellsMap[id] = true
-                }
-            Task.detached { @MainActor in
-                onFinish()
-            }
-        }
-    }
-    
-    func loadKnown(onFinish: @escaping () -> ()) {
-        guard let character else {
+    func loadRelated(onFinish: @escaping () -> ()) {
+        guard let selectedCharacterId else {
             characterKnown = [:]
             knownSpellsMap = [:]
+            preparedSpellsMap = [:]
+            characterPrepared = [:]
+            relatedBatchIsEmpty = true
+            fetchedRelated = []
             onFinish()
             return
         }
         
-        Task.detached(priority: .high) {
-            let allKnownSpells = character.knownSpells
-            guard let selectedFilter else {
-                characterKnown =  Dictionary(grouping: allKnownSpells, by: \.level)
-                allKnownSpells
-                    .map(\.id)
-                    .forEach { id in
-                        knownSpellsMap[id] = true
-                    }
-                Task.detached { @MainActor in
-                    onFinish()
-                }
-                return
-            }
+        isLoading = true
+        relatedBatchIsEmpty = false
+        var fetchDescriptor = FetchDescriptor<CharacterToSpell>(
+            predicate: #Predicate { spell in
+                spell.characterId == selectedCharacterId
+            },
+            sortBy: [SortDescriptor(\.spellLevel)]
+        )
+        guard let totalAmount = try? modelContext.fetchCount(fetchDescriptor) else {
+            relatedBatchIsEmpty = true
+            isLoading = false
+            onFinish()
+            return
+        }
+        
+        fetchDescriptor.fetchLimit = 30
+        fetchDescriptor.fetchOffset = min(totalAmount, fetchedRelated.count)
+        
+        if totalAmount > fetchedRelated.count {
+            let newData = ((try? modelContext.fetch(fetchDescriptor)) ?? [])
             
-            let result = selectedFilter.satisfying(
-                spells: allKnownSpells,
+            let filtered = selectedFilter?.satisfying(
+                spells: newData,
                 allMaterials: materials,
                 allTags: tags
-            )
-            characterKnown = Dictionary(grouping: result, by: \.level)
-            allKnownSpells
-                .map(\.id)
-                .forEach { id in
-                    knownSpellsMap[id] = true
+            ) ?? newData
+                        
+            fetchedRelated.append(contentsOf: newData)
+            for relation in filtered {
+                switch relation.typeOfRelation{
+                case .known:
+                    knownSpellsMap[relation.spellId] = true
+                    characterKnown.appendOrSet(relation.spell)
+                case .prepared:
+                    preparedSpellsMap[relation.spellId] = true
+                    characterPrepared.appendOrSet(relation.spell)
                 }
-            Task.detached { @MainActor in
-                onFinish()
             }
+
+            relatedBatchIsEmpty = filtered.isEmpty
+            isLoading = false
+            onFinish()
+        } else {
+            relatedBatchIsEmpty = false
+            isLoading = false
+            onFinish()
         }
     }
     
-    @State var counter = 0
     func loadOther() {
-        counter +=  1
         guard !isOtherHidden else {
             return
         }
@@ -456,7 +441,7 @@ struct MainView: View {
                     characterKnown[spell.level]?.remove(at: characterKnownIndex)
                     knownSpellsMap[spell.id] = false
                 }
-                if otherContains { other.appendOrSet(spell) }
+                if otherContains { other.appendOrSetIfNotLast(spell) }
                 isLoading = false
             }
         }
@@ -499,7 +484,7 @@ struct MainView: View {
             Task.detached { @MainActor in
                 if let otherIndex { other[spell.level]?.remove(at: otherIndex) }
                 if !characterKnownContains {
-                    characterKnown.appendOrSet(spell)
+                    characterKnown.appendOrSetIfNotLast(spell)
                     knownSpellsMap[spell.id] = true
                 }
                 isLoading = false
@@ -513,17 +498,11 @@ struct MainView: View {
         
         Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
-            let index = characterKnown[spell.level]?.firstIndex(of: spell)
             let contains = characterPrepared[spell.level]?.contains(spell) == true
             
             Task.detached { @MainActor in
-                if let index {
-                    characterKnown[spell.level]?.remove(at: index)
-                    knownSpellsMap[spell.id] = false
-                }
-                
                 if !contains {
-                    characterPrepared.appendOrSet(spell)
+                    characterPrepared.appendOrSetIfNotLast(spell)
                     preparedSpellsMap[spell.id] = true
                 }
                 isLoading = false
@@ -537,17 +516,11 @@ struct MainView: View {
         Task.detached(priority: .high) {
             try? await Task.sleep(nanoseconds: 500000000)
             let index = characterPrepared[spell.level]?.firstIndex(of: spell)
-            let contains = characterKnown[spell.level]?.contains(spell) == true
             
             Task.detached { @MainActor in
                 if let index {
                     characterPrepared[spell.level]?.remove(at: index)
                     preparedSpellsMap[spell.id] = false
-                }
-                
-                if !contains {
-                    characterKnown.appendOrSet(spell)
-                    knownSpellsMap[spell.id] = true
                 }
                 isLoading = false
             }

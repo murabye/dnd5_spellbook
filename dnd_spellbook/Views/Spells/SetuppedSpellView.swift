@@ -14,9 +14,14 @@ struct SetuppedSpellView: View {
     @Environment(\.modelContext) var modelContext
     @Binding var character: CharacterModel?
 
-    @Binding var preparedSpellsMap: [String: Bool]
-    @Binding var knownSpellsMap: [String: Bool]
-
+    @Binding var preparedSpellsMap: [UInt: Bool]
+    @Binding var knownSpellsMap: [UInt: Bool]
+    @Binding var lockedSpellsMap: [UInt: Bool]
+    
+    private var isSpellLocked: Bool {
+        lockedSpellsMap[spell.id] ?? false
+    }
+    
     var canEdit: Bool = true
     let name: SectionsName
     var onHide: (Spell) -> Void
@@ -30,6 +35,7 @@ struct SetuppedSpellView: View {
     var body: some View {
         SpellView(
             spell: spell,
+            isLockedRelationship: isSpellLocked,
             collapsed: true
         )
         .padding(.horizontal)
@@ -39,16 +45,22 @@ struct SetuppedSpellView: View {
         .contextMenu {
             switch name {
             case .prepared:
-                if character != nil {
+                if character != nil, !isSpellLocked {
                     Button("Отложить", action: { [weak spell] in unprepare(spell: spell) })
                     Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
+                    Button("Закрепить", action: { [weak spell] in lock(spell: spell) })
                     Divider()
+                } else if isSpellLocked {
+                    Button("Открепить", action: { [weak spell] in unlock(spell: spell) })
                 }
             case .known:
-                if character != nil {
+                if character != nil, !isSpellLocked {
                     Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
                     Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
+                    Button("Закрепить", action: { [weak spell] in lock(spell: spell) })
                     Divider()
+                } else if isSpellLocked {
+                    Button("Открепить", action: { [weak spell] in unlock(spell: spell) })
                 }
             case .other:
                 if character != nil {
@@ -68,14 +80,20 @@ struct SetuppedSpellView: View {
                 if character != nil {
                     if preparedSpellsMap[spell.id] != true {
                         Button("Подготовить", action: { [weak spell] in prepare(spell: spell) })
-                    } else {
+                    } else if !isSpellLocked {
                         Button("Отложить", action: { [weak spell] in unprepare(spell: spell) })
+                        Button("Закрепить", action: { [weak spell] in lock(spell: spell) })
+                    } else {
+                        Button("Открепить", action: { [weak spell] in unlock(spell: spell) })
                     }
                     
                     if knownSpellsMap[spell.id] != true {
                         Button("Выучить", action: { [weak spell] in know(spell: spell) })
-                    } else {
+                    } else if !isSpellLocked {
                         Button("Забыть", action: { [weak spell] in unknow(spell: spell) })
+                        Button("Закрепить", action: { [weak spell] in lock(spell: spell) })
+                    } else {
+                        Button("Открепить", action: { [weak spell] in unlock(spell: spell) })
                     }
                     Divider()
                 }
@@ -104,35 +122,54 @@ struct SetuppedSpellView: View {
               let selectedCharacter = character else {
             return
         }
+        let spellId = spell.id
+        let selectedCharacterId = selectedCharacter.id
 
-        if let index = selectedCharacter.knownSpells.firstIndex(of: spell) {
-            selectedCharacter.knownSpells.remove(at: index)
+        var fetchDescriptor = FetchDescriptor<CharacterToSpell>(predicate: #Predicate { rel in
+            rel.spellId == spellId && rel.characterId == selectedCharacterId
+        })
+        fetchDescriptor.fetchLimit = 1
+
+        if let relation = (try? modelContext.fetch(fetchDescriptor))?.first,
+           !relation.isLocked {
+            relation.typeOfRelation = .prepared
+            try? modelContext.save()
+            onPrepare(spell)
             onUnknow(spell)
-        }
-        
-        if !selectedCharacter.preparedSpells.contains(spell) {
-            selectedCharacter.preparedSpells.append(spell)
-            spell.isHidden = false
+        } else {
+            let relation = CharacterToSpell(
+                characterId: selectedCharacter.id,
+                spellId: spell.id,
+                spellLevel: spell.level,
+                isLocked: false,
+                isSpellCustom: spell.isCustom,
+                typeOfRelation: .known,
+                spell: spell
+            )
+            modelContext.insert(relation)
+            try? modelContext.save()
             onPrepare(spell)
         }
-        
-        try? modelContext.save()
-        CharacterUpdateService.send()
     }
     
     func unprepare(spell: Spell?) {
-        guard let spell,
-              let selectedCharacter = character else {
+        guard let spellId = spell?.id,
+              let spell,
+              let selectedCharacterId = character?.id else {
             return
         }
         
-        if let index = selectedCharacter.preparedSpells.firstIndex(of: spell) {
-            selectedCharacter.preparedSpells.remove(at: index)
-            onUnprepare(spell)
-            selectedCharacter.knownSpells.append(spell)
-            onKnow(spell)
+        var fetchDescriptor = FetchDescriptor<CharacterToSpell>(predicate: #Predicate { rel in
+            rel.spellId == spellId && rel.characterId == selectedCharacterId
+        })
+        fetchDescriptor.fetchLimit = 1
+        
+        if let relation = (try? modelContext.fetch(fetchDescriptor))?.first,
+           !relation.isLocked {
+            relation.typeOfRelation = .known
             try? modelContext.save()
-            CharacterUpdateService.send()
+            onUnprepare(spell)
+            onKnow(spell)
         }
     }
 
@@ -141,13 +178,27 @@ struct SetuppedSpellView: View {
               let selectedCharacter = character else {
             return
         }
+        let spellId = spell.id
+        let selectedCharacterId = selectedCharacter.id
+        
+        var fetchDescriptor = FetchDescriptor<CharacterToSpell>(predicate: #Predicate { rel in
+            rel.spellId == spellId && rel.characterId == selectedCharacterId
+        })
+        fetchDescriptor.fetchLimit = 1
 
-        if !selectedCharacter.knownSpells.contains(spell) {
-            selectedCharacter.knownSpells.append(spell)
-            spell.isHidden = false
-            onKnow(spell)
+        if ((try? modelContext.fetchCount(fetchDescriptor)) ?? 0) == 0 {
+            let relation = CharacterToSpell(
+                characterId: selectedCharacter.id,
+                spellId: spell.id,
+                spellLevel: spell.level,
+                isLocked: false, 
+                isSpellCustom: spell.isCustom,
+                typeOfRelation: .known,
+                spell: spell
+            )
+            modelContext.insert(relation)
             try? modelContext.save()
-            CharacterUpdateService.send()
+            onKnow(spell)
         }
     }
     
@@ -156,19 +207,20 @@ struct SetuppedSpellView: View {
               let selectedCharacter = character else {
             return
         }
+        let spellId = spell.id
+        let selectedCharacterId = selectedCharacter.id
 
-        if let index = selectedCharacter.knownSpells.firstIndex(of: spell) {
-            selectedCharacter.knownSpells.remove(at: index)
+        var fetchDescriptor = FetchDescriptor<CharacterToSpell>(predicate: #Predicate { rel in
+            rel.spellId == spellId && rel.characterId == selectedCharacterId
+        })
+        fetchDescriptor.fetchLimit = 1
+        
+        if let relation = (try? modelContext.fetch(fetchDescriptor))?.first,
+           !relation.isLocked {
+            modelContext.delete(relation)
+            try? modelContext.save()
             onUnknow(spell)
         }
-
-        if let index = selectedCharacter.preparedSpells.firstIndex(of: spell) {
-            selectedCharacter.preparedSpells.remove(at: index)
-            onUnprepare(spell)
-        }
-
-        try? modelContext.save()
-        CharacterUpdateService.send()
     }
         
     func hide(spell: Spell?) {
@@ -199,5 +251,49 @@ struct SetuppedSpellView: View {
         onRemove(spell)
         modelContext.delete(spell)
         try? modelContext.save()
+    }
+    
+    func lock(spell: Spell?) {
+        guard let spell, 
+            let selectedCharacter = character,
+            !isSpellLocked else {
+                return
+        }
+        
+        lockedSpellsMap[spell.id] = true
+        let spellId = spell.id
+        let selectedCharacterId = selectedCharacter.id
+
+        var fetchDescriptor = FetchDescriptor<CharacterToSpell>(predicate: #Predicate { rel in
+            rel.spellId == spellId && rel.characterId == selectedCharacterId
+        })
+        fetchDescriptor.fetchLimit = 1
+        
+        if let relation = (try? modelContext.fetch(fetchDescriptor))?.first {
+            relation.isLocked = true
+            try? modelContext.save()
+        }
+    }
+    
+    func unlock(spell: Spell?) {
+        guard let spell,
+              let selectedCharacter = character,
+                isSpellLocked else {
+            return
+        }
+        
+        lockedSpellsMap[spell.id] = false
+        let spellId = spell.id
+        let selectedCharacterId = selectedCharacter.id
+
+        var fetchDescriptor = FetchDescriptor<CharacterToSpell>(predicate: #Predicate { rel in
+            rel.spellId == spellId && rel.characterId == selectedCharacterId
+        })
+        fetchDescriptor.fetchLimit = 1
+        
+        if let relation = (try? modelContext.fetch(fetchDescriptor))?.first {
+            relation.isLocked = false
+            try? modelContext.save()
+        }
     }
 }

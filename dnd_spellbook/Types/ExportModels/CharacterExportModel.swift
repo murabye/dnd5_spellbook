@@ -15,12 +15,15 @@ class CharacterExportModel: Codable {
     let levels: LevelList
     let usedLevels: LevelList
     let name: String
-    let knownSpells: [String]
-    let preparedSpells: [String]
-    let customKnownSpells: [CustomSpellExportModel]
-    let customPreparedSpells: [CustomSpellExportModel]
+    let relationships: [CharacterToSpellExportModel]
+    let customSpellsRelationships: [CustomSpellExportModel]
     
-    init(from: CharacterModel, allTags: [Tag]) {
+    init(
+        from: CharacterModel,
+        allTags: [Tag],
+        allCustomSpells: [Spell],
+        characterRelationships: [CharacterToSpell]
+    ) {
         if let url = from.imageUrl,
            let imageData = try? Data(contentsOf: url),
            let image = UIImage(data: imageData) {
@@ -32,17 +35,27 @@ class CharacterExportModel: Codable {
         self.usedLevels = from.usedLevels
         self.characterClass = from.characterClass
         self.name = from.name
-        self.knownSpells = from.knownSpells
-            .filter { !$0.isCustom }
-            .map { $0.id }
-        self.preparedSpells = from.preparedSpells
-            .filter { !$0.isCustom }
-            .map { $0.id }
-        self.customKnownSpells = from.knownSpells
-            .filter { $0.isCustom }
-            .map { CustomSpellExportModel(spell: $0, allTags: allTags) }
-        self.customPreparedSpells = from.preparedSpells
-            .filter { $0.isCustom }
-            .map { CustomSpellExportModel(spell: $0, allTags: allTags) }
+        
+        self.relationships = characterRelationships
+            .filter { !$0.isSpellCustom }
+            .map { relationship in
+                CharacterToSpellExportModel(
+                    spellId: relationship.spellId,
+                    isLocked: relationship.isLocked,
+                    typeOfRelation: relationship.typeOfRelation
+                )
+            }
+        
+        self.customSpellsRelationships =  characterRelationships
+            .filter { $0.isSpellCustom }
+            .compactMap { relationship in
+                guard let spell = allCustomSpells.first(where: { $0.id == relationship.spellId }) else { return nil }
+                return CustomSpellExportModel(
+                    spell: spell,
+                    allTags: allTags,
+                    isLockedRelationship: relationship.isLocked,
+                    relationType: relationship.typeOfRelation
+                )
+            }
     }
 }

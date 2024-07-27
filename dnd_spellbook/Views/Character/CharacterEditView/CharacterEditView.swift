@@ -23,8 +23,6 @@ public struct CharacterEditView: View {
     let initialImageUrl: URL?
     let initialCharacterName: String
     let selectedClass: CharacterClass
-    let initialPrepared: [Spell]
-    let initialKnown: [Spell]
     
     @State var imageWasUpdated: Bool = false
     @State var selectedImage: UIImage? = nil
@@ -150,9 +148,7 @@ public struct CharacterEditView: View {
             characterClass: selectedClass,
             name: characterName,
             levels: levels, 
-            usedLevels: initialUsedLevels,
-            knownSpells: initialKnown,
-            preparedSpells: initialPrepared
+            usedLevels: initialUsedLevels
         )
         modelContext.insert(character)
         

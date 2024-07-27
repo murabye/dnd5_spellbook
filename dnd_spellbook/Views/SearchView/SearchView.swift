@@ -13,8 +13,9 @@ struct SearchView: View {
     
     @Binding var character: CharacterModel?
 
-    @Binding var preparedSpellsMap: [String: Bool]
-    @Binding var knownSpellsMap: [String: Bool]
+    @Binding var preparedSpellsMap: [UInt: Bool]
+    @Binding var knownSpellsMap: [UInt: Bool]
+    @Binding var lockedSpellsMap: [UInt: Bool]
     
     @Environment(\.modelContext) var modelContext
     
@@ -34,6 +35,7 @@ struct SearchView: View {
                     character: $character,
                     preparedSpellsMap: $preparedSpellsMap,
                     knownSpellsMap: $knownSpellsMap,
+                    lockedSpellsMap: $lockedSpellsMap,
                     pinIndex: 0,
                     canEdit: false,
                     name: .search,

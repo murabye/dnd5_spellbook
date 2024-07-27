@@ -49,7 +49,7 @@ struct SpellListContentModel: Hashable, Identifiable {
         self.type = type
         switch type {
         case .spell(let spell):
-            self.id = spell.id
+            self.id = String(spell.id)
         case .level(let int):
             self.id = "\(int)"
         case .category(let SectionsName):

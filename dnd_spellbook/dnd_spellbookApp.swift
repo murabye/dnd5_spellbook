@@ -5,13 +5,8 @@
 //  Created by Влада Кузнецова on 16.12.2023.
 //
 
-// ПЛАВАЮЩЕЕ
-// почему-то иногда криво обрезка
-
-// мультикласс (после кругов)
-// оптимизация прогрузки для друидов :[
-// для оптимизации вынести таблицы с known spell и prepared spells в отдельные
-// также помечать там эти связи как особые (чтобы можно было не давать забыть/разучить заклинания от класса)
+// TODO: ПЛАВАЮЩЕЕ почему-то иногда криво обрезка
+// TODO: мультикласс (после кругов)
 
 import SwiftData
 import SwiftUI
@@ -24,7 +19,7 @@ struct dnd_spellbookApp: App {
     init() {
         do {
             modelContainer = try ModelContainer(
-                for: Filter.self, CharacterModel.self, Tag.self, Spell.self, MaterialModel.self,
+                for: Filter.self, CharacterModel.self, Tag.self, Spell.self, MaterialModel.self, CharacterToSpell.self,
                 configurations: ModelConfiguration(isStoredInMemoryOnly: false)
             )
         } catch {

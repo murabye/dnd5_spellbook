@@ -11,7 +11,7 @@ import SwiftData
 @Model
 class Spell: HaveName {
     
-    @Attribute(.unique) var id: String
+    @Attribute(.unique) var id: UInt
     var name: String
     var engName: String?
     var labelling: String
@@ -71,7 +71,7 @@ class Spell: HaveName {
     }
     
     init(
-        id: String,
+        id: UInt,
         name: String,
         engName: String?,
         labelling: String,

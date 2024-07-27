@@ -20,7 +20,7 @@ struct DatabaseSetupIfNeededView: View {
         return fetchDescriptor
     }()
     
-    var needLoad: Bool {
+    var dataLoaded: Bool {
         if let res = try? modelContext.fetchCount(descr), res > 0 {
             return true
         } else {
@@ -30,7 +30,7 @@ struct DatabaseSetupIfNeededView: View {
 
     var body: some View {
         Group {
-            if needLoad {
+            if dataLoaded {
                 mainView
             } else if stage != .done {
                 DatabaseSetupView(stage: $stage)
@@ -44,10 +44,16 @@ struct DatabaseSetupIfNeededView: View {
     var mainView: some View {
         Group {
             if idiom == .phone {
-                MainView().background(Color(uiColor: .systemGroupedBackground))
+                MainView(
+                    lockedSpellsMap: CharacterToSpell.lockedSpellMap(modelContext: modelContext)
+                )
+                .background(Color(uiColor: .systemGroupedBackground))
             } else {
                 ColumnReader { columnAmount, safeArea in
-                    MainBigView(columnAmount: columnAmount)
+                    MainBigView(
+                        columnAmount: columnAmount,
+                        lockedSpellsMap: CharacterToSpell.lockedSpellMap(modelContext: modelContext)
+                    )
                 }
                 .background(Color(uiColor: .systemGroupedBackground))
             }

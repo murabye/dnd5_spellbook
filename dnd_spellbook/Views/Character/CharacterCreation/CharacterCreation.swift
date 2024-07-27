@@ -171,6 +171,7 @@ struct CharacterCreationView: View {
             ) { spell in
                 SpellView(
                     spell: spell,
+                    isLockedRelationship: false,
                     collapsed: true
                 )
                 .padding(.horizontal)
@@ -191,7 +192,9 @@ struct CharacterCreationView: View {
     }
         
     var applyButton: some View {
-        Button("Сохранить", action: { addCharacter(); dismiss() })
+        Button("Сохранить") {
+            addCharacter { dismiss() }
+        }
             .disabled(characterName.isEmpty)
             .padding(.horizontal, 12)
             .padding(.vertical, 4)
@@ -203,15 +206,15 @@ struct CharacterCreationView: View {
             .padding(.vertical, 4)
     }
     
-    func addCharacter() {
+    func addCharacter(onFinish: @escaping () -> Void) {
         if (selectedClass == .cleric || selectedClass == .druid), !allCleaned {
-            addClericOrDruid()
+            addClericOrDruid(onFinish: onFinish)
         } else {
-            addSimpleCharacter()
+            addSimpleCharacter(onFinish: onFinish)
         }
     }
     
-    func addSimpleCharacter() {
+    func addSimpleCharacter(onFinish: () -> Void) {
         isLoading = true
         let imageUrl = FileManager.default.save(image: selectedImage)
         let newCharacterId = UUID().uuidString
@@ -222,9 +225,7 @@ struct CharacterCreationView: View {
             characterClass: selectedClass,
             name: characterName,
             levels: levels,
-            usedLevels: [:],
-            knownSpells: [],
-            preparedSpells: []
+            usedLevels: [:]
         )
         modelContext.insert(character)
         
@@ -236,45 +237,58 @@ struct CharacterCreationView: View {
         try? modelContext.save()
         CharacterUpdateService.send()
         isLoading = false
+        onFinish()
     }
     
-    func addClericOrDruid() {
+    func addClericOrDruid(onFinish: @escaping () -> Void) {
         isLoading = true
         
         let imageUrl = FileManager.default.save(image: selectedImage)
-        let fetchDescriptor = FetchDescriptor<Spell>(sortBy: [SortDescriptor(\.id)])
-        let allSpells = (try? modelContext.fetch(fetchDescriptor)) ?? []
         
         Task.detached {
-            let filter = allSpells.filter { $0.classes.contains(selectedClass) }
+            let fetchDescriptor = FetchDescriptor<Spell>(predicate: #Predicate { spell in
+                spell.classes.contains(selectedClass)
+            }, sortBy: [SortDescriptor(\.id)])
+            let filtered = ((try? modelContext.fetch(fetchDescriptor)) ?? [])
             let newCharacterId = UUID().uuidString
             
-            Task.detached { @MainActor in
-                UserDefaults.standard.selectedId = newCharacterId
-                let character = CharacterModel(
-                    id: newCharacterId,
-                    imageUrl: imageUrl,
-                    characterClass: selectedClass,
-                    name: characterName,
-                    levels: levels,
-                    usedLevels: [:],
-                    knownSpells: [],
-                    preparedSpells: []
-                )
-                modelContext.insert(character)
-                
-                addFilters(for: maxLevel, characterId: newCharacterId)
-                if maxLevel < 9 {
-                    addFilters(for: 9, characterId: newCharacterId)
+            UserDefaults.standard.selectedId = newCharacterId
+            let character = CharacterModel(
+                id: newCharacterId,
+                imageUrl: imageUrl,
+                characterClass: selectedClass,
+                name: characterName,
+                levels: levels,
+                usedLevels: [:]
+            )
+            modelContext.insert(character)
+            
+            addFilters(for: maxLevel, characterId: newCharacterId)
+            if maxLevel < 9 {
+                addFilters(for: 9, characterId: newCharacterId)
+            }
+            
+            try? modelContext.save()
+            
+            filtered
+                .map { spell in
+                    CharacterToSpell(
+                        characterId: newCharacterId,
+                        spellId: spell.id,
+                        spellLevel: spell.level,
+                        isLocked: true,
+                        isSpellCustom: spell.isCustom,
+                        typeOfRelation: .known,
+                        spell: spell
+                    )
                 }
-                
-                try? modelContext.save()
-                
-                character.knownSpells = filter
-                try? modelContext.save()
+                .forEach { modelContext.insert($0) }
+            try? modelContext.save()
 
+            Task.detached { @MainActor in
                 CharacterUpdateService.send()
                 isLoading = false
+                onFinish()
             }
         }
     }

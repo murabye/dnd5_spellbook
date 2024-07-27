@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SpellView: View {
     let spell: Spell
+    let isLockedRelationship: Bool
     @State var collapsed: Bool
     @Query(sort: \Tag.id) var allTags: [Tag]
     @Query(sort: \MaterialModel.name) var allMaterials: [MaterialModel]
@@ -17,6 +18,11 @@ struct SpellView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
+                if isLockedRelationship {
+                    Image(systemName: "lock.fill")
+                        .foregroundColor(.black)
+                }
+                
                 HStack(spacing: 2) {
                     Text("\(spell.level)")
                     if spell.canUpcast {
